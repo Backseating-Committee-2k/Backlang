@@ -9,7 +9,7 @@ public abstract class BaseLexer
     protected SourceFile<StreamCharSource> _document;
     protected int _line = 1;
     protected int _position;
-    public List<Message> Messages = new();
+    public List<Message> Messages = [];
 
     public List<Token> Tokenize(SourceFile<StreamCharSource> document)
     {

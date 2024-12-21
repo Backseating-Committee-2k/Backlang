@@ -6,7 +6,7 @@ namespace BacklangC;
 public class OptimizationLevel(string level)
 {
     public string Level { get; } = level;
-    public List<OptimizationPass> Passes { get; } = new();
+    public List<OptimizationPass> Passes { get; } = [];
 
     public void AddPass(OptimizationPass pass)
     {

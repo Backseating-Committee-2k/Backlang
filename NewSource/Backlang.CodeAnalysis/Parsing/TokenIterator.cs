@@ -9,7 +9,7 @@ public sealed class TokenIterator
 {
     private readonly SourceFile<StreamCharSource> _document;
     private readonly List<Token> _tokens;
-    public readonly List<Message> Messages = new();
+    public readonly List<Message> Messages = [];
 
     public TokenIterator(List<Token> tokens, SourceFile<StreamCharSource> document)
     {

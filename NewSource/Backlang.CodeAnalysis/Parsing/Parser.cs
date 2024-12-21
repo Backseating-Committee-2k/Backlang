@@ -1,5 +1,5 @@
+using Backlang.CodeAnalysis.AST;
 using Backlang.Codeanalysis.Core;
-using Backlang.Codeanalysis.Parsing.AST;
 using Loyc.Syntax;
 
 namespace Backlang.Codeanalysis.Parsing;
@@ -29,8 +29,8 @@ public sealed partial class Parser
         {
             return new CompilationUnit
             {
-                Body = LNode.List(LNode.Missing),
-                Messages = new List<Message> { Message.Error(ErrorID.EmptyFile, SourceRange.Synthetic) },
+                Declarations = [],
+                Messages = [Message.Error(ErrorID.EmptyFile, SourceRange.Synthetic)],
                 Document = document
             };
         }
@@ -59,7 +59,7 @@ public sealed partial class Parser
         var body = InvokeDeclarationParsePoints();
 
         cu.Messages = Messages.Concat(Iterator.Messages).ToList();
-        cu.Body = body;
+        cu.Declarations = body;
         cu.Document = Document;
 
         return cu;

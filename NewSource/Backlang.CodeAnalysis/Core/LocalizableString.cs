@@ -22,7 +22,7 @@ public readonly struct LocalizableString
     public LocalizableString(ErrorID errorID) : this()
     {
         ErrorID = errorID;
-        Arguments = new[] { "NO_VALUE" };
+        Arguments = ["NO_VALUE"];
     }
 
     public LocalizableString(string fallbackValue) : this()

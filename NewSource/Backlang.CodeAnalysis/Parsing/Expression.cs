@@ -3,6 +3,7 @@ using Backlang.Codeanalysis.Core.Attributes;
 using Loyc;
 using Loyc.Syntax;
 using System.Reflection;
+using Backlang.CodeAnalysis.AST;
 
 namespace Backlang.Codeanalysis.Parsing;
 
@@ -18,10 +19,8 @@ public static class Expression
 
         foreach (var op in typeValues)
         {
-            var attributes = op.GetType().GetField(Enum.GetName(op)).GetCustomAttributes<OperatorInfoAttribute>(true);
+            var attributes = op.GetType().GetField(Enum.GetName(op)!).GetCustomAttributes<OperatorInfoAttribute>(true);
 
-            if (attributes != null && attributes.Any())
-            {
                 foreach (var attribute in attributes)
                 {
                     if (attribute.IsUnary)
@@ -40,7 +39,6 @@ public static class Expression
                         BinaryOperators.Add(op, attribute.Precedence);
                     }
                 }
-            }
         }
     }
 
@@ -49,9 +47,9 @@ public static class Expression
         return BinaryOperators.GetValueOrDefault(kind);
     }
 
-    public static LNode Parse(Parser parser, ParsePoints parsePoints = null, int parentPrecedence = 0)
+    public static AstNode Parse(Parser parser, ParsePoints parsePoints = null, int parentPrecedence = 0)
     {
-        LNode left = null;
+        AstNode left = null;
         var preUnaryOperatorPrecedence = GetPreUnaryOperatorPrecedence(parser.Iterator.Current.Type);
 
         if (preUnaryOperatorPrecedence != 0 && preUnaryOperatorPrecedence >= parentPrecedence)
@@ -117,9 +115,9 @@ public static class Expression
         return left;
     }
 
-    public static LNodeList ParseList(Parser parser, TokenType terminator, bool consumeTerminator = true)
+    public static List<AstNode> ParseList(Parser parser, TokenType terminator, bool consumeTerminator = true)
     {
-        return ParsingHelpers.ParseSeperated<ExpressionParser>(parser, terminator,
+        return ParsingHelpers.ParseSeperated<ExpressionParser, AstNode>(parser, terminator,
             consumeTerminator: consumeTerminator);
     }
 
@@ -145,7 +143,7 @@ public static class Expression
 
     private class ExpressionParser : IParsePoint
     {
-        public static LNode Parse(TokenIterator iterator, Parser parser)
+        public static AstNode Parse(TokenIterator iterator, Parser parser)
         {
             return Expression.Parse(parser);
         }

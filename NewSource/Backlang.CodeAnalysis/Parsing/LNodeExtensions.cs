@@ -1,4 +1,4 @@
-﻿using Backlang.Codeanalysis.Parsing.AST;
+﻿using Backlang.CodeAnalysis.Parsing.ParsePoints;
 using Loyc.Syntax;
 
 namespace Backlang.Codeanalysis.Parsing;

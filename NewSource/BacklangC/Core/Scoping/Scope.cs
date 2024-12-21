@@ -7,7 +7,7 @@ namespace BacklangC.Core.Scoping;
 
 public class Scope
 {
-    private readonly List<ScopeItem> _items = new();
+    private readonly List<ScopeItem> _items = [];
 
     public Scope(Scope parent)
     {

@@ -1,8 +1,8 @@
-﻿using Loyc.Syntax;
+﻿using Backlang.CodeAnalysis.AST;
 
 namespace Backlang.Codeanalysis.Parsing;
 
 public interface IParsePoint
 {
-    static abstract LNode Parse(TokenIterator iterator, Parser parser);
+    static abstract AstNode Parse(TokenIterator iterator, Parser parser);
 }

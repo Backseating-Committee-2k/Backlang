@@ -1,26 +1,27 @@
-﻿using Backlang.Codeanalysis.Parsing;
-using Loyc.Syntax;
+﻿using Backlang.CodeAnalysis.AST;
+using Backlang.Codeanalysis.Parsing;
 
 namespace Backlang.Codeanalysis.Core;
 
 internal static class ParsingHelpers
 {
-    public static LNodeList ParseSeperated<T>(
+    public static List<TNode> ParseSeperated<T, TNode>(
         Parser parser,
         TokenType terminator,
         TokenType seperator = TokenType.Comma, bool consumeTerminator = true)
         where T : IParsePoint
+        where TNode : AstNode
     {
         if (parser.Iterator.IsMatch(terminator))
         {
             parser.Iterator.Match(terminator);
-            return LNodeList.Empty;
+            return [];
         }
 
-        var list = new LNodeList();
+        var list = new List<TNode>();
         do
         {
-            list.Add(T.Parse(parser.Iterator, parser));
+            list.Add((TNode)T.Parse(parser.Iterator, parser));
 
             if (parser.Iterator.IsMatch(seperator) && parser.Iterator.Peek(1).Type == terminator)
             {
@@ -37,10 +38,10 @@ internal static class ParsingHelpers
         return list;
     }
 
-    public static LNodeList ParseUntil<T>(Parser parser, TokenType terminator)
+    public static List<AstNode> ParseUntil<T>(Parser parser, TokenType terminator)
         where T : IParsePoint
     {
-        var members = new LNodeList();
+        var members = new List<AstNode>();
         while (parser.Iterator.Current.Type != terminator)
         {
             members.Add(T.Parse(parser.Iterator, parser));

@@ -1,0 +1,27 @@
+﻿using Backlang.Codeanalysis.Core;
+using Backlang.Codeanalysis.Parsing;
+using Loyc.Syntax;
+
+namespace Backlang.CodeAnalysis.Parsing.ParsePoints.Declarations;
+
+public sealed class StructDeclaration : IParsePoint
+{
+    public static LNode Parse(TokenIterator iterator, Parser parser)
+    {
+        var keywordToken = iterator.Prev;
+        var name = iterator.Match(TokenType.Identifier);
+        var inheritances = new LNodeList();
+
+        if (iterator.ConsumeIfMatch(TokenType.Colon))
+        {
+            inheritances = Expression.ParseList(parser, TokenType.OpenCurly, false);
+        }
+
+        iterator.Match(TokenType.OpenCurly);
+
+        var members = ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
+
+        return SyntaxTree.Struct(name, inheritances, members)
+            .WithRange(keywordToken, iterator.Prev);
+    }
+}

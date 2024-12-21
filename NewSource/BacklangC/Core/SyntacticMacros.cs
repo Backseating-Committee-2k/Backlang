@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using Backlang.Codeanalysis.Parsing;
-using Backlang.Codeanalysis.Parsing.AST;
+using Backlang.CodeAnalysis.Parsing.ParsePoints;
 using LeMP;
 using Loyc;
 using Loyc.Syntax;
@@ -41,7 +41,7 @@ public static class SyntacticMacros
         var factory = new LNodeFactory(node.Source);
         SyntaxTree.Factory = factory;
 
-        return SyntaxTree.Signature(SyntaxTree.Type(".ctor", new LNodeList()),
+        return SyntaxTree.Signature(SyntaxTree.Type(".ctor", []),
             SyntaxTree.Type("none", LNode.List()), node.Args[0].Args,
             new LNodeList()).PlusArg(node.Args[1]).WithAttrs(node.Attrs).WithRange(node.Range);
     }
@@ -53,7 +53,7 @@ public static class SyntacticMacros
         var factory = new LNodeFactory(node.Source);
         SyntaxTree.Factory = factory;
 
-        return SyntaxTree.Signature(SyntaxTree.Type(".dtor", new LNodeList()),
+        return SyntaxTree.Signature(SyntaxTree.Type(".dtor", []),
                 SyntaxTree.Type("none", LNode.List()), node.Args[0].Args, new LNodeList())
             .PlusArg(node.Args[1]).WithAttrs(node.Attrs).WithRange(node.Range);
     }

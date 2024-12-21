@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using DistIL.AsmIO;
-using Loyc.Math;
 
 namespace BacklangC.Core.Scoping.Items;
 

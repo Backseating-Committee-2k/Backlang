@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
+using Backlang.CodeAnalysis.AST;
 using Backlang.Codeanalysis.Parsing;
-using Backlang.Codeanalysis.Parsing.AST;
 using BacklangC.Stages;
 using DistIL;
 using DistIL.AsmIO;
 using Flo;
-using LanguageSdk.Templates.Core;
 
 namespace BacklangC;
 
@@ -49,10 +48,6 @@ public class Driver
             cfg => {
                 cfg.Add<ParsingStage>();
                 cfg.Add<SemanticCheckStage>();
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<ExpandMacrosStage>();
-                });
 
                 cfg.Add<SaveModuleStage>();
 

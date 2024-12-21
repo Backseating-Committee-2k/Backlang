@@ -1,5 +1,5 @@
+using Backlang.CodeAnalysis.AST;
 using Backlang.Codeanalysis.Parsing;
-using Backlang.Codeanalysis.Parsing.AST;
 using Flo;
 using Loyc.Syntax;
 

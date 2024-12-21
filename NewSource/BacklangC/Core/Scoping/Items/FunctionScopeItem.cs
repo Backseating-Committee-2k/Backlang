@@ -4,7 +4,7 @@ namespace BacklangC.Core.Scoping.Items;
 
 public class FunctionScopeItem : ScopeItem
 {
-    public List<MethodDesc> Overloads { get; init; } = new();
+    public List<MethodDesc> Overloads { get; init; } = [];
     public bool IsStatic => Overloads[0].IsStatic;
     public Scope SubScope { get; init; }
 

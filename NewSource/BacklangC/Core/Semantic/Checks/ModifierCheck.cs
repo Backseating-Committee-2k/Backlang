@@ -1,4 +1,5 @@
-﻿using Backlang.Codeanalysis.Parsing.AST;
+﻿using Backlang.CodeAnalysis.AST;
+using Backlang.CodeAnalysis.Parsing.ParsePoints;
 using Loyc.Syntax;
 
 namespace BacklangC.Core.Semantic.Checks;
@@ -7,7 +8,7 @@ internal class ModifierCheck : ISemanticCheck
 {
     public void Check(CompilationUnit tree, Driver context)
     {
-        var nodesWithModifiers = tree.Body
+        var nodesWithModifiers = tree.Declarations
             .SelectMany(_ => _.DescendantsAndSelf()).Where(IsModifiableNode).ToArray();
 
         foreach (var node in nodesWithModifiers)

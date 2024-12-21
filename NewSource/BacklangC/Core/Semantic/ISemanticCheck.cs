@@ -1,4 +1,4 @@
-﻿using Backlang.Codeanalysis.Parsing.AST;
+﻿using Backlang.CodeAnalysis.AST;
 
 namespace BacklangC.Core.Semantic;
 
