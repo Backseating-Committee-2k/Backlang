@@ -18,6 +18,18 @@ public sealed class TypeLiteralParser
 
             typeNode = new SimpleTypeName(typename);
 
+            if (iterator.IsMatch(TokenType.Dot))
+            {
+                while (iterator.IsMatch(TokenType.Dot))
+                {
+                    iterator.NextToken();
+
+                    var id = iterator.Match(TokenType.Identifier);
+                    typeNode.Children.Add(new SimpleTypeName(id.Text));
+                }
+                typeNode = new QualifiedTypeName((SimpleTypeName)typeNode);
+            }
+
             if (iterator.IsMatch(TokenType.Star))
             {
                 typeNode = new PointerTypeName(typeNode, PointerKind.Transient);
@@ -27,6 +39,7 @@ public sealed class TypeLiteralParser
             {
                 typeNode = new PointerTypeName(typeNode, PointerKind.Reference);
             }
+
             /*
             else if (iterator.IsMatch(TokenType.Questionmark))
             {
