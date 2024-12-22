@@ -118,7 +118,7 @@ public sealed partial class Parser
 
         var range = new SourceRange(Document, Iterator.Current.Start, Iterator.Current.Text.Length);
 
-        AddError(new LocalizableString(ErrorID.UnknownExpression, Iterator.Current.Text), range);
+        AddError("Unexpected Expression " + Iterator.Current.Text, range);
 
         Iterator.NextToken();
 

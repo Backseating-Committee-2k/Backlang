@@ -25,7 +25,7 @@ internal static class ParsingHelpers
 
             if (parser.Iterator.IsMatch(seperator) && parser.Iterator.Peek(1).Type == terminator)
             {
-                parser.AddError(ErrorID.ForbiddenTrailingComma);
+                parser.AddError("Trailing comma is forbidden");
                 parser.Iterator.Match(seperator);
             }
         } while (parser.Iterator.ConsumeIfMatch(seperator));

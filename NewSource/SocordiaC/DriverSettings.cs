@@ -4,6 +4,6 @@ namespace SocordiaC;
 
 public class DriverSettings : LanguageSdk.Templates.Core.DriverSettings
 {
-    [Option('m')]
+    //[Option('m', Required = false)]
     public IEnumerable<string>? MacroReferences { get; set; } = new List<string>();
 }

@@ -30,7 +30,7 @@ public sealed partial class Parser
             return new CompilationUnit
             {
                 Declarations = [],
-                Messages = [Message.Error(ErrorID.EmptyFile, SourceRange.Synthetic)],
+                Messages = [Message.Error("The source file is empty", SourceRange.Synthetic)],
                 Document = document
             };
         }

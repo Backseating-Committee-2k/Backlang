@@ -13,13 +13,6 @@ public sealed class TryStatementParser : IParsePoint
         var body = Statement.ParseOneOrBlock(parser);
         List<CatchStatement> catches = [];
 
-        if (iterator.Current.Type != TokenType.Catch)
-        {
-            var range = new SourceRange(parser.Document, iterator.Current.Start, iterator.Current.Text.Length);
-
-            parser.AddError(new LocalizableString(ErrorID.NoCatchBlock), range);
-        }
-
         while (iterator.Current.Type == TokenType.Catch)
         {
             iterator.NextToken();

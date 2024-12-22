@@ -12,7 +12,7 @@ public class Driver
 {
     public DriverSettings Settings { get; private init; } = new();
     public required Compilation Compilation { get; set; }
-    public required TypeDef ProgramType { get; set; }
+    public required TypeDef FunctionsType { get; set; }
 
     public Optimizer Optimizer { get; set; }
     public List<Message> Messages { get; set; } = [];
@@ -29,14 +29,14 @@ public class Driver
         var optimizer = new Optimizer();
         optimizer.CreatePassManager(compilation);
 
-        var programType = module.CreateType(settings.RootNamespace, "Program", TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);
+        var programType = module.CreateType(settings.RootNamespace, "Functions", TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);
 
         return new Driver
         {
             Compilation = compilation,
             Settings = settings,
             Optimizer = optimizer,
-            ProgramType = programType
+            FunctionsType = programType
         };
     }
 

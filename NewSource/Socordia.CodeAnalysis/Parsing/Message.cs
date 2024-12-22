@@ -29,12 +29,12 @@ public sealed class Message
     public MessageSeverity Severity { get; set; }
     public string Text { get; set; }
 
-    public static Message Error(LocalizableString message, SourceRange range)
+    public static Message Error(string message, SourceRange range)
     {
         return new Message(MessageSeverity.Error, message, range);
     }
 
-    public static Message Error(LocalizableString message)
+    public static Message Error(string message)
     {
         return new Message(MessageSeverity.Error, message, SourceRange.Synthetic);
     }

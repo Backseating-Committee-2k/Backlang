@@ -25,12 +25,12 @@ public sealed partial class Parser
         { "d", PrimType.Double }
     };
 
-    public void AddError(LocalizableString message, SourceRange range)
+    public void AddError(string message, SourceRange range)
     {
         Messages.Add(Message.Error(message, range));
     }
 
-    public void AddError(LocalizableString message)
+    public void AddError(string message)
     {
         Messages.Add(Message.Error(message,
             new SourceRange(Document, Iterator.Current.Start, Iterator.Current.Text.Length)));
@@ -76,7 +76,7 @@ public sealed partial class Parser
             return value(Iterator, this);
         }
 
-        AddError(ErrorID.UnknownExpression);
+        AddError("Unexpected Expression " + token);
         return null;
     }
 
@@ -157,7 +157,7 @@ public sealed partial class Parser
             }
             else
             {
-                AddError(new LocalizableString(ErrorID.UnknownLiteral, Iterator.Current.Text));
+                AddError("Unknown Literal "+ Iterator.Current.Text);
 
                 result = null;
             }

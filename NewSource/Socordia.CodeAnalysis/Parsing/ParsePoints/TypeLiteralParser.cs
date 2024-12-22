@@ -55,8 +55,8 @@ public sealed class TypeLiteralParser
         }*/
         else
         {
-            parser.AddError(new LocalizableString(ErrorID.UnexpecedType,
-                TokenIterator.GetTokenRepresentation(iterator.Current.Type)));
+            parser.AddError("Expected Identifier, TupleType or Function-Signature as TypeLiteral, but got " +
+                TokenIterator.GetTokenRepresentation(iterator.Current.Type));
 
             typeNode = null;
             iterator.NextToken();
