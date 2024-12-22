@@ -9,7 +9,7 @@ public sealed class SignatureParser
     {
         var iterator = parser.Iterator;
 
-        var nameToken = iterator.Peek(-1);
+        var nameToken = iterator.NextToken();
         var name = new Identifier(nameToken.Text);
 
         AstNode? returnType = null;

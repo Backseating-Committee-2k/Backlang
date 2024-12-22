@@ -1,14 +1,15 @@
-﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 
-/*
-public sealed class FunctionDeclaration : IParsePoint
+namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+
+public sealed class FunctionDefinitionParser : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         var keywordToken = iterator.Prev;
-        var signature = Signature.Parse(parser);
+        var signature = SignatureParser.Parse(parser);
 
-        return signature.PlusArg(Statements.Statement.ParseBlock(parser)).WithRange(keywordToken, iterator.Prev);
+        return new FunctionDefinition(signature, Statements.Statement.ParseBlock(parser));
     }
 }
-*/
