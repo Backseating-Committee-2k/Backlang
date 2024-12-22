@@ -69,7 +69,7 @@ public class Optimizer
         }
     }
 
-    public void CreatePassManager(Compilation compilation)
+    public void CreatePassManager(DistIL.Compilation compilation)
     {
         var pm = new PassManager
         {

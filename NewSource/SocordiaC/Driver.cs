@@ -11,7 +11,7 @@ namespace SocordiaC;
 public class Driver
 {
     public DriverSettings Settings { get; private init; } = new();
-    public required Compilation Compilation { get; set; }
+    public required DistIL.Compilation Compilation { get; set; }
     public required TypeDef FunctionsType { get; set; }
 
     public Optimizer Optimizer { get; set; }
@@ -25,7 +25,7 @@ public class Driver
 
         var module = moduleResolver.Create(settings.RootNamespace, Version.Parse(settings.Version));
 
-        var compilation = new Compilation(module, new ConsoleLogger(), new CompilationSettings());
+        var compilation = new DistIL.Compilation(module, new ConsoleLogger(), new CompilationSettings());
         var optimizer = new Optimizer();
         optimizer.CreatePassManager(compilation);
 
@@ -48,6 +48,7 @@ public class Driver
             cfg => {
                 cfg.Add<ParsingStage>();
                 cfg.Add<SemanticCheckStage>();
+                cfg.Add<ConvertToIrStage>();
 
                 cfg.Add<SaveModuleStage>();
 
