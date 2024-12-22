@@ -2,6 +2,7 @@
 using Loyc;
 using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.Core;
 using Socordia.CodeAnalysis.Core.Attributes;
 
@@ -47,7 +48,7 @@ public static class Expression
         return BinaryOperators.GetValueOrDefault(kind);
     }
 
-    public static AstNode Parse(Parser parser, ParsePoints parsePoints = null, int parentPrecedence = 0)
+    public static AstNode Parse(Parser parser, ParsePointCollection parsePoints = null, int parentPrecedence = 0)
     {
         AstNode left = null;
         var preUnaryOperatorPrecedence = GetPreUnaryOperatorPrecedence(parser.Iterator.Current.Type);
@@ -60,8 +61,7 @@ public static class Expression
 
                 var operand = Parse(parser, parsePoints, preUnaryOperatorPrecedence + 1);
 
-                left = SyntaxTree.Unary(GSymbol.Get($"'{operatorToken.Text}"), operand)
-                    .WithRange(operatorToken.Start, operand.Range.EndIndex).WithStyle(NodeStyle.PrefixNotation);
+                left = SyntaxTree.Unary(operatorToken.Text, operand, UnaryOperatorKind.Prefix);
             }
         }
         else
@@ -77,8 +77,7 @@ public static class Expression
                 {
                     var unaryOperatorToken = parser.Iterator.NextToken();
 
-                    left = SyntaxTree.Unary(GSymbol.Get($"'suf{unaryOperatorToken.Text}"), left)
-                        .WithRange(left.Range.StartIndex, unaryOperatorToken.End).WithStyle(NodeStyle.Operator);
+                    left = SyntaxTree.Unary(unaryOperatorToken.Text, left, UnaryOperatorKind.Suffix);
                 }
             }
         }
@@ -94,8 +93,7 @@ public static class Expression
             var operatorToken = parser.Iterator.NextToken();
             var right = Parse(parser, parsePoints, precedence);
 
-            left = SyntaxTree.Binary(GSymbol.Get($"'{operatorToken.Text}"), left, right)
-                .WithRange(left.Range.StartIndex, right.Range.StartIndex);
+            left = SyntaxTree.Binary(GSymbol.Get($"'{operatorToken.Text}"), left, right);
 
             // parsing postunary for: Hello::new()? = false;
             var postUnaryOperatorPrecedence = GetPostUnaryOperatorPrecedence(parser.Iterator.Current.Type);
@@ -106,8 +104,7 @@ public static class Expression
                 {
                     var unaryOperatorToken = parser.Iterator.NextToken();
 
-                    left = SyntaxTree.Unary(GSymbol.Get($"'suf{unaryOperatorToken.Text}"), left)
-                        .WithRange(left.Range.StartIndex, unaryOperatorToken.End).WithStyle(NodeStyle.Operator);
+                    left = SyntaxTree.Unary(unaryOperatorToken.Text, left, UnaryOperatorKind.Suffix);
                 }
             }
         }

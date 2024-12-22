@@ -1,16 +1,15 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.Core;
+﻿using Socordia.CodeAnalysis.AST;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-public sealed class ClassDeclaration : IParsePoint
+public sealed class ClassDeclarationParser : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         var keywordToken = iterator.Prev;
 
         var nameToken = iterator.Match(TokenType.Identifier);
-        var inheritances = new LNodeList();
+        var inheritances = new List<AstNode>();
 
         if (iterator.ConsumeIfMatch(TokenType.Colon))
         {
@@ -19,8 +18,8 @@ public sealed class ClassDeclaration : IParsePoint
 
         iterator.Match(TokenType.OpenCurly);
 
-        var members = ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
+        List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
 
-        return SyntaxTree.Class(nameToken, inheritances, members).WithRange(keywordToken, iterator.Prev);
+        return SyntaxTree.Class(nameToken, inheritances, members);
     }
 }

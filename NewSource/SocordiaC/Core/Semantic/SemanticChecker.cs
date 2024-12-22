@@ -7,11 +7,12 @@ public static class SemanticChecker
 {
     private static readonly List<ISemanticCheck> SemanticChecks =
     [
-        new ModuleDefinitionCheck(),
+       /* new ModuleDefinitionCheck(),
         new ImportCheck(),
         new TypenameCheck(),
         new ModifierCheck(),
         new InterfaceNameCheck()
+        */
     ];
 
     public static void Do(CompilationUnit tree, Driver context)

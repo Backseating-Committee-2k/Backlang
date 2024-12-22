@@ -4,6 +4,7 @@ using Socordia.CodeAnalysis.Parsing;
 
 namespace SocordiaC.Core.Semantic.Checks;
 
+/*
 internal class ModuleDefinitionCheck : ISemanticCheck
 {
     public void Check(CompilationUnit tree, Driver context)
@@ -16,3 +17,4 @@ internal class ModuleDefinitionCheck : ISemanticCheck
         }
     }
 }
+*/

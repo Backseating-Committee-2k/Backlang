@@ -30,9 +30,7 @@ public static class SyntacticMacros
         ["addrof"] = ("AddressOf", 2),
         ["percent"] = ("Percentage", 1)
     };
-
-    private static readonly LNodeFactory F = new(EmptySourceFile.Synthetic);
-
+    /*
     [LexicalMacro("constructor()", "Convert constructor() to .ctor() function", "#constructor",
         Mode = MacroMode.MatchIdentifierOrCall)]
     public static LNode Constructor(LNode node, IMacroContext context)
@@ -354,4 +352,5 @@ public static class SyntacticMacros
 
         return factory.Call(CodeSymbols.Assign, arg1, factory.Call(symbol, arg1, arg2));
     }
+    */
 }

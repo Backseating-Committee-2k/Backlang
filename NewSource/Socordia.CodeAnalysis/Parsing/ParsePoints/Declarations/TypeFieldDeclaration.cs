@@ -1,7 +1,6 @@
-﻿using Loyc.Syntax;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public sealed class TypeFieldDeclaration
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -10,3 +9,4 @@ public sealed class TypeFieldDeclaration
         return Statements.VariableStatementParser.Parse(iterator, parser);
     }
 }
+*/

@@ -1,5 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
-using Socordia.CodeAnalysis.AST.Statements;
+using Socordia.CodeAnalysis.AST.Statements.Loops;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
 
@@ -10,6 +10,6 @@ public sealed class BreakStatementParser : IParsePoint
         var keywordToken = iterator.Prev;
         iterator.Match(TokenType.Semicolon);
 
-        return new BreakStatement().WithRange(keywordToken, iterator.Prev);
+        return new BreakStatement();
     }
 }

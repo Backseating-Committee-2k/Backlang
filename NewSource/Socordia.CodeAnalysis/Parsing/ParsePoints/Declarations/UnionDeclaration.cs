@@ -1,8 +1,6 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.Core;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public sealed class UnionDeclaration : IParsePoint
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -18,3 +16,4 @@ public sealed class UnionDeclaration : IParsePoint
         return SyntaxTree.Union(nameToken.Text, members).WithRange(keywordToken, iterator.Current);
     }
 }
+*/

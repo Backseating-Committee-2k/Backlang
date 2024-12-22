@@ -34,8 +34,7 @@ public sealed class TryStatementParser : IParsePoint
             finallly = Statement.ParseOneOrBlock(parser);
         }
 
-        return SyntaxTree.Try(body, catches, finallly)
-            .WithRange(keywordToken, iterator.Prev);
+        return SyntaxTree.Try(body, catches, finallly);
     }
 
     private static CatchStatement ParseCatch(Parser parser)

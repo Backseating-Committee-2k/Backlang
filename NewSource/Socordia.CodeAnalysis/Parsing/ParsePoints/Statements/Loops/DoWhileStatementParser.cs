@@ -16,7 +16,6 @@ public sealed class DoWhileStatementParser : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return SyntaxTree.DoWhile(body, cond)
-            .WithRange(keywordToken, iterator.Prev);
+        return SyntaxTree.DoWhile(body, cond);
     }
 }

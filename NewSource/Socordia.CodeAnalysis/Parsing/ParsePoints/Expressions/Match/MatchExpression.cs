@@ -1,7 +1,6 @@
-using Loyc.Syntax;
-
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions.Match;
 
+/*
 public sealed class MatchExpression : IParsePoint
 {
     /*
@@ -10,7 +9,7 @@ public sealed class MatchExpression : IParsePoint
         i32 num => num + 2,
         _ => 0 + 4;
     */
-
+/*
     public static LNode Parse(TokenIterator iterator, Parser parser)
     {
         var matchArgument = Expression.Parse(parser);
@@ -34,3 +33,4 @@ public sealed class MatchExpression : IParsePoint
         return SyntaxTree.Factory.Call(LNode.Id(Symbols.Match), matchArgument).WithAttrs(conditions);
     }
 }
+*/

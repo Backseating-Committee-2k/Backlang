@@ -17,7 +17,7 @@ public sealed class ParameterDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.Colon);
 
-        var type = TypeLiteral.Parse(iterator, parser);
+        var type = TypeLiteralParser.Parse(iterator, parser);
 
         AstNode? defaultValue = null;
 
@@ -28,8 +28,7 @@ public sealed class ParameterDeclarationParser : IParsePoint
             defaultValue = Expression.Parse(parser);
         }
 
-        return new ParameterDeclaration(type, name.Text, defaultValue, assertNotNull, annotations)
-            .WithRange(keywordToken, iterator.Prev);
+        return new ParameterDeclaration(type, name.Text, defaultValue, assertNotNull, annotations);
     }
 
     public static List<ParameterDeclaration> ParseList(Parser parser)

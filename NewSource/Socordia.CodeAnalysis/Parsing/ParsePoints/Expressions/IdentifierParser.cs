@@ -1,4 +1,5 @@
 using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Expressions;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions;
 
@@ -13,8 +14,7 @@ public sealed class IdentifierParser : IParsePoint
         {
             iterator.NextToken();
 
-            return SyntaxTree.ArrayInstantiation(nameExpression, Expression.ParseList(parser, TokenType.CloseSquare))
-                .WithRange(nameToken, iterator.Prev);
+            return SyntaxTree.ArrayInstantiation(nameExpression, Expression.ParseList(parser, TokenType.CloseSquare));
         }
 
         if (iterator.Current.Type == TokenType.OpenParen)
@@ -23,9 +23,9 @@ public sealed class IdentifierParser : IParsePoint
 
             var arguments = Expression.ParseList(parser, TokenType.CloseParen);
 
-            return SyntaxTree.Factory.Call(nameExpression, arguments).WithRange(nameToken, iterator.Prev);
+            return new Call(nameExpression, arguments);
         }
 
-        return nameExpression.WithRange(nameToken, iterator.Prev);
+        return nameExpression;
     }
 }

@@ -1,7 +1,6 @@
-﻿using Socordia.CodeAnalysis.AST;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public class ConstructorDeclarationParser : IParsePoint
 {
     public static AstNode Parse(TokenIterator iterator, Parser parser)
@@ -18,3 +17,4 @@ public class ConstructorDeclarationParser : IParsePoint
             .WithRange(keywordToken, iterator.Prev);
     }
 }
+*/

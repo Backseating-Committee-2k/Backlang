@@ -1,7 +1,6 @@
-﻿using Loyc.Syntax;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public sealed class MacroDeclaration : IParsePoint
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -13,3 +12,4 @@ public sealed class MacroDeclaration : IParsePoint
             .SetStyle(NodeStyle.StatementBlock)).WithRange(keywordToken, iterator.Prev);
     }
 }
+*/

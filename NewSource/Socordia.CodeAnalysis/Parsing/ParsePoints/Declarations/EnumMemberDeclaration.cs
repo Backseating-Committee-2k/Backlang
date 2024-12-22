@@ -1,7 +1,6 @@
-﻿using Loyc.Syntax;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public class EnumMemberDeclaration : IParsePoint
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -19,3 +18,4 @@ public class EnumMemberDeclaration : IParsePoint
         return SyntaxTree.Factory.Var(LNode.Missing, LNode.Id(memberNameToken.Text), value).PlusAttrs(annotations);
     }
 }
+*/

@@ -1,38 +1,43 @@
 ﻿using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.Core;
+using Socordia.CodeAnalysis.Parsing.ParsePoints;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Statements.Loops;
 
 namespace Socordia.CodeAnalysis.Parsing;
 
 public sealed partial class Parser
 {
-    public readonly ParsePoints DeclarationParsePoints = new();
-    public readonly ParsePoints ExpressionParsePoints = new();
-    public readonly ParsePoints StatementParsePoints = new();
+    public readonly ParsePointCollection DeclarationParsePoints = new();
+    public readonly ParsePointCollection ExpressionParsePoints = new();
+    public readonly ParsePointCollection StatementParsePoints = new();
 
     public void InitParsePoints()
     {
-        AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
-        AddDeclarationParsePoint<UnionDeclaration>(TokenType.Union);
-        AddDeclarationParsePoint<ClassDeclaration>(TokenType.Class);
-        AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
+        //AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
+        //AddDeclarationParsePoint<UnionDeclaration>(TokenType.Union);
+        AddDeclarationParsePoint<ClassDeclarationParser>(TokenType.Class);
+      /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
         AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
         AddDeclarationParsePoint<DiscriminatedUnionDeclaration>(TokenType.Type);
         AddDeclarationParsePoint<EnumDeclaration>(TokenType.Enum);
         AddDeclarationParsePoint<FunctionDeclaration>(TokenType.Function);
         AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
         AddDeclarationParsePoint<InterfaceDeclaration>(TokenType.Interface);
-        AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);
+        AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/
         AddDeclarationParsePoint<ImportStatementParser>(TokenType.Import);
-        AddDeclarationParsePoint<StructDeclaration>(TokenType.Struct);
+      //  AddDeclarationParsePoint<StructDeclaration>(TokenType.Struct);
         AddDeclarationParsePoint<ModuleDeclarationParser>(TokenType.Module);
-        AddDeclarationParsePoint<TypeAliasDeclaration>(TokenType.Using);
+        AddDeclarationParsePoint<TypeAliasDeclarationParser>(TokenType.Using);
         AddDeclarationParsePoint<UnitDeclarationParser>(TokenType.Unit);
-        AddDeclarationParsePoint<MacroBlockDeclaration>(TokenType.Identifier);
+       // AddDeclarationParsePoint<MacroBlockDeclaration>(TokenType.Identifier);
 
         AddExpressionParsePoint<IdentifierParser>(TokenType.Identifier);
         AddExpressionParsePoint<GroupOrTupleExpressionParser>(TokenType.OpenParen);
-        AddExpressionParsePoint<MatchExpression>(TokenType.Match);
+       // AddExpressionParsePoint<MatchExpression>(TokenType.Match);
         AddExpressionParsePoint<DefaultExpressionParser>(TokenType.Default);
         AddExpressionParsePoint<SizeOfExpressionParser>(TokenType.SizeOf);
         AddExpressionParsePoint<TypeOfExpressionParser>(TokenType.TypeOf);
@@ -44,13 +49,13 @@ public sealed partial class Parser
         AddStatementParsePoint<ContinueStatementParser>(TokenType.Continue);
         AddStatementParsePoint<ReturnStatementParser>(TokenType.Return);
         AddStatementParsePoint<VariableStatementParser>(TokenType.Let);
-        AddStatementParsePoint<SwitchStatement>(TokenType.Switch);
+       // AddStatementParsePoint<SwitchStatement>(TokenType.Switch);
         AddStatementParsePoint<IfStatementParser>(TokenType.If);
         AddStatementParsePoint<WhileStatementParser>(TokenType.While);
         AddStatementParsePoint<DoWhileStatementParser>(TokenType.Do);
         AddStatementParsePoint<TryStatementParser>(TokenType.Try);
         AddStatementParsePoint<ForStatement>(TokenType.For);
-        AddStatementParsePoint<MacroBlockStatement>(TokenType.Identifier);
+        //AddStatementParsePoint<MacroBlockStatement>(TokenType.Identifier);
     }
 
     public void AddDeclarationParsePoint<T>(TokenType type)
@@ -71,7 +76,7 @@ public sealed partial class Parser
         StatementParsePoints.Add(type, T.Parse);
     }
 
-    public List<Declaration> InvokeDeclarationParsePoints(TokenType terminator = TokenType.EOF, ParsePoints parsePoints = null)
+    public List<Declaration> InvokeDeclarationParsePoints(TokenType terminator = TokenType.EOF, ParsePointCollection parsePoints = null)
     {
         if (parsePoints == null)
         {
@@ -100,7 +105,7 @@ public sealed partial class Parser
         return declarations;
     }
 
-    public AstNode? InvokeParsePoint(ParsePoints parsePoints)
+    public AstNode? InvokeParsePoint(ParsePointCollection parsePoints)
     {
         var type = Iterator.Current.Type;
 

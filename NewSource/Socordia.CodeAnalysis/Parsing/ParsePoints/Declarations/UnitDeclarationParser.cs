@@ -11,6 +11,6 @@ public class UnitDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return SyntaxTree.UnitDeclaration(nameToken).WithRange(keywordToken, nameToken);
+        return SyntaxTree.UnitDeclaration(nameToken);
     }
 }

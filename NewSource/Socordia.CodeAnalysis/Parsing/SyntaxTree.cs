@@ -5,6 +5,9 @@ using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.Statements;
+using Socordia.CodeAnalysis.AST.Statements.Loops;
+using Socordia.CodeAnalysis.AST.TypeNames;
+using Socordia.CodeAnalysis.Parsing.ParsePoints;
 using LiteralNode = Socordia.CodeAnalysis.AST.Literals.LiteralNode;
 
 namespace Socordia.CodeAnalysis.Parsing;
@@ -61,14 +64,14 @@ public static class SyntaxTree
     return new ThrowStatement(arg);
 }
 
-    public static LNode ArrayInstantiation(LNodeList elements)
+    public static AstNode ArrayInstantiation(List<AstNode> elements)
     {
-        return Factory.Call(CodeSymbols.Braces, elements);
+        return new CollectionExpression(elements);
     }
 
     public static AstNode ArrayInstantiation(AstNode arr, List<AstNode> indices)
     {
-        return arr.WithArgs(indices);
+        return arr; //.WithArgs(indices);
     }
 
     public static AstNode Binary(Symbol op, AstNode left, AstNode right)
@@ -91,13 +94,9 @@ public static class SyntaxTree
         return new CatchStatement(exceptionType, exceptionValueName, body);
     }
 
-    public static LNode Class(Token nameToken, LNodeList inheritances, LNodeList members)
+    public static AstNode Class(Token nameToken, List<AstNode> inheritances, List<AstNode> members)
     {
-        return Factory.Call(CodeSymbols.Class,
-            LNode.List(
-                Factory.FromToken(nameToken),
-                Factory.Call(Symbols.Inheritance, inheritances),
-                Factory.Call(CodeSymbols.Braces, members).SetStyle(NodeStyle.StatementBlock)));
+        return new ClassDeclaration(nameToken.Text, inheritances, members);
     }
 
     public static AstNode Default(AstNode? type = null)
@@ -113,14 +112,9 @@ public static class SyntaxTree
                 members)));
     }
 
-    public static LNode For(LNode init, LNode arr, LNode body)
+    public static AstNode For(AstNode varExpr, AstNode type, AstNode arr, Block body)
     {
-        return Factory.Call(
-            CodeSymbols.For,
-            Factory.AltList(Factory.AltList(
-                    Factory.AltList(LNode.Call(CodeSymbols.In,
-                        Factory.AltList(init, arr)).SetStyle(NodeStyle.Operator))), LNode.Missing,
-                Factory.AltList(), body));
+        return new ForStatement(varExpr, type, arr, body);
     }
 
     public static AstNode If(AstNode cond, Block ifBody, Block elseBody)
@@ -206,15 +200,9 @@ public static class SyntaxTree
         return new TryStatement(body, catches, finallly);
     }
 
-    public static LNode Type(string name, LNodeList arguments)
+    public static AstNode Unary(string op, AstNode operand, UnaryOperatorKind kind)
     {
-        return Factory.Call(Symbols.TypeLiteral,
-            Factory.AltList(Factory.Id(name), Factory.Call(CodeSymbols.Of, arguments)));
-    }
-
-    public static AstNode Unary(Symbol op, AstNode operand)
-    {
-        return new UnaryOperator(op, operand);
+        return new UnaryOperator(op, operand, kind);
     }
 
     public static LNode Union(string name, LNodeList members)

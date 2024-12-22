@@ -1,10 +1,10 @@
-﻿using Loyc.Syntax;
+﻿using Socordia.CodeAnalysis.AST;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-public sealed class TypeAliasDeclaration : IParsePoint
+public sealed class TypeAliasDeclarationParser : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         // using <expression> as <identifier>
         var keywordToken = iterator.Prev;
@@ -12,6 +12,6 @@ public sealed class TypeAliasDeclaration : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return SyntaxTree.Using(expr).WithRange(keywordToken, iterator.Prev);
+        return new TypeAlias(expr);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Socordia.CodeAnalysis.AST.Statements;
+﻿namespace Socordia.CodeAnalysis.AST.Statements.Loops;
 
 public class DoWhileStatement : AstNode
 {

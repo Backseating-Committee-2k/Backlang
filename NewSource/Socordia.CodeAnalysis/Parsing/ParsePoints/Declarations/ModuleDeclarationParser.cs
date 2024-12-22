@@ -13,6 +13,6 @@ public sealed class ModuleDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return tree.WithRange(keywordToken, iterator.Prev);
+        return tree;
     }
 }

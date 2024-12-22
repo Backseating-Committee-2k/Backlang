@@ -4,6 +4,7 @@ using Socordia.CodeAnalysis.Parsing;
 
 namespace SocordiaC.Core.Semantic.Checks;
 
+/*
 internal class InterfaceNameCheck : ISemanticCheck
 {
     public void Check(CompilationUnit tree, Driver context)
@@ -32,3 +33,4 @@ internal class InterfaceNameCheck : ISemanticCheck
         }
     }
 }
+*/

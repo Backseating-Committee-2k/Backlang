@@ -3,6 +3,7 @@ using Socordia.CodeAnalysis.AST;
 
 namespace SocordiaC.Core.Semantic.Checks;
 
+/*
 internal class ModifierCheck : ISemanticCheck
 {
     public void Check(CompilationUnit tree, Driver context)
@@ -37,3 +38,4 @@ internal class ModifierCheck : ISemanticCheck
                arg.Calls(Symbols.Bitfield);
     }
 }
+*/

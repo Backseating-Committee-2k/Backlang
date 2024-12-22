@@ -1,27 +1,28 @@
+using DistIL.AsmIO;
 using Loyc;
 using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.Core;
+using Socordia.CodeAnalysis.Parsing.ParsePoints;
 using LiteralNode = Socordia.CodeAnalysis.AST.Literals.LiteralNode;
 
 namespace Socordia.CodeAnalysis.Parsing;
 
 public sealed partial class Parser
 {
-    private readonly Dictionary<string, Symbol> _literals = new()
+    private readonly Dictionary<string, PrimType> _literals = new()
     {
-        { "ub", CodeSymbols.UInt8 },
-        { "us", CodeSymbols.UInt16 },
-        { "u", CodeSymbols.UInt32 },
-        { "ui", CodeSymbols.UInt32 },
-        { "ul", CodeSymbols.UInt64 },
-        { "b", CodeSymbols.Int8 },
-        { "s", CodeSymbols.Int16 },
-        { "l", CodeSymbols.Int64 },
-        { "h", Symbols.Float16 },
-        { "f", Symbols.Float32 },
-        { "d", Symbols.Float64 }
+        { "ub", PrimType.Byte },
+        { "us", PrimType.UInt16 },
+        { "u", PrimType.UInt32 },
+        { "ui", PrimType.UInt32 },
+        { "ul", PrimType.UInt64 },
+        { "b", PrimType.SByte },
+        { "s", PrimType.Int16 },
+        { "l", PrimType.Int64 },
+        { "f", PrimType.Single },
+        { "d", PrimType.Double }
     };
 
     public void AddError(LocalizableString message, SourceRange range)
@@ -35,7 +36,7 @@ public sealed partial class Parser
             new SourceRange(Document, Iterator.Current.Start, Iterator.Current.Text.Length)));
     }
 
-    internal AstNode? ParsePrimary(ParsePoints? parsePoints = null)
+    internal AstNode? ParsePrimary(ParsePointCollection? parsePoints = null)
     {
         parsePoints ??= ExpressionParsePoints;
 
@@ -60,10 +61,10 @@ public sealed partial class Parser
 
         var elements = Expression.ParseList(this, TokenType.CloseSquare);
 
-        return new ArrayLiteral(elements).WithRange(startToken, Iterator.Prev);
+        return new ArrayLiteral(elements);
     }
 
-    private AstNode? InvokeExpressionParsePoint(ParsePoints parsePoints)
+    private AstNode? InvokeExpressionParsePoint(ParsePointCollection parsePoints)
     {
         var token = Iterator.Current;
         var type = token.Type;
@@ -72,7 +73,7 @@ public sealed partial class Parser
         {
             Iterator.NextToken();
 
-            return value(Iterator, this).WithRange(token, Iterator.Prev);
+            return value(Iterator, this);
         }
 
         AddError(ErrorID.UnknownExpression);
@@ -90,14 +91,14 @@ public sealed partial class Parser
             return null;
         }
 
-        return new LiteralNode(result).WithRange(Iterator.Prev);
+        return new LiteralNode(result);
     }
 
     private AstNode ParseBooleanLiteral(bool value)
     {
         Iterator.NextToken();
 
-        return new LiteralNode(value).WithRange(Iterator.Prev);
+        return new LiteralNode(value);
     }
 
     private AstNode ParseChar()
@@ -132,7 +133,7 @@ public sealed partial class Parser
         {
             var value = ParseHelpers.TryParseDouble(ref text, 10, ParseNumberFlag.SkipUnderscores);
 
-            result = new LiteralNode(value).WithRange(Iterator.Prev);
+            result = new LiteralNode(value);
         }
         else
         {
@@ -144,7 +145,7 @@ public sealed partial class Parser
             }
             else
             {
-                result = new LiteralNode(value).WithRange(Iterator.Prev);
+                result = new LiteralNode(value);
             }
         }
 
@@ -152,7 +153,7 @@ public sealed partial class Parser
         {
             if (_literals.TryGetValue(Iterator.Current.Text.ToLower(), out var value))
             {
-                result = new LiteralNode(result).WithRange(Iterator.Prev, Iterator.Current);
+                result = new LiteralNode(result);
             }
             else
             {
@@ -170,8 +171,7 @@ public sealed partial class Parser
 
             var unit = Iterator.Match(TokenType.Identifier);
 
-            result = SyntaxTree.Unit(result, unit.Text)
-                .WithRange(token, Iterator.Prev);
+            result = SyntaxTree.Unit(result, unit.Text);
 
             Iterator.Match(TokenType.GreaterThan);
         }

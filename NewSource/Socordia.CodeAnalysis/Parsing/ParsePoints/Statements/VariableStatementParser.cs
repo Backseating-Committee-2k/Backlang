@@ -1,6 +1,6 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.AST;
+﻿using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Statements;
+using Socordia.CodeAnalysis.AST.TypeNames;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
 
@@ -11,7 +11,7 @@ public class VariableStatementParser : IParsePoint
         var keywordToken = iterator.Prev;
 
         var isMutable = false;
-        var type = SyntaxTree.Type("", LNode.List());
+        TypeName? type = null;
 
         Token mutableToken = null;
 
@@ -27,7 +27,7 @@ public class VariableStatementParser : IParsePoint
         {
             iterator.NextToken();
 
-            type = TypeLiteral.Parse(iterator, parser);
+            type = TypeLiteralParser.Parse(iterator, parser);
         }
 
         AstNode initilizer = null;
@@ -40,7 +40,6 @@ public class VariableStatementParser : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return new VariableStatement(nameToken.Text, type, initilizer, isMutable)
-            .WithRange(keywordToken, iterator.Prev);
+        return new VariableStatement(nameToken.Text, type, initilizer, isMutable);
     }
 }

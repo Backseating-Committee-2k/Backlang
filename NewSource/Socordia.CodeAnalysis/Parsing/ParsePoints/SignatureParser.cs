@@ -10,7 +10,7 @@ public sealed class SignatureParser
         var iterator = parser.Iterator;
 
         var nameToken = iterator.Peek(-1);
-        var name = new Identifier(nameToken.Text).WithRange(nameToken);
+        var name = new Identifier(nameToken.Text);
 
         AstNode? returnType = null;
         iterator.Match(TokenType.OpenParen);
@@ -31,7 +31,7 @@ public sealed class SignatureParser
                     iterator.NextToken();
                 }
 
-                bases.Add(TypeLiteral.Parse(iterator, parser));
+                bases.Add(TypeLiteralParser.Parse(iterator, parser));
             } while (iterator.IsMatch(TokenType.Comma));
 
             //generics.Add(LNode.Call(Symbols.Where, LNode.List(genericName, LNode.Call(CodeSymbols.Base, bases))));
@@ -41,7 +41,7 @@ public sealed class SignatureParser
         {
             iterator.NextToken();
 
-            returnType = TypeLiteral.Parse(iterator, parser);
+            returnType = TypeLiteralParser.Parse(iterator, parser);
         }
 
         return SyntaxTree.Signature(name, returnType, parameters, generics);

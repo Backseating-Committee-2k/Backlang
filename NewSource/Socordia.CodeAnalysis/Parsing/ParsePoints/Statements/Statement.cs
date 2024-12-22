@@ -16,7 +16,7 @@ public static class Statement
 
         parser.Iterator.Match(TokenType.CloseCurly);
 
-        return (Block)new Block(body).WithRange(openCurlyToken, parser.Iterator.Prev);
+        return new Block(body);
     }
 
     public static Block ParseOneOrBlock(Parser parser)
@@ -28,6 +28,6 @@ public static class Statement
 
         var node = parser.InvokeStatementParsePoint();
 
-        return new Block([node]).WithRange(node.Range);
+        return new Block([node]);
     }
 }

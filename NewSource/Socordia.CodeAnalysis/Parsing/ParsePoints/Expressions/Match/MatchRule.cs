@@ -1,8 +1,5 @@
-﻿using Loyc;
-using Loyc.Syntax;
-
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions.Match;
-
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions.Match;
+/*
 public sealed class MatchRule
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -70,3 +67,4 @@ public sealed class MatchRule
         return LNode.Missing;
     }
 }
+*/

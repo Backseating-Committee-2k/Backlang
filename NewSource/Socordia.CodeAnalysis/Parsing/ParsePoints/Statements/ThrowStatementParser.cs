@@ -13,7 +13,7 @@ public class ThrowStatementParser : IParsePoint
             var arg = Expression.Parse(parser);
             iterator.Match(TokenType.Semicolon);
 
-            return SyntaxTree.Throw(arg).WithRange(keywordToken, iterator.Prev);
+            return SyntaxTree.Throw(arg);
         }
 
         return null;

@@ -1,14 +1,12 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.Core;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public sealed class TypeMemberDeclaration : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         _ = AnnotationParser.TryParse(parser, out var annotations);
-        _ = Modifier.TryParse(parser, out var modifiers);
+        _ = ModifierParser.TryParse(parser, out var modifiers);
 
         LNode declaration = LNode.Missing;
 
@@ -140,3 +138,4 @@ public sealed class TypeMemberDeclaration : IParsePoint
         return SyntaxTree.Property(type, name, getter, setter, value).WithRange(keywordToken, iterator.Prev);
     }
 }
+*/

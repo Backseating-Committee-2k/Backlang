@@ -1,8 +1,6 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.Core;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public sealed class BitFieldMemberDeclaration : IParsePoint
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -31,3 +29,4 @@ public sealed class BitFieldMemberDeclaration : IParsePoint
         return SyntaxTree.Factory.Tuple(SyntaxTree.Factory.Id(nameToken.Text).WithRange(nameToken), value);
     }
 }
+*/

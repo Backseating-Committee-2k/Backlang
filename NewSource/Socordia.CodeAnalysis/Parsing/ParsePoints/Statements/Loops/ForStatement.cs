@@ -1,23 +1,24 @@
-﻿using Loyc.Syntax;
+﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.TypeNames;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Statements.Loops;
 
 public sealed class ForStatement : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         //for x : i32 in 1..12
         //for x in arr
         var keywordToken = iterator.Prev;
         var varExpr = Expression.Parse(parser);
 
-        LNode type = LNode.Missing;
+        TypeName type = null;
 
         if (iterator.Current.Type == TokenType.Colon)
         {
             iterator.NextToken();
 
-            type = TypeLiteral.Parse(iterator, parser);
+            type = TypeLiteralParser.Parse(iterator, parser);
         }
 
         iterator.Match(TokenType.In);
@@ -25,7 +26,6 @@ public sealed class ForStatement : IParsePoint
         var collExpr = Expression.Parse(parser);
         var body = Statement.ParseOneOrBlock(parser);
 
-        return SyntaxTree.For(SyntaxTree.Factory.Tuple(varExpr, type), collExpr, body)
-            .WithRange(keywordToken, iterator.Prev);
+        return SyntaxTree.For(varExpr, type, collExpr, body);
     }
 }

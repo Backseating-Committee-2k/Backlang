@@ -1,9 +1,6 @@
-﻿using Loyc;
-using Loyc.Syntax;
-using Socordia.CodeAnalysis.Core;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
-
+/*
 public sealed class SwitchStatement : IParsePoint
 {
     /*
@@ -17,7 +14,7 @@ public sealed class SwitchStatement : IParsePoint
      *  default: { block; }
      * }
      */
-
+/*
     public static LNode Parse(TokenIterator iterator, Parser parser)
     {
         var keywordToken = iterator.Prev;
@@ -165,3 +162,4 @@ public sealed class SwitchStatement : IParsePoint
         return SyntaxTree.When(binOp, right, body);
     }
 }
+*/

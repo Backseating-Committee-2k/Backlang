@@ -1,8 +1,6 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.Core;
+﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
-
+/*
 public sealed class EnumDeclaration : IParsePoint
 {
     public static LNode Parse(TokenIterator iterator, Parser parser)
@@ -17,3 +15,4 @@ public sealed class EnumDeclaration : IParsePoint
         return SyntaxTree.Enum(LNode.Id(nameToken.Text), members).WithRange(keywordToken, iterator.Prev);
     }
 }
+*/

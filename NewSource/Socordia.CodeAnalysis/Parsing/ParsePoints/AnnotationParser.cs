@@ -8,10 +8,17 @@ public sealed class AnnotationParser
     {
         var atToken = iterator.Match(TokenType.At);
 
-        //ToDo: allow support for annotations without arguments and parens
-        var call = Expression.Parse(parser);
+        var name = iterator.Match(TokenType.Identifier);
+        var args = new List<AstNode>();
 
-        return new Annotation(call).WithRange(atToken, iterator.Prev);
+        if (iterator.IsMatch(TokenType.OpenParen))
+        {
+            iterator.NextToken();
+
+            args = Expression.ParseList(parser, TokenType.CloseParen);
+        }
+
+        return new Annotation(name.Text, args);
     }
 
     public static bool TryParse(Parser parser, out List<Annotation> node)
