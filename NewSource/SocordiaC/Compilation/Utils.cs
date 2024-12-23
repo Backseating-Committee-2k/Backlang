@@ -6,6 +6,16 @@ namespace SocordiaC.Compilation;
 
 public static class Utils
 {
+    public static string ToPascalCase(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            return name;
+        }
+
+        return char.ToUpper(name[0]) + name[1..];
+    }
+
     public static TypeDesc? GetTypeFromNode(TypeName node, TypeDef containingType)
     {
         if (node is SimpleTypeName id)

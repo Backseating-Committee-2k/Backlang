@@ -220,11 +220,6 @@ public static class SyntaxTree
         return new UnitLiteral(value, unit);
     }
 
-    public static AstNode UnitDeclaration(Token nameToken)
-    {
-        return new UnitDeclaration(nameToken.Text);
-    }
-
     public static AstNode TypeOfExpression(AstNode type)
     {
         return new TypeOf(type);

@@ -1,10 +1,6 @@
-﻿using System.Text;
-using LeMP;
-using Loyc;
-using Loyc.Syntax;
+﻿namespace Socordia.Core.Macros;
 
-namespace Socordia.Core.Macros;
-
+/*
 [ContainsMacros]
 public static partial class BuiltInMacros
 {
@@ -164,4 +160,4 @@ public static partial class BuiltInMacros
 
         return F.Id("_" + sb + context.IncrementTempCounter());
     }
-}
+}*/

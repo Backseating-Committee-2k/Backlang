@@ -1,11 +1,6 @@
-﻿using System.Reflection;
-using LeMP;
-using Loyc;
-using Loyc.Syntax;
-using S = Loyc.Syntax.CodeSymbols;
+﻿namespace Socordia.Core.Macros;
 
-namespace Socordia.Core.Macros;
-
+/*
 public partial class BuiltInMacros
 {
     private static readonly LNode _CodeSymbols = F.Id("CodeSymbols");
@@ -57,7 +52,7 @@ public partial class BuiltInMacros
     }
 
     [LexicalMacro(
-        @"e.g. quoteWithTrivia(/* cool! */ $foo) ==> foo.PlusAttrs(LNode.List(LNode.Trivia(CodeSymbols.TriviaMLComment, "" cool! "")))",
+        @"e.g. quoteWithTrivia( $foo) ==> foo.PlusAttrs(LNode.List(LNode.Trivia(CodeSymbols.TriviaMLComment, "" cool! "")))",
         "Behaves the same as quote(code) except that trivia is included in the output.")]
     public static LNode QuoteWithTrivia(LNode node, IMessageSink sink)
     {
@@ -73,7 +68,7 @@ public partial class BuiltInMacros
     }
 
     [LexicalMacro(
-        @"e.g. rawQuoteWithTrivia(/* cool! */ $foo) ==> LNode.Call(LNode.List(LNode.Trivia(CodeSymbols.TriviaMLComment, "" cool! "")), CodeSymbols.Substitute, LNode.List(LNode.Id((Symbol) ""foo"")))",
+        @"e.g. rawQuoteWithTrivia( $foo) ==> LNode.Call(LNode.List(LNode.Trivia(CodeSymbols.TriviaMLComment, "" cool! "")), CodeSymbols.Substitute, LNode.List(LNode.Id((Symbol) ""foo"")))",
         "Behaves the same as rawQuote(code) except that trivia is included in the output.")]
     public static LNode RawQuoteWithTrivia(LNode node, IMessageSink sink)
     {
@@ -217,7 +212,7 @@ public partial class BuiltInMacros
                         result = F.Call(LNode_Dot, node.Args.SmartSelect(arg => QuoteOne(arg, substitutions)));
                     else if (node.Calls(S.Of))
                         result = F.Call(LNode_Of, node.Args.SmartSelect(arg => QuoteOne(arg, substitutions)));*/
-                    else
+                  /*  else
                     {
                         // General case: F.Call(<Target>, <Args>)
                         if (node.Target.IsId)
@@ -307,3 +302,4 @@ public partial class BuiltInMacros
         }
     }
 }
+*/

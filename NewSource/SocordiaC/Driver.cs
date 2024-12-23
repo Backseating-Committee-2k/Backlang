@@ -4,6 +4,7 @@ using DistIL.AsmIO;
 using Flo;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.Parsing;
+using SocordiaC.Compilation;
 using SocordiaC.Stages;
 
 namespace SocordiaC;
@@ -13,6 +14,8 @@ public class Driver
     public DriverSettings Settings { get; private init; } = new();
     public required DistIL.Compilation Compilation { get; set; }
     public required TypeDef FunctionsType { get; set; }
+
+    public required KnownAttributes KnownAttributes { get; set; }
 
     public Optimizer Optimizer { get; set; }
     public List<Message> Messages { get; set; } = [];
@@ -36,7 +39,8 @@ public class Driver
             Compilation = compilation,
             Settings = settings,
             Optimizer = optimizer,
-            FunctionsType = programType
+            FunctionsType = programType,
+            KnownAttributes = new KnownAttributes(moduleResolver)
         };
     }
 

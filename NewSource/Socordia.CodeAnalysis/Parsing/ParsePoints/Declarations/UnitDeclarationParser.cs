@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
@@ -11,6 +12,6 @@ public class UnitDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return SyntaxTree.UnitDeclaration(nameToken);
+        return new UnitDeclaration(nameToken.Text);
     }
 }
