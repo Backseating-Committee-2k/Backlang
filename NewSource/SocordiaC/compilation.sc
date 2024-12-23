@@ -3,7 +3,7 @@ func main() -> none  {
 
 }
 
-func test() -> i32
+private func test() -> i32
 {
 
 }
@@ -19,6 +19,16 @@ func external() -> System.Text.StringBuilder
 }
 
 class MyClass
+{
+
+}
+
+internal class Hello
+{
+
+}
+
+static class Blub
 {
 
 }
