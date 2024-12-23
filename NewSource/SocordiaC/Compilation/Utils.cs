@@ -33,8 +33,7 @@ public static class Utils
                     return type;
                 }
 
-                //todo: check in all modules for type
-                return null;
+                return containingType.Module.Resolver.FindType(qname.ToString());
             }
         }
 
