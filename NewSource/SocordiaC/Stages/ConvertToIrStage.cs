@@ -12,6 +12,7 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
         var pipeline = CompositeListener<Driver, AstNode>.Build()
            // .With(new BlockListener())
             .With(new CollectFunctionsListener(context.FunctionsType))
+            .With(new CollectClassesListener())
             .ToListener();
 
         foreach (var tree in context.Trees)

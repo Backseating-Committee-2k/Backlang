@@ -17,3 +17,8 @@ func external() -> System.Text.StringBuilder
 {
 
 }
+
+class MyClass
+{
+
+}

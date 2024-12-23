@@ -21,6 +21,8 @@ public sealed class ClassDeclarationParser : IParsePoint
 
         List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
 
+        iterator.Match(TokenType.CloseCurly); //remove if member parsing works
+
         return new ClassDeclaration(nameToken.Text, inheritances, members);
     }
 }
