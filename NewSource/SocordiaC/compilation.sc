@@ -12,3 +12,8 @@ func complex() -> Functions
 {
 
 }
+
+func external() -> System.Text.StringBuilder
+{
+
+}

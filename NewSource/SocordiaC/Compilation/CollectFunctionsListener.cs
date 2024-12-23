@@ -19,6 +19,11 @@ public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, 
 
         var method = type.CreateMethod(node.Signature.Name.Name,
             Utils.GetTypeFromNode(node.Signature.ReturnType, type), [], attrs);
+
+        if (type == context.FunctionsType && method.IsStatic && method.Name == "main")
+        {
+            context.Compilation.Module.EntryPoint = method;
+        }
     }
 
     protected override bool ShouldListenToChildren(Driver context, AstNode node) => false;
