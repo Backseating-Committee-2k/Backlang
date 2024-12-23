@@ -40,6 +40,6 @@ public sealed class TryStatementParser : IParsePoint
 
         var body = Statement.ParseOneOrBlock(parser);
 
-        return SyntaxTree.Catch(exceptionType, exceptionValueName, body);
+        return new CatchStatement(exceptionType, exceptionValueName, body);
     }
 }

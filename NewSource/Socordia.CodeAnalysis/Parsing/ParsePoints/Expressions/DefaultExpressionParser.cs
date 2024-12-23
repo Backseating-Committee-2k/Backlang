@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Literals;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions;
 
@@ -14,9 +15,9 @@ public sealed class DefaultExpressionParser : IParsePoint
 
             iterator.Match(TokenType.CloseParen);
 
-            return SyntaxTree.Default(type);
+            return new DefaultLiteral(type);
         }
 
-        return SyntaxTree.Default();
+        return new DefaultLiteral(null);
     }
 }

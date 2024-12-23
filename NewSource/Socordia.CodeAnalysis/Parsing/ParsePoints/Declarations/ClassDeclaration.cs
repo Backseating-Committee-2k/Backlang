@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
@@ -20,6 +21,6 @@ public sealed class ClassDeclarationParser : IParsePoint
 
         List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
 
-        return SyntaxTree.Class(nameToken, inheritances, members);
+        return new ClassDeclaration(nameToken.Text, inheritances, members);
     }
 }

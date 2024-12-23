@@ -89,21 +89,6 @@ public static class SyntaxTree
         return Factory.Call(CodeSymbols.Case, LNode.List(condition, body));
     }
 
-    public static CatchStatement Catch(Identifier exceptionType, Identifier exceptionValueName, Block body)
-    {
-        return new CatchStatement(exceptionType, exceptionValueName, body);
-    }
-
-    public static AstNode Class(Token nameToken, List<AstNode> inheritances, List<AstNode> members)
-    {
-        return new ClassDeclaration(nameToken.Text, inheritances, members);
-    }
-
-    public static AstNode Default(AstNode? type = null)
-    {
-        return new DefaultLiteral(type);
-    }
-
     public static LNode Enum(LNode name, LNodeList members)
     {
         return Factory.Call(CodeSymbols.Enum, Factory.AltList(name,
