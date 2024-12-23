@@ -2,8 +2,10 @@
 
 public class Block : AstNode
 {
-    public Block(List<AstNode> body)
+    public Block(IEnumerable<AstNode> body)
     {
         Children.Add(body);
     }
 }
+
+public class RootBlock(IEnumerable<AstNode> body) : Block(body);

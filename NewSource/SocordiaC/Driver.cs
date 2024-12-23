@@ -3,6 +3,7 @@ using DistIL;
 using DistIL.AsmIO;
 using Flo;
 using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
 using SocordiaC.Compilation;
 using SocordiaC.Stages;
@@ -42,6 +43,11 @@ public class Driver
             FunctionsType = programType,
             KnownAttributes = new KnownAttributes(moduleResolver)
         };
+    }
+
+    public string GetNamespaceOf(AstNode node)
+    {
+        return node.Parent.Children.OfType<ModuleDeclaration>().FirstOrDefault()?.Canonicalize() ?? Settings.RootNamespace;
     }
 
     public void Compile()

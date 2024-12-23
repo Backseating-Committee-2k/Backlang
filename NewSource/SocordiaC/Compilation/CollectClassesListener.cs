@@ -10,9 +10,9 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
 {
     protected override void ListenToNode(Driver context, ClassDeclaration node)
     {
-        var type = context.Compilation.Module.CreateType(context.Settings.RootNamespace, node.Name,
+        var ns = context.GetNamespaceOf(node);
+        var type = context.Compilation.Module.CreateType(ns, node.Name,
             GetModifiers(node), GetBaseType(node, context.Compilation));
-
     }
 
     private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)

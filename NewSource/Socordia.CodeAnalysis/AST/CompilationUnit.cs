@@ -5,7 +5,7 @@ namespace Socordia.CodeAnalysis.AST;
 
 public sealed class CompilationUnit
 {
-    public List<Declaration> Declarations { get; set; } = [];
+    public RootBlock Declarations { get; set; } = new([]);
     public SourceFile<StreamCharSource> Document { get; internal set; }
     public List<Message> Messages { get; set; } = [];
 

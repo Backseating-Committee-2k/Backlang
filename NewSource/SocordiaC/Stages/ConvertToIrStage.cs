@@ -19,7 +19,7 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
 
         foreach (var tree in context.Trees)
         {
-            foreach (var decl in tree.Declarations)
+            foreach (var decl in tree.Declarations.Children)
             {
                 pipeline.Listen(context, decl);
             }

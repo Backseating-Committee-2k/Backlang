@@ -29,7 +29,7 @@ public sealed partial class Parser
         {
             return new CompilationUnit
             {
-                Declarations = [],
+                Declarations = new([]),
                 Messages = [Message.Error("The source file is empty", SourceRange.Synthetic)],
                 Document = document
             };
@@ -59,7 +59,7 @@ public sealed partial class Parser
         var body = InvokeDeclarationParsePoints();
 
         cu.Messages = Messages.Concat(Iterator.Messages).ToList();
-        cu.Declarations = body;
+        cu.Declarations = new RootBlock(body);
         cu.Document = Document;
 
         return cu;

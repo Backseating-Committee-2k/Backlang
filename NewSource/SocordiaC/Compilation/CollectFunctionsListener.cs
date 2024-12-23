@@ -49,7 +49,7 @@ public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, 
     {
         var attrs = (MethodAttributes)0;
 
-        if (!node.HasParent)
+        if (node.Parent is RootBlock)
         {
             attrs |= MethodAttributes.Static;
         }

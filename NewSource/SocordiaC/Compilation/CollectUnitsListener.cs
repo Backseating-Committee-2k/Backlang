@@ -10,7 +10,8 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
 {
     protected override void ListenToNode(Driver context, UnitDeclaration node)
     {
-        var type = context.Compilation.Module.CreateType(context.Settings.RootNamespace,Utils.ToPascalCase(node.Name),
+        var ns = context.GetNamespaceOf(node);
+        var type = context.Compilation.Module.CreateType(ns,Utils.ToPascalCase(node.Name),
             TypeAttributes.Public, context.Compilation.Module.Resolver.Import(typeof(object)));
 
         var attrb = new CustomAttrib(context.KnownAttributes.MeasureAttributeCtor);

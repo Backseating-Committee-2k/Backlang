@@ -1,3 +1,4 @@
+module TestSuite;
 
 func main() -> none  {
 

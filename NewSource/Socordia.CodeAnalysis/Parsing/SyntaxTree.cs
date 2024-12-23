@@ -130,11 +130,6 @@ public static class SyntaxTree
                 LNode.Call(CodeSymbols.Braces, members).SetStyle(NodeStyle.StatementBlock)));
     }
 
-    public static AstNode Module(AstNode ns)
-    {
-        return new ModuleDeclaration(ns);
-    }
-
     public static AstNode None()
     {
         return new LiteralNode(null);

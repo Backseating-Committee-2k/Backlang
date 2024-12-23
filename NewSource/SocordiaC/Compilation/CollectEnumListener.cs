@@ -10,7 +10,8 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
 {
     protected override void ListenToNode(Driver context, EnumDeclaration node)
     {
-        var type = context.Compilation.Module.CreateType(context.Settings.RootNamespace, node.Name,
+        var ns = context.GetNamespaceOf(node);
+        var type = context.Compilation.Module.CreateType(ns, node.Name,
             GetModifiers(node), context.Compilation.Module.Resolver.Import(typeof(Enum)));
 
         type.CreateField("value__", new TypeSig(Utils.GetTypeFromNode(node.BaseType, type)), FieldAttributes.Public | FieldAttributes.SpecialName | FieldAttributes.RTSpecialName);

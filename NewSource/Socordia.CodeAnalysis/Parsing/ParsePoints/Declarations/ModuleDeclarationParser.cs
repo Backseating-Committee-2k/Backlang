@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
@@ -9,7 +10,7 @@ public sealed class ModuleDeclarationParser : IParsePoint
         //module <identifier>
         //module <identifier>.<identifier>
         var keywordToken = iterator.Prev;
-        var tree = SyntaxTree.Module(Expression.Parse(parser));
+        var tree = new ModuleDeclaration(Expression.Parse(parser));
 
         iterator.Match(TokenType.Semicolon);
 
