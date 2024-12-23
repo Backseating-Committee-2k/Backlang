@@ -1,8 +1,12 @@
 using System.Reflection;
 using DistIL.AsmIO;
+using DistIL.CodeGen.Cil;
+using DistIL.IR;
+using DistIL.IR.Utils;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation;
 
@@ -14,6 +18,11 @@ public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, 
 
         var method = type.CreateMethod(node.Signature.Name.Name,
             Utils.GetTypeFromNode(node.Signature.ReturnType, type), [], attrs);
+
+        if (!node.Modifiers.Contains(Modifier.Extern))
+        {
+            method.Body = new MethodBody(method);
+        }
 
         if (type == context.FunctionsType && method.IsStatic && method.Name == "main")
         {
