@@ -11,7 +11,7 @@ public sealed class DefaultExpressionParser : IParsePoint
         //default
         if (iterator.ConsumeIfMatch(TokenType.OpenParen))
         {
-            var type = TypeLiteralParser.Parse(iterator, parser);
+            var type = TypeNameParser.Parse(parser);
 
             iterator.Match(TokenType.CloseParen);
 

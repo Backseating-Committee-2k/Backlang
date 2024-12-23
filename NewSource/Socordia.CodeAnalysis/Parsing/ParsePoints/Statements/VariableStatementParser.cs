@@ -27,7 +27,7 @@ public class VariableStatementParser : IParsePoint
         {
             iterator.NextToken();
 
-            type = TypeLiteralParser.Parse(iterator, parser);
+            type = TypeNameParser.Parse(parser);
         }
 
         AstNode initilizer = null;

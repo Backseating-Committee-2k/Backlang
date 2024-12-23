@@ -1,4 +1,5 @@
 using System.Reflection;
+using DistIL.AsmIO;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
@@ -10,8 +11,18 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
     protected override void ListenToNode(Driver context, ClassDeclaration node)
     {
         var type = context.Compilation.Module.CreateType(context.Settings.RootNamespace, node.Name,
-            GetModifiers(node));
+            GetModifiers(node), GetBaseType(node, context.Compilation));
 
+    }
+
+    private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
+    {
+        if (node.Inheritances.Count == 0)
+        {
+            return compilation.Module.Resolver.Import(typeof(object));
+        }
+
+        return Utils.GetTypeFromNode(node.Inheritances[0], compilation.Module);
     }
 
     private TypeAttributes GetModifiers(Declaration node)

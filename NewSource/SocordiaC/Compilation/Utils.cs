@@ -37,6 +37,24 @@ public static class Utils
             }
         }
 
+        throw new Exception("cannot get type from node");
+    }
+
+    public static TypeDefOrSpec? GetTypeFromNode(AstNode node, ModuleDef module)
+    {
+        if (node is QualifiedTypeName qname)
+        {
+            if (qname.Type is SimpleTypeName simple)
+            {
+                var type = module.FindType(qname.Namespace, simple.Name);
+                if (type != null)
+                {
+                    return type;
+                }
+
+                return (TypeDef)module.Resolver.FindType(qname.ToString());
+            }
+        }
 
         throw new Exception("cannot get type from node");
     }

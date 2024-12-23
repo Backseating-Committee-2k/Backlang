@@ -31,7 +31,7 @@ public sealed class SignatureParser
                     iterator.NextToken();
                 }
 
-                bases.Add(TypeLiteralParser.Parse(iterator, parser));
+                bases.Add(TypeNameParser.Parse(parser));
             } while (iterator.IsMatch(TokenType.Comma));
 
             //generics.Add(LNode.Call(Symbols.Where, LNode.List(genericName, LNode.Call(CodeSymbols.Base, bases))));
@@ -41,7 +41,7 @@ public sealed class SignatureParser
         {
             iterator.NextToken();
 
-            returnType = TypeLiteralParser.Parse(iterator, parser);
+            returnType = TypeNameParser.Parse(parser);
         }
 
         return SyntaxTree.Signature(name, returnType, parameters, generics);

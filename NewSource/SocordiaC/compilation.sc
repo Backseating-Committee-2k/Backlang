@@ -23,7 +23,7 @@ class MyClass
 
 }
 
-internal class Hello
+internal class Hello : System.Text.StringBuilder
 {
 
 }

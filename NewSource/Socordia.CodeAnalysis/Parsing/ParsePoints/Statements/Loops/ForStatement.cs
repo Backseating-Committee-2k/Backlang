@@ -18,7 +18,7 @@ public sealed class ForStatement : IParsePoint
         {
             iterator.NextToken();
 
-            type = TypeLiteralParser.Parse(iterator, parser);
+            type = TypeNameParser.Parse(parser);
         }
 
         iterator.Match(TokenType.In);

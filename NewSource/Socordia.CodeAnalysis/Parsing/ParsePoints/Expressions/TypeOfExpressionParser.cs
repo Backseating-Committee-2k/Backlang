@@ -8,7 +8,7 @@ public sealed class TypeOfExpressionParser : IParsePoint
     {
         iterator.Match(TokenType.OpenParen);
 
-        var type = TypeLiteralParser.Parse(iterator, parser);
+        var type = TypeNameParser.Parse(parser);
 
         iterator.Match(TokenType.CloseParen);
 

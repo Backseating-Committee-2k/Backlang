@@ -38,6 +38,39 @@ internal static class ParsingHelpers
         return list;
     }
 
+    public static List<TResult> ParseSeperated<TResult>(
+        Parser parser,
+        TokenType terminator,
+        Func<Parser, TResult> builder,
+        TokenType seperator = TokenType.Comma, bool consumeTerminator = true)
+        where TResult : AstNode
+    {
+        if (parser.Iterator.IsMatch(terminator))
+        {
+            parser.Iterator.Match(terminator);
+            return [];
+        }
+
+        var list = new List<TResult>();
+        do
+        {
+            list.Add(builder(parser));
+
+            if (parser.Iterator.IsMatch(seperator) && parser.Iterator.Peek(1).Type == terminator)
+            {
+                parser.AddError("Trailing comma is forbidden");
+                parser.Iterator.Match(seperator);
+            }
+        } while (parser.Iterator.ConsumeIfMatch(seperator));
+
+        if (consumeTerminator)
+        {
+            parser.Iterator.Match(terminator);
+        }
+
+        return list;
+    }
+
     public static List<AstNode> ParseUntil<T>(Parser parser, TokenType terminator)
         where T : IParsePoint
     {

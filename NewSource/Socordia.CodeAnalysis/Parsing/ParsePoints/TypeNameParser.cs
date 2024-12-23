@@ -4,11 +4,12 @@ using Socordia.CodeAnalysis.Core;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints;
 
-public sealed class TypeLiteralParser
+public sealed class TypeNameParser
 {
-    public static TypeName Parse(TokenIterator iterator, Parser parser)
+    public static TypeName Parse(Parser parser)
     {
         TypeName typeNode;
+        var iterator = parser.Iterator;
         var typeToken = iterator.Current;
 
         if (iterator.IsMatch(TokenType.Identifier))
@@ -81,7 +82,7 @@ public sealed class TypeLiteralParser
     public static bool TryParse(Parser parser, out TypeName node)
     {
         var cursor = parser.Iterator.Position;
-        node = Parse(parser.Iterator, parser);
+        node = Parse(parser);
 
         if (node == null)
         {
@@ -137,7 +138,7 @@ public sealed class TypeLiteralParser
         {
             if (iterator.IsMatch(TokenType.Identifier))
             {
-                args.Add(Parse(iterator, parser));
+                args.Add(Parse(parser));
             }
 
             if (!iterator.IsMatch(TokenType.GreaterThan))

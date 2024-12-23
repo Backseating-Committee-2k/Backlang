@@ -17,7 +17,7 @@ public sealed class ParameterDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.Colon);
 
-        var type = TypeLiteralParser.Parse(iterator, parser);
+        var type = TypeNameParser.Parse(parser);
 
         AstNode? defaultValue = null;
 
