@@ -15,9 +15,10 @@ public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, 
     protected override void ListenToNode(Driver context, FunctionDefinition node)
     {
         var attrs = GetModifiers(node);
+        var parameters = GetParameters(node);
 
         var method = type.CreateMethod(node.Signature.Name.Name,
-            Utils.GetTypeFromNode(node.Signature.ReturnType, type), [], attrs);
+            Utils.GetTypeFromNode(node.Signature.ReturnType, type), [..parameters], attrs);
 
         if (!node.Modifiers.Contains(Modifier.Extern))
         {
@@ -28,6 +29,20 @@ public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, 
         {
             context.Compilation.Module.EntryPoint = method;
         }
+    }
+
+    private IEnumerable<ParamDef> GetParameters(FunctionDefinition node)
+    {
+        var result = new List<ParamDef>();
+
+        foreach (var param in node.Signature.Parameters)
+        {
+            var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name);
+            //paramDef.DefaultValue = param.DefaultValue; //ToDo: convert default value
+            result.Add(paramDef);
+        }
+
+        return result;
     }
 
     private MethodAttributes GetModifiers(Declaration node)

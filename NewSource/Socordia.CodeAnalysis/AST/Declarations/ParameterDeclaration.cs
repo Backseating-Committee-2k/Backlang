@@ -1,4 +1,6 @@
-﻿namespace Socordia.CodeAnalysis.AST.Declarations;
+﻿using Socordia.CodeAnalysis.AST.TypeNames;
+
+namespace Socordia.CodeAnalysis.AST.Declarations;
 
 public class ParameterDeclaration : Declaration
 {
@@ -16,5 +18,5 @@ public class ParameterDeclaration : Declaration
     public AstNode? DefaultValue => Properties.GetOrDefault<AstNode?>(nameof(DefaultValue));
     public bool AssertNotNull => Properties.GetOrDefault<bool>(nameof(AssertNotNull));
 
-    public AstNode Type => Children[0];
+    public TypeName Type =>(TypeName) Children[0];
 }

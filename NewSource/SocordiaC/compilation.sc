@@ -3,7 +3,7 @@ func main() -> none  {
 
 }
 
-private func test() -> i32
+private func test(hello: i32, flag: bool) -> i32
 {
 
 }
