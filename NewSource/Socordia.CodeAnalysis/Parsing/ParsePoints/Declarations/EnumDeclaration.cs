@@ -1,18 +1,28 @@
-﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.TypeNames;
 
-/*
-public sealed class EnumDeclaration : IParsePoint
+namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+
+public sealed class EnumDeclarationParser : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         var keywordToken = iterator.Prev;
+
         var nameToken = iterator.Match(TokenType.Identifier);
+        TypeName baseType = new SimpleTypeName("i32");
+        if (iterator.ConsumeIfMatch(TokenType.Colon))
+        {
+            baseType = TypeNameParser.Parse(parser);
+        }
 
         iterator.Match(TokenType.OpenCurly);
 
-        var members = ParsingHelpers.ParseSeperated<EnumMemberDeclaration>(parser, TokenType.CloseCurly);
+        List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
 
-        return SyntaxTree.Enum(LNode.Id(nameToken.Text), members).WithRange(keywordToken, iterator.Prev);
+        iterator.Match(TokenType.CloseCurly); //remove if member parsing works
+
+        return new EnumDeclaration(nameToken.Text, baseType, members);
     }
 }
-*/

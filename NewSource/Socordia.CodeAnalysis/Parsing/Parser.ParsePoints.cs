@@ -21,10 +21,10 @@ public sealed partial class Parser
         //AddDeclarationParsePoint<UnionDeclaration>(TokenType.Union);
         AddDeclarationParsePoint<ClassDeclarationParser>(TokenType.Class);
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
+        AddDeclarationParsePoint<EnumDeclarationParser>(TokenType.Enum);
       /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
         AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
         AddDeclarationParsePoint<DiscriminatedUnionDeclaration>(TokenType.Type);
-        AddDeclarationParsePoint<EnumDeclaration>(TokenType.Enum);
         AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
         AddDeclarationParsePoint<InterfaceDeclaration>(TokenType.Interface);
         AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/

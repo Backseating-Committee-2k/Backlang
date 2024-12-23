@@ -32,3 +32,13 @@ static class Blub
 {
 
 }
+
+enum Color
+{
+
+}
+
+enum ShortColor : i8
+{
+
+}

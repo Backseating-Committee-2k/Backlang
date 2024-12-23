@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.TypeNames;
 
 namespace Socordia.CodeAnalysis.AST;
 
@@ -12,6 +13,6 @@ public class Signature : AstNode
     }
 
     public Identifier Name => (Identifier)Children[0];
-    public AstNode? ReturnType => Children[1];
+    public TypeName? ReturnType => (TypeName)Children[1];
     public IEnumerable<ParameterDeclaration> Parameters => Children.OfType<ParameterDeclaration>();
 }

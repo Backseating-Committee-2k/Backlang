@@ -6,7 +6,7 @@ namespace SocordiaC.Compilation;
 
 public static class Utils
 {
-    public static TypeDesc? GetTypeFromNode(AstNode node, TypeDef containingType)
+    public static TypeDesc? GetTypeFromNode(TypeName node, TypeDef containingType)
     {
         if (node is SimpleTypeName id)
         {
@@ -40,7 +40,7 @@ public static class Utils
         throw new Exception("cannot get type from node");
     }
 
-    public static TypeDefOrSpec? GetTypeFromNode(AstNode node, ModuleDef module)
+    public static TypeDefOrSpec? GetTypeFromNode(TypeName node, ModuleDef module)
     {
         if (node is QualifiedTypeName qname)
         {

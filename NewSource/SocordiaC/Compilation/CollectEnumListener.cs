@@ -6,23 +6,17 @@ using Socordia.CodeAnalysis.AST.Declarations;
 
 namespace SocordiaC.Compilation;
 
-public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration>
+public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
 {
-    protected override void ListenToNode(Driver context, ClassDeclaration node)
+    protected override void ListenToNode(Driver context, EnumDeclaration node)
     {
         var type = context.Compilation.Module.CreateType(context.Settings.RootNamespace, node.Name,
-            GetModifiers(node), GetBaseType(node, context.Compilation));
+            GetModifiers(node), context.Compilation.Module.Resolver.Import(typeof(Enum)));
 
-    }
+        type.CreateField("value__", new TypeSig(Utils.GetTypeFromNode(node.BaseType, type)), FieldAttributes.Public | FieldAttributes.SpecialName | FieldAttributes.RTSpecialName);
 
-    private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
-    {
-        if (node.Inheritances.Count == 0)
-        {
-            return compilation.Module.Resolver.Import(typeof(object));
-        }
-
-        return Utils.GetTypeFromNode(node.Inheritances[0], compilation.Module);
+        // .field public static literal valuetype Color R = int32(0)
+        //type.CreateField("R", new TypeSig(type), FieldAttributes.Public | FieldAttributes.Literal | FieldAttributes.Static | FieldAttributes.HasDefault, 42);
     }
 
     private TypeAttributes GetModifiers(Declaration node)
@@ -45,7 +39,7 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
             attrs &= ~TypeAttributes.Public;
         }
 
-        return attrs;
+        return attrs | TypeAttributes.Sealed;
     }
 
     protected override bool ShouldListenToChildren(Driver context, AstNode node) => true;
