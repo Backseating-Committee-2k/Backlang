@@ -44,5 +44,5 @@ enum ShortColor : i8
 
 }
 
-unit cm;
-unit ml;
+unit cm of f64;
+unit ml of f64;
