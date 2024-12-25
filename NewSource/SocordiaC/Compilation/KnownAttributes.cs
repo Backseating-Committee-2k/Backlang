@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using DistIL.AsmIO;
 using Socordia.Core.CompilerService;
 
@@ -11,6 +12,7 @@ public class KnownAttributes
 
     public readonly TypeDefOrSpec ExtensionAttribute;
     public readonly MethodDesc? ExtensionAttributeCtor;
+
 
     public KnownAttributes(ModuleResolver resolver)
     {

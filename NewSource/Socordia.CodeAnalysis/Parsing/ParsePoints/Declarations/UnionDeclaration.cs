@@ -1,9 +1,11 @@
-﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 
-/*
-public sealed class UnionDeclaration : IParsePoint
+namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+
+public sealed class UnionDeclarationParser : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         var keywordToken = iterator.Prev;
 
@@ -11,9 +13,10 @@ public sealed class UnionDeclaration : IParsePoint
 
         iterator.Match(TokenType.OpenCurly);
 
-        var members = ParsingHelpers.ParseSeperated<Statements.VariableStatementParser>(parser, TokenType.CloseCurly);
+        List<AstNode> members = []; //ParsingHelpers.ParseUntil<VariableStatementParser>(parser, TokenType.CloseCurly);
 
-        return SyntaxTree.Union(nameToken.Text, members).WithRange(keywordToken, iterator.Current);
+        iterator.Match(TokenType.CloseCurly); //remove if member parsing works
+
+        return new UnionDeclaration(nameToken.Text, members);
     }
 }
-*/

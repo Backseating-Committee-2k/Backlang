@@ -34,7 +34,7 @@ static class Blub
 
 }
 
-enum Color
+union Color
 {
 
 }

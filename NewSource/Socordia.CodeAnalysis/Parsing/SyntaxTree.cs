@@ -185,11 +185,6 @@ public static class SyntaxTree
         return new UnaryOperator(op, operand, kind);
     }
 
-    public static LNode Union(string name, LNodeList members)
-    {
-        return Factory.Call(Symbols.Union, LNode.List(Factory.Id(name)).Add(Factory.AltList(members)));
-    }
-
     public static LNode Using(LNode expr)
     {
         if (!expr.Calls(CodeSymbols.As)) // TODO: throw error in intermediate stage when has only one arg
