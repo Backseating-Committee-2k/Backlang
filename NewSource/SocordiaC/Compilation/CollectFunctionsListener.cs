@@ -1,8 +1,5 @@
 using System.Reflection;
 using DistIL.AsmIO;
-using DistIL.CodeGen.Cil;
-using DistIL.IR;
-using DistIL.IR.Utils;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
@@ -26,7 +23,7 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
             method.Body = new MethodBody(method);
         }
 
-        if (type.Name == "Functions" && method.IsStatic && method.Name == "main")
+        if (type.Name == "Functions" && method is { IsStatic: true, Name: "main" })
         {
             context.Compilation.Module.EntryPoint = method;
         }

@@ -13,6 +13,7 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
         var ns = context.GetNamespaceOf(node);
         var type = context.Compilation.Module.CreateType(ns, node.Name,
             GetModifiers(node), GetBaseType(node, context.Compilation));
+
     }
 
     private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
