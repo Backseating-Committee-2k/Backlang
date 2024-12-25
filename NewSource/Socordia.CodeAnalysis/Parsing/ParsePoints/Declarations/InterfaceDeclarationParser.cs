@@ -1,13 +1,11 @@
 ﻿using Socordia.CodeAnalysis.AST;
-using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.TypeNames;
 using Socordia.CodeAnalysis.Core;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
-public sealed class ClassDeclarationParser : IParsePoint
+public sealed class InterfaceDeclarationParser : IParsePoint
 {
-
     public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         var keywordToken = iterator.Prev;
@@ -26,6 +24,6 @@ public sealed class ClassDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.CloseCurly); //remove if member parsing works
 
-        return new ClassDeclaration(nameToken.Text, inheritances, members);
+        return new AST.Declarations.InterfaceDeclaration(nameToken.Text, inheritances, members);
     }
 }

@@ -16,6 +16,7 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
             .With(new CollectEnumListener())
             .With(new CollectUnitsListener())
             .With(new CollectUnionsListener())
+            .With(new CollectInterfacesListener())
             .ToListener();
 
         foreach (var tree in context.Trees)

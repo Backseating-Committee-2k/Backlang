@@ -22,11 +22,11 @@ public sealed partial class Parser
         AddDeclarationParsePoint<ClassDeclarationParser>(TokenType.Class);
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<EnumDeclarationParser>(TokenType.Enum);
+        AddDeclarationParsePoint<InterfaceDeclarationParser>(TokenType.Interface);
       /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
         AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
         AddDeclarationParsePoint<DiscriminatedUnionDeclaration>(TokenType.Type);
         AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
-        AddDeclarationParsePoint<InterfaceDeclaration>(TokenType.Interface);
         AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/
         AddDeclarationParsePoint<ImportStatementParser>(TokenType.Import);
       //  AddDeclarationParsePoint<StructDeclaration>(TokenType.Struct);

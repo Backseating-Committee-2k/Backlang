@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Runtime.InteropServices;
 using DistIL.AsmIO;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
@@ -7,15 +6,24 @@ using Socordia.CodeAnalysis.AST.Declarations;
 
 namespace SocordiaC.Compilation;
 
-public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
+public class CollectInterfacesListener : Listener<Driver, AstNode, InterfaceDeclaration>
 {
-    protected override void ListenToNode(Driver context, UnionDeclaration node)
+    protected override void ListenToNode(Driver context, InterfaceDeclaration node)
     {
         var ns = context.GetNamespaceOf(node);
         var type = context.Compilation.Module.CreateType(ns, node.Name,
-            GetModifiers(node) | TypeAttributes.ExplicitLayout | TypeAttributes.BeforeFieldInit,
+            GetModifiers(node) | TypeAttributes.Interface | TypeAttributes.Abstract,
             context.Compilation.Resolver.SysTypes.Object);
+    }
 
+    private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
+    {
+        if (node.Inheritances.Count == 0)
+        {
+            return compilation.Module.Resolver.Import(typeof(object));
+        }
+
+        return Utils.GetTypeFromNode(node.Inheritances[0], compilation.Module);
     }
 
     private TypeAttributes GetModifiers(Declaration node)

@@ -46,3 +46,8 @@ enum ShortColor : i8
 
 unit cm of f64;
 unit ml of f64;
+
+public interface ILixou
+{
+
+}
