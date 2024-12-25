@@ -7,7 +7,6 @@ using DistIL.IR.Utils;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
-using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation;
 
@@ -15,6 +14,7 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
 {
     private FieldDef valueField;
     private FieldDef nameField;
+
     protected override void ListenToNode(Driver context, UnitDeclaration node)
     {
         var ns = context.GetNamespaceOf(node);
@@ -37,7 +37,7 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
     private void CreateToString(TypeDef type)
     {
         var toString = type.CreateMethod("ToString", new TypeSig(PrimType.String), [new ParamDef(new TypeSig(type), "this")], MethodAttributes.Public | MethodAttributes.Virtual);
-        toString.Body = new MethodBody(toString);
+        toString.Body = new(toString);
 
         var ir = new IRBuilder(toString.Body.CreateBlock());
 
