@@ -11,7 +11,7 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
     public async Task<Driver> HandleAsync(Driver context, Func<Driver, Task<Driver>> next)
     {
         var pipeline = CompositeListener<Driver, AstNode>.Build()
-            .With(new CollectFunctionsListener(context.FunctionsType))
+            .With(new CollectFunctionsListener())
             .With(new CollectClassesListener())
             .With(new CollectEnumListener())
             .With(new CollectUnitsListener())

@@ -10,12 +10,13 @@ using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation;
 
-public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, FunctionDefinition>
+public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefinition>
 {
     protected override void ListenToNode(Driver context, FunctionDefinition node)
     {
         var attrs = GetModifiers(node);
-        var parameters = GetParameters(node);
+        var type = context.GetFunctionType(context.GetNamespaceOf(node));
+        var parameters = GetParameters(node, type);
 
         var method = type.CreateMethod(node.Signature.Name.Name,
             Utils.GetTypeFromNode(node.Signature.ReturnType, type), [..parameters], attrs);
@@ -25,13 +26,13 @@ public class CollectFunctionsListener(TypeDef type) : Listener<Driver, AstNode, 
             method.Body = new MethodBody(method);
         }
 
-        if (type == context.FunctionsType && method.IsStatic && method.Name == "main")
+        if (type.Name == "Functions" && method.IsStatic && method.Name == "main")
         {
             context.Compilation.Module.EntryPoint = method;
         }
     }
 
-    private IEnumerable<ParamDef> GetParameters(FunctionDefinition node)
+    private IEnumerable<ParamDef> GetParameters(FunctionDefinition node, TypeDef type)
     {
         var result = new List<ParamDef>();
 

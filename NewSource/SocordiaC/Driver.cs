@@ -14,9 +14,10 @@ public class Driver
 {
     public DriverSettings Settings { get; private init; } = new();
     public required DistIL.Compilation Compilation { get; set; }
-    public required TypeDef FunctionsType { get; set; }
 
     public required KnownAttributes KnownAttributes { get; set; }
+
+    private Dictionary<string, TypeDef> _functionTypes { get; set; } = new();
 
     public Optimizer Optimizer { get; set; }
     public List<Message> Messages { get; set; } = [];
@@ -31,16 +32,13 @@ public class Driver
 
         var compilation = new DistIL.Compilation(module, new ConsoleLogger(), new CompilationSettings());
         var optimizer = new Optimizer();
-        optimizer.CreatePassManager(compilation);
-
-        var programType = module.CreateType(settings.RootNamespace, "Functions", TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);
+        optimizer.CreatePassManager(compilation); ;
 
         return new Driver
         {
             Compilation = compilation,
             Settings = settings,
             Optimizer = optimizer,
-            FunctionsType = programType,
             KnownAttributes = new KnownAttributes(moduleResolver)
         };
     }
@@ -102,5 +100,20 @@ public class Driver
         );
 
         pipeline.Invoke(this);
+    }
+
+    public TypeDef GetFunctionType(string ns)
+    {
+        if (_functionTypes.TryGetValue(ns, out TypeDef? value))
+        {
+            return value;
+        }
+
+        var type = Compilation.Module.CreateType(ns, "Functions",
+            TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);
+
+        _functionTypes[ns] = type;
+
+        return type;
     }
 }
