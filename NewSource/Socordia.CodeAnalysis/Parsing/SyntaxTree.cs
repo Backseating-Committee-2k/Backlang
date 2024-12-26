@@ -145,11 +145,6 @@ public static class SyntaxTree
         return Factory.Call(Symbols.NullableType, LNode.List(type));
     }
 
-    public static Signature Signature(AstNode name, AstNode type, List<ParameterDeclaration> parameters, List<AstNode> generics)
-    {
-        return new Signature(name, type, parameters, generics);
-    }
-
     public static AstNode SizeOf(AstNode type)
     {
         return new SizeOf(type);

@@ -1,22 +1,30 @@
 using System.Reflection;
 using DistIL.AsmIO;
+using DistIL.IR;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.Statements;
 using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation;
 
 public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefinition>
 {
+    private TypeDesc GetReturnType(FunctionDefinition node, TypeDef type)
+    {
+        return Utils.GetTypeFromNode(node.Signature.ReturnType, type);
+    }
+
     protected override void ListenToNode(Driver context, FunctionDefinition node)
     {
         var attrs = GetModifiers(node);
         var type = context.GetFunctionType(context.GetNamespaceOf(node));
         var parameters = GetParameters(node, type);
 
+        var returnType = GetReturnType(node, type);
         var method = type.CreateMethod(node.Signature.Name.Name,
-            Utils.GetTypeFromNode(node.Signature.ReturnType, type), [..parameters], attrs);
+            returnType, [..parameters], attrs);
 
         if (!node.Modifiers.Contains(Modifier.Extern))
         {

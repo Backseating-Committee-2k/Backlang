@@ -7,5 +7,5 @@ public class ReturnStatement : AstNode
         Children.Add(expression);
     }
 
-    public AstNode Expression => Children.First;
+    public AstNode Value => Children.First;
 }

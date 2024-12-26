@@ -37,13 +37,13 @@ public sealed class SignatureParser
             //generics.Add(LNode.Call(Symbols.Where, LNode.List(genericName, LNode.Call(CodeSymbols.Base, bases))));
         }
 
-        if (iterator.IsMatch(TokenType.Arrow))
+        if (iterator.IsMatch(TokenType.Colon))
         {
             iterator.NextToken();
 
             returnType = TypeNameParser.Parse(parser);
         }
 
-        return SyntaxTree.Signature(name, returnType, parameters, generics);
+        return new Signature(name, returnType, parameters, generics);
     }
 }

@@ -1,6 +1,6 @@
 module TestSuite;
 
-func main() -> none  {
+func main(): none  {
     let myFlag = true;
 
     print("hello");
@@ -9,22 +9,19 @@ func main() -> none  {
     test(42, true);
 }
 
-private func test(hello: i32, flag: bool) -> i32
+private func test(hello: i32, flag: bool): i32 -> 42;
+
+func complex(): Functions
 {
 
 }
 
-func complex() -> Functions
+func external(): System.Text.StringBuilder
 {
 
 }
 
-func external() -> System.Text.StringBuilder
-{
-
-}
-
-func internal_type() -> Hello
+func internal_type(): Hello
 {
 
 }
