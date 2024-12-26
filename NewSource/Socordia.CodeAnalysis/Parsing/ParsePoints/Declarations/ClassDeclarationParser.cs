@@ -18,16 +18,18 @@ public sealed class ClassDeclarationParser : IParsePoint
         var implementsParsed = false;
         var extendsParsed = false;
 
-        while (iterator.ConsumeIfMatch(TokenType.Implements) || iterator.ConsumeIfMatch(TokenType.Extends))
+        while (iterator.IsMatch(TokenType.Implements) || iterator.IsMatch(TokenType.Extends))
         {
             if (iterator.Current.Type == TokenType.Implements && !implementsParsed)
             {
+                iterator.NextToken();
                 inheritances = ParsingHelpers.ParseSeperated(parser, TokenType.OpenCurly, TypeNameParser.Parse,
                     TokenType.Comma, false);
                 implementsParsed = true;
             }
             else if (iterator.Current.Type == TokenType.Extends && !extendsParsed)
             {
+                iterator.NextToken();
                 baseType = TypeNameParser.Parse(parser);
                 extendsParsed = true;
             }

@@ -25,7 +25,7 @@ class MyClass
 }
 
 
-internal class Hello : System.Text.StringBuilder, ILixou
+internal class Hello extends System.Text.StringBuilder
 {
 
 }
