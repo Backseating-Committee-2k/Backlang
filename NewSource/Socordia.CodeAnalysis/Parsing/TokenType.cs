@@ -159,6 +159,10 @@ public enum TokenType
 
     [Keyword("mut")] Mutable,
 
+    [Keyword("extends")] Extends,
+
+    [Keyword("implements")] Implements,
+
     [Keyword("enum")] Enum,
 
     [Keyword("try")] Try,

@@ -10,8 +10,7 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
 {
     public async Task<Driver> HandleAsync(Driver context, Func<Driver, Task<Driver>> next)
     {
-        var pipeline = CompositeListener<Driver, AstNode>.Build()
-            .With(new CollectFunctionsListener())
+        var collectTypesPipeline = CompositeListener<Driver, AstNode>.Build()
             .With(new CollectClassesListener())
             .With(new CollectEnumListener())
             .With(new CollectUnitsListener())
@@ -23,9 +22,19 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
         {
             foreach (var decl in tree.Declarations.Children)
             {
-                pipeline.Listen(context, decl);
+                collectTypesPipeline.Listen(context, decl);
             }
         }
+
+        var functionCollector = new CollectFunctionsListener();
+        foreach (var tree in context.Trees)
+        {
+            foreach (var decl in tree.Declarations.Children)
+            {
+                functionCollector.Listen(context, decl);
+            }
+        }
+
 
         return await next.Invoke(context);
     }

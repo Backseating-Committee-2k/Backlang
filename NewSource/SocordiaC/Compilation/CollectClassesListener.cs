@@ -14,16 +14,29 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
         var type = context.Compilation.Module.CreateType(ns, node.Name,
             GetModifiers(node), GetBaseType(node, context.Compilation));
 
+        foreach (var baseType in node.Implementations)
+        {
+            var t = Utils.GetTypeFromNode(baseType, context.Compilation.Module);
+
+            if (t.IsInterface)
+            {
+                type.Interfaces.Add(t);
+            }
+            else
+            {
+                baseType.AddError(baseType + " is not an interface");
+            }
+        }
     }
 
     private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
     {
-        if (node.Inheritances.Count == 0)
+        if (node.BaseType == null)
         {
             return compilation.Module.Resolver.Import(typeof(object));
         }
 
-        return Utils.GetTypeFromNode(node.Inheritances[0], compilation.Module);
+        return Utils.GetTypeFromNode(node.BaseType, compilation.Module);
     }
 
     private TypeAttributes GetModifiers(Declaration node)

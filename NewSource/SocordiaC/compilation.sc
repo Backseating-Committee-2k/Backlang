@@ -24,6 +24,7 @@ class MyClass
 
 }
 
+
 internal class Hello : System.Text.StringBuilder, ILixou
 {
 

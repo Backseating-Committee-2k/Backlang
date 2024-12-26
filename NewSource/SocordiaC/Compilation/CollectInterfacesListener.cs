@@ -18,12 +18,12 @@ public class CollectInterfacesListener : Listener<Driver, AstNode, InterfaceDecl
 
     private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
     {
-        if (node.Inheritances.Count == 0)
+        if (node.Implementations.Count == 0)
         {
             return compilation.Module.Resolver.Import(typeof(object));
         }
 
-        return Utils.GetTypeFromNode(node.Inheritances[0], compilation.Module);
+        return Utils.GetTypeFromNode(node.Implementations[0], compilation.Module);
     }
 
     private TypeAttributes GetModifiers(Declaration node)
