@@ -27,6 +27,8 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
         {
             context.Compilation.Module.EntryPoint = method;
         }
+
+        Mappings.Functions.Add(node, method);
     }
 
     private IEnumerable<ParamDef> GetParameters(FunctionDefinition node, TypeDef type)

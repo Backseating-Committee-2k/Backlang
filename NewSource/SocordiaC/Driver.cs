@@ -57,6 +57,7 @@ public class Driver
                 cfg.Add<ParsingStage>();
                 cfg.Add<SemanticCheckStage>();
                 cfg.Add<ConvertToIrStage>();
+                cfg.Add<CompileFunctionsStage>();
 
                 cfg.Add<SaveModuleStage>();
 
