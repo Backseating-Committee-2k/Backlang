@@ -16,6 +16,7 @@ public class Driver
     public required DistIL.Compilation Compilation { get; set; }
 
     public required KnownAttributes KnownAttributes { get; set; }
+    public required KnownTypes KnownTypes { get; set; }
 
     private Dictionary<string, TypeDef> _functionTypes { get; set; } = new();
 
@@ -39,7 +40,8 @@ public class Driver
             Compilation = compilation,
             Settings = settings,
             Optimizer = optimizer,
-            KnownAttributes = new KnownAttributes(moduleResolver)
+            KnownAttributes = new KnownAttributes(moduleResolver),
+            KnownTypes = new KnownTypes(moduleResolver)
         };
     }
 

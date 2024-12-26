@@ -2,6 +2,10 @@ module TestSuite;
 
 func main() -> none  {
     let myFlag = true;
+
+    print("hello");
+    println("world");
+    System.Console::WriteLine("Hello World!");
 }
 
 private func test(hello: i32, flag: bool) -> i32

@@ -74,11 +74,6 @@ public static class SyntaxTree
         return arr; //.WithArgs(indices);
     }
 
-    public static AstNode Binary(Symbol op, AstNode left, AstNode right)
-    {
-        return new BinaryOperator(op, left, right);
-    }
-
     public static LNode Bitfield(Token nameToken, LNodeList members)
     {
         return Factory.Call(Symbols.Bitfield, LNode.List(Factory.FromToken(nameToken), Factory.AltList(members)));

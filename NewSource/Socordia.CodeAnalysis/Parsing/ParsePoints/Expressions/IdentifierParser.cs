@@ -8,7 +8,7 @@ public sealed class IdentifierParser : IParsePoint
     public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         var nameToken = iterator.Peek(-1);
-        var nameExpression = SyntaxTree.Id(nameToken.Text);
+        var nameExpression = new Identifier(nameToken.Text);
 
         if (iterator.Current.Type == TokenType.OpenSquare)
         {
@@ -23,7 +23,7 @@ public sealed class IdentifierParser : IParsePoint
 
             var arguments = Expression.ParseList(parser, TokenType.CloseParen);
 
-            return new Call(nameExpression, arguments);
+            return new CallExpression(nameExpression, arguments);
         }
 
         return nameExpression;

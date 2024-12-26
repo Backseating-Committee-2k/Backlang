@@ -1,3 +1,5 @@
+using Socordia.CodeAnalysis.AST.Expressions;
+
 namespace Socordia.CodeAnalysis.AST.TypeNames;
 
 public class QualifiedTypeName : TypeName
@@ -12,8 +14,30 @@ public class QualifiedTypeName : TypeName
         }
     }
 
+    public QualifiedTypeName(BinaryOperator op)
+    {
+        AddChildrenRecursively(op);
+    }
+
+    private void AddChildrenRecursively(BinaryOperator op)
+    {
+        foreach (var child in op.Children)
+        {
+            if (child is Identifier id)
+            {
+                Children.Add(new SimpleTypeName(id.Name));
+            }
+            else if (child is BinaryOperator binaryChild && binaryChild.Operator == "'.")
+            {
+                AddChildrenRecursively(binaryChild);
+            }
+        }
+    }
+
     public string Namespace => string.Join('.', Children[..^1].Take(Children.Count - 1));
     public TypeName Type => (TypeName)Children.Last;
 
-    public override string ToString() => $"{Namespace}.{Type}";
+    public string FullName => $"{Namespace}.{Type}";
+
+    public override string ToString() => FullName;
 }
