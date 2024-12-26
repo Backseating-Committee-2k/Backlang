@@ -2,6 +2,7 @@ using DistIL.AsmIO;
 using DistIL.IR;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
 
 namespace SocordiaC.Compilation;
@@ -81,6 +82,11 @@ public static class Utils
 
     public static TypeDefOrSpec? GetTypeFromNode(TypeName node, ModuleDef module)
     {
+        if (node is NoTypeName)
+        {
+            return null;
+        }
+
         if (node is QualifiedTypeName qname)
         {
             if (qname.Type is SimpleTypeName simple)
@@ -96,5 +102,32 @@ public static class Utils
         }
 
         throw new Exception("cannot get type from node");
+    }
+
+    public static Value CreateValue(AstNode valueNode)
+    {
+        return valueNode switch
+        {
+            LiteralNode literal => CreateLiteral(literal.Value),
+            _ => throw new NotImplementedException()
+        };
+    }
+
+    private static Value CreateLiteral(object literalValue)
+    {
+        return literalValue switch
+        {
+            bool b => ConstInt.Create(PrimType.Bool, b ? 1 : 0),
+            byte by => ConstInt.CreateI(by),
+            short s => ConstInt.CreateI(s),
+            int i => ConstInt.CreateI(i),
+            long l => ConstInt.CreateL(l),
+            float f => ConstFloat.CreateD(f),
+            double d => ConstFloat.CreateD(d),
+            string str => ConstString.Create(str),
+            char c => ConstInt.CreateI(c),
+            null => ConstNull.Create(),
+            _ => throw new NotImplementedException()
+        };
     }
 }

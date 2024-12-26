@@ -11,7 +11,7 @@ public class VariableStatementParser : IParsePoint
         var keywordToken = iterator.Prev;
 
         var isMutable = false;
-        TypeName? type = null;
+        TypeName? type = new NoTypeName();
 
         Token mutableToken = null;
 
@@ -30,16 +30,16 @@ public class VariableStatementParser : IParsePoint
             type = TypeNameParser.Parse(parser);
         }
 
-        AstNode initilizer = null;
+        AstNode initializer = new EmptyNode();
         if (iterator.Current.Type == TokenType.EqualsToken)
         {
             iterator.NextToken();
 
-            initilizer = Expression.Parse(parser);
+            initializer = Expression.Parse(parser);
         }
 
         iterator.Match(TokenType.Semicolon);
 
-        return new VariableStatement(nameToken.Text, type, initilizer, isMutable);
+        return new VariableStatement(nameToken.Text, type, initializer, isMutable);
     }
 }

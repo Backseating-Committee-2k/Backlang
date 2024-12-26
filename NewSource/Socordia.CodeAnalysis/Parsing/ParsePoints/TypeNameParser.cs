@@ -72,7 +72,7 @@ public sealed class TypeNameParser
             parser.AddError("Expected Identifier, TupleType or Function-Signature as TypeLiteral, but got " +
                 TokenIterator.GetTokenRepresentation(iterator.Current.Type));
 
-            typeNode = null;
+            typeNode = new NoTypeName();
             iterator.NextToken();
         }
 

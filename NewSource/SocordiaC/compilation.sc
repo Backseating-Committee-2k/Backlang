@@ -1,7 +1,7 @@
 module TestSuite;
 
 func main() -> none  {
-
+    let myFlag = true;
 }
 
 private func test(hello: i32, flag: bool) -> i32

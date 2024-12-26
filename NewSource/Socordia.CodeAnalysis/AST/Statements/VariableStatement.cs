@@ -1,4 +1,6 @@
-﻿namespace Socordia.CodeAnalysis.AST.Statements;
+﻿using Socordia.CodeAnalysis.AST.TypeNames;
+
+namespace Socordia.CodeAnalysis.AST.Statements;
 
 public class VariableStatement : AstNode
 {
@@ -13,6 +15,6 @@ public class VariableStatement : AstNode
     public string Name => Properties.GetOrThrow<string>(nameof(Name));
     public bool IsMutable => Properties.GetOrDefault<bool>(nameof(IsMutable));
 
-    public AstNode? Type => Children.First;
+    public TypeName? Type => (TypeName)Children.First;
     public AstNode Initializer => Children.Last;
 }
