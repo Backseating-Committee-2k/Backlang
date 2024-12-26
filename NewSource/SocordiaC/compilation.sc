@@ -19,6 +19,11 @@ func external() -> System.Text.StringBuilder
 
 }
 
+func internal_type() -> Hello
+{
+
+}
+
 class MyClass
 {
 

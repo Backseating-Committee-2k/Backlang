@@ -50,7 +50,7 @@ public class Driver
 
     public void Compile()
     {
-        var hasError = (List<Message> messages) => messages.Any(_ => _.Severity == MessageSeverity.Error);
+        var hasError = () => PrintErrorsStage.Errors.Count >= 0;
 
         var pipeline = Pipeline.Build<Driver, Driver>(
             cfg => {
@@ -58,6 +58,7 @@ public class Driver
                 cfg.Add<SemanticCheckStage>();
                 cfg.Add<ConvertToIrStage>();
                 cfg.Add<CompileFunctionsStage>();
+                cfg.Add<PrintErrorsStage>();
 
                 cfg.Add<SaveModuleStage>();
 

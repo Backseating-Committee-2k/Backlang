@@ -35,7 +35,6 @@ public class ConvertToIrStage : IHandler<Driver, Driver>
             }
         }
 
-
         return await next.Invoke(context);
     }
 }

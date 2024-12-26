@@ -18,7 +18,8 @@ public sealed class ParsingStage : IHandler<Driver, Driver>
 
     private static void ParseSourceFiles(Driver context)
     {
-        Parallel.ForEachAsync(context.Settings.Sources, (filename, ct) => {
+        foreach (var filename in context.Settings.Sources)
+        {
             if (File.Exists(filename))
             {
                 var tree = CompilationUnit.FromFile(filename);
@@ -27,11 +28,9 @@ public sealed class ParsingStage : IHandler<Driver, Driver>
             }
             else
             {
-                context.Messages.Add(Message.Error($"File '{filename}' does not exists", (TextFilePosition)TextFilePosition.None));
+               // context.Messages.Add(Message.Error($"File '{filename}' does not exists", (TextFilePosition)TextFilePosition.None));
             }
-
-            return ValueTask.CompletedTask;
-        }).Wait();
+        }
     }
 
     private static void ApplyTree(Driver context, CompilationUnit tree)

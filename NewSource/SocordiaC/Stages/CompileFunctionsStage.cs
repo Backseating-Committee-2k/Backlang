@@ -14,7 +14,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
         {
             var builder = new IRBuilder(def.Body!.CreateBlock());
 
-            if (!node.Children.First.HasChildren)
+            if (!node.Children[1].HasChildren)
             {
                 builder.Emit(new ReturnInst());
             }

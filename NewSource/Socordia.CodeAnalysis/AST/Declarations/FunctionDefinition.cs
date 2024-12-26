@@ -4,10 +4,10 @@ public class FunctionDefinition : Declaration
 {
     public FunctionDefinition(Signature signature, Block? body)
     {
-        Properties.Set(nameof(Signature), signature);
+        Children.Add(signature);
         Children.Add(body);
     }
 
-    public Signature Signature => Properties.GetOrThrow<Signature>(nameof(Signature))!;
-    public Block? Body => (Block)Children.First;
+    public Signature Signature => (Signature)Children[0];
+    public Block? Body => (Block?)Children[1];
 }

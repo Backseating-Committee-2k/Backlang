@@ -1,4 +1,5 @@
 using DistIL.AsmIO;
+using DistIL.IR;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.TypeNames;
@@ -19,20 +20,47 @@ public static class Utils
 
     public static TypeDesc? GetTypeFromNode(TypeName node, TypeDef containingType)
     {
+        var resolvedType = GetTypeFromNodeImpl(node, containingType);
+
+        if (resolvedType == null)
+        {
+            node.AddError($"Type '{node}' not found");
+        }
+
+        return resolvedType ?? PrimType.Void;
+    }
+
+    private static readonly Dictionary<string, TypeDesc> Primities = new()
+    {
+        ["none"]  = PrimType.Void,
+        ["bool"]  = PrimType.Bool,
+        ["i8" ] = PrimType.Byte,
+        ["i16" ] = PrimType.Int16,
+        ["i32" ] = PrimType.Int32,
+        ["i64" ] = PrimType.Int64,
+        ["f32" ] = PrimType.Single,
+        ["f64" ] = PrimType.Double,
+    };
+
+    private static TypeDesc? GetTypeFromNodeImpl(TypeName node, TypeDef containingType)
+    {
         if (node is SimpleTypeName id)
         {
-            return id.Name switch
+            if (Primities.TryGetValue(id.Name, out var prim))
             {
-                "none" => PrimType.Void,
-                "bool" => PrimType.Bool,
-                "i8" => PrimType.Byte,
-                "i16" => PrimType.Int16,
-                "i32" => PrimType.Int32,
-                "i64" => PrimType.Int64,
-                "f32" => PrimType.Single,
-                "f64" => PrimType.Double,
-                var x => containingType.Name == x ? containingType : null
-            };
+                return prim;
+            }
+
+            var type = containingType.Module.FindType(containingType.Namespace, id.Name);
+            if (type != null)
+            {
+                return type;
+            }
+
+            if (containingType.Name == id.Name)
+            {
+                return containingType;
+            }
         }
         else if (node is QualifiedTypeName qname)
         {
@@ -48,7 +76,7 @@ public static class Utils
             }
         }
 
-        throw new Exception("cannot get type from node");
+        return null;
     }
 
     public static TypeDefOrSpec? GetTypeFromNode(TypeName node, ModuleDef module)
