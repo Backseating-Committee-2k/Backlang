@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Loyc.Syntax;
+using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.Core;
 using Socordia.CodeAnalysis.Core.Attributes;
 
@@ -7,11 +8,11 @@ namespace Socordia.CodeAnalysis.Parsing;
 
 public sealed class TokenIterator
 {
-    private readonly SourceFile<StreamCharSource> _document;
+    private readonly TextFile _document;
     private readonly List<Token> _tokens;
     public readonly List<Message> Messages = [];
 
-    public TokenIterator(List<Token> tokens, SourceFile<StreamCharSource> document)
+    public TokenIterator(List<Token> tokens, TextFile document)
     {
         _tokens = tokens;
         _document = document;
@@ -76,9 +77,10 @@ public sealed class TokenIterator
             return NextToken();
         }
 
+        var pos = _document.CreatePosition(Current.Start, Current.Text.Length, Current.Line, Current.Column);
+
         Messages.Add(
-            Message.Error($"Expected '{GetTokenRepresentation(kind)}' but got '{GetTokenRepresentation(Current.Type)}'",
-                new SourceRange(_document, Current.Start, Current.Text.Length)));
+            Message.Error($"Expected '{GetTokenRepresentation(kind)}' but got '{GetTokenRepresentation(Current.Type)}'", pos));
 
         NextToken();
 

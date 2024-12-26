@@ -1,4 +1,5 @@
-﻿using Loyc.Syntax;
+﻿using DistIL.Util;
+using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.Core;
 using Socordia.CodeAnalysis.Parsing.ParsePoints;
@@ -108,6 +109,7 @@ public sealed partial class Parser
     public AstNode? InvokeParsePoint(ParsePointCollection parsePoints)
     {
         var type = Iterator.Current.Type;
+        var oldPos = Iterator.Position;
 
         if (parsePoints.ContainsKey(type))
         {
@@ -116,9 +118,10 @@ public sealed partial class Parser
             return parsePoints[type](Iterator, this);
         }
 
-        var range = new SourceRange(Document, Iterator.Current.Start, Iterator.Current.Text.Length);
+        var pos = Document.CreatePosition(oldPos,
+            Iterator.Current.Text.Length, Iterator.Current.Line, Iterator.Current.Column);
 
-        AddError("Unexpected Expression " + Iterator.Current.Text, range);
+        AddError("Unexpected Expression " + Iterator.Current.Text, pos);
 
         Iterator.NextToken();
 

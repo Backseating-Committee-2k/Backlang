@@ -1,6 +1,7 @@
 using DistIL.AsmIO;
 using Loyc;
 using Loyc.Syntax;
+using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.Core;
@@ -25,7 +26,7 @@ public sealed partial class Parser
         { "d", PrimType.Double }
     };
 
-    public void AddError(string message, SourceRange range)
+    public void AddError(string message, TextFilePosition range)
     {
         Messages.Add(Message.Error(message, range));
     }
@@ -33,7 +34,8 @@ public sealed partial class Parser
     public void AddError(string message)
     {
         Messages.Add(Message.Error(message,
-            new SourceRange(Document, Iterator.Current.Start, Iterator.Current.Text.Length)));
+           Document.CreatePosition(Iterator.Position, Iterator.Current.Text.Length,
+               Iterator.Current.Line, Iterator.Current.Column)));
     }
 
     internal AstNode? ParsePrimary(ParsePointCollection? parsePoints = null)

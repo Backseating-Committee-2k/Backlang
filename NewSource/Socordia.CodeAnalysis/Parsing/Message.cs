@@ -1,4 +1,5 @@
 ﻿using Loyc.Syntax;
+using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.Core;
 
 namespace Socordia.CodeAnalysis.Parsing;
@@ -8,43 +9,31 @@ public enum MessageSeverity
     Error, Warning, Info, Hint
 }
 
-public sealed class Message
+public sealed class Message(MessageSeverity severity, string text, TextFilePosition range)
 {
-    public Message(MessageSeverity severity, string text, SourceRange range)
-    {
-        if (range.Source is SourceFile<StreamCharSource> doc)
-        {
-            Document = doc;
-        }
+    public TextFilePosition Range { get; set; } = range;
 
-        Severity = severity;
-        Text = text;
-        Range = range;
-    }
+    public TextFile Document { get; } = range.File;
 
-    public SourceRange Range { get; set; }
+    public MessageSeverity Severity { get; set; } = severity;
+    public string Text { get; set; } = text;
 
-    public SourceFile<StreamCharSource> Document { get; }
-
-    public MessageSeverity Severity { get; set; }
-    public string Text { get; set; }
-
-    public static Message Error(string message, SourceRange range)
+    public static Message Error(string message, TextFilePosition range)
     {
         return new Message(MessageSeverity.Error, message, range);
     }
 
     public static Message Error(string message)
     {
-        return new Message(MessageSeverity.Error, message, SourceRange.Synthetic);
+        return new Message(MessageSeverity.Error, message, (TextFilePosition)TextFilePosition.None);
     }
 
-    public static Message Info(string message, SourceRange range)
+    public static Message Info(string message, TextFilePosition range)
     {
         return new Message(MessageSeverity.Info, message, range);
     }
 
-    public static Message Warning(string message, SourceRange range)
+    public static Message Warning(string message, TextFilePosition range)
     {
         return new Message(MessageSeverity.Warning, message, range);
     }
@@ -56,6 +45,6 @@ public sealed class Message
             return Text;
         }
 
-        return $"{Document.FileName}:{Range.Start.Line}:{Range.Start.Column} {Text}";
+        return $"{Document.Name}:{Range.StartLine}:{Range.StartColumnNumber} {Text}";
     }
 }

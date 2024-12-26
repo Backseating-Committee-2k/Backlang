@@ -1,4 +1,5 @@
 ﻿using Loyc.Syntax;
+using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.Parsing;
 
 namespace Socordia.CodeAnalysis.Core;
@@ -6,12 +7,12 @@ namespace Socordia.CodeAnalysis.Core;
 public abstract class BaseLexer
 {
     protected int _column = 1;
-    protected SourceFile<StreamCharSource> _document;
+    protected TextFile _document;
     protected int _line = 1;
     protected int _position;
-    public List<Message> Messages = [];
+    public readonly List<Message> Messages = [];
 
-    public List<Token> Tokenize(SourceFile<StreamCharSource> document)
+    public List<Token> Tokenize(TextFile document)
     {
         _document = document;
 
@@ -35,7 +36,7 @@ public abstract class BaseLexer
 
     protected char Current()
     {
-        if (_position >= _document.Text.Count)
+        if (_position >= _document.Text.Length)
         {
             return '\0';
         }
@@ -47,7 +48,7 @@ public abstract class BaseLexer
 
     protected char Peek(int offset = 0)
     {
-        if (_position + offset >= _document.Text.Count)
+        if (_position + offset >= _document.Text.Length)
         {
             return '\0';
         }
@@ -59,8 +60,8 @@ public abstract class BaseLexer
     {
         _column++;
 
-        var range = SourceRange.New(_document, new IndexRange(_position, 1));
-        Messages.Add(Message.Error($"Unknown Character '{Current()}'", range));
+        var pos =_document.CreatePosition(_position, 1, _line, _column);
+        Messages.Add(Message.Error($"Unknown Character '{Current()}'", pos));
         Advance();
     }
 }

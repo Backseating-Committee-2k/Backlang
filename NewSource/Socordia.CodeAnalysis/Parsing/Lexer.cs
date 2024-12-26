@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text;
+using Loyc;
 using Loyc.Syntax;
 using Socordia.CodeAnalysis.Core;
 using Socordia.CodeAnalysis.Core.Attributes;
@@ -8,7 +9,7 @@ namespace Socordia.CodeAnalysis.Parsing;
 
 public sealed class Lexer : BaseLexer
 {
-    private static readonly Dictionary<string, TokenType> _symbolTokens = new(StringComparer.Ordinal);
+    private static readonly Dictionary<string, TokenType> SymbolTokens = new(StringComparer.Ordinal);
 
     static Lexer()
     {
@@ -23,12 +24,12 @@ public sealed class Lexer : BaseLexer
             {
                 foreach (var attribute in attributes)
                 {
-                    _symbolTokens.Add(attribute.Lexeme, op);
+                    SymbolTokens.Add(attribute.Lexeme, op);
                 }
             }
         }
 
-        _symbolTokens = new Dictionary<string, TokenType>(_symbolTokens.OrderByDescending(_ => _.Key.Length));
+        SymbolTokens = new Dictionary<string, TokenType>(SymbolTokens.OrderByDescending(_ => _.Key.Length));
     }
 
     protected override Token NextToken()
@@ -41,7 +42,7 @@ public sealed class Lexer : BaseLexer
         SkipWhitespaces();
         SkipComments();
 
-        if (_position >= _document.Text.Count)
+        if (_position >= _document.Text.Length)
         {
             return new Token(TokenType.EOF, "\0", _position, _position, _line, _column);
         }
@@ -83,7 +84,7 @@ public sealed class Lexer : BaseLexer
             return identifier;
         }
 
-        foreach (var symbol in _symbolTokens)
+        foreach (var symbol in SymbolTokens)
         {
             if (IsMatch(symbol.Key))
             {
@@ -139,7 +140,7 @@ public sealed class Lexer : BaseLexer
 
     private TokenType GetOperatorKind(Token identifier)
     {
-        foreach (var s in _symbolTokens)
+        foreach (var s in SymbolTokens)
         {
             if (identifier.Text == s.Key)
             {
@@ -177,7 +178,7 @@ public sealed class Lexer : BaseLexer
 
     private bool IsOperatorIdentifier(Token identifier)
     {
-        return _symbolTokens.ContainsKey(identifier.Text);
+        return SymbolTokens.ContainsKey(identifier.Text);
     }
 
     private Token LexBinaryNumber()
@@ -206,7 +207,7 @@ public sealed class Lexer : BaseLexer
 
         if (Current() == '\n' || Current() == '\r')
         {
-            var range = new SourceRange(_document, _column, 1);
+            var range = _document.CreatePosition(_position, 1, _line, _column);
             Messages.Add(Message.Error("Unterminated Char-Literal", range));
 
             return Token.Invalid;
@@ -260,7 +261,7 @@ public sealed class Lexer : BaseLexer
         {
             if (Current() == '\n' || Current() == '\r')
             {
-                var range = new SourceRange(_document, _position, 1);
+                var range = _document.CreatePosition(_position, 1, _line, _column);
                 Messages.Add(Message.Error("Unterminated String-Literal", range));
 
                 return new Token(TokenType.StringLiteral,
@@ -320,9 +321,9 @@ public sealed class Lexer : BaseLexer
         _position += symbol.Key.Length;
         _column += symbol.Key.Length;
 
-        var text = _document.Text.Slice(oldpos, symbol.Key.Length).ToString();
+        var text = _document.Text.Substring(oldpos, symbol.Key.Length);
 
-        return new Token(_symbolTokens[text], text, oldpos, _position, _line, _column);
+        return new Token(SymbolTokens[text], text, oldpos, _position, _line, _column);
     }
 
     private void SkipComments()
@@ -353,6 +354,8 @@ public sealed class Lexer : BaseLexer
             else if (IsMatch("/*"))
             {
                 var oldpos = _position;
+                var oldLine = _line;
+                var oldColumn = _column;
 
                 Advance();
                 Advance();
@@ -380,8 +383,8 @@ public sealed class Lexer : BaseLexer
                 }
                 else
                 {
-                    var range = new SourceRange(_document, oldpos, _position);
-                    Messages.Add(Message.Error("Multiline comment is not closed", range));
+                    var pos = _document.CreatePosition(oldpos, _position, oldLine, oldColumn);
+                    Messages.Add(Message.Error("Multiline comment is not closed", pos));
 
                     return;
                 }
@@ -393,7 +396,7 @@ public sealed class Lexer : BaseLexer
 
     private void SkipWhitespaces()
     {
-        while (char.IsWhiteSpace(Current()) && _position <= _document.Text.Count)
+        while (char.IsWhiteSpace(Current()) && _position <= _document.Text.Length)
         {
             if (Current() == '\r')
             {

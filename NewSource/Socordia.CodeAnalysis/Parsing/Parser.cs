@@ -1,4 +1,6 @@
+using System.Net.Mime;
 using Loyc.Syntax;
+using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.Core;
 
@@ -8,7 +10,7 @@ public sealed partial class Parser
 {
     public readonly List<Message> Messages;
 
-    public Parser(SourceFile<StreamCharSource> document, List<Token> tokens, List<Message> messages)
+    public Parser(TextFile document, List<Token> tokens, List<Message> messages)
     {
         Document = document;
         Iterator = new TokenIterator(tokens, document);
@@ -17,28 +19,26 @@ public sealed partial class Parser
         InitParsePoints();
     }
 
-    public SourceFile<StreamCharSource> Document { get; }
+    public TextFile Document { get; }
 
     public TokenIterator Iterator { get; set; }
 
-    public static CompilationUnit Parse(SourceDocument src)
+    public static CompilationUnit Parse(TextFile src)
     {
-        SourceFile<StreamCharSource> document = src;
-
-        if (document.Text == null)
+        if (src.Text == null)
         {
             return new CompilationUnit
             {
                 Declarations = new([]),
-                Messages = [Message.Error("The source file is empty", SourceRange.Synthetic)],
-                Document = document
+                Messages = [Message.Error("The source file is empty")],
+                Document = src
             };
         }
 
         var lexer = new Lexer();
-        var tokens = lexer.Tokenize(document);
+        var tokens = lexer.Tokenize(src);
 
-        var parser = new Parser(document, tokens, lexer.Messages);
+        var parser = new Parser(src, tokens, lexer.Messages);
 
         return parser.Program();
     }

@@ -32,13 +32,13 @@ public class SocordiaBuildTask : LanguageSdk.Templates.Core.BuildTask<DriverSett
             {
                 case MessageSeverity.Error:
                     Log.LogError(null, null, null,
-                        file: message.Document.FileName, message.Range.Start.Line, message.Range.Start.Column,
-                        message.Range.End.Line, message.Range.End.Column, message.Text);
+                        file: message.Document.Name, message.Range.StartLineNumber, message.Range.StartColumnNumber,
+                        message.Range.StartLineNumber, message.Range.StartColumnNumber, message.Text);
                     break;
                 case MessageSeverity.Warning:
                     Log.LogWarning(null, null, null,
-                        file: message.Document.FileName, message.Range.Start.Line, message.Range.Start.Column,
-                        message.Range.End.Line, message.Range.End.Column, message.Text);
+                        file: message.Document.Name, message.Range.StartLineNumber, message.Range.StartColumnNumber,
+                        message.Range.StartLineNumber, message.Range.StartColumnNumber, message.Text);
                     break;
             }
         }

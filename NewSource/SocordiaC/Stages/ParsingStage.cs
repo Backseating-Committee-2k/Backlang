@@ -1,5 +1,6 @@
 using Flo;
 using Loyc.Syntax;
+using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.Parsing;
 
@@ -26,7 +27,7 @@ public sealed class ParsingStage : IHandler<Driver, Driver>
             }
             else
             {
-                context.Messages.Add(Message.Error($"File '{filename}' does not exists", SourceRange.Synthetic));
+                context.Messages.Add(Message.Error($"File '{filename}' does not exists", (TextFilePosition)TextFilePosition.None));
             }
 
             return ValueTask.CompletedTask;
