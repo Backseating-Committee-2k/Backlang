@@ -9,7 +9,7 @@ public class ReturnStatementListener : Listener<BodyCompilation, AstNode, Return
 {
     protected override void ListenToNode(BodyCompilation context, ReturnStatement node)
     {
-        var value = Utils.CreateValue(node.Value);
+        var value = Utils.CreateValue(node.Value, context);
         context.Builder.Emit(new ReturnInst(value));
     }
 }

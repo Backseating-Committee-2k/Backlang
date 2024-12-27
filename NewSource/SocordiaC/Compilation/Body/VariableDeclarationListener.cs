@@ -10,7 +10,7 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
 {
     protected override void ListenToNode(BodyCompilation context, VariableStatement node)
     {
-        var value = Utils.CreateValue(node.Initializer);
+        var value = Utils.CreateValue(node.Initializer, context);
 
         TypeDesc type;
         if (node.Type is not NoTypeName)

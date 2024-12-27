@@ -9,9 +9,11 @@ namespace SocordiaC.Compilation.Body;
 
 public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExpression>
 {
+    public Instruction CallInstruction;
+
     protected override void ListenToNode(BodyCompilation context, CallExpression node)
     {
-        var args = node.Arguments.Select(Utils.CreateValue);
+        var args = node.Arguments.Select(_ => Utils.CreateValue(_, context));
 
         if (CreateStaticExternalCall(context, node, args)) return;
         if (CreateStaticContainingTypeCalls(context, node, args)) return;
@@ -20,7 +22,7 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
         node.AddError("Function not found");
     }
 
-    private static bool CreateStaticContainingTypeCalls(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
+    private  bool CreateStaticContainingTypeCalls(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
     {
         var candidates = GetStaticMethodCandidates(node, args, context.Builder.Method.Definition.DeclaringType);
         if (candidates.Length == 0)
@@ -29,30 +31,30 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
         }
 
         var method = candidates[0];
-        context.Builder.CreateCall(method, [.. args]);
+        CallInstruction = context.Builder.CreateCall(method, [.. args]);
         return true;
     }
 
-    private static bool CreatePrintCalls(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
+    private bool CreatePrintCalls(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
     {
         if (node.Callee.Name == "print")
         {
             var method = context.Driver.Compilation.Module.Resolver.FindMethod("System.Console::Write", [.. args]);
-            context.Builder.CreateCall(method, [.. args]);
+            CallInstruction = context.Builder.CreateCall(method, [.. args]);
             return true;
         }
 
         if (node.Callee.Name == "println")
         {
             var method = context.Driver.Compilation.Module.Resolver.FindMethod("System.Console::WriteLine", [.. args]);
-            context.Builder.CreateCall(method, [.. args]);
+            CallInstruction = context.Builder.CreateCall(method, [.. args]);
             return true;
         }
 
         return false;
     }
 
-    private static bool CreateStaticExternalCall(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
+    private bool CreateStaticExternalCall(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
     {
         if (node.Parent is BinaryOperator { Operator: "'::", Left: BinaryOperator typeNode })
         {
@@ -73,7 +75,7 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
             }
 
             var method = candidates[0];
-            context.Builder.CreateCall(method, [.. args]);
+            CallInstruction = context.Builder.CreateCall(method, [.. args]);
             return true;
         }
 

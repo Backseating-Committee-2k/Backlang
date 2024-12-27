@@ -11,7 +11,7 @@ func main(): none  {
     print("hello");
     println("world");
     System.Console::WriteLine("Hello World!");
-    test(42, true);
+    test(default(i32), true);
 }
 
 private func test(hello: i32, flag: bool): i32 -> 42;

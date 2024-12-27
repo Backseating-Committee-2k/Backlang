@@ -1,9 +1,11 @@
+using System.Reflection;
 using DistIL.AsmIO;
 using DistIL.IR;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using SocordiaC.Compilation.Body;
 
 namespace SocordiaC.Compilation;
 
@@ -93,11 +95,19 @@ public static class Utils
         return null;
     }
 
-    public static TypeDefOrSpec? GetTypeFromNode(TypeName node, ModuleDef module)
+    public static TypeDesc? GetTypeFromNode(TypeName node, ModuleDef module)
     {
         if (node is NoTypeName)
         {
             return null;
+        }
+
+        if (node is SimpleTypeName id)
+        {
+            if (Primities.TryGetValue(id.Name, out var prim))
+            {
+                return prim;
+            }
         }
 
         if (node is QualifiedTypeName qname)
@@ -117,13 +127,44 @@ public static class Utils
         throw new Exception("cannot get type from node");
     }
 
-    public static Value CreateValue(AstNode valueNode)
+    public static TypeAttributes GetModifiers(Declaration node)
+    {
+        var attrs = TypeAttributes.Public;
+
+        foreach (var modifier in node.Modifiers)
+        {
+            attrs |= modifier switch
+            {
+                Modifier.Static => TypeAttributes.Sealed | TypeAttributes.Abstract,
+                Modifier.Internal => TypeAttributes.NotPublic,
+                Modifier.Public => TypeAttributes.Public,
+                _ => throw new NotImplementedException()
+            };
+        }
+
+        if (node.Modifiers.Contains(Modifier.Private) || node.Modifiers.Contains(Modifier.Internal))
+        {
+            attrs &= ~TypeAttributes.Public;
+        }
+
+        return attrs;
+    }
+
+    public static Value CreateValue(AstNode valueNode, BodyCompilation compilation)
     {
         return valueNode switch
         {
             LiteralNode literal => CreateLiteral(literal.Value),
+            DefaultLiteral def => CreateDefault(def, compilation),
             _ => throw new NotImplementedException()
         };
+    }
+
+    private static Value CreateDefault(DefaultLiteral def, BodyCompilation compilation)
+    {
+        var type = GetTypeFromNode(def.Type, compilation.Driver.Compilation.Module)!;
+
+        return compilation.Builder.CreateDefaultOf(type);
     }
 
     private static Value CreateLiteral(object literalValue)

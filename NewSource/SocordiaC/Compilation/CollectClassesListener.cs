@@ -12,7 +12,7 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
     {
         var ns = context.GetNamespaceOf(node);
         var type = context.Compilation.Module.CreateType(ns, node.Name,
-            GetModifiers(node), GetBaseType(node, context.Compilation));
+            GetModifiers(node), (TypeDefOrSpec)GetBaseType(node, context.Compilation));
 
         foreach (var baseType in node.Implementations)
         {
@@ -29,7 +29,7 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
         }
     }
 
-    private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
+    private TypeDesc? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
     {
         if (node.BaseType == null)
         {

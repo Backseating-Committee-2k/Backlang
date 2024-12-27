@@ -2,5 +2,6 @@
 
     <PropertyGroup>
         <RootNamespace>Socordia.Core</RootNamespace>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 </Project>
