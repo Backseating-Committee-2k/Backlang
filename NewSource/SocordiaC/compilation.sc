@@ -1,6 +1,6 @@
 module TestSuite;
 
-func ptr(): i32*
+func ptr(x: i32 = 42): i32*
 {
 
 }

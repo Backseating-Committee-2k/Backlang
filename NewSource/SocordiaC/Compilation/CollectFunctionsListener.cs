@@ -4,6 +4,7 @@ using DistIL.IR;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.Statements;
 using MethodBody = DistIL.IR.MethodBody;
 
@@ -45,12 +46,35 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
 
         foreach (var param in node.Signature.Parameters)
         {
-            var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name);
-            //paramDef.DefaultValue = param.DefaultValue; //ToDo: convert default value
+            var attribs = GetParameterAttributs(param);
+            var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name, attribs);
+            paramDef.DefaultValue = GetLiteralValue(param.DefaultValue); //ToDo: convert default value
             result.Add(paramDef);
         }
 
         return result;
+    }
+
+    private ParameterAttributes GetParameterAttributs(ParameterDeclaration node)
+    {
+        ParameterAttributes result = 0;
+
+        if (node.DefaultValue != null)
+        {
+            result |= ParameterAttributes.HasDefault | ParameterAttributes.Optional;
+        }
+
+        return result;
+    }
+
+    private object? GetLiteralValue(AstNode? paramDefaultValue)
+    {
+        if (paramDefaultValue is LiteralNode lit)
+        {
+            return lit.Value;
+        }
+
+        return null;
     }
 
     private MethodAttributes GetModifiers(Declaration node)
