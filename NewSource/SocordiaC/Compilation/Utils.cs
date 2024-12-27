@@ -3,6 +3,7 @@ using DistIL.AsmIO;
 using DistIL.IR;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
 using SocordiaC.Compilation.Body;
@@ -156,8 +157,17 @@ public static class Utils
         {
             LiteralNode literal => CreateLiteral(literal.Value),
             DefaultLiteral def => CreateDefault(def, compilation),
+            CallExpression call => CreateCall(call, compilation),
             _ => throw new NotImplementedException()
         };
+    }
+
+    private static Value CreateCall(CallExpression call, BodyCompilation compilation)
+    {
+        var listener = new CallExpressionListener(false);
+        listener.Listen(compilation, call);
+
+        return listener.CallInstruction;
     }
 
     private static Value CreateDefault(DefaultLiteral def, BodyCompilation compilation)

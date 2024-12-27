@@ -7,7 +7,7 @@ using Socordia.CodeAnalysis.AST.TypeNames;
 
 namespace SocordiaC.Compilation.Body;
 
-public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExpression>
+public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation, AstNode, CallExpression>
 {
     public Instruction CallInstruction;
 
@@ -22,6 +22,14 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
         node.AddError("Function not found");
     }
 
+    protected override void AfterListenToNode(BodyCompilation context, CallExpression node)
+    {
+        if (shouldEmit)
+        {
+            context.Builder.Emit(CallInstruction);
+        }
+    }
+
     private  bool CreateStaticContainingTypeCalls(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
     {
         var candidates = GetStaticMethodCandidates(node, args, context.Builder.Method.Definition.DeclaringType);
@@ -31,7 +39,7 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
         }
 
         var method = candidates[0];
-        CallInstruction = context.Builder.CreateCall(method, [.. args]);
+        CallInstruction = new CallInst(method, [.. args]);
         return true;
     }
 
@@ -40,14 +48,14 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
         if (node.Callee.Name == "print")
         {
             var method = context.Driver.Compilation.Module.Resolver.FindMethod("System.Console::Write", [.. args]);
-            CallInstruction = context.Builder.CreateCall(method, [.. args]);
+            CallInstruction = new CallInst(method, [.. args]);
             return true;
         }
 
         if (node.Callee.Name == "println")
         {
             var method = context.Driver.Compilation.Module.Resolver.FindMethod("System.Console::WriteLine", [.. args]);
-            CallInstruction = context.Builder.CreateCall(method, [.. args]);
+            CallInstruction = new CallInst(method, [.. args]);
             return true;
         }
 
@@ -75,7 +83,7 @@ public class CallExpressionListener : Listener<BodyCompilation, AstNode, CallExp
             }
 
             var method = candidates[0];
-            CallInstruction = context.Builder.CreateCall(method, [.. args]);
+            CallInstruction = new CallInst(method, [.. args]);
             return true;
         }
 

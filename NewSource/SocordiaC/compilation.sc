@@ -7,6 +7,7 @@ func ptr(x: i32 = 42): i32*
 
 func main(): none  {
     let myFlag = true;
+    let t = test(1, false);
 
     print("hello");
     println("world");

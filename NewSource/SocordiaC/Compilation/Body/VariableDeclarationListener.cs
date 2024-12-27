@@ -1,4 +1,5 @@
 using DistIL.AsmIO;
+using DistIL.IR;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Statements;
@@ -11,6 +12,10 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
     protected override void ListenToNode(BodyCompilation context, VariableStatement node)
     {
         var value = Utils.CreateValue(node.Initializer, context);
+        if (value is Instruction instr)
+        {
+            context.Builder.Emit(instr);
+        }
 
         TypeDesc type;
         if (node.Type is not NoTypeName)
@@ -26,8 +31,10 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
             type = value.ResultType;
         }
 
-        var slot = context.Method.Body!.CreateVar(type!, node.Name);
+        var slot = context.Method.Body!.CreateVar(type, node.Name);
 
         context.Builder.CreateStore(slot, value);
     }
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node) => false;
 }
