@@ -33,11 +33,13 @@ public sealed class TypeNameParser
 
             if (iterator.IsMatch(TokenType.Star))
             {
+                iterator.NextToken();
                 typeNode = new PointerTypeName(typeNode, PointerKind.Transient);
             }
 
             if (iterator.IsMatch(TokenType.Ampersand))
             {
+                iterator.NextToken();
                 typeNode = new PointerTypeName(typeNode, PointerKind.Reference);
             }
 

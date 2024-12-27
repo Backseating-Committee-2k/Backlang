@@ -76,6 +76,19 @@ public static class Utils
                 return containingType.Module.Resolver.FindType(qname.ToString());
             }
         }
+        else if (node is PointerTypeName ptr)
+        {
+            var type = GetTypeFromNodeImpl(ptr.Type, containingType);
+            if (type != null)
+            {
+                return ptr.Kind switch
+                {
+                    PointerKind.Transient => type.CreatePointer(),
+                    PointerKind.Reference => type.CreateByref(),
+                    _ => throw new InvalidOperationException("Invalid pointerkind")
+                };
+            }
+        }
 
         return null;
     }

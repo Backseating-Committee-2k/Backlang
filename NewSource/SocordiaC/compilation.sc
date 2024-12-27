@@ -1,5 +1,10 @@
 module TestSuite;
 
+func ptr(): i32*
+{
+
+}
+
 func main(): none  {
     let myFlag = true;
 
