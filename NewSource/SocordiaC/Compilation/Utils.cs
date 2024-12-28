@@ -194,6 +194,11 @@ public static class Utils
     {
         var type = GetTypeFromNode(def.Type, compilation.Driver.Compilation.Module)!;
 
+        if (type.TryGetOperator("default", out var method))
+        {
+            return compilation.Builder.CreateCall(method!);
+        }
+
         return compilation.Builder.CreateDefaultOf(type);
     }
 

@@ -2,7 +2,7 @@
 using System.Reflection;
 using DistIL.AsmIO;
 
-namespace Backlang.Driver.Core;
+namespace SocordiaC.Compilation;
 
 public static class OperatorOverloadingHelpers
 {
@@ -34,7 +34,7 @@ public static class OperatorOverloadingHelpers
         ["default"] = "op_Default"
     }.ToImmutableDictionary();
 
-    public static bool TryGetOperator(this TypeDefOrSpec type, string op, out MethodDef? opMethod, params TypeDefOrSpec[] args)
+    public static bool TryGetOperator(this TypeDesc type, string op, out MethodDef? opMethod, params TypeDefOrSpec[] args)
     {
         var possibleMethods = type.Methods.Cast<MethodDef>()
             .Where(_ => _ is { IsStatic: true, IsConstructor: false, IsDestructor: false, IsPublic: true }
