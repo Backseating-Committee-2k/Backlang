@@ -41,7 +41,16 @@ public static class Utils
     {
         if (node is UnitTypeName unitTypeName)
         {
-            return GetTypeFromNodeImpl(unitTypeName.Unit, containingType);
+            var unitType = (TypeDef)GetTypeFromNodeImpl(unitTypeName.Unit, containingType);
+            if (!unitType.IsUnitType())
+            {
+                unitTypeName.AddError("Type is not a unit type");
+                return null;
+            }
+
+            var valueField = unitType.FindField("value__");
+
+            return valueField.Type;
         }
 
         if (node is SimpleTypeName id)
@@ -109,7 +118,7 @@ public static class Utils
 
         if (node is UnitTypeName unitTypeName)
         {
-            return GetTypeFromNode(unitTypeName, module);
+            return GetTypeFromNode(unitTypeName.Unit, module);
         }
 
         if (node is QualifiedTypeName qname)

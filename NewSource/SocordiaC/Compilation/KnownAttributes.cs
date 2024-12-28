@@ -13,6 +13,9 @@ public class KnownAttributes
     public readonly TypeDefOrSpec ExtensionAttribute;
     public readonly MethodDesc? ExtensionAttributeCtor;
 
+    public readonly TypeDefOrSpec UnitAttribute;
+    public readonly MethodDesc? UnitAttributeCtor;
+
 
     public KnownAttributes(ModuleResolver resolver)
     {
@@ -21,5 +24,8 @@ public class KnownAttributes
 
         ExtensionAttribute = resolver.Import(typeof(ExtensionAttribute));
         ExtensionAttributeCtor = ExtensionAttribute.FindMethod(".ctor");
+
+        UnitAttribute = resolver.Import(typeof(UnitAttribute));
+        UnitAttributeCtor = UnitAttribute.FindMethod(".ctor");
     }
 }

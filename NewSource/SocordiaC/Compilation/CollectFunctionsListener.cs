@@ -6,6 +6,7 @@ using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.Statements;
+using Socordia.CodeAnalysis.AST.TypeNames;
 using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation;
@@ -21,7 +22,7 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
     {
         var attrs = GetModifiers(node);
         var type = context.GetFunctionType(context.GetNamespaceOf(node));
-        var parameters = GetParameters(node, type);
+        var parameters = GetParameters(node, type, context);
 
         var returnType = GetReturnType(node, type);
         var method = type.CreateMethod(node.Signature.Name.Name,
@@ -40,24 +41,35 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
         Mappings.Functions.Add(node, method);
     }
 
-    private IEnumerable<ParamDef> GetParameters(FunctionDefinition node, TypeDef type)
+    private IEnumerable<ParamDef> GetParameters(FunctionDefinition node, TypeDef type, Driver context)
     {
         var result = new List<ParamDef>();
 
         foreach (var param in node.Signature.Parameters)
         {
-            var attribs = GetParameterAttributs(param);
+            var attribs = GetParameterAttributes(param);
             var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name, attribs)
                 {
-                    DefaultValue = Utils.GetLiteralValue(param.DefaultValue) //ToDo: convert default value
+                    DefaultValue = Utils.GetLiteralValue(param.DefaultValue)
                 };
+
+            AddUnitAttribute(context, paramDef.GetCustomAttribs(false), param.Type, type);
             result.Add(paramDef);
         }
 
         return result;
     }
 
-    private ParameterAttributes GetParameterAttributs(ParameterDeclaration node)
+    private static void AddUnitAttribute(Driver context, IList<CustomAttrib> attribs, TypeName paramType, TypeDef containingType)
+    {
+        if (paramType is UnitTypeName unit)
+        {
+            var unitType = Utils.GetTypeFromNode(unit, containingType);
+            attribs.Add(new CustomAttrib(context.KnownAttributes.UnitAttributeCtor, [])); //todo: use unittype if its implemented internally
+        }
+    }
+
+    private ParameterAttributes GetParameterAttributes(ParameterDeclaration node)
     {
         ParameterAttributes result = 0;
 

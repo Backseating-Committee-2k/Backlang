@@ -4,4 +4,10 @@
 public class UnitAttribute : Attribute
 {
     public Type UnitType { get; set; }
+
+    /*
+    public UnitAttribute(Type type)
+    {
+        this.UnitType = type;
+    }*/
 }
