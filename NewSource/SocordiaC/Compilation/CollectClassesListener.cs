@@ -14,19 +14,7 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
         var type = context.Compilation.Module.CreateType(ns, node.Name,
             GetModifiers(node), (TypeDefOrSpec)GetBaseType(node, context.Compilation));
 
-        foreach (var baseType in node.Implementations)
-        {
-            var t = Utils.GetTypeFromNode(baseType, context.Compilation.Module);
-
-            if (t.IsInterface)
-            {
-                type.Interfaces.Add(t);
-            }
-            else
-            {
-                baseType.AddError(baseType + " is not an interface");
-            }
-        }
+        Mappings.Types[node] = type;
     }
 
     private TypeDesc? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
