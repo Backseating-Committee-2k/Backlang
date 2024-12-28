@@ -6,22 +6,13 @@ using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using Socordia.CodeAnalysis.Parsing;
 using SocordiaC.Compilation.Body;
 
 namespace SocordiaC.Compilation;
 
 public static class Utils
 {
-    public static string ToPascalCase(string name)
-    {
-        if (string.IsNullOrEmpty(name))
-        {
-            return name;
-        }
-
-        return char.ToUpper(name[0]) + name[1..];
-    }
-
     public static TypeDesc? GetTypeFromNode(TypeName node, TypeDef containingType)
     {
         var resolvedType = GetTypeFromNodeImpl(node, containingType);
@@ -48,6 +39,11 @@ public static class Utils
 
     private static TypeDesc? GetTypeFromNodeImpl(TypeName node, TypeDef containingType)
     {
+        if (node is UnitTypeName unitTypeName)
+        {
+            return GetTypeFromNodeImpl(unitTypeName.Unit, containingType);
+        }
+
         if (node is SimpleTypeName id)
         {
             if (Primities.TryGetValue(id.Name, out var prim))
@@ -109,6 +105,11 @@ public static class Utils
             {
                 return prim;
             }
+        }
+
+        if (node is UnitTypeName unitTypeName)
+        {
+            return GetTypeFromNode(unitTypeName, module);
         }
 
         if (node is QualifiedTypeName qname)

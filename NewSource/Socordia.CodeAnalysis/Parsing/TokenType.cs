@@ -172,6 +172,7 @@ public enum TokenType
     [Keyword("finally")] Finally,
 
     [Keyword("with")] With,
+    [Keyword("rules")] Rules,
 
     [Keyword("match")] Match,
 

@@ -2,10 +2,10 @@ namespace Socordia.CodeAnalysis.AST.TypeNames;
 
 public class UnitTypeName : TypeName
 {
-    public UnitTypeName(Identifier unit)
+    public UnitTypeName(SimpleTypeName unit)
     {
         Children.Add(unit);
     }
     
-    public Identifier Unit => (Identifier) Children[0];
+    public SimpleTypeName Unit => (SimpleTypeName) Children[0];
 }

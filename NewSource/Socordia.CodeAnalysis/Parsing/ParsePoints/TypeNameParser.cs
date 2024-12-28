@@ -1,4 +1,5 @@
 ﻿using Loyc.Syntax;
+using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.TypeNames;
 using Socordia.CodeAnalysis.Core;
 
@@ -14,9 +15,9 @@ public sealed class TypeNameParser
 
         if (iterator.ConsumeIfMatch(TokenType.Unit))
         {
-            var unitName = parser.ParseIdentifier();
+            var unitName = iterator.Match(TokenType.Identifier).Text;
 
-            return new UnitTypeName(unitName);
+            return new UnitTypeName(new SimpleTypeName(ParsingUtils.ToPascalCase(unitName)));
         }
 
         if (iterator.IsMatch(TokenType.Identifier))

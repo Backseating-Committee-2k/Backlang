@@ -24,6 +24,7 @@ public sealed partial class Parser
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<EnumDeclarationParser>(TokenType.Enum);
         AddDeclarationParsePoint<InterfaceDeclarationParser>(TokenType.Interface);
+        AddDeclarationParsePoint<RulesForDeclarationParser>(TokenType.Rules);
       /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
         AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
         AddDeclarationParsePoint<DiscriminatedUnionDeclaration>(TokenType.Type);

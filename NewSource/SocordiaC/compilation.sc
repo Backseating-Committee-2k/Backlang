@@ -5,6 +5,11 @@ func ptr(x: i32 = 42): i32*
 
 }
 
+func unit(x: unit cm): none
+{
+
+}
+
 func main(): none  {
     let myFlag = true;
     let t = test(1, false);
@@ -32,7 +37,7 @@ func internal_type(): Hello
 
 }
 
-class MyClass
+class MyClass implements ILixou
 {
 
 }
@@ -62,8 +67,17 @@ enum ShortColor : i8
 
 unit cm of f64;
 unit ml of f64;
+unit seconds of f64;
+unit minutes of f64;
 
 public interface ILixou
 {
 
+}
+
+
+rules for unit seconds
+{
+  //  from seconds to minutes = seconds / 60;
+   // from minutes to seconds = derive from seconds; // automaticly derive conversion rule. In this case the opposite of seconds: minutes * 60
 }

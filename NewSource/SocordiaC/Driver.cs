@@ -58,8 +58,10 @@ public class Driver
             cfg => {
                 cfg.Add<ParsingStage>();
                 cfg.Add<SemanticCheckStage>();
-                cfg.Add<ConvertToIrStage>();
+                cfg.Add<CollectTypesStage>();
                 cfg.Add<CompileFunctionsStage>();
+                cfg.Add<ImplementInterfacesStage>();
+                cfg.Add<ApplyRulesStage>();
                 cfg.Add<PrintErrorsStage>();
 
                 cfg.Add<SaveModuleStage>();

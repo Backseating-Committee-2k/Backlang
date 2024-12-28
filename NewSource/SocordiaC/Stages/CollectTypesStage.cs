@@ -1,12 +1,11 @@
 using Flo;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
-using Socordia.CodeAnalysis.AST.Declarations;
 using SocordiaC.Compilation;
 
 namespace SocordiaC.Stages;
 
-public class ConvertToIrStage : IHandler<Driver, Driver>
+public class CollectTypesStage : IHandler<Driver, Driver>
 {
     public async Task<Driver> HandleAsync(Driver context, Func<Driver, Task<Driver>> next)
     {

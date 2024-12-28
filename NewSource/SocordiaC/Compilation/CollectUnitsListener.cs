@@ -7,6 +7,7 @@ using DistIL.IR.Utils;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.Parsing;
 
 namespace SocordiaC.Compilation;
 
@@ -18,7 +19,7 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
     protected override void ListenToNode(Driver context, UnitDeclaration node)
     {
         var ns = context.GetNamespaceOf(node);
-        var type = context.Compilation.Module.CreateType(ns,Utils.ToPascalCase(node.Name),
+        var type = context.Compilation.Module.CreateType(ns,ParsingUtils.ToPascalCase(node.Name),
             TypeAttributes.Public, context.Compilation.Module.Resolver.Import(typeof(object)));
 
         var attrb = new CustomAttrib(context.KnownAttributes.MeasureAttributeCtor);
