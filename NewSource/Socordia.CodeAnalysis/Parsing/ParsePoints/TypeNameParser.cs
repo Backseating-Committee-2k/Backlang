@@ -12,6 +12,13 @@ public sealed class TypeNameParser
         var iterator = parser.Iterator;
         var typeToken = iterator.Current;
 
+        if (iterator.ConsumeIfMatch(TokenType.Unit))
+        {
+            var unitName = parser.ParseIdentifier();
+
+            return new UnitTypeName(unitName);
+        }
+
         if (iterator.IsMatch(TokenType.Identifier))
         {
             var typename = iterator.Match(TokenType.Identifier).Text;
