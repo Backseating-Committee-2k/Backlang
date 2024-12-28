@@ -1,6 +1,7 @@
 ﻿using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using Socordia.CodeAnalysis.Core;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
@@ -19,9 +20,7 @@ public sealed class EnumDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.OpenCurly);
 
-        List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
-
-        iterator.Match(TokenType.CloseCurly); //remove if member parsing works
+        var members = ParsingHelpers.ParseSeperated<EnumMemberDeclarationParser, EnumMemberDeclaration>(parser, TokenType.CloseCurly);
 
         return new EnumDeclaration(nameToken.Text, baseType, members);
     }

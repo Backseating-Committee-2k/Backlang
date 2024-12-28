@@ -17,7 +17,15 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
         type.CreateField("value__", new TypeSig(Utils.GetTypeFromNode(node.BaseType, type)), FieldAttributes.Public | FieldAttributes.SpecialName | FieldAttributes.RTSpecialName);
 
         // .field public static literal valuetype Color R = int32(0)
-        //type.CreateField("R", new TypeSig(type), FieldAttributes.Public | FieldAttributes.Literal | FieldAttributes.Static | FieldAttributes.HasDefault, 42);
+        foreach (var astNode in node.Children)
+        {
+            var member = (EnumMemberDeclaration)astNode;
+
+            type.CreateField(member.Name.Name, new TypeSig(type),
+                FieldAttributes.Public | FieldAttributes.Literal | FieldAttributes.Static | FieldAttributes.HasDefault,
+                Utils.GetLiteralValue(member.Value));
+        }
+
     }
 
     private TypeAttributes GetModifiers(Declaration node)

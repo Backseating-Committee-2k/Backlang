@@ -4,7 +4,7 @@ namespace Socordia.CodeAnalysis.AST.Declarations;
 
 public class EnumDeclaration : Declaration
 {
-    public EnumDeclaration(string name, TypeName baseType, List<AstNode> members)
+    public EnumDeclaration(string name, TypeName baseType, List<EnumMemberDeclaration> members)
     {
         Properties.Set(nameof(Name), name);
         Properties.Set(nameof(BaseType), baseType);

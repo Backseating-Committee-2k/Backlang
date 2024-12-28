@@ -1,21 +1,24 @@
-﻿namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 
-/*
-public class EnumMemberDeclaration : IParsePoint
+namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
+
+
+public class EnumMemberDeclarationParser : IParsePoint
 {
-    public static LNode Parse(TokenIterator iterator, Parser parser)
+    public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
         _ = AnnotationParser.TryParse(parser, out var annotations);
 
-        var memberNameToken = iterator.Match(TokenType.Identifier);
-        LNode value = LNode.Missing;
+        var memberName = parser.ParseIdentifier();
+        AstNode value = new EmptyNode();
 
         if (iterator.ConsumeIfMatch(TokenType.EqualsToken))
         {
             value = parser.ParsePrimary();
         }
 
-        return SyntaxTree.Factory.Var(LNode.Missing, LNode.Id(memberNameToken.Text), value).PlusAttrs(annotations);
+        return new EnumMemberDeclaration(memberName, value)
+            .WithAnnotations(annotations);
     }
 }
-*/

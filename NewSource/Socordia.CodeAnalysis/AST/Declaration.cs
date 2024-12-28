@@ -15,4 +15,10 @@ public class Declaration : AstNode
         get => Properties.GetOrThrow<List<Modifier>>(nameof(Modifiers));
         set => Properties.Set(nameof(Modifiers), value);
     }
+
+    public AstNode WithAnnotations(List<Annotation> annotations)
+    {
+        Annotations.AddRange(annotations);
+        return this;
+    }
 }

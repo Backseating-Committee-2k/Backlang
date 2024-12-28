@@ -151,6 +151,16 @@ public static class Utils
         return attrs;
     }
 
+    public static object? GetLiteralValue(AstNode? node)
+    {
+        if (node is LiteralNode lit)
+        {
+            return lit.Value;
+        }
+
+        return null;
+    }
+
     public static Value CreateValue(AstNode valueNode, BodyCompilation compilation)
     {
         return valueNode switch

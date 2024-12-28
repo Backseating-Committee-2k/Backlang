@@ -55,7 +55,9 @@ union Color
 
 enum ShortColor : i8
 {
-
+    R = 0,
+    G = 1,
+    B = 2
 }
 
 unit cm of f64;

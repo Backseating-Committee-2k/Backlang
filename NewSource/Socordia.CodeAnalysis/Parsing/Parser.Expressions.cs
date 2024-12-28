@@ -38,6 +38,13 @@ public sealed partial class Parser
                Iterator.Current.Line, Iterator.Current.Column)));
     }
 
+    public Identifier ParseIdentifier()
+    {
+        var id = Iterator.Match(TokenType.Identifier);
+
+        return new Identifier(id.Text);
+    }
+
     internal AstNode? ParsePrimary(ParsePointCollection? parsePoints = null)
     {
         parsePoints ??= ExpressionParsePoints;

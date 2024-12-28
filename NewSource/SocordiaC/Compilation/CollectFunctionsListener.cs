@@ -48,7 +48,7 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
         {
             var attribs = GetParameterAttributs(param);
             var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name, attribs);
-            paramDef.DefaultValue = GetLiteralValue(param.DefaultValue); //ToDo: convert default value
+            paramDef.DefaultValue = Utils.GetLiteralValue(param.DefaultValue); //ToDo: convert default value
             result.Add(paramDef);
         }
 
@@ -65,16 +65,6 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
         }
 
         return result;
-    }
-
-    private object? GetLiteralValue(AstNode? paramDefaultValue)
-    {
-        if (paramDefaultValue is LiteralNode lit)
-        {
-            return lit.Value;
-        }
-
-        return null;
     }
 
     private MethodAttributes GetModifiers(Declaration node)
