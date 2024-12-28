@@ -26,5 +26,10 @@ public class CollectRulesListener : Listener<Driver, AstNode, RulesDeclaration>
         {
             typename.AddError("Unit not found");
         }
+
+        if (!targetType.IsUnitType())
+        {
+            typename.AddError("Type is not a unit type");
+        }
     }
 }

@@ -205,4 +205,11 @@ public static class Utils
             _ => throw new NotImplementedException()
         };
     }
+
+    public static bool IsUnitType(this TypeDef type)
+    {
+        var attribs = type.GetCustomAttribs();
+
+        return attribs.Any(a => a.Type is { Namespace: "Socordia.Core.CompilerService", Name: "MeasureAttribute" });
+    }
 }
