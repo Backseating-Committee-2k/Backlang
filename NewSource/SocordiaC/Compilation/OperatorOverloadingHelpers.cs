@@ -1,4 +1,8 @@
-﻿namespace Backlang.Driver.Core;
+﻿using System.Collections.Immutable;
+using System.Reflection;
+using DistIL.AsmIO;
+
+namespace Backlang.Driver.Core;
 
 public static class OperatorOverloadingHelpers
 {
@@ -26,37 +30,35 @@ public static class OperatorOverloadingHelpers
         ["'%"] = "op_Percentage",
         ["'suf?"] = "op_Unpacking",
         ["implicit"] = "op_Implicit",
-        ["explicit"] = "op_Explicit"
+        ["explicit"] = "op_Explicit",
+        ["default"] = "op_Default"
     }.ToImmutableDictionary();
 
-    public static bool TryGetOperator(this IType type, string op, out IMethod opMethod, params IType[] args)
+    public static bool TryGetOperator(this TypeDefOrSpec type, string op, out MethodDef? opMethod, params TypeDefOrSpec[] args)
     {
-        var possibleMethods = type.Methods.Where(_ => _.IsStatic
-                                                      && !_.IsConstructor && !_.IsDestructor
-                                                      && _.Attributes.GetAll().Any(__ =>
-                                                          __?.AttributeType?.Name.ToString() == "SpecialNameAttribute")
-                                                      && _.Parameters.Count == args.Length
+        var possibleMethods = type.Methods.Cast<MethodDef>()
+            .Where(_ => _ is { IsStatic: true, IsConstructor: false, IsDestructor: false, IsPublic: true }
+                                                      && _.Attribs.HasFlag(MethodAttributes.SpecialName)
+                                                      && _.Params.Length == args.Length
         );
 
-        ImmutableDictionary<string, string> nameMap = null;
-        if (args.Length == 1)
+        var nameMap = args.Length switch
         {
-            nameMap = unMap;
-        }
-        else if (args.Length == 2)
-        {
-            nameMap = binMap;
-        }
+            1 => unMap,
+            2 => binMap,
+            _ => throw new Exception("Invalid number of arguments for operator")
+        };
 
         possibleMethods =
-            possibleMethods.Where(_ => nameMap.ContainsValue(_.Name.ToString()) && nameMap[op] == _.Name.ToString());
+            possibleMethods.Where(m => nameMap.ContainsValue(m.Name.ToString()) &&
+                                       nameMap[op] == m.Name.ToString());
 
         foreach (var method in possibleMethods)
         {
             for (var i = 0; i < args.Length; i++)
             {
                 var arg = args[i];
-                var param = method.Parameters[i].Type;
+                var param = method.Params[i].Type;
 
                 if (arg != param)
                 {
