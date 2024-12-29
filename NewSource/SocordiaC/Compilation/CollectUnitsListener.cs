@@ -8,6 +8,7 @@ using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
+using Socordia.Core.CompilerService;
 
 namespace SocordiaC.Compilation;
 
@@ -22,8 +23,7 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
         var type = context.Compilation.Module.CreateType(ns,ParsingUtils.ToPascalCase(node.Name),
             TypeAttributes.Public, context.Compilation.Module.Resolver.Import(typeof(object)));
 
-        var attrb = new CustomAttrib(context.KnownAttributes.MeasureAttributeCtor);
-        type.GetCustomAttribs(false).Add(attrb);
+        type.GetCustomAttribs(false).Add(context.KnownAttributes.GetAttribute<MeasureAttribute>());
 
         nameField = type.CreateField("Name", new TypeSig(PrimType.String),
             FieldAttributes.Public | FieldAttributes.Static | FieldAttributes.Literal | FieldAttributes.HasDefault, node.Name);

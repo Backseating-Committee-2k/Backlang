@@ -1,31 +1,25 @@
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using DistIL.AsmIO;
-using Socordia.Core.CompilerService;
 
 namespace SocordiaC.Compilation;
 
-public class KnownAttributes
+public class KnownAttributes(ModuleResolver resolver)
 {
-    public readonly TypeDefOrSpec MeasureAttribute;
-    public readonly MethodDesc? MeasureAttributeCtor;
+    private readonly Dictionary<Type, CustomAttrib> _cache = new();
 
-    public readonly TypeDefOrSpec ExtensionAttribute;
-    public readonly MethodDesc? ExtensionAttributeCtor;
-
-    public readonly TypeDefOrSpec UnitAttribute;
-    public readonly MethodDesc? UnitAttributeCtor;
-
-
-    public KnownAttributes(ModuleResolver resolver)
+    public CustomAttrib GetAttribute<T>()
+        where T : Attribute
     {
-        MeasureAttribute = resolver.Import(typeof(MeasureAttribute));
-        MeasureAttributeCtor = MeasureAttribute.FindMethod(".ctor");
+        var type = typeof(T);
+        if (_cache.TryGetValue(type, out var cachedAttrib))
+        {
+            return cachedAttrib;
+        }
 
-        ExtensionAttribute = resolver.Import(typeof(ExtensionAttribute));
-        ExtensionAttributeCtor = ExtensionAttribute.FindMethod(".ctor");
+        var importedType = resolver.Import(type);
+        var ctor = importedType.FindMethod(".ctor");
+        var customAttrib = new CustomAttrib(ctor);
 
-        UnitAttribute = resolver.Import(typeof(UnitAttribute));
-        UnitAttributeCtor = UnitAttribute.FindMethod(".ctor");
+        _cache[type] = customAttrib;
+        return customAttrib;
     }
 }

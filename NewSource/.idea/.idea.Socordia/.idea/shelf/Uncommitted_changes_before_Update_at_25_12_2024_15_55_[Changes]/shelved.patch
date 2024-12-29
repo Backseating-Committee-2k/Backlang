@@ -1,0 +1,57 @@
+Index: SocordiaC/Compilation/CollectClassesListener.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System.Reflection;\r\nusing DistIL.AsmIO;\r\nusing MrKWatkins.Ast.Listening;\r\nusing Socordia.CodeAnalysis.AST;\r\nusing Socordia.CodeAnalysis.AST.Declarations;\r\n\r\nnamespace SocordiaC.Compilation;\r\n\r\npublic class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration>\r\n{\r\n    protected override void ListenToNode(Driver context, ClassDeclaration node)\r\n    {\r\n        var ns = context.GetNamespaceOf(node);\r\n        var type = context.Compilation.Module.CreateType(ns, node.Name,\r\n            GetModifiers(node), GetBaseType(node, context.Compilation));\r\n    }\r\n\r\n    private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)\r\n    {\r\n        if (node.Inheritances.Count == 0)\r\n        {\r\n            return compilation.Module.Resolver.Import(typeof(object));\r\n        }\r\n\r\n        return Utils.GetTypeFromNode(node.Inheritances[0], compilation.Module);\r\n    }\r\n\r\n    private TypeAttributes GetModifiers(Declaration node)\r\n    {\r\n        var attrs = TypeAttributes.Public;\r\n\r\n        foreach (var modifier in node.Modifiers)\r\n        {\r\n            attrs |= modifier switch\r\n            {\r\n                Modifier.Static => TypeAttributes.Sealed | TypeAttributes.Abstract,\r\n                Modifier.Internal => TypeAttributes.NotPublic,\r\n                Modifier.Public => TypeAttributes.Public,\r\n                _ => throw new NotImplementedException()\r\n            };\r\n        }\r\n\r\n        if (node.Modifiers.Contains(Modifier.Private) || node.Modifiers.Contains(Modifier.Internal))\r\n        {\r\n            attrs &= ~TypeAttributes.Public;\r\n        }\r\n\r\n        return attrs;\r\n    }\r\n\r\n    protected override bool ShouldListenToChildren(Driver context, AstNode node) => true;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SocordiaC/Compilation/CollectClassesListener.cs b/SocordiaC/Compilation/CollectClassesListener.cs
+--- a/SocordiaC/Compilation/CollectClassesListener.cs	(revision faa1f054a61b2d6f28bc8b8f289f83e839d15836)
++++ b/SocordiaC/Compilation/CollectClassesListener.cs	(date 1735138475123)
+@@ -13,6 +13,8 @@
+         var ns = context.GetNamespaceOf(node);
+         var type = context.Compilation.Module.CreateType(ns, node.Name,
+             GetModifiers(node), GetBaseType(node, context.Compilation));
++
++
+     }
+ 
+     private TypeDefOrSpec? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
+Index: SocordiaC/compilation.sc
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module TestSuite;\r\n\r\nfunc main() -> none  {\r\n\r\n}\r\n\r\nprivate func test(hello: i32, flag: bool) -> i32\r\n{\r\n\r\n}\r\n\r\nfunc complex() -> Functions\r\n{\r\n\r\n}\r\n\r\nfunc external() -> System.Text.StringBuilder\r\n{\r\n\r\n}\r\n\r\nclass MyClass\r\n{\r\n\r\n}\r\n\r\ninternal class Hello : System.Text.StringBuilder\r\n{\r\n\r\n}\r\n\r\nstatic class Blub\r\n{\r\n\r\n}\r\n\r\nunion Color\r\n{\r\n\r\n}\r\n\r\nenum ShortColor : i8\r\n{\r\n\r\n}\r\n\r\nunit cm of f64;\r\nunit ml of f64;\r\n\r\npublic interface ILixou\r\n{\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SocordiaC/compilation.sc b/SocordiaC/compilation.sc
+--- a/SocordiaC/compilation.sc	(revision faa1f054a61b2d6f28bc8b8f289f83e839d15836)
++++ b/SocordiaC/compilation.sc	(date 1735138475124)
+@@ -24,7 +24,7 @@
+ 
+ }
+ 
+-internal class Hello : System.Text.StringBuilder
++internal class Hello : System.Text.StringBuilder, ILixou
+ {
+ 
+ }
+Index: SocordiaC/Compilation/CollectFunctionsListener.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System.Reflection;\r\nusing DistIL.AsmIO;\r\nusing DistIL.CodeGen.Cil;\r\nusing DistIL.IR;\r\nusing DistIL.IR.Utils;\r\nusing MrKWatkins.Ast.Listening;\r\nusing Socordia.CodeAnalysis.AST;\r\nusing Socordia.CodeAnalysis.AST.Declarations;\r\nusing MethodBody = DistIL.IR.MethodBody;\r\n\r\nnamespace SocordiaC.Compilation;\r\n\r\npublic class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefinition>\r\n{\r\n    protected override void ListenToNode(Driver context, FunctionDefinition node)\r\n    {\r\n        var attrs = GetModifiers(node);\r\n        var type = context.GetFunctionType(context.GetNamespaceOf(node));\r\n        var parameters = GetParameters(node, type);\r\n\r\n        var method = type.CreateMethod(node.Signature.Name.Name,\r\n            Utils.GetTypeFromNode(node.Signature.ReturnType, type), [..parameters], attrs);\r\n\r\n        if (!node.Modifiers.Contains(Modifier.Extern))\r\n        {\r\n            method.Body = new MethodBody(method);\r\n        }\r\n\r\n        if (type.Name == \"Functions\" && method.IsStatic && method.Name == \"main\")\r\n        {\r\n            context.Compilation.Module.EntryPoint = method;\r\n        }\r\n    }\r\n\r\n    private IEnumerable<ParamDef> GetParameters(FunctionDefinition node, TypeDef type)\r\n    {\r\n        var result = new List<ParamDef>();\r\n\r\n        foreach (var param in node.Signature.Parameters)\r\n        {\r\n            var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name);\r\n            //paramDef.DefaultValue = param.DefaultValue; //ToDo: convert default value\r\n            result.Add(paramDef);\r\n        }\r\n\r\n        return result;\r\n    }\r\n\r\n    private MethodAttributes GetModifiers(Declaration node)\r\n    {\r\n        var attrs = (MethodAttributes)0;\r\n\r\n        if (node.Parent is RootBlock)\r\n        {\r\n            attrs |= MethodAttributes.Static;\r\n        }\r\n\r\n        foreach (var modifier in node.Modifiers)\r\n        {\r\n            attrs |= modifier switch\r\n            {\r\n                Modifier.Static => MethodAttributes.Static,\r\n                Modifier.Private => MethodAttributes.Private,\r\n                Modifier.Protected => MethodAttributes.Family,\r\n                Modifier.Internal => MethodAttributes.Assembly,\r\n                Modifier.Public => MethodAttributes.Public,\r\n                _ => throw new NotImplementedException()\r\n            };\r\n        }\r\n\r\n        if (attrs == MethodAttributes.Static)\r\n        {\r\n            attrs |= MethodAttributes.Public;\r\n        }\r\n\r\n        return attrs;\r\n    }\r\n\r\n    protected override bool ShouldListenToChildren(Driver context, AstNode node) => false;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/SocordiaC/Compilation/CollectFunctionsListener.cs b/SocordiaC/Compilation/CollectFunctionsListener.cs
+--- a/SocordiaC/Compilation/CollectFunctionsListener.cs	(revision faa1f054a61b2d6f28bc8b8f289f83e839d15836)
++++ b/SocordiaC/Compilation/CollectFunctionsListener.cs	(date 1735138475123)
+@@ -26,7 +26,7 @@
+             method.Body = new MethodBody(method);
+         }
+ 
+-        if (type.Name == "Functions" && method.IsStatic && method.Name == "main")
++        if (type.Name == "Functions" && method is { IsStatic: true, Name: "main" })
+         {
+             context.Compilation.Module.EntryPoint = method;
+         }
