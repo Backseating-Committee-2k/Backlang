@@ -5,6 +5,11 @@ func ptr(x: i32 = 42): i32*
 
 }
 
+func ptrDeref(ptr: i32*): i32
+{
+    return *ptr;
+}
+
 func unit(x: unit cm): none
 {
 
@@ -81,8 +86,10 @@ public interface ILixou
 
 rules for unit seconds
 {
-  //  from seconds to minutes = seconds / 60;
-   // from minutes to seconds = derive from seconds; // automaticly derive conversion rule. In this case the opposite of seconds: minutes * 60
+    /*
+    func to(): minutes => seconds / 60;
+    func from(x: minutes) = derive; // automaticly derive conversion rule. In this case the opposite of seconds: minutes * 60
+    */
 }
 
 struct MyValue

@@ -101,9 +101,10 @@ public partial class Utils
         return unary.Operator switch
         {
             "'+" => left,
-            "'-" when left.ResultType.IsInt() => compilation.Builder.Emit(new UnaryInst(UnaryOp.Neg, left)),
-            "'-" when left.ResultType.IsFloat() => compilation.Builder.Emit(new UnaryInst(UnaryOp.FNeg, left)),
-            "'!" => compilation.Builder.Emit(new UnaryInst(UnaryOp.Not, left)),
+            "'-" when left.ResultType.IsInt() && unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.Neg, left)),
+            "'-" when left.ResultType.IsFloat() && unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.FNeg, left)),
+            "'!" when unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.Not, left)),
+            "'*" when unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.CreateLoad(left),
             _ => throw new InvalidOperationException()
         };
     }
