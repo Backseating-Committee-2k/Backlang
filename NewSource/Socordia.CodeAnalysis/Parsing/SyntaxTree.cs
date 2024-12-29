@@ -147,7 +147,7 @@ public static class SyntaxTree
 
     public static AstNode SizeOf(AstNode type)
     {
-        return new SizeOf(type);
+        return new SizeOfExpression(type);
     }
 
     public static LNode Struct(Token nameToken, LNodeList inheritances, LNodeList members)
@@ -172,7 +172,7 @@ public static class SyntaxTree
 
     public static AstNode Unary(string op, AstNode operand, UnaryOperatorKind kind)
     {
-        return new UnaryOperator(op, operand, kind);
+        return new UnaryOperatorExpression(op, operand, kind);
     }
 
     public static LNode Using(LNode expr)

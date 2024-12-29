@@ -93,7 +93,7 @@ public static class Expression
             var operatorToken = parser.Iterator.NextToken();
             var right = Parse(parser, parsePoints, precedence);
 
-            left =  new BinaryOperator($"'{operatorToken.Text}", left, right);
+            left =  new BinaryOperatorExpression($"'{operatorToken.Text}", left, right);
 
             // parsing postunary for: Hello::new()? = false;
             var postUnaryOperatorPrecedence = GetPostUnaryOperatorPrecedence(parser.Iterator.Current.Type);

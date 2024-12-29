@@ -14,12 +14,12 @@ public class QualifiedTypeName : TypeName
         }
     }
 
-    public QualifiedTypeName(BinaryOperator op)
+    public QualifiedTypeName(BinaryOperatorExpression op)
     {
         AddChildrenRecursively(op);
     }
 
-    private void AddChildrenRecursively(BinaryOperator op)
+    private void AddChildrenRecursively(BinaryOperatorExpression op)
     {
         foreach (var child in op.Children)
         {
@@ -27,7 +27,7 @@ public class QualifiedTypeName : TypeName
             {
                 Children.Add(new SimpleTypeName(id.Name));
             }
-            else if (child is BinaryOperator binaryChild && binaryChild.Operator == "'.")
+            else if (child is BinaryOperatorExpression binaryChild && binaryChild.Operator == "'.")
             {
                 AddChildrenRecursively(binaryChild);
             }

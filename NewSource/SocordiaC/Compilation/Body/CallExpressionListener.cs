@@ -64,7 +64,7 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
 
     private bool CreateStaticExternalCall(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
     {
-        if (node.Parent is BinaryOperator { Operator: "'::", Left: BinaryOperator typeNode })
+        if (node.Parent is BinaryOperatorExpression { Operator: "'::", Left: BinaryOperatorExpression typeNode })
         {
             var typename = new QualifiedTypeName(typeNode);
             var type = context.Driver.Compilation.Module.Resolver.FindType(typename.FullName);

@@ -1,8 +1,8 @@
 ﻿namespace Socordia.CodeAnalysis.AST.Expressions;
 
-public class SizeOf : AstNode
+public class SizeOfExpression : AstNode
 {
-    public SizeOf(AstNode type)
+    public SizeOfExpression(AstNode type)
     {
         Properties.Set(nameof(Type), type);
     }

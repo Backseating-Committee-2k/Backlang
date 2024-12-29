@@ -2,9 +2,9 @@
 
 namespace Socordia.CodeAnalysis.AST.Expressions;
 
-public class BinaryOperator : AstNode
+public class BinaryOperatorExpression : AstNode
 {
-    public BinaryOperator(string op, AstNode left, AstNode right)
+    public BinaryOperatorExpression(string op, AstNode left, AstNode right)
     {
         Properties.Set(nameof(Operator), op);
         Children.Add(left);
