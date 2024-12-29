@@ -192,6 +192,8 @@ public enum TokenType
 
     [Keyword("none")] None,
 
+    [Keyword("delegate")] Delegate,
+
     [Keyword("get")] Get,
 
     [Keyword("set")] Set,

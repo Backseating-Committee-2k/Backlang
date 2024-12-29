@@ -19,7 +19,6 @@ public sealed class ClassDeclarationParser : IParsePoint
         var extendsParsed = false;
 
         while (iterator.IsMatch(TokenType.Implements) || iterator.IsMatch(TokenType.Extends))
-        {
             if (iterator.Current.Type == TokenType.Implements && !implementsParsed)
             {
                 iterator.NextToken();
@@ -33,14 +32,8 @@ public sealed class ClassDeclarationParser : IParsePoint
                 baseType = TypeNameParser.Parse(parser);
                 extendsParsed = true;
             }
-        }
 
-        iterator.Match(TokenType.OpenCurly);
-
-        List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
-
-        iterator.Match(TokenType.CloseCurly); //remove if member parsing works
-
+        var members = ParsingHelpers.ParseDeclarationMembers<TypeMemberDeclaration>(parser);
         return new ClassDeclaration(nameToken.Text, baseType, inheritances, members);
     }
 }

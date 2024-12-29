@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.TypeNames;
 using Socordia.CodeAnalysis.Core;
 
@@ -18,12 +19,8 @@ public sealed class InterfaceDeclarationParser : IParsePoint
             inheritances = ParsingHelpers.ParseSeperated(parser, TokenType.OpenCurly, TypeNameParser.Parse, TokenType.Comma,false);
         }
 
-        iterator.Match(TokenType.OpenCurly);
+        var members = ParsingHelpers.ParseDeclarationMembers<TypeMemberDeclaration>(parser);
 
-        List<AstNode> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
-
-        iterator.Match(TokenType.CloseCurly); //remove if member parsing works
-
-        return new AST.Declarations.InterfaceDeclaration(nameToken.Text, inheritances, members);
+        return new InterfaceDeclaration(nameToken.Text, inheritances, members);
     }
 }

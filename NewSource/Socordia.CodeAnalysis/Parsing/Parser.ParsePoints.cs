@@ -21,6 +21,7 @@ public sealed partial class Parser
         //AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
         AddDeclarationParsePoint<UnionDeclarationParser>(TokenType.Union);
         AddDeclarationParsePoint<ClassDeclarationParser>(TokenType.Class);
+        AddDeclarationParsePoint<DelegateDeclarationParser>(TokenType.Delegate);
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<EnumDeclarationParser>(TokenType.Enum);
         AddDeclarationParsePoint<InterfaceDeclarationParser>(TokenType.Interface);

@@ -5,6 +5,22 @@ namespace Socordia.CodeAnalysis.Core;
 
 internal static class ParsingHelpers
 {
+    public static List<T> ParseDeclarationMembers<T>(Parser parser)
+        where T : AstNode
+    {
+        if (parser.Iterator.ConsumeIfMatch(TokenType.Semicolon))
+        {
+            return [];
+        }
+
+        parser.Iterator.Match(TokenType.OpenCurly);
+        List<T> members = []; //ParsingHelpers.ParseUntil<TypeMemberDeclaration>(parser, TokenType.CloseCurly);
+
+        parser.Iterator.Match(TokenType.CloseCurly); //remove if member parsing works
+
+        return members;
+    }
+
     public static List<TNode> ParseSeperated<T, TNode>(
         Parser parser,
         TokenType terminator,

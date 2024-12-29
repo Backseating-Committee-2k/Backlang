@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="" />
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/DelegateDeclarationParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Core/ParsingHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Core/ParsingHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/ClassDeclarationParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/ClassDeclarationParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/TokenType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/TokenType.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,23 +120,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.BacklangC.executor": "Run",
-    ".NET Project.SocordiaC.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/new-backend-sdk",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/new-backend-sdk&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -244,14 +250,8 @@
       <workItem from="1735417448805" duration="1483000" />
       <workItem from="1735463022538" duration="1907000" />
       <workItem from="1735465177968" duration="2675000" />
-    </task>
-    <task id="LOCAL-00030" summary="feat: Add QualifiedTypeName and type resolving in same module">
-      <option name="closed" value="true" />
-      <created>1734879872538</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1734879872538</updated>
+      <workItem from="1735469014713" duration="347000" />
+      <workItem from="1735476632919" duration="484000" />
     </task>
     <task id="LOCAL-00031" summary="chore(deps): Update Packages">
       <option name="closed" value="true" />
@@ -637,7 +637,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735467867642</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1735469343460</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1735469343460</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,8 +678,8 @@
     <MESSAGE value="feat: Make default operator overloadable" />
     <MESSAGE value="fix: expression body function" />
     <MESSAGE value="feat: Add typeof expression" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="feat: Add unary and binary instructions" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add unary and binary instructions" />
+    <MESSAGE value="refactor: Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
   </component>
 </project>
