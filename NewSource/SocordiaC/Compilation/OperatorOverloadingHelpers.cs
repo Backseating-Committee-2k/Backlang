@@ -34,7 +34,7 @@ public static class OperatorOverloadingHelpers
         ["default"] = "op_Default"
     }.ToImmutableDictionary();
 
-    public static bool TryGetOperator(this TypeDesc type, string op, out MethodDesc? opMethod, params TypeDefOrSpec[] args)
+    public static bool TryGetOperator(this TypeDesc type, string op, out MethodDesc? opMethod, params TypeDesc[] args)
     {
         if (type is PrimType)
         {

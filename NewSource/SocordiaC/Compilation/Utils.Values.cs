@@ -64,7 +64,47 @@ public partial class Utils
             DefaultLiteral def => CreateDefault(def, compilation),
             CallExpression call => CreateCall(call, compilation),
             TypeOfExpression typeOf => CreateTypeOf(typeOf, compilation),
+            UnaryOperatorExpression unary => CreateUnary(unary, compilation),
+            BinaryOperatorExpression binary => CreateBinary(binary, compilation),
             _ => throw new NotImplementedException()
+        };
+    }
+
+    private static Value CreateBinary(BinaryOperatorExpression binary, BodyCompilation compilation)
+    {
+        var left = CreateValue(binary.Left, compilation);
+        var right = CreateValue(binary.Right, compilation);
+
+        if (left.ResultType.TryGetOperator(binary.Operator, out var method, left.ResultType, right.ResultType))
+        {
+            return compilation.Builder.CreateCall(method!);
+        }
+
+        return binary.Operator switch
+        {
+            "'+" => compilation.Builder.CreateAdd(left, right),
+            "'-" => compilation.Builder.CreateSub(left, right),
+            "'*" => compilation.Builder.CreateMul(left, right),
+            "'/" => compilation.Builder.CreateFDiv(left, right),
+            _ => throw new InvalidOperationException()
+        };
+    }
+
+    private static Value CreateUnary(UnaryOperatorExpression unary, BodyCompilation compilation)
+    {
+        var left = CreateValue(unary.Operand, compilation);
+        if (left.ResultType.TryGetOperator(unary.Operator, out var method, left.ResultType))
+        {
+            return compilation.Builder.CreateCall(method!);
+        }
+
+        return unary.Operator switch
+        {
+            "'+" => left,
+            "'-" when left.ResultType.IsInt() => compilation.Builder.Emit(new UnaryInst(UnaryOp.Neg, left)),
+            "'-" when left.ResultType.IsFloat() => compilation.Builder.Emit(new UnaryInst(UnaryOp.FNeg, left)),
+            "'!" => compilation.Builder.Emit(new UnaryInst(UnaryOp.Not, left)),
+            _ => throw new InvalidOperationException()
         };
     }
 }

@@ -17,6 +17,7 @@ func main(): none  {
 
     print("hello");
     println("world");
+    print(1+2*3);
     System.Console::WriteLine("Hello World!");
     test(default(i32), true);
 }
