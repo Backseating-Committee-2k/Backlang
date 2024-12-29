@@ -50,7 +50,7 @@ public class Driver
         return node.Parent.Children.OfType<ModuleDeclaration>().FirstOrDefault()?.Canonicalize() ?? Settings.RootNamespace;
     }
 
-    public void Compile()
+    public async Task Compile()
     {
         var hasError = () => PrintErrorsStage.Errors.Count >= 0;
 
@@ -65,47 +65,10 @@ public class Driver
                 cfg.Add<PrintErrorsStage>();
 
                 cfg.Add<SaveModuleStage>();
-
-                /*cfg.When(_ => !hasError(_.Messages) && _.Options.OutputTree, _ => {
-                    _.Add<EmitTreeStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<InitStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<IntermediateStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<TypeInheritanceStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<ExpandImplementationStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<ImplementationStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<InitEmbeddedResourcesStage>();
-                });
-
-                cfg.When(_ => !hasError(_.Messages), _ => {
-                    _.Add<CompileTargetStage>();
-                });
-
-                cfg.When(_ => _.Messages.Any(), _ => {
-                    _.Add<ReportErrorStage>();
-                });
-                */
             }
         );
 
-        pipeline.Invoke(this);
+        await pipeline.Invoke(this);
     }
 
     public TypeDef GetFunctionType(string ns)

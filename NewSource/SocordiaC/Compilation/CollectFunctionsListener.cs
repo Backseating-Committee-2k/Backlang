@@ -53,20 +53,10 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
                     DefaultValue = Utils.GetLiteralValue(param.DefaultValue)
                 };
 
-            AddUnitAttribute(context, paramDef.GetCustomAttribs(false), param.Type, type);
             result.Add(paramDef);
         }
 
         return result;
-    }
-
-    private static void AddUnitAttribute(Driver context, IList<CustomAttrib> attribs, TypeName paramType, TypeDef containingType)
-    {
-        if (paramType is UnitTypeName unit)
-        {
-            var unitType = Utils.GetTypeFromNode(unit, containingType);
-            attribs.Add(new CustomAttrib(context.KnownAttributes.UnitAttributeCtor, [])); //todo: use unittype if its implemented internally
-        }
     }
 
     private ParameterAttributes GetParameterAttributes(ParameterDeclaration node)

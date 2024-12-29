@@ -1,3 +1,4 @@
+using DistIL.AsmIO;
 using DistIL.CodeGen.Cil;
 using DistIL.IR;
 using DistIL.IR.Utils;
@@ -23,7 +24,17 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
             else
             {
                 BodyCompilation.Listener.Listen(bodyCompilation, node);
-                builder.Emit(new ReturnInst());
+
+                if (node.IsExpressionBody && def.ReturnType == PrimType.Void)
+                {
+                    var ret = (ReturnInst)bodyCompilation.Method.Body.EntryBlock.First;
+                    ret.ReplaceWith(ret.Value);
+                }
+
+                if (def.ReturnType == PrimType.Void)
+                {
+                    builder.Emit(new ReturnInst());
+                }
             }
 
             def.ILBody = ILGenerator.GenerateCode(def.Body);

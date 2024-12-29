@@ -48,9 +48,7 @@ public static class Utils
                 return null;
             }
 
-            var valueField = unitType.FindField("value__");
-
-            return valueField.Type;
+            return unitType;
         }
 
         if (node is SimpleTypeName id)

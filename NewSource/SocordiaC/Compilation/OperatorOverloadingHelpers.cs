@@ -34,12 +34,17 @@ public static class OperatorOverloadingHelpers
         ["default"] = "op_Default"
     }.ToImmutableDictionary();
 
-    public static bool TryGetOperator(this TypeDesc type, string op, out MethodDef? opMethod, params TypeDefOrSpec[] args)
+    public static bool TryGetOperator(this TypeDesc type, string op, out MethodDesc? opMethod, params TypeDefOrSpec[] args)
     {
-        var possibleMethods = type.Methods.Cast<MethodDef>()
+        if (type is PrimType)
+        {
+            opMethod = null;
+            return false;
+        }
+
+        var possibleMethods = type.Methods
             .Where(_ => _ is { IsStatic: true, IsConstructor: false, IsDestructor: false, IsPublic: true }
                                                       && _.Attribs.HasFlag(MethodAttributes.SpecialName)
-                                                      && _.Params.Length == args.Length
         );
 
         var nameMap = args.Length switch
@@ -58,7 +63,7 @@ public static class OperatorOverloadingHelpers
             for (var i = 0; i < args.Length; i++)
             {
                 var arg = args[i];
-                var param = method.Params[i].Type;
+                var param = method.ParamSig[i].Type;
 
                 if (arg != param)
                 {

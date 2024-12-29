@@ -12,6 +12,7 @@ public sealed class FunctionDefinitionParser : IParsePoint
         var signature = SignatureParser.Parse(parser);
 
         Block body = null;
+        bool isExpressionBody = false;
         if (iterator.IsMatch(TokenType.OpenCurly))
         {
             body = Statements.Statement.ParseBlock(parser);
@@ -20,12 +21,13 @@ public sealed class FunctionDefinitionParser : IParsePoint
         {
             body = new Block([new ReturnStatement(Expression.Parse(parser))]);
             iterator.Match(TokenType.Semicolon);
+            isExpressionBody = true;
         }
         else
         {
             signature.AddError("Function body is missing");
         }
 
-        return new FunctionDefinition(signature, body);
+        return new FunctionDefinition(signature, isExpressionBody, body);
     }
 }

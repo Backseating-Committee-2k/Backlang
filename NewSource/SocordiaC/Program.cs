@@ -7,11 +7,18 @@ public static class Program
     public static void Main(string[] args)
     {
         Parser.Default.ParseArguments<DriverSettings>(args)
-            .WithParsed(options =>
+            .WithParsed(async void (options) =>
             {
-                var driver = Driver.Create(options);
+                try
+                {
+                    var driver = Driver.Create(options);
 
-                driver.Compile();
+                    await driver.Compile();
+                }
+                catch (Exception e)
+                {
+                    throw; // TODO handle exception
+                }
             })
             .WithNotParsed(errors =>
             {
