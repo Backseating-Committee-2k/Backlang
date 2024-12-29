@@ -12,7 +12,7 @@ public class CollectInterfacesListener : Listener<Driver, AstNode, InterfaceDecl
     {
         var ns = context.GetNamespaceOf(node);
         var type = context.Compilation.Module.CreateType(ns, node.Name,
-            Utils.GetModifiers(node) | TypeAttributes.Interface | TypeAttributes.Abstract,
+            Utils.GetTypeModifiers(node) | TypeAttributes.Interface | TypeAttributes.Abstract,
             context.Compilation.Resolver.SysTypes.Object);
     }
 

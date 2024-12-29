@@ -84,3 +84,8 @@ rules for unit seconds
   //  from seconds to minutes = seconds / 60;
    // from minutes to seconds = derive from seconds; // automaticly derive conversion rule. In this case the opposite of seconds: minutes * 60
 }
+
+struct MyValue
+{
+
+}

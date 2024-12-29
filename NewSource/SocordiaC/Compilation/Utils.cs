@@ -137,9 +137,9 @@ public static partial class Utils
         throw new Exception("cannot get type from node");
     }
 
-    public static TypeAttributes GetModifiers(Declaration node)
+    public static TypeAttributes GetTypeModifiers(Declaration node)
     {
-        var attrs = TypeAttributes.Public;
+        var attrs = TypeAttributes.Public | TypeAttributes.BeforeFieldInit;
 
         foreach (var modifier in node.Modifiers)
         {

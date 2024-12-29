@@ -1,7 +1,4 @@
-﻿using DistIL.Util;
-using Loyc.Syntax;
-using Socordia.CodeAnalysis.AST;
-using Socordia.CodeAnalysis.Core;
+﻿using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.Parsing.ParsePoints;
 using Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 using Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions;
@@ -18,24 +15,27 @@ public sealed partial class Parser
 
     public void InitParsePoints()
     {
-        //AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
-        AddDeclarationParsePoint<UnionDeclarationParser>(TokenType.Union);
-        AddDeclarationParsePoint<ClassDeclarationParser>(TokenType.Class);
-        AddDeclarationParsePoint<DelegateDeclarationParser>(TokenType.Delegate);
-        AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
+        AddDeclarationParsePoint<ImportStatementParser>(TokenType.Import);
+        AddDeclarationParsePoint<ModuleDeclarationParser>(TokenType.Module);
+        AddDeclarationParsePoint<TypeAliasDeclarationParser>(TokenType.Using);
+
         AddDeclarationParsePoint<EnumDeclarationParser>(TokenType.Enum);
+        AddDeclarationParsePoint<StructDeclarationParser>(TokenType.Struct);
+        AddDeclarationParsePoint<ClassDeclarationParser>(TokenType.Class);
         AddDeclarationParsePoint<InterfaceDeclarationParser>(TokenType.Interface);
+        AddDeclarationParsePoint<DelegateDeclarationParser>(TokenType.Delegate);
+        AddDeclarationParsePoint<UnionDeclarationParser>(TokenType.Union);
+        AddDeclarationParsePoint<UnitDeclarationParser>(TokenType.Unit);
+
+        AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<RulesForDeclarationParser>(TokenType.Rules);
+
       /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
         AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
+        AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
         AddDeclarationParsePoint<DiscriminatedUnionDeclaration>(TokenType.Type);
         AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
         AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/
-        AddDeclarationParsePoint<ImportStatementParser>(TokenType.Import);
-      //  AddDeclarationParsePoint<StructDeclaration>(TokenType.Struct);
-        AddDeclarationParsePoint<ModuleDeclarationParser>(TokenType.Module);
-        AddDeclarationParsePoint<TypeAliasDeclarationParser>(TokenType.Using);
-        AddDeclarationParsePoint<UnitDeclarationParser>(TokenType.Unit);
        // AddDeclarationParsePoint<MacroBlockDeclaration>(TokenType.Identifier);
 
         AddExpressionParsePoint<IdentifierParser>(TokenType.Identifier);

@@ -9,12 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/DelegateDeclarationParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Core/ParsingHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Core/ParsingHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/ClassDeclarationParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/ClassDeclarationParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/TokenType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/TokenType.cs" afterDir="false" />
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="feat: Add Core for delegate declaration">
+      <change afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/Declarations/Types/StructDeclaration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectStructsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/ConstructorDeclarationParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/ConstructorDeclarationParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/DestructorDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/DestructorDeclaration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/FunctionDefinitionParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/FunctionDefinitionParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/MacroDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/MacroDeclaration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/TypeFunctionDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/TypeFunctionDeclaration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Types/StructDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Types/StructDeclarationParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/Parser.ParsePoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/Parser.ParsePoints.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/CollectClassesListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectClassesListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/CollectInterfacesListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectInterfacesListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/CollectTypesStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/CollectTypesStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/compilation.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/compilation.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,15 +260,7 @@
       <workItem from="1735463022538" duration="1907000" />
       <workItem from="1735465177968" duration="2675000" />
       <workItem from="1735469014713" duration="347000" />
-      <workItem from="1735476632919" duration="484000" />
-    </task>
-    <task id="LOCAL-00031" summary="chore(deps): Update Packages">
-      <option name="closed" value="true" />
-      <created>1734892816479</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1734892816479</updated>
+      <workItem from="1735476632919" duration="1871000" />
     </task>
     <task id="LOCAL-00032" summary="chore(deps): Update Packages">
       <option name="closed" value="true" />
@@ -645,7 +646,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735469343460</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="feat: Add Core for delegate declaration">
+      <option name="closed" value="true" />
+      <created>1735477772121</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1735477772121</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +664,6 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add interface declaration" />
     <MESSAGE value="feat: Add namespaces to free functions" />
     <MESSAGE value="feat: Add extends &amp;&amp; implements keywords" />
     <MESSAGE value="feat: Add core for function compilation" />
@@ -680,6 +688,7 @@
     <MESSAGE value="feat: Add typeof expression" />
     <MESSAGE value="feat: Add unary and binary instructions" />
     <MESSAGE value="refactor: Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
+    <MESSAGE value="feat: Add Core for delegate declaration" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add Core for delegate declaration" />
   </component>
 </project>

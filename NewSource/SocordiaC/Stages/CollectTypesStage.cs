@@ -11,6 +11,7 @@ public class CollectTypesStage : IHandler<Driver, Driver>
     {
         var collectTypesPipeline = CompositeListener<Driver, AstNode>.Build()
             .With(new CollectClassesListener())
+            .With(new CollectStructsListener())
             .With(new CollectEnumListener())
             .With(new CollectUnitsListener())
             .With(new CollectUnionsListener())
