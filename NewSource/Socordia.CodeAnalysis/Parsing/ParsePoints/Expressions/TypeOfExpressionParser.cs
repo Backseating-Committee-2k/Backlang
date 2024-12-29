@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Expressions;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions;
 
@@ -12,6 +13,6 @@ public sealed class TypeOfExpressionParser : IParsePoint
 
         iterator.Match(TokenType.CloseParen);
 
-        return SyntaxTree.TypeOfExpression(type);
+        return new TypeOfExpression(type);
     }
 }

@@ -7,6 +7,7 @@ using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
 using Socordia.CodeAnalysis.Parsing;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Expressions;
 using SocordiaC.Compilation.Body;
 
 namespace SocordiaC.Compilation;
@@ -176,8 +177,21 @@ public static class Utils
             LiteralNode literal => CreateLiteral(literal.Value),
             DefaultLiteral def => CreateDefault(def, compilation),
             CallExpression call => CreateCall(call, compilation),
+            TypeOfExpression typeOf => CreateTypeOf(typeOf, compilation),
             _ => throw new NotImplementedException()
         };
+    }
+
+    private static Value CreateTypeOf(TypeOfExpression typeOf, BodyCompilation compilation)
+    {
+        var type = GetTypeFromNode(typeOf.Type, compilation.Driver.Compilation.Module)!;
+
+        var ldToken = compilation.Builder.Emit(new CilIntrinsic.LoadHandle(compilation.Method.Module.Resolver, type));
+
+        var typeType = compilation.Builder.Resolver.Import(typeof(Type));
+        var fromTokenMethod = typeType.FindMethod("GetTypeFromHandle")!;
+
+        return new CallInst(fromTokenMethod, [ldToken]);
     }
 
     private static Value CreateCall(CallExpression call, BodyCompilation compilation)

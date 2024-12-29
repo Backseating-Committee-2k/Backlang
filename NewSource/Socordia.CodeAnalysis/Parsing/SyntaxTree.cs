@@ -200,11 +200,6 @@ public static class SyntaxTree
         return new UnitLiteral(value, unit);
     }
 
-    public static AstNode TypeOfExpression(AstNode type)
-    {
-        return new TypeOf(type);
-    }
-
     public static AstNode DoWhile(Block body, AstNode cond)
     {
         return new DoWhileStatement(body, cond);

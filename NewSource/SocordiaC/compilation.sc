@@ -13,6 +13,7 @@ func unit(x: unit cm): none
 func main(): none  {
     let myFlag = true;
     let t = test(1, false);
+    let t : System.Type = typeof(i32);
 
     print("hello");
     println("world");
