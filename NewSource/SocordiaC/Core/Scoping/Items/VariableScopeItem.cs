@@ -7,9 +7,9 @@ public class VariableScopeItem : ScopeItem
 {
     public bool IsMutable { get; init; }
 
-    public LocalSlot Parameter { get; set; }
+    public LocalSlot Slot { get; set; }
 
-    public override TypeDesc Type => Parameter.Type;
+    public override TypeDesc Type => Slot.Type;
 
     public void Deconstruct(out string name, out bool isMutable)
     {

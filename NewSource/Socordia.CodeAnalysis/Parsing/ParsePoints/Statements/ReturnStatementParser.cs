@@ -7,12 +7,14 @@ public sealed class ReturnStatementParser : IParsePoint
 {
     public static AstNode Parse(TokenIterator iterator, Parser parser)
     {
-        if (iterator.IsMatch(TokenType.Semicolon))
+        if (iterator.ConsumeIfMatch(TokenType.Semicolon))
         {
-            iterator.Match(TokenType.Semicolon);
-            return new ReturnStatement(Expression.Parse(parser));
+            return new ReturnStatement(new EmptyNode());
         }
 
-        return null;
+        AstNode node = new ReturnStatement(Expression.Parse(parser));
+        iterator.Match(TokenType.Semicolon);
+
+        return node;
     }
 }

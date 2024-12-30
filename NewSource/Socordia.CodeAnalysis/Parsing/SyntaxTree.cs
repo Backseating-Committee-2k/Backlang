@@ -170,11 +170,6 @@ public static class SyntaxTree
         return new TryStatement(body, catches, finallly);
     }
 
-    public static AstNode Unary(string op, AstNode operand, UnaryOperatorKind kind)
-    {
-        return new UnaryOperatorExpression(op, operand, kind);
-    }
-
     public static LNode Using(LNode expr)
     {
         if (!expr.Calls(CodeSymbols.As)) // TODO: throw error in intermediate stage when has only one arg

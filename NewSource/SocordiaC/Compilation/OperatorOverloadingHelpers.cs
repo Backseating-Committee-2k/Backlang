@@ -8,27 +8,27 @@ public static class OperatorOverloadingHelpers
 {
     private static readonly ImmutableDictionary<string, string> binMap = new Dictionary<string, string>
     {
-        ["'+"] = "op_Addition",
-        ["'/"] = "op_Division",
-        ["'-"] = "op_Subtraction",
-        ["'*"] = "op_Multiply",
-        ["'%"] = "op_Modulus",
-        ["'&"] = "op_BitwiseAnd",
-        ["'|"] = "op_BitwiseOr",
-        ["'^"] = "op_ExclusiveOr",
-        ["'=="] = "op_Equality",
-        ["'!="] = "op_Inequality"
+        ["+"] = "op_Addition",
+        ["/"] = "op_Division",
+        ["-"] = "op_Subtraction",
+        ["*"] = "op_Multiply",
+        ["%"] = "op_Modulus",
+        ["&"] = "op_BitwiseAnd",
+        ["|"] = "op_BitwiseOr",
+        ["^"] = "op_ExclusiveOr",
+        ["=="] = "op_Equality",
+        ["!="] = "op_Inequality"
     }.ToImmutableDictionary();
 
     private static readonly ImmutableDictionary<string, string> unMap = new Dictionary<string, string>
     {
-        ["'!"] = "op_LogicalNot",
-        ["'-"] = "op_UnaryNegation",
-        ["'~"] = "op_OnesComplement",
-        ["'*"] = "op_Deref",
-        ["'&"] = "op_AddressOf",
-        ["'%"] = "op_Percentage",
-        ["'suf?"] = "op_Unpacking",
+        ["!"] = "op_LogicalNot",
+        ["-"] = "op_UnaryNegation",
+        ["~"] = "op_OnesComplement",
+        ["*"] = "op_Deref",
+        ["&"] = "op_AddressOf",
+        ["%"] = "op_Percentage",
+        ["suf?"] = "op_Unpacking",
         ["implicit"] = "op_Implicit",
         ["explicit"] = "op_Explicit",
         ["default"] = "op_Default"

@@ -4,6 +4,7 @@ using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Statements;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using SocordiaC.Core.Scoping.Items;
 
 namespace SocordiaC.Compilation.Body;
 
@@ -32,6 +33,13 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
         }
 
         var slot = context.Method.Body!.CreateVar(type, node.Name);
+
+        context.Scope.Add(new VariableScopeItem()
+        {
+            Slot = slot,
+            Name = node.Name,
+            IsMutable = node.IsMutable
+        });
 
         context.Builder.CreateStore(slot, value);
     }

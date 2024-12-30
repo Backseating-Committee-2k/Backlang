@@ -5,15 +5,15 @@ namespace SocordiaC.Core.Scoping.Items;
 
 public class ParameterScopeItem : ScopeItem
 {
-    public Argument Parameter { get; init; }
+    public required Argument Arg { get; init; }
 
-    public override TypeDesc Type => Parameter.ResultType;
+    public override TypeDesc Type => Arg.ResultType;
 
 
     public void Deconstruct(out string name, out Argument parameter, out TypeDesc type)
     {
         name = Name;
-        parameter = Parameter;
+        parameter = Arg;
         type = Type;
     }
 }

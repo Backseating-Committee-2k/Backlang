@@ -5,6 +5,8 @@ using DistIL.IR.Utils;
 using Flo;
 using SocordiaC.Compilation;
 using SocordiaC.Compilation.Body;
+using SocordiaC.Core.Scoping;
+using SocordiaC.Core.Scoping.Items;
 
 namespace SocordiaC.Stages;
 
@@ -14,8 +16,18 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
     {
         foreach (var (node, def) in Mappings.Functions)
         {
+            var scope = new Scope(null!);
+            foreach (var arg in def.Body!.Args)
+            {
+                scope.Add(new ParameterScopeItem
+                {
+                    Name = arg.Name,
+                    Arg = arg
+                });
+            }
+
             var builder = new IRBuilder(def.Body!.CreateBlock());
-            var bodyCompilation = new BodyCompilation(context, def, builder);
+            var bodyCompilation = new BodyCompilation(context, def, builder, scope);
 
             if (!node.Children[1].HasChildren)
             {

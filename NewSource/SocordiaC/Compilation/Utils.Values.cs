@@ -4,6 +4,8 @@ using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using SocordiaC.Compilation.Body;
+using SocordiaC.Core.Scoping;
+using SocordiaC.Core.Scoping.Items;
 
 namespace SocordiaC.Compilation;
 
@@ -66,8 +68,26 @@ public partial class Utils
             TypeOfExpression typeOf => CreateTypeOf(typeOf, compilation),
             UnaryOperatorExpression unary => CreateUnary(unary, compilation),
             BinaryOperatorExpression binary => CreateBinary(binary, compilation),
+            Identifier id => ConvertIdentifier(id, compilation),
             _ => throw new NotImplementedException()
         };
+    }
+
+    private static Value ConvertIdentifier(Identifier id, BodyCompilation compilation)
+    {
+        if (compilation.Scope.TryGet<ScopeItem>(id.Name, out var item))
+        {
+            switch (item)
+            {
+                case VariableScopeItem var:
+                    return var.Slot;
+                case ParameterScopeItem p:
+                    return p.Arg;
+            }
+        }
+
+        id.AddError("Not found");
+        return new Undef(PrimType.Void);
     }
 
     private static Value CreateBinary(BinaryOperatorExpression binary, BodyCompilation compilation)
@@ -82,10 +102,10 @@ public partial class Utils
 
         return binary.Operator switch
         {
-            "'+" => compilation.Builder.CreateAdd(left, right),
-            "'-" => compilation.Builder.CreateSub(left, right),
-            "'*" => compilation.Builder.CreateMul(left, right),
-            "'/" => compilation.Builder.CreateFDiv(left, right),
+            "+" => compilation.Builder.CreateAdd(left, right),
+            "-" => compilation.Builder.CreateSub(left, right),
+            "*" => compilation.Builder.CreateMul(left, right),
+            "/" => compilation.Builder.CreateFDiv(left, right),
             _ => throw new InvalidOperationException()
         };
     }
@@ -100,11 +120,11 @@ public partial class Utils
 
         return unary.Operator switch
         {
-            "'+" => left,
-            "'-" when left.ResultType.IsInt() && unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.Neg, left)),
-            "'-" when left.ResultType.IsFloat() && unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.FNeg, left)),
-            "'!" when unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.Not, left)),
-            "'*" when unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.CreateLoad(left),
+            "+" => left,
+            "-" when left.ResultType.IsInt() && unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.Neg, left)),
+            "-" when left.ResultType.IsFloat() && unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.FNeg, left)),
+            "!" when unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.Emit(new UnaryInst(UnaryOp.Not, left)),
+            "*" when unary.Kind == UnaryOperatorKind.Prefix => compilation.Builder.CreateLoad(left),
             _ => throw new InvalidOperationException()
         };
     }

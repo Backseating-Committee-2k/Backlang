@@ -61,7 +61,7 @@ public static class Expression
 
                 var operand = Parse(parser, parsePoints, preUnaryOperatorPrecedence + 1);
 
-                left = SyntaxTree.Unary(operatorToken.Text, operand, UnaryOperatorKind.Prefix);
+                left = new UnaryOperatorExpression(operatorToken.Text, operand, UnaryOperatorKind.Prefix);
             }
         }
         else
@@ -77,7 +77,7 @@ public static class Expression
                 {
                     var unaryOperatorToken = parser.Iterator.NextToken();
 
-                    left = SyntaxTree.Unary(unaryOperatorToken.Text, left, UnaryOperatorKind.Suffix);
+                    left = new UnaryOperatorExpression(unaryOperatorToken.Text, left, UnaryOperatorKind.Suffix);
                 }
             }
         }
@@ -93,7 +93,7 @@ public static class Expression
             var operatorToken = parser.Iterator.NextToken();
             var right = Parse(parser, parsePoints, precedence);
 
-            left =  new BinaryOperatorExpression($"'{operatorToken.Text}", left, right);
+            left =  new BinaryOperatorExpression(operatorToken.Text, left, right);
 
             // parsing postunary for: Hello::new()? = false;
             var postUnaryOperatorPrecedence = GetPostUnaryOperatorPrecedence(parser.Iterator.Current.Type);
@@ -104,7 +104,7 @@ public static class Expression
                 {
                     var unaryOperatorToken = parser.Iterator.NextToken();
 
-                    left = SyntaxTree.Unary(unaryOperatorToken.Text, left, UnaryOperatorKind.Suffix);
+                    left = new UnaryOperatorExpression(unaryOperatorToken.Text, left, UnaryOperatorKind.Suffix);
                 }
             }
         }

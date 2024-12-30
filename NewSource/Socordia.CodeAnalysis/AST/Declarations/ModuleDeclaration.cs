@@ -33,7 +33,7 @@ public class ModuleDeclaration : Declaration
                 result.Add(id.Name);
                 break;
             }
-            if (node is BinaryOperatorExpression { Operator: "'." } bin)
+            if (node is BinaryOperatorExpression { Operator: "." } bin)
             {
                 result.Add(((Identifier)bin.Left).Name);
 

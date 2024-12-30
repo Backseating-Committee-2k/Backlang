@@ -27,7 +27,7 @@ public class QualifiedTypeName : TypeName
             {
                 Children.Add(new SimpleTypeName(id.Name));
             }
-            else if (child is BinaryOperatorExpression binaryChild && binaryChild.Operator == "'.")
+            else if (child is BinaryOperatorExpression binaryChild && binaryChild.Operator == ".")
             {
                 AddChildrenRecursively(binaryChild);
             }

@@ -9,21 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="feat: Add Core for delegate declaration">
-      <change afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/Declarations/Types/StructDeclaration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectStructsListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/ConstructorDeclarationParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/ConstructorDeclarationParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/DestructorDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/DestructorDeclaration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/FunctionDefinitionParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/FunctionDefinitionParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/MacroDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/MacroDeclaration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Function/TypeFunctionDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Functions/TypeFunctionDeclaration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Types/StructDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Declarations/Types/StructDeclarationParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/Parser.ParsePoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/Parser.ParsePoints.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/CollectClassesListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectClassesListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/CollectInterfacesListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectInterfacesListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/CollectTypesStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/CollectTypesStage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/compilation.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/compilation.sc" afterDir="false" />
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/ReturnStatementParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/ReturnStatementParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Body/BodyCompilation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Body/BodyCompilation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Body/VariableDeclarationListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Body/VariableDeclarationListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/ParameterScopeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/ParameterScopeItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/VariableScopeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/VariableScopeItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Core/Scoping/ScopeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Core/Scoping/ScopeItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/CompileFunctionsStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/CompileFunctionsStage.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +49,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/dfa7c66b7487443aaa21b1be53a05c53d800/2a/8768da54/02000026pdb5.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7e64c2e7c42f46e989ab9f228541207b49200/29/be7776f7/SourceRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c73b3c6c598640c592fd3c6fa226c286e90908/0c/5bbe86f8/Func`2.cs" root0="FORCE_HIGHLIGHTING" />
@@ -94,6 +91,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdd9c1c66cd8e7c8578c6e845264e8ba2b3b568bd7babddb25f8fdbe1a9e8e8a/ResolvingUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1d1ed6be2d5d4de542b4af5b36e82f6d1d1a389a35a4e4f9748d137d1c651/Parallel.ForEachAsync.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c351909d66e0e2d8fb1558b25e19e78566569f97d3c5b5f88c8cd39fca067/PrimType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cfc424d9a3673fba85546041b7b58fd13db2cf0eaae2a1c73f31422d8c392fa/MemoryInsts.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d48d1f7eea62273bafc65557b3c55219f427e54aab79b592a6b04030a836b0/FieldDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d675f7e18f6c8f01b2e4cbbadddb0875d446ad12c156cce103d100c093f72/ModuleWriter.Handles.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dd39523f94b27f1ff3b2e60444e1d40ff8a5282453a4a81b23998584ec0820/Ensure.cs" root0="FORCE_HIGHLIGHTING" />
@@ -109,9 +107,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/StackHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/CompilerDriver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/Stages/CompilationStages/ImplementationStage.BodyCompile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Core/Implementors/Statements/PrintOrPrintlnImplementor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/TypeDeducer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -129,23 +125,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/new-backend-sdk&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.BacklangC.executor": "Run",
+    ".NET Project.SocordiaC.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/new-backend-sdk",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -260,23 +256,14 @@
       <workItem from="1735463022538" duration="1907000" />
       <workItem from="1735465177968" duration="2675000" />
       <workItem from="1735469014713" duration="347000" />
-      <workItem from="1735476632919" duration="1871000" />
-    </task>
-    <task id="LOCAL-00032" summary="chore(deps): Update Packages">
-      <option name="closed" value="true" />
-      <created>1734939736865</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1734939736865</updated>
-    </task>
-    <task id="LOCAL-00033" summary="feat: Add resolving external type">
-      <option name="closed" value="true" />
-      <created>1734940200558</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1734940200558</updated>
+      <workItem from="1735476632919" duration="2128000" />
+      <workItem from="1735478828299" duration="54000" />
+      <workItem from="1735479432658" duration="275000" />
+      <workItem from="1735486574174" duration="147000" />
+      <workItem from="1735486786475" duration="112000" />
+      <workItem from="1735493921299" duration="561000" />
+      <workItem from="1735555925393" duration="816000" />
+      <workItem from="1735559827454" duration="538000" />
     </task>
     <task id="LOCAL-00034" summary="feat: Add finding entry method">
       <option name="closed" value="true" />
@@ -654,7 +641,23 @@
       <option name="project" value="LOCAL" />
       <updated>1735477772121</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="feat: Add struct declaration">
+      <option name="closed" value="true" />
+      <created>1735478721022</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1735478721023</updated>
+    </task>
+    <task id="LOCAL-00082" summary="feat: Add ptr dereference operator">
+      <option name="closed" value="true" />
+      <created>1735494495106</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1735494495107</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,8 +667,6 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add namespaces to free functions" />
-    <MESSAGE value="feat: Add extends &amp;&amp; implements keywords" />
     <MESSAGE value="feat: Add core for function compilation" />
     <MESSAGE value="refactor: ast position improvements" />
     <MESSAGE value="feat: Add resolving SimpleTypeName in same namespace" />
@@ -689,6 +690,27 @@
     <MESSAGE value="feat: Add unary and binary instructions" />
     <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="feat: Add Core for delegate declaration" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add Core for delegate declaration" />
+    <MESSAGE value="feat: Add struct declaration" />
+    <MESSAGE value="feat: Add ptr dereference operator" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add ptr dereference operator" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/Parser.Expressions.cs</url>
+          <line>35</line>
+          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\Socordia.CodeAnalysis\Parsing\Parser.Expressions.cs" containingFunctionPresentation="Method 'AddError'">
+            <startOffsets>
+              <option value="994" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1179" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

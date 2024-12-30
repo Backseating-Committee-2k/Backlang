@@ -40,12 +40,12 @@ public sealed partial class Parser
 
         AddExpressionParsePoint<IdentifierParser>(TokenType.Identifier);
         AddExpressionParsePoint<GroupOrTupleExpressionParser>(TokenType.OpenParen);
-       // AddExpressionParsePoint<MatchExpression>(TokenType.Match);
         AddExpressionParsePoint<DefaultExpressionParser>(TokenType.Default);
         AddExpressionParsePoint<SizeOfExpressionParser>(TokenType.SizeOf);
         AddExpressionParsePoint<TypeOfExpressionParser>(TokenType.TypeOf);
         AddExpressionParsePoint<NoneExpressionParser>(TokenType.None);
         AddExpressionParsePoint<InitializerListExpression>(TokenType.OpenSquare);
+       // AddExpressionParsePoint<MatchExpression>(TokenType.Match);
 
         AddStatementParsePoint<ThrowStatementParser>(TokenType.Throw);
         AddStatementParsePoint<BreakStatementParser>(TokenType.Break);
