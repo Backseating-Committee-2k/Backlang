@@ -57,7 +57,7 @@ public class Driver
         var pipeline = Pipeline.Build<Driver, Driver>(
             cfg => {
                 cfg.Add<ParsingStage>();
-                cfg.Add<SemanticCheckStage>();
+                cfg.Add<ValidationStage>();
                 cfg.Add<CollectTypesStage>();
                 cfg.Add<CompileFunctionsStage>();
                 cfg.Add<ImplementInterfacesStage>();

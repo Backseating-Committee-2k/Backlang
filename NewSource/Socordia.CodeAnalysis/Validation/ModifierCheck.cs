@@ -1,7 +1,4 @@
-﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.AST;
-
-namespace SocordiaC.Core.Semantic.Checks;
+﻿namespace Socordia.CodeAnalysis.Validation;
 
 /*
 internal class ModifierCheck : ISemanticCheck

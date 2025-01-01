@@ -89,6 +89,7 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
                 Modifier.Protected => MethodAttributes.Family,
                 Modifier.Internal => MethodAttributes.Assembly,
                 Modifier.Public => MethodAttributes.Public,
+                Modifier.Operator => MethodAttributes.Public | MethodAttributes.Static,
                 _ => throw new NotImplementedException()
             };
         }

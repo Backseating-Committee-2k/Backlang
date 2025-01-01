@@ -28,7 +28,7 @@ func main(): none  {
 }
 
 private func test(hello: i32, flag: bool): i32 -> 42;
-private func expressionBody(hello: i32, flag: bool): none -> print(42);
+//private func expressionBody(hello: i32, flag: bool): none -> print(42);
 
 func complex(): Functions
 {
