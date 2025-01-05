@@ -1,4 +1,24 @@
+import System;
+
 module TestSuite;
+
+type Expr = | Literal(value: obj)
+            | Binary(left: Expr, op: string, right: Expr);
+
+func main(): none  {
+    let myFlag = true;
+
+    //myFlag = false;
+/*
+    let t = test(1, false);
+    let tpp : System.Type = typeof(i32);
+
+    print("hello");
+    println("world");
+    print(1+2*3);
+    System.Console::WriteLine("Hello World!");
+    test(default(i32), true);*/
+}
 
 func ptr(x: i32 = 42): i32*
 {
@@ -13,18 +33,6 @@ func ptrDeref(ptr: i32*): i32
 func unit(x: unit cm): none
 {
 
-}
-
-func main(): none  {
-    let myFlag = true;
-    let t = test(1, false);
-    let t : System.Type = typeof(i32);
-
-    print("hello");
-    println("world");
-    print(1+2*3);
-    System.Console::WriteLine("Hello World!");
-    test(default(i32), true);
 }
 
 private func test(hello: i32, flag: bool): i32 -> 42;

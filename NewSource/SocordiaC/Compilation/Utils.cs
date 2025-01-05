@@ -29,7 +29,10 @@ public static partial class Utils
     private static readonly Dictionary<string, TypeDesc> Primities = new()
     {
         ["none"]  = PrimType.Void,
+        ["obj"]  = PrimType.Object,
         ["bool"]  = PrimType.Bool,
+        ["string" ] = PrimType.String,
+        ["char" ] = PrimType.Char,
         ["i8" ] = PrimType.Byte,
         ["i16" ] = PrimType.Int16,
         ["i32" ] = PrimType.Int32,
@@ -134,7 +137,7 @@ public static partial class Utils
             }
         }
 
-        throw new Exception("cannot get type from node");
+        throw new Exception($"cannot get type {node} from node");
     }
 
     public static TypeAttributes GetTypeModifiers(Declaration node)
@@ -175,5 +178,10 @@ public static partial class Utils
         var attribs = type.GetCustomAttribs();
 
         return attribs.Any(a => a.Type is { Namespace: "Socordia.Core.CompilerService", Name: "MeasureAttribute" });
+    }
+
+    public static FieldAttributes GetFieldModifiers(ParameterDeclaration parameter)
+    {
+        return FieldAttributes.Public | FieldAttributes.InitOnly;
     }
 }

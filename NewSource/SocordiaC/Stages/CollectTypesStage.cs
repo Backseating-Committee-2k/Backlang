@@ -16,6 +16,7 @@ public class CollectTypesStage : IHandler<Driver, Driver>
             .With(new CollectUnitsListener())
             .With(new CollectUnionsListener())
             .With(new CollectInterfacesListener())
+            .With(new CollectDUsListener())
             .ToListener();
 
         foreach (var tree in context.Trees)
