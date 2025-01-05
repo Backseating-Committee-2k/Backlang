@@ -26,6 +26,7 @@ public sealed partial class Parser
         AddDeclarationParsePoint<DelegateDeclarationParser>(TokenType.Delegate);
         AddDeclarationParsePoint<UnionDeclarationParser>(TokenType.Union);
         AddDeclarationParsePoint<UnitDeclarationParser>(TokenType.Unit);
+        AddDeclarationParsePoint<DiscriminatedUnionDeclarationParser>(TokenType.Type);
 
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<RulesForDeclarationParser>(TokenType.Rules);
@@ -33,7 +34,6 @@ public sealed partial class Parser
       /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
         AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
         AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
-        AddDeclarationParsePoint<DiscriminatedUnionDeclaration>(TokenType.Type);
         AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
         AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/
        // AddDeclarationParsePoint<MacroBlockDeclaration>(TokenType.Identifier);

@@ -1,6 +1,6 @@
 ﻿namespace Socordia.CodeAnalysis.AST.Statements;
 
-public class ImportStatement : AstNode
+public class ImportStatement : Declaration
 {
     public ImportStatement(AstNode expression)
     {

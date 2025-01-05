@@ -12,4 +12,6 @@ public class ReturnStatementListener : Listener<BodyCompilation, AstNode, Return
         var value = Utils.CreateValue(node.Value, context);
         context.Builder.Emit(new ReturnInst(value));
     }
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node) => false;
 }
