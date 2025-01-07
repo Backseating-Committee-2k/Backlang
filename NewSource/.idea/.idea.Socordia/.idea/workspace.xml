@@ -10,15 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Validation/ImportValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Body/BinaryOperatorListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CommonIR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/shelf/Uncommitted_changes_before_Update_at_25_12_2024_15_55_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/shelf/Uncommitted_changes_before_Update_at_25_12_2024_15_55__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/ReturnStatementParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/ReturnStatementParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Expressions/SizeOfExpression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Expressions/SizeOfExpression.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/ImportStatementParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/ImportStatementParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/SyntaxTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/SyntaxTree.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Validation/ImportCheck.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Validation/NodeValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Validation/NodeValidator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Body/BodyCompilation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Body/BodyCompilation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Body/VariableDeclarationListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Body/VariableDeclarationListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/ParameterScopeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/ParameterScopeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/VariableScopeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Core/Scoping/Items/VariableScopeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Core/Scoping/ScopeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Core/Scoping/ScopeItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/CompileFunctionsStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/CompileFunctionsStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Body/CallExpressionListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Body/CallExpressionListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/CollectDUsListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/CollectDUsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/KnownAttributes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/KnownAttributes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Source/Backlang.Contracts/StackHelpers.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +56,6 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/dfa7c66b7487443aaa21b1be53a05c53d800/2a/8768da54/02000026pdb5.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7e64c2e7c42f46e989ab9f228541207b49200/29/be7776f7/SourceRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c73b3c6c598640c592fd3c6fa226c286e90908/0c/5bbe86f8/Func`2.cs" root0="FORCE_HIGHLIGHTING" />
@@ -75,9 +80,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/54c7fa9daf3ab775e3ebabc3f3948a6e2a484886fa1196f813b98e17e36aa49/RuntimeHelpers.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5721e0b9418f5e596511045f45452fe565c584893345bc8af3363e961770/CompositeListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5852286feadc183060c3afd0b673277531abeabca13ab4e0703f9be354162/TextFilePosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5ad3dee0127c64b78a3581f4784b2a263495293ab1e395b1a5c7a4f654d55a/Exceptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/61d8a75bc2b8d32e6a998ce0fa1656c98412476ee2598ab38d5e166a85c560b/Validator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69e0d37423d59312312786ab0dfe876f67d55fbc0fda977d259fa67aa8235b2/ILGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70dec725939bb2449cfbcc2b22ba23dd6580ac8bf28768feb40a84a32366/Listener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/73cfcbdbcb83be1e61422a471ed2814ac1d9de9d1afe6c4446c5e4f55581cd7/Zip.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/74120f07332b3f91cc2413130a36219276f15f01d425ebaabbfb03965618e1/ListenerLookup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/758cb2cb8587e6f4f9f904b4846fce768ce6129a3784431f7ff79ad568fe70/MethodDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/763b707d6f6764383a602b5545d6f235f01d9f4737ff2c88fcdbefba7e91a66/TypeDesc.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d496f629ef14c57507b8cc65b1a5e9729fc92ae9cd5199ad62a4bd63d3ce3/ModuleDef.cs" root0="FORCE_HIGHLIGHTING" />
@@ -106,7 +114,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fb1a7a48bd25f2334211bffa6834e8ee6628fa663edf1bf6374d86c97c3ead/MetadataBuilder.Heaps.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/StackHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/Stages/CompilationStages/CompileTargetStage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/Stages/CompilationStages/ImplementationStage.BodyCompile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/TypeDeducer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -125,23 +134,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.BacklangC.executor": "Run",
-    ".NET Project.SocordiaC.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/new-backend-sdk",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/new-backend-sdk&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -264,30 +273,18 @@
       <workItem from="1735493921299" duration="561000" />
       <workItem from="1735555925393" duration="816000" />
       <workItem from="1735559827454" duration="538000" />
-    </task>
-    <task id="LOCAL-00034" summary="feat: Add finding entry method">
-      <option name="closed" value="true" />
-      <created>1734940214618</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1734940214618</updated>
-    </task>
-    <task id="LOCAL-00035" summary="refactor: Cleanup">
-      <option name="closed" value="true" />
-      <created>1734940349354</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1734940349354</updated>
-    </task>
-    <task id="LOCAL-00036" summary="feat: Add collecting classes">
-      <option name="closed" value="true" />
-      <created>1734940831363</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1734940831363</updated>
+      <workItem from="1735835436174" duration="82000" />
+      <workItem from="1735911197158" duration="3501000" />
+      <workItem from="1735939958733" duration="388000" />
+      <workItem from="1735997801319" duration="495000" />
+      <workItem from="1736072705508" duration="677000" />
+      <workItem from="1736084752852" duration="3259000" />
+      <workItem from="1736088608490" duration="197000" />
+      <workItem from="1736100587286" duration="366000" />
+      <workItem from="1736101731119" duration="807000" />
+      <workItem from="1736103352990" duration="783000" />
+      <workItem from="1736288784099" duration="228000" />
+      <workItem from="1736290227737" duration="1536000" />
     </task>
     <task id="LOCAL-00037" summary="feat: Add converting modifiers">
       <option name="closed" value="true" />
@@ -657,7 +654,31 @@
       <option name="project" value="LOCAL" />
       <updated>1735494495107</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="feat: Add Lowerer">
+      <option name="closed" value="true" />
+      <created>1735912183655</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1735912183655</updated>
+    </task>
+    <task id="LOCAL-00084" summary="feat: Add core for DUs">
+      <option name="closed" value="true" />
+      <created>1736087987413</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1736087987413</updated>
+    </task>
+    <task id="LOCAL-00085" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1736088015992</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1736088015992</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,10 +686,19 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add core for function compilation" />
-    <MESSAGE value="refactor: ast position improvements" />
     <MESSAGE value="feat: Add resolving SimpleTypeName in same namespace" />
     <MESSAGE value="feat: Add compiling VariableStatement" />
     <MESSAGE value="feat: Add CallExpression, print and println" />
@@ -688,11 +718,13 @@
     <MESSAGE value="fix: expression body function" />
     <MESSAGE value="feat: Add typeof expression" />
     <MESSAGE value="feat: Add unary and binary instructions" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="feat: Add Core for delegate declaration" />
     <MESSAGE value="feat: Add struct declaration" />
     <MESSAGE value="feat: Add ptr dereference operator" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add ptr dereference operator" />
+    <MESSAGE value="feat: Add Lowerer" />
+    <MESSAGE value="feat: Add core for DUs" />
+    <MESSAGE value="refactor: Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -709,6 +741,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs</url>
+          <line>109</line>
+          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.Values.cs" containingFunctionPresentation="Method 'CreateBinary'">
+            <startOffsets>
+              <option value="4066" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4103" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs</url>
+          <line>118</line>
+          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.cs" containingFunctionPresentation="Method 'GetTypeFromNode'">
+            <startOffsets>
+              <option value="3473" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3474" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

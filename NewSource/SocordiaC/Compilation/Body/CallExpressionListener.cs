@@ -26,7 +26,7 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
     {
         if (shouldEmit)
         {
-            context.Builder.Emit(CallInstruction);
+            //context.Builder.Emit(CallInstruction);
         }
     }
 
@@ -99,4 +99,6 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
                 args,
                 (p, a) => p.Type.IsAssignableTo(a.ResultType)).All(x => x)).ToArray();
     }
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node) => false;
 }

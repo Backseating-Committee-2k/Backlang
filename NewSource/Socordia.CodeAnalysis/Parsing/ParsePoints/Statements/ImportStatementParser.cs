@@ -1,4 +1,5 @@
 ﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Statements;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
 
@@ -9,7 +10,7 @@ public sealed class ImportStatementParser : IParsePoint
         //import <identifier>
         //import <identifier>.<identifier>
         var keywordToken = iterator.Prev;
-        var tree = SyntaxTree.Import(Expression.Parse(parser));
+        var tree = new ImportStatement(Expression.Parse(parser));
 
         iterator.Match(TokenType.Semicolon);
 

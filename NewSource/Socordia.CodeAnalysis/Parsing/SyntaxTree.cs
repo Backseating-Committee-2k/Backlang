@@ -26,17 +26,6 @@ public static class SyntaxTree
         return Factory.Call(Symbols.Constructor, LNode.List(Factory.AltList(parameters), code));
     }
 
-    public static LNode DiscriminatedType(Token nameToken, LNodeList parameters)
-    {
-        return Factory.Call(Symbols.DiscriminatedType,
-            LNode.List(Factory.FromToken(nameToken), Factory.AltList(parameters)));
-    }
-
-    public static LNode DiscriminatedUnion(Token nameToken, LNodeList types)
-    {
-        return Factory.Call(Symbols.DiscriminatedUnion,
-            LNode.List(Factory.FromToken(nameToken), Factory.AltList(types)));
-    }
 
     public static LNode Property(LNode type, LNode name, LNode getter, LNode setter, LNode value)
     {
@@ -84,14 +73,6 @@ public static class SyntaxTree
         return Factory.Call(CodeSymbols.Case, LNode.List(condition, body));
     }
 
-    public static LNode Enum(LNode name, LNodeList members)
-    {
-        return Factory.Call(CodeSymbols.Enum, Factory.AltList(name,
-            Factory.Call(CodeSymbols.AltList),
-            Factory.Call(CodeSymbols.Braces,
-                members)));
-    }
-
     public static AstNode For(AstNode varExpr, AstNode type, AstNode arr, Block body)
     {
         return new ForStatement(varExpr, type, arr, body);
@@ -109,11 +90,6 @@ public static class SyntaxTree
         return Factory.Call(Symbols.Implementation,
             Factory.AltList(target, LNode.Call(CodeSymbols.Braces,
                 body).SetStyle(NodeStyle.StatementBlock))).WithAttrs(attributes);
-    }
-
-   public static AstNode Import(AstNode expr)
-    {
-        return new ImportStatement(expr);
     }
 
     public static LNode Interface(Token nameToken, LNodeList inheritances, LNodeList members)
@@ -143,11 +119,6 @@ public static class SyntaxTree
     public static LNode NullableType(LNode type)
     {
         return Factory.Call(Symbols.NullableType, LNode.List(type));
-    }
-
-    public static AstNode SizeOf(AstNode type)
-    {
-        return new SizeOfExpression(type);
     }
 
     public static LNode Struct(Token nameToken, LNodeList inheritances, LNodeList members)

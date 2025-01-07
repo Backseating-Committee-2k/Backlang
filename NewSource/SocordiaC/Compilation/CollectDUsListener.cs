@@ -20,42 +20,16 @@ public class CollectDUsListener : Listener<Driver, AstNode, DiscriminatedUnionDe
 
         foreach (var child in node.Children.OfType<DiscriminatedType>())
         {
-            var childType = context.Compilation.Module.CreateType(ns, child.Name,
-                Utils.GetTypeModifiers(node), baseType);
+            var childType = baseType.CreateNestedType(child.Name,
+                Utils.GetTypeModifiers(node), baseType: baseType);
 
             foreach (var parameter in child.Children.OfType<ParameterDeclaration>())
             {
-                childType.CreateField(parameter.Name, new TypeSig(Utils.GetTypeFromNode(parameter.Type, childType)), Utils.GetFieldModifiers(parameter));
+                childType.CreateField(parameter.Name, new TypeSig(Utils.GetTypeFromNode(parameter.Type, baseType)), Utils.GetFieldModifiers(parameter));
             }
 
-            GenerateCtor(childType, baseType, context);
+            CommonIR.GenerateCtor(childType);
         }
-    }
-
-    private void GenerateCtor(TypeDef childType, TypeDef baseType, Driver context)
-    {
-        var parameters = new List<ParamDef>();
-        parameters.Add(new ParamDef(new TypeSig(childType), "this"));
-
-        foreach (var field in childType.Fields)
-        {
-            parameters.Add(new ParamDef(new TypeSig(field.Type), field.Name));
-        }
-
-        var ctor = childType.CreateMethod(".ctor", new TypeSig(PrimType.Void), [.. parameters],
-            MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
-        ctor.Body = new MethodBody(ctor);
-        var irBuilder = new IRBuilder(ctor.Body.CreateBlock());
-
-        foreach (var arg in ctor.Body.Args.Skip(1))
-        {
-            irBuilder.CreateFieldStore(childType.FindField(arg.Name), ctor.Body.Args[0], arg);
-        }
-
-        irBuilder.Emit(new ReturnInst());
-
-        ctor.ILBody = ILGenerator.GenerateCode(ctor.Body);
-
     }
 
     protected override bool ShouldListenToChildren(Driver context, AstNode node) => false;

@@ -13,6 +13,7 @@ public static class NodeValidator
                     builder.AddStage<OperatorDefinitionValidator>();
                     builder.AddStage<ClassTypenameValidator>();
                     builder.AddStage<InterfaceTypenameValidator>();
+                    builder.AddStage<ImportValidator>();
                     builder.AddStage<ModuleDeclarationValidator>();
                 });
 }

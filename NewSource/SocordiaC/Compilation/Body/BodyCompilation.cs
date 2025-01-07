@@ -12,6 +12,7 @@ public record BodyCompilation(Driver Driver, MethodDef Method, IRBuilder Builder
         CompositeListener<BodyCompilation, AstNode>.Build()
             .With(new VariableDeclarationListener())
             .With(new CallExpressionListener(true))
+            .With(new BinaryOperatorListener())
             .With(new ReturnStatementListener())
             .ToListener();
 }
