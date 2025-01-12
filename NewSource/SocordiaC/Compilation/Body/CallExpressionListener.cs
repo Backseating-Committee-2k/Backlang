@@ -24,9 +24,9 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
 
     protected override void AfterListenToNode(BodyCompilation context, CallExpression node)
     {
-        if (shouldEmit)
+        if (shouldEmit && CallInstruction.Block == null)
         {
-            //context.Builder.Emit(CallInstruction);
+            context.Builder.Emit(CallInstruction);
         }
     }
 
