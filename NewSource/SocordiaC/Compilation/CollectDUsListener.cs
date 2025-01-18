@@ -30,6 +30,8 @@ public class CollectDUsListener : Listener<Driver, AstNode, DiscriminatedUnionDe
 
             CommonIR.GenerateCtor(childType);
         }
+
+        Utils.EmitAnnotations(node, baseType);
     }
 
     protected override bool ShouldListenToChildren(Driver context, AstNode node) => false;

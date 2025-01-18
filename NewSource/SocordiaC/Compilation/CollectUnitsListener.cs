@@ -33,6 +33,8 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
 
         CreateCtor(type, valueType);
         CreateToString(type);
+
+        Utils.EmitAnnotations(node, type);
     }
 
     private void CreateToString(TypeDef type)

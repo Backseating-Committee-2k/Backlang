@@ -13,6 +13,8 @@ public class CollectStructsListener : Listener<Driver, AstNode, StructDeclaratio
         var type = context.Compilation.Module.CreateType(ns, node.Name,
             Utils.GetTypeModifiers(node) | TypeAttributes.Sealed | TypeAttributes.SequentialLayout,
             context.Compilation.Resolver.SysTypes.ValueType);
+
+        Utils.EmitAnnotations(node, type);
     }
 
     protected override bool ShouldListenToChildren(Driver context, AstNode node) => false;

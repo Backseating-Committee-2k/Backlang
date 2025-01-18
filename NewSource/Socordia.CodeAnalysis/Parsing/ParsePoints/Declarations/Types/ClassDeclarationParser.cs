@@ -12,6 +12,12 @@ public sealed class ClassDeclarationParser : IParsePoint
         var keywordToken = iterator.Prev;
 
         var nameToken = iterator.Match(TokenType.Identifier);
+
+        if (iterator.ConsumeIfMatch(TokenType.OpenParen))
+        {
+            //todo: Parse Primary Ctor
+        }
+
         var inheritances = new List<TypeName>();
         TypeName? baseType = null;
 

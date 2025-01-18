@@ -39,6 +39,8 @@ public class CollectFunctionsListener() : Listener<Driver, AstNode, FunctionDefi
         }
 
         Mappings.Functions.Add(node, method);
+
+        Utils.EmitAnnotations(node, method);
     }
 
     private IEnumerable<ParamDef> GetParameters(FunctionDefinition node, TypeDef type, Driver context)

@@ -26,6 +26,7 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
                 Utils.GetLiteralValue(member.Value));
         }
 
+        Utils.EmitAnnotations(node, type);
     }
 
     private TypeAttributes GetModifiers(Declaration node)

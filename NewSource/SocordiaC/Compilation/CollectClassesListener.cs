@@ -14,6 +14,8 @@ public class CollectClassesListener : Listener<Driver, AstNode, ClassDeclaration
             Utils.GetTypeModifiers(node), (TypeDefOrSpec)GetBaseType(node, context.Compilation));
 
         Mappings.Types[node] = type;
+
+        Utils.EmitAnnotations(node, type);
     }
 
     private TypeDesc? GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)

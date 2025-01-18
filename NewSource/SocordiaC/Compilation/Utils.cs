@@ -184,4 +184,33 @@ public static partial class Utils
     {
         return FieldAttributes.Public | FieldAttributes.InitOnly;
     }
+
+    public static void EmitAnnotation(Annotation annotation, ModuleEntity entity)
+    {
+        AppendAttributeToName();
+
+        var type = GetTypeFromNode(annotation.Name, entity.Module);
+        var ctor = type.FindMethod(".ctor");
+
+        var attrib = new CustomAttrib(ctor);
+        entity.GetCustomAttribs(false).Add(attrib);
+        return;
+
+        void AppendAttributeToName()
+        {
+            var name = annotation.Name;
+            if (name.Children.Last is SimpleTypeName s && !s.Name.EndsWith("Attribute"))
+            {
+                s.Name += "Attribute";
+            }
+        }
+    }
+
+    public static void EmitAnnotations(Declaration declaration, ModuleEntity entity)
+    {
+        foreach (var annotation in declaration.Annotations)
+        {
+            EmitAnnotation(annotation, entity);
+        }
+    }
 }

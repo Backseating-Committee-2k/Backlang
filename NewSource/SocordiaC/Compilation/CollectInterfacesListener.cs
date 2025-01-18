@@ -14,6 +14,8 @@ public class CollectInterfacesListener : Listener<Driver, AstNode, InterfaceDecl
         var type = context.Compilation.Module.CreateType(ns, node.Name,
             Utils.GetTypeModifiers(node) | TypeAttributes.Interface | TypeAttributes.Abstract,
             context.Compilation.Resolver.SysTypes.Object);
+
+        Utils.EmitAnnotations(node, type);
     }
 
     protected override bool ShouldListenToChildren(Driver context, AstNode node) => true;

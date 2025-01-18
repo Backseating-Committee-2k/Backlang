@@ -16,6 +16,7 @@ public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
             GetModifiers(node) | TypeAttributes.ExplicitLayout | TypeAttributes.BeforeFieldInit,
             context.Compilation.Resolver.SysTypes.Object);
 
+        Utils.EmitAnnotations(node, type);
     }
 
     private TypeAttributes GetModifiers(Declaration node)

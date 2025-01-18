@@ -8,7 +8,7 @@ public sealed class AnnotationParser
     {
         var atToken = iterator.Match(TokenType.At);
 
-        var name = iterator.Match(TokenType.Identifier);
+        var name = TypeNameParser.Parse(parser);
         var args = new List<AstNode>();
 
         if (iterator.IsMatch(TokenType.OpenParen))
@@ -18,7 +18,7 @@ public sealed class AnnotationParser
             args = Expression.ParseList(parser, TokenType.CloseParen);
         }
 
-        return new Annotation(name.Text, args);
+        return new Annotation(name, args);
     }
 
     public static bool TryParse(Parser parser, out List<Annotation> node)
