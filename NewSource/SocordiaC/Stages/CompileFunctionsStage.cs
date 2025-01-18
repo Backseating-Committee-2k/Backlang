@@ -49,8 +49,6 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
             def.ILBody = ILGenerator.GenerateCode(def.Body);
         }
 
-        Mappings.Functions.Clear();
-
         return await next.Invoke(context);
     }
 
