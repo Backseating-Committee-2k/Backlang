@@ -2,6 +2,7 @@
 using DistIL;
 using DistIL.AsmIO;
 using Flo;
+using LanguageSdk.Templates.Core;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
@@ -74,7 +75,7 @@ public class Driver
 
     public TypeDef GetFunctionType(string ns)
     {
-        if (_functionTypes.TryGetValue(ns, out TypeDef? value))
+        if (_functionTypes.TryGetValue(ns, out var value))
         {
             return value;
         }
