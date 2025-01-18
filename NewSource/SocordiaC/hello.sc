@@ -2,4 +2,5 @@
 func main(): none
 {
     print("Hello World");
+    throw "an error";
 }
