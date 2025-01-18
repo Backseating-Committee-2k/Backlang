@@ -103,6 +103,8 @@ public partial class Utils
             "*" => compilation.Builder.CreateMul(left, right),
             "/" => compilation.Builder.CreateFDiv(left, right),
             "=" => CreateAssignment(left, right, compilation),
+            "==" => compilation.Builder.CreateCmp(CompareOp.Eq, left, right),
+            "!=" => compilation.Builder.CreateCmp(CompareOp.Ne, left, right),
             _ => throw new InvalidOperationException()
         };
     }

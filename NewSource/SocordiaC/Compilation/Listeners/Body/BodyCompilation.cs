@@ -15,5 +15,6 @@ public record BodyCompilation(Driver Driver, MethodDef Method, IRBuilder Builder
             .With(new BinaryOperatorListener())
             .With(new ThrowStatementListener())
             .With(new ReturnStatementListener())
+            .With(new IfStatementListener())
             .ToListener();
 }

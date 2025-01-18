@@ -10,12 +10,10 @@ public sealed class IfStatementParser : IParsePoint
         var keywordToken = iterator.Prev;
         var cond = Expression.Parse(parser);
         var body = Statement.ParseOneOrBlock(parser);
-        Block elseBlock = new Block([]);
+        var elseBlock = new Block([]);
 
-        if (iterator.Current.Type == TokenType.Else)
+        if (iterator.ConsumeIfMatch(TokenType.Else))
         {
-            iterator.NextToken();
-
             elseBlock = Statement.ParseOneOrBlock(parser);
         }
 
