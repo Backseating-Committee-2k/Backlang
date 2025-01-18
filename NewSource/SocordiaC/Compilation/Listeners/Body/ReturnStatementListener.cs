@@ -3,7 +3,7 @@ using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Statements;
 
-namespace SocordiaC.Compilation.Body;
+namespace SocordiaC.Compilation.Listeners.Body;
 
 public class ReturnStatementListener : Listener<BodyCompilation, AstNode, ReturnStatement>
 {
