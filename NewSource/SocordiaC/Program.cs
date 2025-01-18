@@ -9,23 +9,13 @@ public static class Program
         Parser.Default.ParseArguments<DriverSettings>(args)
             .WithParsed(async void (options) =>
             {
-                try
-                {
-                    var driver = Driver.Create(options);
+                var driver = Driver.Create(options);
 
-                    await driver.Compile();
-                }
-                catch (Exception e)
-                {
-                    throw; // TODO handle exception
-                }
+                await driver.Compile();
             })
             .WithNotParsed(errors =>
             {
-                foreach (var error in errors)
-                {
-                    Console.WriteLine(error.ToString());
-                }
+                foreach (var error in errors) Console.WriteLine(error.ToString());
             });
     }
 }

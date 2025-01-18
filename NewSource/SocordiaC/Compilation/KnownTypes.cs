@@ -2,12 +2,7 @@ using DistIL.AsmIO;
 
 namespace SocordiaC.Compilation;
 
-public class KnownTypes
+public class KnownTypes(ModuleResolver resolver)
 {
-    public KnownTypes(ModuleResolver resolver)
-    {
-        ConsoleType = resolver.Import(typeof(Console));
-    }
-
-    public TypeDefOrSpec? ConsoleType { get; set; }
+    public TypeDefOrSpec? ConsoleType { get; set; } = resolver.Import(typeof(Console));
 }

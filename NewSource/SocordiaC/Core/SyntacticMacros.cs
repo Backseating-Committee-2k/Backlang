@@ -1,9 +1,4 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
-using LeMP;
-using Loyc;
-using Loyc.Syntax;
-using Socordia.CodeAnalysis.Parsing;
+﻿using LeMP;
 
 namespace SocordiaC.Core;
 

@@ -4,9 +4,9 @@ using DistIL.IR;
 using DistIL.IR.Utils;
 using Flo;
 using SocordiaC.Compilation;
-using SocordiaC.Compilation.Body;
-using SocordiaC.Core.Scoping;
-using SocordiaC.Core.Scoping.Items;
+using SocordiaC.Compilation.Listeners.Body;
+using SocordiaC.Compilation.Scoping;
+using SocordiaC.Compilation.Scoping.Items;
 
 namespace SocordiaC.Stages;
 
@@ -18,13 +18,11 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
         {
             var scope = new Scope(null!);
             foreach (var arg in def.Body!.Args)
-            {
                 scope.Add(new ParameterScopeItem
                 {
                     Name = arg.Name,
                     Arg = arg
                 });
-            }
 
             var builder = new IRBuilder(def.Body!.CreateBlock());
             var bodyCompilation = new BodyCompilation(context, def, builder, scope);
@@ -43,10 +41,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
                     ret.ReplaceWith(ret.Value);
                 }
 
-                if (def.ReturnType == PrimType.Void)
-                {
-                    builder.Emit(new ReturnInst());
-                }
+                if (def.ReturnType == PrimType.Void) builder.Emit(new ReturnInst());
             }
 
             def.ILBody = ILGenerator.GenerateCode(def.Body);

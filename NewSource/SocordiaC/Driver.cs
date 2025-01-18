@@ -19,7 +19,7 @@ public class Driver
     public required KnownAttributes KnownAttributes { get; set; }
     public required KnownTypes KnownTypes { get; set; }
 
-    private Dictionary<string, TypeDef> _functionTypes { get; set; } = new();
+    private Dictionary<string, TypeDef> _functionTypes { get; } = new();
 
     public Optimizer Optimizer { get; set; }
     public List<Message> Messages { get; set; } = [];
@@ -34,7 +34,8 @@ public class Driver
 
         var compilation = new DistIL.Compilation(module, new ConsoleLogger(), new CompilationSettings());
         var optimizer = new Optimizer();
-        optimizer.CreatePassManager(compilation); ;
+        optimizer.CreatePassManager(compilation);
+        ;
 
         return new Driver
         {
@@ -48,7 +49,8 @@ public class Driver
 
     public string GetNamespaceOf(AstNode node)
     {
-        return node.Parent.Children.OfType<ModuleDeclaration>().FirstOrDefault()?.Canonicalize() ?? Settings.RootNamespace;
+        return node.Parent.Children.OfType<ModuleDeclaration>().FirstOrDefault()?.Canonicalize() ??
+               Settings.RootNamespace;
     }
 
     public async Task Compile()
@@ -56,7 +58,8 @@ public class Driver
         var hasError = () => PrintErrorsStage.Errors.Count >= 0;
 
         var pipeline = Pipeline.Build<Driver, Driver>(
-            cfg => {
+            cfg =>
+            {
                 cfg.Add<ParsingStage>();
                 cfg.Add<LoweringStage>();
                 cfg.Add<ValidationStage>();
@@ -75,10 +78,7 @@ public class Driver
 
     public TypeDef GetFunctionType(string ns)
     {
-        if (_functionTypes.TryGetValue(ns, out var value))
-        {
-            return value;
-        }
+        if (_functionTypes.TryGetValue(ns, out var value)) return value;
 
         var type = Compilation.Module.CreateType(ns, "Functions",
             TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);

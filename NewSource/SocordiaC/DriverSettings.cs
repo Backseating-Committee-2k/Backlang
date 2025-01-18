@@ -1,6 +1,4 @@
-﻿using CommandLine;
-
-namespace SocordiaC;
+﻿namespace SocordiaC;
 
 public class DriverSettings : LanguageSdk.Templates.Core.DriverSettings
 {

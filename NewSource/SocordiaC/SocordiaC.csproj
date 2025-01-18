@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
 
-    <PackAsTool>true</PackAsTool>
-    <ToolCommandName>scc</ToolCommandName>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  </PropertyGroup>
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>scc</ToolCommandName>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="DistIL.Core" Version="0.12.0" />
-    <PackageReference Include="Flo" Version="0.3.0"/>
-    <PackageReference Include="LeMP" Version="30.1.3"/>
-    <PackageReference Include="Loyc.Syntax" Version="30.1.3"/>
-    <PackageReference Include="LanguageSdk.Templates.Core" Version="1.7.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.9.1"/>
+        <PackageReference Include="DistIL.Core" Version="0.12.0"/>
+        <PackageReference Include="Flo" Version="0.3.0"/>
+        <PackageReference Include="LeMP" Version="30.1.3"/>
+        <PackageReference Include="Loyc.Syntax" Version="30.1.3"/>
+        <PackageReference Include="LanguageSdk.Templates.Core" Version="1.7.0"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Update="compilation.sc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="hello.sc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="compilation.sc">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="hello.sc">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Socordia.CodeAnalysis\Socordia.CodeAnalysis.csproj" />
-    <ProjectReference Include="..\Socordia.Runtime\Socordia.Runtime.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Socordia.CodeAnalysis\Socordia.CodeAnalysis.csproj"/>
+        <ProjectReference Include="..\Socordia.Runtime\Socordia.Runtime.csproj"/>
+    </ItemGroup>
 </Project>

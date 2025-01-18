@@ -11,10 +11,8 @@ public sealed class AnnotationParser
         var name = TypeNameParser.Parse(parser);
         var args = new List<AstNode>();
 
-        if (iterator.IsMatch(TokenType.OpenParen))
+        if (iterator.ConsumeIfMatch(TokenType.OpenParen))
         {
-            iterator.NextToken();
-
             args = Expression.ParseList(parser, TokenType.CloseParen);
         }
 

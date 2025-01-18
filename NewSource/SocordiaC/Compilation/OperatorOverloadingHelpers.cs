@@ -44,8 +44,8 @@ public static class OperatorOverloadingHelpers
 
         var possibleMethods = type.Methods
             .Where(_ => _ is { IsStatic: true, IsConstructor: false, IsDestructor: false, IsPublic: true }
-                                                      && _.Attribs.HasFlag(MethodAttributes.SpecialName)
-        );
+                        && _.Attribs.HasFlag(MethodAttributes.SpecialName)
+            );
 
         var nameMap = args.Length switch
         {
@@ -65,10 +65,7 @@ public static class OperatorOverloadingHelpers
                 var arg = args[i];
                 var param = method.ParamSig[i].Type;
 
-                if (arg != param)
-                {
-                    goto nextMethod;
-                }
+                if (arg != param) goto nextMethod;
             }
 
             opMethod = method;

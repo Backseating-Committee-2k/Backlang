@@ -65,12 +65,9 @@ public class CommonIR
 
     public static void GenerateCtor(TypeDef type)
     {
-        var parameters = new List<ParamDef> { new ParamDef(new TypeSig(type), "this") };
+        var parameters = new List<ParamDef> { new(new TypeSig(type), "this") };
 
-        foreach (var field in type.Fields)
-        {
-            parameters.Add(new ParamDef(new TypeSig(field.Type), field.Name));
-        }
+        foreach (var field in type.Fields) parameters.Add(new ParamDef(new TypeSig(field.Type), field.Name));
 
         var ctor = type.CreateMethod(".ctor", new TypeSig(PrimType.Void), [.. parameters],
             MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
@@ -78,9 +75,7 @@ public class CommonIR
         var irBuilder = new IRBuilder(ctor.Body.CreateBlock());
 
         foreach (var arg in ctor.Body.Args.Skip(1))
-        {
             irBuilder.CreateFieldStore(type.FindField(arg.Name), ctor.Body.Args[0], arg);
-        }
 
         irBuilder.Emit(new ReturnInst());
 
@@ -89,7 +84,7 @@ public class CommonIR
 
     public static void GenerateEmptyCtor(TypeDef type)
     {
-        var parameters = new List<ParamDef> { new ParamDef(new TypeSig(type), "this") };
+        var parameters = new List<ParamDef> { new(new TypeSig(type), "this") };
 
         var ctor = type.CreateMethod(".ctor", new TypeSig(PrimType.Void), [.. parameters],
             MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
