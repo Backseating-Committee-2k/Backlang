@@ -1,5 +1,6 @@
 using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.TypeNames;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints;
 
@@ -12,7 +13,7 @@ public sealed class SignatureParser
         var nameToken = iterator.NextToken();
         var name = new Identifier(nameToken.Text);
 
-        AstNode? returnType = null;
+        AstNode? returnType = new SimpleTypeName("none");
         iterator.Match(TokenType.OpenParen);
 
         var parameters = Declarations.ParameterDeclarationParser.ParseList(parser);
@@ -37,10 +38,8 @@ public sealed class SignatureParser
             //generics.Add(LNode.Call(Symbols.Where, LNode.List(genericName, LNode.Call(CodeSymbols.Base, bases))));
         }
 
-        if (iterator.IsMatch(TokenType.Colon))
+        if (iterator.ConsumeIfMatch(TokenType.Colon))
         {
-            iterator.NextToken();
-
             returnType = TypeNameParser.Parse(parser);
         }
 
