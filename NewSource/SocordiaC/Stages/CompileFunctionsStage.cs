@@ -3,6 +3,7 @@ using DistIL.CodeGen.Cil;
 using DistIL.IR;
 using DistIL.IR.Utils;
 using Flo;
+using Socordia.CodeAnalysis.AST.Declarations;
 using SocordiaC.Compilation;
 using SocordiaC.Compilation.Listeners.Body;
 using SocordiaC.Compilation.Scoping;
@@ -25,6 +26,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
                 });
 
             var builder = new IRBuilder(def.Body!.CreateBlock());
+            EmitParameterNullChecks(builder, node, context);
             var bodyCompilation = new BodyCompilation(context, def, builder, scope);
 
             if (!node.Children[1].HasChildren)
@@ -50,5 +52,25 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
         Mappings.Functions.Clear();
 
         return await next.Invoke(context);
+    }
+
+    private void EmitParameterNullChecks(IRBuilder builder, FunctionDefinition node, Driver driver)
+    {
+        for (int i = 0; i < node.Signature.Parameters.Count(); i++)
+        {
+            var parameter = node.Signature.Parameters.Skip(i).First();
+
+            if (parameter.AssertNotNull)
+            {
+               var cmp = builder.CreateCmp(CompareOp.Ne, builder.Method.Args[i], ConstNull.Create());
+               var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
+
+               builder.Fork(cmp, (irBuilder, _) =>
+               {
+                  var exception = irBuilder.CreateNewObj(ctor, ConstString.Create($"{parameter.Name} cannot be null"));
+                  irBuilder.Emit(new ThrowInst(exception));
+               });
+            }
+        }
     }
 }

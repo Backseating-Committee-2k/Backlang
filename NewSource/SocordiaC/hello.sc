@@ -4,3 +4,8 @@ func main(): none
     print("Hello World");
     throw "an error";
 }
+
+func nullTest(val!: string): none
+{
+    print("Hello");
+}
