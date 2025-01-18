@@ -39,8 +39,8 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
 
                 if (node.IsExpressionBody && def.ReturnType == PrimType.Void)
                 {
-                    var ret = (ReturnInst)bodyCompilation.Method.Body.EntryBlock.First;
-                    ret.ReplaceWith(ret.Value);
+                    var ret = (ReturnInst)bodyCompilation.Method.Body!.EntryBlock.First;
+                    ret.ReplaceWith(ret.Value!);
                 }
 
                 if (def.ReturnType == PrimType.Void) builder.Emit(new ReturnInst());
@@ -60,17 +60,16 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
         {
             var parameter = node.Signature.Parameters.Skip(i).First();
 
-            if (parameter.AssertNotNull)
-            {
-               var cmp = builder.CreateCmp(CompareOp.Ne, builder.Method.Args[i], ConstNull.Create());
-               var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
+            if (!parameter.AssertNotNull) continue;
 
-               builder.Fork(cmp, (irBuilder, _) =>
-               {
-                  var exception = irBuilder.CreateNewObj(ctor, ConstString.Create($"{parameter.Name} cannot be null"));
-                  irBuilder.Emit(new ThrowInst(exception));
-               });
-            }
+            var cmp = builder.CreateCmp(CompareOp.Ne, builder.Method.Args[i], ConstNull.Create());
+            var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
+
+            builder.Fork(cmp, (irBuilder, _) =>
+            {
+                var exception = irBuilder.CreateNewObj(ctor, ConstString.Create($"{parameter.Name} cannot be null"));
+                irBuilder.Emit(new ThrowInst(exception));
+            });
         }
     }
 }

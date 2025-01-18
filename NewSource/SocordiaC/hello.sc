@@ -5,7 +5,7 @@ func main(): none
     throw "an error";
 }
 
-func nullTest(val!: string)
+func nullTest(val!: string, two!: string)
 {
     print("Hello");
 }
