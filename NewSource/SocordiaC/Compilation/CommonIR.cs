@@ -9,6 +9,60 @@ namespace SocordiaC.Compilation;
 
 public class CommonIR
 {
+    private static readonly int[] Primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41];
+
+    public static void GenerateGetHashCode(Driver context, TypeDef type)
+    {
+        var getHashCodeMethod = type.CreateMethod("GetHashCode", new TypeSig(PrimType.Int32), [],
+            MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.HideBySig | MethodAttributes.NewSlot);
+
+        getHashCodeMethod.Body = new MethodBody(getHashCodeMethod);
+        var builder = new IRBuilder(getHashCodeMethod.Body.CreateBlock());
+
+        var hash = builder.Block.Method.CreateVar(PrimType.Int32, "hash");
+
+        var startPrime = SelectPrime();
+        var constant = ConstInt.CreateI(startPrime);
+
+        builder.CreateStore(hash, constant);
+
+        foreach (var field in type.Fields)
+        {
+            if (field.IsStatic) continue;
+
+            var fieldValue = builder.CreateFieldLoad(field);
+            var method = field.Type.Methods.FirstOrDefault(m => m.Name.ToString() == "GetHashCode");
+
+            if (method != null)
+            {
+                var fieldHash = builder.CreateCall(method, fieldValue);
+                builder.CreateStore(hash, builder.CreateBin(BinaryOp.Add, hash, fieldHash));
+            }
+            else if (field.Type is PrimType)
+            {
+                builder.CreateStore(hash, builder.CreateBin(BinaryOp.Add, hash, fieldValue));
+            }
+            else
+            {
+                var objectGetHashCode = context.Compilation.Resolver.SysTypes.Object.FindMethod("GetHashCode");
+                var fieldHash = builder.CreateCall(objectGetHashCode, fieldValue);
+                builder.CreateStore(hash, builder.CreateBin(BinaryOp.Add, hash, fieldHash));
+            }
+
+            var factor = ConstInt.CreateI(SelectPrime());
+            builder.CreateStore(hash, builder.CreateBin(BinaryOp.Mul, hash, factor));
+        }
+
+        builder.Emit(new ReturnInst(hash));
+
+        getHashCodeMethod.ILBody = ILGenerator.GenerateCode(builder.Method);
+    }
+
+    private static int SelectPrime()
+    {
+        return Primes[Random.Shared.Next(0, Primes.Length)];
+    }
+
     public static void GenerateCtor(TypeDef type)
     {
         var parameters = new List<ParamDef> { new ParamDef(new TypeSig(type), "this") };
