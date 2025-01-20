@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SocordiaC\SocordiaC.csproj" />
-    <PackageReference Include="LanguageSdk.Templates.Core" Version="1.8.0" />
+    <PackageReference Include="LanguageSdk.Templates.Core" Version="1.9.0" />
   </ItemGroup>
 
 </Project>

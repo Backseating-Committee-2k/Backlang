@@ -68,7 +68,7 @@ public class Driver
                 cfg.Add<ApplyRulesStage>();
                 cfg.Add<PrintErrorsStage>();
 
-                cfg.When(_ => Settings.OptimizeLevel != "-O0", _ =>
+                cfg.When(_ => Settings.ShouldOptimize, _ =>
                 {
                    _.Add<OptimizeStage>();
                 });

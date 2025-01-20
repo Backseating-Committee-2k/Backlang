@@ -9,34 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="feat: Add while statement">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/AnnotationParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/AnnotationParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Backlang.Driver/Core/GenericTypeMap.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Backlang.Driver/Core/ImplicitTypeCastTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/ImplicitTypeCastTable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Addresses.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/BS2KTarget.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Backlang.Backends.Bs2k.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Bs2kAssembly.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Constants.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Emitter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Intrinsics.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/NameMangler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/Register.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/StackLayoutGenerator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.Backends.Bs2k/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/Backlang.ResourcePreprocessor.Mif.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/AST/DataRules/RangeDataRule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/AST/DataRules/SimpleDataRule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/AST/MifDataRule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/AST/MifFile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/MifParser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/MifTranslator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/Miftokenizer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifFormat/TokenType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/MifPreprocessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/Radix.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Source/Plugins/Backlang.ResourcePreprocessor.Mif/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +43,9 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/dfa7c66b7487443aaa21b1be53a05c53d800/2a/8768da54/02000026pdb5.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/45af8ba49a6443ad802b2591824f99833800/0d/2b4a6eaa/Optimizer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/45af8ba49a6443ad802b2591824f99833800/77/60fa8e0e/DriverSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6f01790196dd4746bb2da62a86ba01d23800/91/1d5edccb/DriverSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7e64c2e7c42f46e989ab9f228541207b49200/29/be7776f7/SourceRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c73b3c6c598640c592fd3c6fa226c286e90908/0c/5bbe86f8/Func`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c73b3c6c598640c592fd3c6fa226c286e90908/cf/ef8183f1/AsyncVoidMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,19 +80,23 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d496f629ef14c57507b8cc65b1a5e9729fc92ae9cd5199ad62a4bd63d3ce3/ModuleDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/822bdaf60a2b54cc6e15872e1c4c1c655577e58cce5dfee029758a43ab5169/MethodDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8df51e6da2f8c818a7ae6eb8239a3b7d58057bdc2b2971dc9afb727f0fb1c1e/StructLayoutAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92abf4a15121ac953f7921878cdeb63599cb1be8bed6d717747b905ea05439/PassManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9522315027f0146b6f515f58a252ced37134b6fbb1aac61955ba5dfdda962c/SourcePosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9adb3063751010f466a5a3641e6988c52eb8b79c39fbad521ad2341d2beea/ModuleResolver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aff4ac5757e9c378d294c1f3b913227bdeb949cc0ca6fb12b64487f1f5c67d2/EntityDef.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b098f079648637211fecef32cff9fc3d3af6e47ad39aa3cf67552ce4be21911/BasicBlock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b17de5f9342e4d4c093c5212e563d764efb4276735e914e9e55f3734ff26d70/Processor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b731dae4baea8beb49974ea227a191a163f3e5c53b9335d74213e4c8247c/CustomAttrib.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b958446f772ff37f42069124ad78fb57fa031de1c299c9d3cd9e3ea12aef5/MetadataBuilder.Tables.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdd9c1c66cd8e7c8578c6e845264e8ba2b3b568bd7babddb25f8fdbe1a9e8e8a/ResolvingUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1d1ed6be2d5d4de542b4af5b36e82f6d1d1a389a35a4e4f9748d137d1c651/Parallel.ForEachAsync.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c351909d66e0e2d8fb1558b25e19e78566569f97d3c5b5f88c8cd39fca067/PrimType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c87b3830348941b56b686269e959dbdd3f1dcd39d440f9e2e631fdfb619b2c/BranchInsts.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cfc424d9a3673fba85546041b7b58fd13db2cf0eaae2a1c73f31422d8c392fa/MemoryInsts.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d48d1f7eea62273bafc65557b3c55219f427e54aab79b592a6b04030a836b0/FieldDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d675f7e18f6c8f01b2e4cbbadddb0875d446ad12c156cce103d100c093f72/ModuleWriter.Handles.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dd39523f94b27f1ff3b2e60444e1d40ff8a5282453a4a81b23998584ec0820/Ensure.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df8f62946b4dc25418057aaba78d29015a3a8ce5ce43ab61affc377b34658c6/DebugSourceDocument.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e1b1ef36cb3ead824495debfa27b5c9152c1dd2eba6b3dff27109752242f3/CustomAttrib.Encoding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5d623ea960f2c3c9fda144954d339f8d4cd3dad6dd8bd4ab96093a010ab/Dictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e64f977c3fa29bfa4878e3826bc273bd93b963113acd5bc1c986af631fd4db31/Children.cs" root0="FORCE_HIGHLIGHTING" />
@@ -126,6 +108,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fb1a7a48bd25f2334211bffa6834e8ee6628fa663edf1bf6374d86c97c3ead/MetadataBuilder.Heaps.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -149,23 +132,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/new-backend-sdk&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.BacklangC.executor": "Run",
+    ".NET Project.SocordiaC.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/new-backend-sdk",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "ReSharper",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -312,103 +295,23 @@
       <workItem from="1737189993413" duration="1335000" />
       <workItem from="1737211869067" duration="2382000" />
       <workItem from="1737216052360" duration="244000" />
-      <workItem from="1737216418277" duration="433000" />
-    </task>
-    <task id="LOCAL-00045" summary="feat: Add module name to types">
-      <option name="closed" value="true" />
-      <created>1734990477889</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1734990477889</updated>
-    </task>
-    <task id="LOCAL-00046" summary="feat: Add module name to types">
-      <option name="closed" value="true" />
-      <created>1734991896664</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1734991896664</updated>
-    </task>
-    <task id="LOCAL-00047" summary="feat: Add ToString generation to units">
-      <option name="closed" value="true" />
-      <created>1735044501562</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1735044501562</updated>
-    </task>
-    <task id="LOCAL-00048" summary="feat: Add ToString generation to units">
-      <option name="closed" value="true" />
-      <created>1735136013644</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1735136013644</updated>
-    </task>
-    <task id="LOCAL-00049" summary="feat: Add union declaration">
-      <option name="closed" value="true" />
-      <created>1735137262789</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1735137262789</updated>
-    </task>
-    <task id="LOCAL-00050" summary="feat: Add interface declaration">
-      <option name="closed" value="true" />
-      <created>1735137788903</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1735137788903</updated>
-    </task>
-    <task id="LOCAL-00051" summary="feat: Add namespaces to free functions">
-      <option name="closed" value="true" />
-      <created>1735138365028</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1735138365028</updated>
-    </task>
-    <task id="LOCAL-00052" summary="refactor: Cleanup">
-      <option name="closed" value="true" />
-      <created>1735138663815</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1735138663815</updated>
-    </task>
-    <task id="LOCAL-00053" summary="feat: Add extends &amp;&amp; implements keywords">
-      <option name="closed" value="true" />
-      <created>1735209371408</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1735209371409</updated>
-    </task>
-    <task id="LOCAL-00054" summary="refactor: Cleanup">
-      <option name="closed" value="true" />
-      <created>1735217205651</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1735217205651</updated>
-    </task>
-    <task id="LOCAL-00055" summary="feat: Add core for function compilation">
-      <option name="closed" value="true" />
-      <created>1735223135915</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1735223135915</updated>
-    </task>
-    <task id="LOCAL-00056" summary="refactor: ast position improvements">
-      <option name="closed" value="true" />
-      <created>1735223159412</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1735223159412</updated>
+      <workItem from="1737216418277" duration="1720000" />
+      <workItem from="1737222809326" duration="2286000" />
+      <workItem from="1737225179804" duration="1821000" />
+      <workItem from="1737227589797" duration="462000" />
+      <workItem from="1737228144371" duration="1198000" />
+      <workItem from="1737229618895" duration="573000" />
+      <workItem from="1737230860375" duration="1354000" />
+      <workItem from="1737232620655" duration="617000" />
+      <workItem from="1737233704748" duration="638000" />
+      <workItem from="1737236714133" duration="367000" />
+      <workItem from="1737276348622" duration="562000" />
+      <workItem from="1737280914209" duration="446000" />
+      <workItem from="1737288096651" duration="1493000" />
+      <workItem from="1737296306417" duration="9679000" />
+      <workItem from="1737309678947" duration="62000" />
+      <workItem from="1737390753877" duration="184000" />
+      <workItem from="1737394416737" duration="2895000" />
     </task>
     <task id="LOCAL-00057" summary="feat: Add resolving SimpleTypeName in same namespace">
       <option name="closed" value="true" />
@@ -706,7 +609,103 @@
       <option name="project" value="LOCAL" />
       <updated>1737213091683</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737217065054</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1737217065054</updated>
+    </task>
+    <task id="LOCAL-00095" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737217193996</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1737217193996</updated>
+    </task>
+    <task id="LOCAL-00096" summary="feat: Add Throw statement">
+      <option name="closed" value="true" />
+      <created>1737218040799</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1737218040799</updated>
+    </task>
+    <task id="LOCAL-00097" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737218120439</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1737218120439</updated>
+    </task>
+    <task id="LOCAL-00098" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737218147643</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1737218147643</updated>
+    </task>
+    <task id="LOCAL-00099" summary="feat: Add null check parameter generation">
+      <option name="closed" value="true" />
+      <created>1737224830485</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1737224830486</updated>
+    </task>
+    <task id="LOCAL-00100" summary="feat: Use &quot;none&quot; when no return type is specified">
+      <option name="closed" value="true" />
+      <created>1737225085033</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1737225085033</updated>
+    </task>
+    <task id="LOCAL-00101" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737226623088</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1737226623088</updated>
+    </task>
+    <task id="LOCAL-00102" summary="feat: Add OptimizeStage">
+      <option name="closed" value="true" />
+      <created>1737227283140</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1737227283140</updated>
+    </task>
+    <task id="LOCAL-00103" summary="chore(deps): Update Packages">
+      <option name="closed" value="true" />
+      <created>1737227995879</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1737227995880</updated>
+    </task>
+    <task id="LOCAL-00104" summary="feat: Add If statement (without else)">
+      <option name="closed" value="true" />
+      <created>1737234339848</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1737234339848</updated>
+    </task>
+    <task id="LOCAL-00105" summary="feat: Add while statement">
+      <option name="closed" value="true" />
+      <created>1737396859937</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1737396859938</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,12 +726,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add pointer types" />
-    <MESSAGE value="feat: Add default expression" />
-    <MESSAGE value="feat: Add default parameter value" />
-    <MESSAGE value="feat: Add Call As Value" />
-    <MESSAGE value="feat: Add converting enum members" />
-    <MESSAGE value="feat: Add implementing interfaces" />
     <MESSAGE value="feat: unit TypeNameParser" />
     <MESSAGE value="feat: Add core for unit conversion rules definition" />
     <MESSAGE value="feat: Add helper method to check if a type is an unit type" />
@@ -749,10 +742,16 @@
     <MESSAGE value="fix: KnownAttributes" />
     <MESSAGE value="feat: Add core for type deducing" />
     <MESSAGE value="feat: Add GenerateHashCode Helper Method" />
-    <MESSAGE value="chore(deps): Update Packages" />
     <MESSAGE value="feat: Add emitting Annotations without args" />
+    <MESSAGE value="feat: Add Throw statement" />
+    <MESSAGE value="feat: Add null check parameter generation" />
+    <MESSAGE value="feat: Use &quot;none&quot; when no return type is specified" />
     <MESSAGE value="refactor: Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
+    <MESSAGE value="feat: Add OptimizeStage" />
+    <MESSAGE value="chore(deps): Update Packages" />
+    <MESSAGE value="feat: Add If statement (without else)" />
+    <MESSAGE value="feat: Add while statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add while statement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -772,31 +771,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs</url>
-          <line>109</line>
+          <line>107</line>
           <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.Values.cs" containingFunctionPresentation="Method 'CreateBinary'">
             <startOffsets>
-              <option value="4066" />
+              <option value="4206" />
             </startOffsets>
             <endOffsets>
-              <option value="4103" />
+              <option value="4243" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs</url>
-          <line>118</line>
-          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.cs" containingFunctionPresentation="Method 'GetTypeFromNode'">
-            <startOffsets>
-              <option value="3473" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3474" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
