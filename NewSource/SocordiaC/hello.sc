@@ -4,9 +4,9 @@ func main(): none
     print("Hello World");
 }
 
-func nullTest(val!: string, two!: string)
+func nullTest(val: string, two: string)
 {
-    if (val == "")
+    while (true)
     {
         print("Hello World");
     }

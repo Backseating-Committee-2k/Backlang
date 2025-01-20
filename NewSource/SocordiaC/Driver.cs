@@ -35,7 +35,6 @@ public class Driver
         var compilation = new DistIL.Compilation(module, new ConsoleLogger(), new CompilationSettings());
         var optimizer = new Optimizer();
         optimizer.CreatePassManager(compilation);
-        ;
 
         return new Driver
         {
@@ -69,9 +68,9 @@ public class Driver
                 cfg.Add<ApplyRulesStage>();
                 cfg.Add<PrintErrorsStage>();
 
-                cfg.When(_ => Settings.ShouldOptimize, _ =>
+                cfg.When(_ => Settings.OptimizeLevel != "-O0", _ =>
                 {
-                    _.Add<OptimizeStage>();
+                   _.Add<OptimizeStage>();
                 });
 
                 cfg.Add<SaveModuleStage>();

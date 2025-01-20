@@ -1,3 +1,4 @@
+using DistIL.AsmIO;
 using DistIL.IR;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
@@ -11,21 +12,22 @@ public class IfStatementListener : Listener<BodyCompilation, AstNode, IfStatemen
     {
         var cond = Utils.CreateValue(node.Condition, context);
 
-        if (!node.ElseBlock.HasChildren)
+        cond = NegateCondition(cond);
+        context.Builder.Fork(cond, (builder, block) =>
         {
-            cond = NegateCondition(cond);
-
-            context.Builder.Fork(cond, (builder, block) =>
+            BodyCompilation.Listener.Listen(context with
             {
-                BodyCompilation.Listener.Listen(context with
-                {
-                    Builder = builder,
-                }, node.Body);
-            });
+                Builder = builder,
+            }, node.Body);
+        });
+
+        if (node.ElseBlock.HasChildren)
+        {
+            BodyCompilation.Listener.Listen(context, node.ElseBlock);
         }
     }
 
-    private Value NegateCondition(Value cond)
+    public static Value NegateCondition(Value cond)
     {
         if (cond is CompareInst cmp)
         {
