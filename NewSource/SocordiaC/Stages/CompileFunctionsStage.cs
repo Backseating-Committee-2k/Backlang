@@ -63,7 +63,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
             var cmp = builder.CreateCmp(CompareOp.Ne, builder.Method.Args[i], ConstNull.Create());
             var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
 
-            builder.Fork(cmp, (irBuilder, _) =>
+            builder.ForkIf(cmp, (irBuilder, _) =>
             {
                 var exception = irBuilder.CreateNewObj(ctor, ConstString.Create($"{parameter.Name} cannot be null"));
                 irBuilder.Emit(new ThrowInst(exception));

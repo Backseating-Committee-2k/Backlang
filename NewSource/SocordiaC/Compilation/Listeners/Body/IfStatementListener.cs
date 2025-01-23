@@ -13,7 +13,7 @@ public class IfStatementListener : Listener<BodyCompilation, AstNode, IfStatemen
         var cond = Utils.CreateValue(node.Condition, context);
 
         cond = NegateCondition(cond);
-        context.Builder.Fork(cond, (builder, block) =>
+        context.Builder.ForkIf(cond, (builder, block) =>
         {
             BodyCompilation.Listener.Listen(context with
             {
