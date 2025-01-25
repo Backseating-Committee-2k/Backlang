@@ -1,4 +1,3 @@
-using DistIL.AsmIO;
 using DistIL.IR;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;

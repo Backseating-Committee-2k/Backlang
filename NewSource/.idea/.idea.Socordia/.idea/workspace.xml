@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BodyCompilation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BodyCompilation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -320,14 +315,7 @@
       <workItem from="1737740195722" duration="566000" />
       <workItem from="1737743667869" duration="729000" />
       <workItem from="1737788858924" duration="179000" />
-    </task>
-    <task id="LOCAL-00059" summary="feat: Add CallExpression, print and println">
-      <option name="closed" value="true" />
-      <created>1735243983934</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1735243983934</updated>
+      <workItem from="1737792572808" duration="136000" />
     </task>
     <task id="LOCAL-00060" summary="feat: Add calling functions from the same type">
       <option name="closed" value="true" />
@@ -713,7 +701,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737652564627</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737792692217</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1737792692217</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,12 +750,12 @@
     <MESSAGE value="feat: Add Throw statement" />
     <MESSAGE value="feat: Add null check parameter generation" />
     <MESSAGE value="feat: Use &quot;none&quot; when no return type is specified" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="feat: Add OptimizeStage" />
     <MESSAGE value="feat: Add If statement (without else)" />
     <MESSAGE value="feat: Add while statement" />
     <MESSAGE value="chore(deps): Update Packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(deps): Update Packages" />
+    <MESSAGE value="refactor: Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
