@@ -12,7 +12,6 @@ public class CollectRulesListener : Listener<Driver, AstNode, RulesDeclaration>
         if (node.Target is UnitTypeName unitTypeName)
         {
             GenerateUnitConversionRules(unitTypeName, node, context);
-            ;
         }
 
         base.ListenToNode(context, node);

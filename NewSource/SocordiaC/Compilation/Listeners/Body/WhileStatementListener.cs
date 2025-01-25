@@ -31,6 +31,8 @@ public class WhileStatementListener : Listener<BodyCompilation, AstNode, WhileSt
 
         context.Builder.SetPosition(after);
 
-       // IRPrinter.ExportPlain(context.Builder.Method, Console.Out);
+        context.Tag = (after, o2); //used for break and continue
+
+        // IRPrinter.ExportPlain(context.Builder.Method, Console.Out);
     }
 }

@@ -39,6 +39,10 @@ public class IfStatementListener : Listener<BodyCompilation, AstNode, IfStatemen
                 CompareOp.Sle => CompareOp.Sgt,
                 CompareOp.Sgt => CompareOp.Sle,
                 CompareOp.Sge => CompareOp.Slt,
+                CompareOp.Ult => CompareOp.Uge,
+                CompareOp.Ugt => CompareOp.Ule,
+                CompareOp.Ule => CompareOp.Ugt,
+                CompareOp.Uge => CompareOp.Ult,
                 _ => throw new NotSupportedException($"Unsupported comparison operator: {cmp.Op}")
             };
         }

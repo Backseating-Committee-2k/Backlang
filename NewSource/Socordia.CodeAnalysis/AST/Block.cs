@@ -7,5 +7,3 @@ public class Block : AstNode
         Children.Add(body);
     }
 }
-
-public class RootBlock(IEnumerable<AstNode> body) : Block(body);

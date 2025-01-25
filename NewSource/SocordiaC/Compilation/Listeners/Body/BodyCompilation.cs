@@ -8,6 +8,8 @@ namespace SocordiaC.Compilation.Listeners.Body;
 
 public record BodyCompilation(Driver Driver, MethodDef Method, IRBuilder Builder, Scope Scope)
 {
+    public object? Tag { get; set; }
+
     public static CompositeListener<BodyCompilation, AstNode> Listener =
         CompositeListener<BodyCompilation, AstNode>.Build()
             .With(new VariableDeclarationListener())
