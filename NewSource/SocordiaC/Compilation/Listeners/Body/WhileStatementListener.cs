@@ -17,22 +17,19 @@ public class WhileStatementListener : Listener<BodyCompilation, AstNode, WhileSt
 
         condBlk.SetName("cond");
         body.SetName("body");
+        var after = context.Builder.Method.CreateBlock();
+        after.SetName("after");
+        context.Tag = new LoopBranches(o2, after); //used for break and continue
 
         context.Builder.SetPosition(body);
         BodyCompilation.Listener.Listen(context, node.Body);
         o2.SetBranch(condBlk);
         body.SetBranch(condBlk);
 
-        var after = context.Builder.Method.CreateBlock();
-        after.SetName("after");
-
         var cond = Utils.CreateValue(node.Condition, context);
         condBlk.SetBranch(new BranchInst(cond, body, after));
 
         context.Builder.SetPosition(after);
-
-        context.Tag = (after, o2); //used for break and continue
-
-        // IRPrinter.ExportPlain(context.Builder.Method, Console.Out);
+        context.Tag = null;
     }
 }

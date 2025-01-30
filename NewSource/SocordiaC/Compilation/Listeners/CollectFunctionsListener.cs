@@ -84,7 +84,7 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
         return attrs;
     }
 
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
+    protected override bool ShouldListenToChildren(Driver context, FunctionDefinition node)
     {
         return false;
     }

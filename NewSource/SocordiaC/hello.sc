@@ -2,7 +2,13 @@
 func main(): none
 {
      while (true)
+     {
+        if(true)
         {
-            print("Hello World");
+            //continue;
+            print("123");
         }
+
+        print("Hello world");
+     }
 }

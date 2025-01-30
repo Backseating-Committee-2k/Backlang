@@ -54,7 +54,7 @@ public class IfStatementListener : Listener<BodyCompilation, AstNode, IfStatemen
         return cond;
     }
 
-    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node)
+    protected override bool ShouldListenToChildren(BodyCompilation context, IfStatement node)
     {
         return false;
     }

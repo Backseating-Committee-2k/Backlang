@@ -49,8 +49,8 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
         return attrs | TypeAttributes.Sealed;
     }
 
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
+    protected override bool ShouldListenToChildren(Driver context, EnumDeclaration node)
     {
-        return true;
+        return false;
     }
 }

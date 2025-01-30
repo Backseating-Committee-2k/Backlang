@@ -13,7 +13,7 @@ public class ReturnStatementListener : Listener<BodyCompilation, AstNode, Return
         context.Builder.Emit(new ReturnInst(value));
     }
 
-    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node)
+    protected override bool ShouldListenToChildren(BodyCompilation context, ReturnStatement node)
     {
         return false;
     }

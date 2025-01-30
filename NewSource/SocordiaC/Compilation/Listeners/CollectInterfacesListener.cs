@@ -16,9 +16,4 @@ public class CollectInterfacesListener : Listener<Driver, AstNode, InterfaceDecl
 
         Utils.EmitAnnotations(node, type);
     }
-
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
-    {
-        return true;
-    }
 }

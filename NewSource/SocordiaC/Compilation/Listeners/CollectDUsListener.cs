@@ -31,7 +31,7 @@ public class CollectDUsListener : Listener<Driver, AstNode, DiscriminatedUnionDe
         Utils.EmitAnnotations(node, baseType);
     }
 
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
+    protected override bool ShouldListenToChildren(Driver context, DiscriminatedUnionDeclaration node)
     {
         return false;
     }

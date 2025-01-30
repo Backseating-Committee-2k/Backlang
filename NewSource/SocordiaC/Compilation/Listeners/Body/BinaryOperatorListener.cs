@@ -11,8 +11,9 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
         //Utils.CreateValue(node, context);
     }
 
-    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node)
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, BinaryOperatorExpression node)
     {
-        return false;
+        return base.ShouldListenToChildren(context, node);
     }
 }

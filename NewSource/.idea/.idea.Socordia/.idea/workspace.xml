@@ -9,7 +9,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="" />
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ContinueListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SocordiaC/Compilation/LoopBranches.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Socordia.CodeAnalysis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Socordia.CodeAnalysis.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/BlockListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/BlockListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BodyCompilation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BodyCompilation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/CallExpressionListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/CallExpressionListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ReturnStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ReturnStatementListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectClassesListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectClassesListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectDUsListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectDUsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectFunctionsListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectFunctionsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectInterfacesListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectInterfacesListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectStructsListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectStructsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectUnionsListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectUnionsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectUnitsListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectUnitsListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.sc" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,6 +129,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/CollectClassesListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -143,7 +167,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ReSharper&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -316,22 +340,12 @@
       <workItem from="1737743667869" duration="729000" />
       <workItem from="1737788858924" duration="179000" />
       <workItem from="1737792572808" duration="136000" />
-    </task>
-    <task id="LOCAL-00060" summary="feat: Add calling functions from the same type">
-      <option name="closed" value="true" />
-      <created>1735244494382</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1735244494382</updated>
-    </task>
-    <task id="LOCAL-00061" summary="feat: Add expression body function syntax and emit return statement">
-      <option name="closed" value="true" />
-      <created>1735245705855</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1735245705855</updated>
+      <workItem from="1737811827660" duration="382000" />
+      <workItem from="1737816074826" duration="1714000" />
+      <workItem from="1737835305058" duration="1055000" />
+      <workItem from="1738081512888" duration="21000" />
+      <workItem from="1738176094428" duration="19000" />
+      <workItem from="1738214732917" duration="430000" />
     </task>
     <task id="LOCAL-00062" summary="feat: Add pointer types">
       <option name="closed" value="true" />
@@ -709,7 +723,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737792692217</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="feat: Add base type resolving">
+      <option name="closed" value="true" />
+      <created>1737812187614</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1737812187614</updated>
+    </task>
+    <task id="LOCAL-00110" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1737812194994</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1737812194994</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,7 +760,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: unit TypeNameParser" />
     <MESSAGE value="feat: Add core for unit conversion rules definition" />
     <MESSAGE value="feat: Add helper method to check if a type is an unit type" />
     <MESSAGE value="feat: Add Helper for operator overloading" />
@@ -754,6 +783,7 @@
     <MESSAGE value="feat: Add If statement (without else)" />
     <MESSAGE value="feat: Add while statement" />
     <MESSAGE value="chore(deps): Update Packages" />
+    <MESSAGE value="feat: Add base type resolving" />
     <MESSAGE value="refactor: Cleanup" />
     <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
   </component>

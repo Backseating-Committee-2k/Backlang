@@ -35,9 +35,4 @@ public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
 
         return attrs;
     }
-
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
-    {
-        return true;
-    }
 }

@@ -82,9 +82,4 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
 
         ctor.ILBody = ILGenerator.GenerateCode(ctor.Body);
     }
-
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
-    {
-        return true;
-    }
 }

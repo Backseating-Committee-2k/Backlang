@@ -38,7 +38,7 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
         context.Builder.CreateStore(slot, value);
     }
 
-    protected override bool ShouldListenToChildren(BodyCompilation context, AstNode node)
+    protected override bool ShouldListenToChildren(BodyCompilation context, VariableStatement node)
     {
         return false;
     }

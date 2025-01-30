@@ -16,9 +16,4 @@ public class CollectStructsListener : Listener<Driver, AstNode, StructDeclaratio
 
         Utils.EmitAnnotations(node, type);
     }
-
-    protected override bool ShouldListenToChildren(Driver context, AstNode node)
-    {
-        return false;
-    }
 }
