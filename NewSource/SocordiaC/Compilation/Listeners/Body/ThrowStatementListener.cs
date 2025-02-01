@@ -26,4 +26,9 @@ public class ThrowStatementListener : Listener<BodyCompilation, AstNode, ThrowSt
 
         context.Builder.Emit(new ThrowInst(value));
     }
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, ThrowStatement node)
+    {
+        return false;
+    }
 }

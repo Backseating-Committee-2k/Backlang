@@ -5,8 +5,6 @@ namespace SocordiaC.Compilation.Scoping.Items;
 
 public class VariableScopeItem : ScopeItem
 {
-    public bool IsMutable { get; init; }
-
     public LocalSlot Slot { get; set; }
 
     public override TypeDesc Type => Slot.Type;

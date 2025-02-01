@@ -32,4 +32,9 @@ public class WhileStatementListener : Listener<BodyCompilation, AstNode, WhileSt
         context.Builder.SetPosition(after);
         context.Tag = null;
     }
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, WhileStatement node)
+    {
+        return false;
+    }
 }

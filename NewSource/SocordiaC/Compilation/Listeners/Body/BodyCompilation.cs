@@ -10,7 +10,7 @@ public record BodyCompilation(Driver Driver, MethodDef Method, IRBuilder Builder
 {
     public object? Tag { get; set; }
 
-    public static CompositeListener<BodyCompilation, AstNode> Listener =
+    public static readonly CompositeListener<BodyCompilation, AstNode> Listener =
         CompositeListener<BodyCompilation, AstNode>.Build()
             .With(new VariableDeclarationListener())
             .With(new CallExpressionListener(true))

@@ -17,4 +17,9 @@ public class ContinueListener : Listener<BodyCompilation, AstNode, ContinueState
 
         node.AddError("Continue is only in loops allowed");
     }
+
+    protected override bool ShouldListenToChildren(BodyCompilation context, ContinueStatement node)
+    {
+        return false;
+    }
 }
