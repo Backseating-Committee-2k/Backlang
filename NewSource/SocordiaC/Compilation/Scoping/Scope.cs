@@ -1,4 +1,5 @@
 ﻿using DistIL.AsmIO;
+using Socordia.CodeAnalysis.AST;
 using SocordiaC.Compilation.Scoping.Items;
 
 namespace SocordiaC.Compilation.Scoping;
@@ -62,5 +63,16 @@ public class Scope
                 item = null;
 
         return item != null;
+    }
+
+    public object GetFromNode(AstNode node)
+    {
+        if (node is Identifier id)
+        {
+            if(TryGet<ScopeItem>(id.Name, out var item))
+                return item!;
+        }
+
+        return null;
     }
 }

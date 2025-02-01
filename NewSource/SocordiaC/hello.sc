@@ -1,14 +1,7 @@
 @System.Runtime.CompilerServices.CompilerGenerated
 func main(): none
 {
-     while (true)
-     {
-        if(true)
-        {
-            //continue;
-            print("123");
-        }
+     let mut x = 12;
 
-        print("Hello world");
-     }
+     x = 5;
 }
