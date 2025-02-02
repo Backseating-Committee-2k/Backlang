@@ -15,9 +15,9 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
             var lvalue = context.Scope.GetFromNode(node.Left);
             var rvalue = Utils.CreateValue(node.Right, context);
 
-            if (lvalue is ScopeItem { IsMutable: false })
+            if (lvalue is ScopeItem { IsMutable: false } si)
             {
-                node.Left.AddError("Value is not mutable");
+                node.Left.AddError(si.Name + " is not mutable");
                 return;
             }
 
