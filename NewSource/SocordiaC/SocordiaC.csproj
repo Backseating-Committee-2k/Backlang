@@ -6,6 +6,7 @@
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>scc</ToolCommandName>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <ApplicationIcon>logo.png</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>

@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="refactor: Cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,15 +330,7 @@
       <workItem from="1738214732917" duration="520000" />
       <workItem from="1738438483925" duration="1989000" />
       <workItem from="1738480680853" duration="174000" />
-      <workItem from="1738523005970" duration="295000" />
-    </task>
-    <task id="LOCAL-00066" summary="feat: Add converting enum members">
-      <option name="closed" value="true" />
-      <created>1735378640394</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1735378640395</updated>
+      <workItem from="1738523005970" duration="1323000" />
     </task>
     <task id="LOCAL-00067" summary="feat: Add implementing interfaces">
       <option name="closed" value="true" />
@@ -726,7 +716,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738480721628</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738523393262</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1738523393263</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
