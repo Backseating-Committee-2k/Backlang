@@ -17,7 +17,7 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
 
             if (lvalue is ScopeItem { IsMutable: false } si)
             {
-                node.Left.AddError(si.Name + " is not mutable");
+                node.Left.AddError("Variable '" + si.Name + "' is not mutable");
                 return;
             }
 

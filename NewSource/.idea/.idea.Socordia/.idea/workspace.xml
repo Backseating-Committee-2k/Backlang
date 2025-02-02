@@ -12,11 +12,6 @@
     <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BodyCompilation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BodyCompilation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ContinueListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ContinueListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ThrowStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/ThrowStatementListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Scoping/Scope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Scoping/Scope.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/hello.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +113,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Scoping/Scope.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Utils.Values.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -141,23 +138,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.BacklangC.executor": "Run",
-    ".NET Project.SocordiaC.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/new-backend-sdk",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/new-backend-sdk&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -333,31 +330,9 @@
       <workItem from="1738081512888" duration="21000" />
       <workItem from="1738176094428" duration="19000" />
       <workItem from="1738214732917" duration="520000" />
-      <workItem from="1738438483925" duration="1294000" />
-    </task>
-    <task id="LOCAL-00063" summary="feat: Add default expression">
-      <option name="closed" value="true" />
-      <created>1735310789013</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1735310789014</updated>
-    </task>
-    <task id="LOCAL-00064" summary="feat: Add default parameter value">
-      <option name="closed" value="true" />
-      <created>1735311256570</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1735311256570</updated>
-    </task>
-    <task id="LOCAL-00065" summary="feat: Add Call As Value">
-      <option name="closed" value="true" />
-      <created>1735322539817</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1735322539817</updated>
+      <workItem from="1738438483925" duration="1989000" />
+      <workItem from="1738480680853" duration="174000" />
+      <workItem from="1738523005970" duration="295000" />
     </task>
     <task id="LOCAL-00066" summary="feat: Add converting enum members">
       <option name="closed" value="true" />
@@ -727,7 +702,31 @@
       <option name="project" value="LOCAL" />
       <updated>1738215245625</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="feat: Add variable assignment">
+      <option name="closed" value="true" />
+      <created>1738440217519</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1738440217519</updated>
+    </task>
+    <task id="LOCAL-00113" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738440227095</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1738440227095</updated>
+    </task>
+    <task id="LOCAL-00114" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738480721628</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1738480721628</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,7 +747,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add core for unit conversion rules definition" />
     <MESSAGE value="feat: Add helper method to check if a type is an unit type" />
     <MESSAGE value="feat: Add Helper for operator overloading" />
     <MESSAGE value="feat: Make default operator overloadable" />
@@ -771,9 +769,10 @@
     <MESSAGE value="feat: Add If statement (without else)" />
     <MESSAGE value="feat: Add while statement" />
     <MESSAGE value="feat: Add base type resolving" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="chore(deps): Update Packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(deps): Update Packages" />
+    <MESSAGE value="feat: Add variable assignment" />
+    <MESSAGE value="refactor: Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -793,13 +792,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs</url>
-          <line>107</line>
+          <line>106</line>
           <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.Values.cs" containingFunctionPresentation="Method 'CreateBinary'">
             <startOffsets>
-              <option value="4206" />
+              <option value="4113" />
             </startOffsets>
             <endOffsets>
-              <option value="4243" />
+              <option value="4150" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
@@ -816,19 +815,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs</url>
-          <line>10</line>
-          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Listeners\Body\BinaryOperatorListener.cs" containingFunctionPresentation="Method 'ListenToNode'">
-            <startOffsets>
-              <option value="372" />
-            </startOffsets>
-            <endOffsets>
-              <option value="397" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
