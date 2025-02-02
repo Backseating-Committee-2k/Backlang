@@ -71,6 +71,8 @@ public class Scope
         {
             if(TryGet<ScopeItem>(id.Name, out var item))
                 return item!;
+            else
+                node.AddError(id.Name + " not found");
         }
 
         return null;

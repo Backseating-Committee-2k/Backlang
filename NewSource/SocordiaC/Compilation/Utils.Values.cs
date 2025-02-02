@@ -102,16 +102,10 @@ public partial class Utils
             "-" => compilation.Builder.CreateSub(left, right),
             "*" => compilation.Builder.CreateMul(left, right),
             "/" => compilation.Builder.CreateFDiv(left, right),
-            "=" => CreateAssignment(left, right, compilation),
-            "==" => compilation.Builder.CreateCmp(CompareOp.Eq, left, right),
-            "!=" => compilation.Builder.CreateCmp(CompareOp.Ne, left, right),
+            "==" => compilation.Builder.CreateEq(left, right),
+            "!=" => compilation.Builder.CreateNe(left, right),
             _ => throw new InvalidOperationException()
         };
-    }
-
-    private static Value CreateAssignment(Value left, Value right, BodyCompilation compilation)
-    {
-        return compilation.Builder.CreateStore(left, right);
     }
 
     private static Value CreateUnary(UnaryOperatorExpression unary, BodyCompilation compilation)
