@@ -7,6 +7,6 @@
     <ItemType Name="AdditionalFiles" DisplayName="Socordia analyzer additional file" />
     <ItemType Name="EditorConfigFiles" DisplayName=".editorconfig file" />
 
-    <FileExtension Name=".sc" ContentType="SocordiaFile" />
+    <FileExtension Name=".scs" ContentType="SocordiaFile" />
 
 </ProjectSchemaDefinitions>
