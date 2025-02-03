@@ -40,10 +40,6 @@ public sealed class IntermediateStage : IHandler<CompilerContext, CompilerContex
                 {
                     ConvertUnitDeclaration(context, st, modulename, context.GlobalScope);
                 }
-                else if (st.Calls(CodeSymbols.Enum))
-                {
-                    ConvertEnum(context, st, modulename);
-                }
                 else if (st.Calls(Symbols.DiscriminatedUnion))
                 {
                     ConvertDiscriminatedUnion(context, st, modulename);
@@ -54,21 +50,6 @@ public sealed class IntermediateStage : IHandler<CompilerContext, CompilerContex
         context.Binder.AddAssembly(context.Assembly);
 
         return await next.Invoke(context);
-    }
-
-    private static void ConvertEnum(CompilerContext context, LNode @enum, QualifiedName modulename)
-    {
-        if (@enum is var (_, (_, nameNode, typeNode, membersNode)))
-        {
-            var name = nameNode.Name;
-
-            var type = new DescribedType(new SimpleName(name.Name).Qualify(modulename), context.Assembly);
-            type.AddBaseType(context.Binder.ResolveTypes(new SimpleName("Enum").Qualify("System"))[0]);
-
-            type.AddAttribute(AccessModifierAttribute.Create(AccessModifier.Public));
-
-            context.Assembly.AddType(type);
-        }
     }
 
     private static void ConvertTypeOrInterface(CompilerContext context, LNode st, QualifiedName modulename, Scope scope)
