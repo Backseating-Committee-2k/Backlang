@@ -7,6 +7,6 @@
 
     <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props"/>
 
-    <Import Project="..\Core\Socordia.Core.props" Condition="'$(MSBuildProjectExtension)' == '.scproj'"/>
+    <Import Project="..\Core\Socordia.Core.props" Condition="'$(MSBuildProjectExtension)' == '.scsproj'"/>
 
 </Project>
