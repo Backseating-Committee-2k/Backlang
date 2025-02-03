@@ -1,0 +1,12 @@
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties">
+
+    <ContentType Name="SocordiaFile" DisplayName="Socordia file" ItemType="Compile">
+    </ContentType>
+
+    <ItemType Name="Compile" DisplayName="Socordia compiler" />
+    <ItemType Name="AdditionalFiles" DisplayName="Socordia analyzer additional file" />
+    <ItemType Name="EditorConfigFiles" DisplayName=".editorconfig file" />
+
+    <FileExtension Name=".sc" ContentType="SocordiaFile" />
+
+</ProjectSchemaDefinitions>

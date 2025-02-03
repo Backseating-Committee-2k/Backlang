@@ -1,0 +1,9 @@
+<Project>
+
+    <PropertyGroup>
+        <DefaultLanguageSourceExtension>.sc</DefaultLanguageSourceExtension>
+    </PropertyGroup>
+
+    <Import Project="Socordia.ProjectSystem.props"/>
+
+</Project>
