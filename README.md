@@ -1,6 +1,6 @@
 # Socordia
 
-[![CodeFactor](https://www.codefactor.io/repository/github/backlang-org/backlang/badge)](https://www.codefactor.io/repository/github/backlang-org/backlang)
+[![CodeFactor](https://www.codefactor.io/repository/github/Socordia-Org/Socordia/badge)](https://www.codefactor.io/repository/github/Socordia-Org/Socordia)
 
 A new Rust, C# inspired language for .Net and other platforms like backseatsafesystem2k.
 
