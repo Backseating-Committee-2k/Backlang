@@ -27,6 +27,7 @@ public class WhileStatementListener : Listener<BodyCompilation, AstNode, WhileSt
         body.SetBranch(condBlk);
 
         var cond = Utils.CreateValue(node.Condition, context);
+        cond.EnsureType<bool>(node.Condition);
         condBlk.SetBranch(new BranchInst(cond, body, after));
 
         context.Builder.SetPosition(after);

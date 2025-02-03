@@ -10,6 +10,7 @@ public class IfStatementListener : Listener<BodyCompilation, AstNode, IfStatemen
     protected override void ListenToNode(BodyCompilation context, IfStatement node)
     {
         var cond = Utils.CreateValue(node.Condition, context);
+        cond.EnsureType<bool>(node.Condition);
 
         cond = NegateCondition(cond);
         context.Builder.ForkIf(cond, (builder, block) =>
