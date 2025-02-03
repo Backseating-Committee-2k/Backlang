@@ -176,7 +176,6 @@ public class MifParser
         var token = NextToken();
 
         if (int.TryParse(token.Value, out var iR))
-
         {
             return iR;
         }
