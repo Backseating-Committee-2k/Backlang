@@ -1,6 +1,6 @@
 <Project>
 
-    <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.scproj'">
+    <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.scsproj'">
         <LanguageTargets>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)', '..\Core\Socordia.Core.targets'))</LanguageTargets>
     </PropertyGroup>
 
