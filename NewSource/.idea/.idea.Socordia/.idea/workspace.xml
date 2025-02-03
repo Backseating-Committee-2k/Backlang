@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="refactor: Cleanup">
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.sc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,23 +137,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/new-backend-sdk&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.BacklangC.executor": "Run",
+    ".NET Project.SocordiaC.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "#191 on feature/new-backend-sdk",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -330,15 +331,8 @@
       <workItem from="1738214732917" duration="520000" />
       <workItem from="1738438483925" duration="1989000" />
       <workItem from="1738480680853" duration="174000" />
-      <workItem from="1738523005970" duration="1323000" />
-    </task>
-    <task id="LOCAL-00067" summary="feat: Add implementing interfaces">
-      <option name="closed" value="true" />
-      <created>1735388369707</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1735388369707</updated>
+      <workItem from="1738523005970" duration="1728000" />
+      <workItem from="1738597149254" duration="277000" />
     </task>
     <task id="LOCAL-00068" summary="feat: unit TypeNameParser">
       <option name="closed" value="true" />
@@ -724,7 +718,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738523393263</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="chore: Change logo">
+      <option name="closed" value="true" />
+      <created>1738524742851</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1738524742851</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -745,7 +747,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add helper method to check if a type is an unit type" />
     <MESSAGE value="feat: Add Helper for operator overloading" />
     <MESSAGE value="feat: Make default operator overloadable" />
     <MESSAGE value="fix: expression body function" />
@@ -770,7 +771,8 @@
     <MESSAGE value="chore(deps): Update Packages" />
     <MESSAGE value="feat: Add variable assignment" />
     <MESSAGE value="refactor: Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
+    <MESSAGE value="chore: Change logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: Change logo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -803,13 +805,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs</url>
-          <line>22</line>
+          <line>23</line>
           <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Listeners\Body\IfStatementListener.cs" containingFunctionPresentation="Method 'ListenToNode'">
             <startOffsets>
-              <option value="674" />
+              <option value="721" />
             </startOffsets>
             <endOffsets>
-              <option value="705" />
+              <option value="752" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />
