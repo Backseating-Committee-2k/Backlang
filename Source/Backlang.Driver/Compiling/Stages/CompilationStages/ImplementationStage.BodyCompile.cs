@@ -12,8 +12,6 @@ namespace Backlang.Driver.Compiling.Stages.CompilationStages;
 
 public partial class ImplementationStage
 {
-    
-
     public static BasicBlockBuilder AppendBlock(LNode blkNode, BasicBlockBuilder block, CompilerContext context,
         IMethod method, QualifiedName? modulename, Scope scope, BranchLabels branchLabels)
     {

@@ -21,7 +21,6 @@ public class ImportValidator : Validator<AstNode, RootBlock>
         
         foreach (var child in node.Root.Children)
         {
-
         }
 
         return [];

@@ -5,8 +5,6 @@ namespace Backlang.Driver.Compiling.Stages;
 
 public sealed partial class TypeInheritanceStage : IHandler<CompilerContext, CompilerContext>
 {
-
-
     public static IType ResolveTypeWithModule(LNode typeNode, CompilerContext context, QualifiedName modulename)
     {
         return ResolveTypeWithModule(typeNode, context, modulename, ConversionUtils.GetQualifiedName(typeNode));

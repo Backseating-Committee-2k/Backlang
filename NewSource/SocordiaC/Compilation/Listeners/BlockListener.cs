@@ -5,5 +5,4 @@ namespace SocordiaC.Compilation.Listeners;
 
 public class BlockListener : Listener<Driver, AstNode, Block>
 {
-
 }

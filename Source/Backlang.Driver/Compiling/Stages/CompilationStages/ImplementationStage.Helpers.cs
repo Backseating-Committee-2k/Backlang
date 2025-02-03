@@ -5,8 +5,6 @@ namespace Backlang.Driver.Compiling.Stages.CompilationStages;
 
 public sealed partial class ImplementationStage : IHandler<CompilerContext, CompilerContext>
 {
-
-
     public static bool MatchesParameters(IMethod method, List<IType> argTypes)
     {
         //ToDo: fix matches parameter (implicit casting is currently not working)

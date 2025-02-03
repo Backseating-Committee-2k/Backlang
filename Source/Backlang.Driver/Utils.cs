@@ -6,7 +6,6 @@ namespace Backlang.Driver;
 
 public static class Utils
 {
-
     public static string GenerateIdentifier()
     {
         var sb = new StringBuilder();

@@ -2,5 +2,4 @@
 
 public class ContinueStatement : AstNode
 {
-
 }
