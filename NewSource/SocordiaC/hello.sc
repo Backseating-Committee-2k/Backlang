@@ -1,5 +1,5 @@
 
-func main(): none
+func main()
 {
      let x = 12;
      let y = 5;

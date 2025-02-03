@@ -57,10 +57,10 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
 
         //ToDo: add check if types are compatible
 
-        //todo: genralize to allow swapping of fields and parameters too
+        //todo: generalize to allow swapping of fields and parameters too
         if (lvalue is VariableScopeItem vsi && rvalue is VariableScopeItem vsi2)
         {
-            var temp = context.Builder.CreateAlloca(vsi.Type);
+            var temp = context.Builder.Method.CreateVar(vsi.Type);
             context.Builder.CreateStore(temp, vsi.Slot);
             context.Builder.CreateStore(vsi.Slot, vsi2.Slot);
             context.Builder.CreateStore(vsi2.Slot, temp);
