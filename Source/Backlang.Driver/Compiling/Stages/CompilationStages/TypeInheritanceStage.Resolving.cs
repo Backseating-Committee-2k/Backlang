@@ -5,25 +5,7 @@ namespace Backlang.Driver.Compiling.Stages;
 
 public sealed partial class TypeInheritanceStage : IHandler<CompilerContext, CompilerContext>
 {
-    public static readonly ImmutableDictionary<string, Type> TypenameTable = new Dictionary<string, Type>
-    {
-        ["obj"] = typeof(object),
-        ["none"] = typeof(void),
-        ["bool"] = typeof(bool),
-        ["u8"] = typeof(byte),
-        ["u16"] = typeof(ushort),
-        ["u32"] = typeof(uint),
-        ["u64"] = typeof(ulong),
-        ["i8"] = typeof(sbyte),
-        ["i16"] = typeof(short),
-        ["i32"] = typeof(int),
-        ["i64"] = typeof(long),
-        ["f16"] = typeof(Half),
-        ["f32"] = typeof(float),
-        ["f64"] = typeof(double),
-        ["char"] = typeof(char),
-        ["string"] = typeof(string)
-    }.ToImmutableDictionary();
+
 
     public static IType ResolveTypeWithModule(LNode typeNode, CompilerContext context, QualifiedName modulename)
     {
