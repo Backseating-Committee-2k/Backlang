@@ -8,5 +8,9 @@ public static class Lowerer
     public static readonly Pipeline<AstNode> Pipeline =
         Pipeline<AstNode>
             .Build(
-                builder => { builder.AddStage<AssignmentsLowerer>(); });
+                builder =>
+                {
+                    builder.AddStage<AssignmentsLowerer>();
+                    builder.AddStage<SwapLowerer>();
+                });
 }

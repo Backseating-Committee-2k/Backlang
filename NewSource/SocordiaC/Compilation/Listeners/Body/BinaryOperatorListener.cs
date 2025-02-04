@@ -14,10 +14,6 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
         {
             EmitAssignment(context, node);
         }
-        else if (node.Operator is "<->")
-        {
-            EmitSwap(context, node);
-        }
     }
 
     private void EmitAssignment(BodyCompilation context, BinaryOperatorExpression node)
@@ -37,38 +33,5 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
         }
     }
 
-    private void EmitSwap(BodyCompilation context, BinaryOperatorExpression node)
-    {
-        //ToDo: test swap operator
-        var lvalue = context.Scope.GetFromNode(node.Left);
-        var rvalue = context.Scope.GetFromNode(node.Right);
-
-        if (lvalue is ScopeItem { IsMutable: false } si)
-        {
-            node.Left.AddError("Variable '" + si.Name + "' is not mutable");
-            return;
-        }
-
-        if (rvalue is ScopeItem { IsMutable: false } si2)
-        {
-            node.Right.AddError("Variable '" + si2.Name + "' is not mutable");
-            return;
-        }
-
-        //ToDo: add check if types are compatible
-
-        //todo: generalize to allow swapping of fields and parameters too
-        if (lvalue is VariableScopeItem vsi && rvalue is VariableScopeItem vsi2)
-        {
-            var temp = context.Builder.Method.CreateVar(vsi.Type);
-            context.Builder.CreateStore(temp, vsi.Slot);
-            context.Builder.CreateStore(vsi.Slot, vsi2.Slot);
-            context.Builder.CreateStore(vsi2.Slot, temp);
-        }
-    }
-
-    protected override bool ShouldListenToChildren(BodyCompilation context, BinaryOperatorExpression node)
-    {
-        return false;
-    }
+    protected override bool ShouldListenToChildren(BodyCompilation context, BinaryOperatorExpression node) => false;
 }
