@@ -1,8 +1,11 @@
 
 func main()
 {
-     let x = 12;
-     let y = 5;
+     let mut x = 12;
+     let mut y = 5;
 
      x <-> y;
+
+     print(x);
+     print(y);
 }

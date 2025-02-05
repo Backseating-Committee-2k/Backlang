@@ -18,9 +18,14 @@ public class AssignmentsLowerer : Replacer<AstNode, BinaryOperatorExpression>
     {
         if (!ShortAssignmentOperators.Contains(node.Operator)) return node;
 
+        var left = node.Left;
+        var right = node.Right;
+        node.Left.RemoveFromParent();
+        node.Right.RemoveFromParent();
+
         var newOperator = node.Operator.Replace("=", "");
-        return new BinaryOperatorExpression("=", node.Left,
-            new BinaryOperatorExpression(newOperator, node.Left, node.Right)
+        return new BinaryOperatorExpression("=", left,
+            new BinaryOperatorExpression(newOperator, left, right)
         );
     }
 }

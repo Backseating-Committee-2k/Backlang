@@ -6,7 +6,7 @@
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>scc</ToolCommandName>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <ApplicationIcon>logo.png</ApplicationIcon>
+        <ApplicationIcon>icon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,10 +19,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="compilation.sc">
+        <None Update="compilation.scs">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="hello.sc">
+        <None Update="hello.scs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

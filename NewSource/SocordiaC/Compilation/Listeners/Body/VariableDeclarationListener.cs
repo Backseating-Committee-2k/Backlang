@@ -13,7 +13,7 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
     protected override void ListenToNode(BodyCompilation context, VariableStatement node)
     {
         var value = Utils.CreateValue(node.Initializer, context);
-        if (value is Instruction instr) context.Builder.Emit(instr);
+        if (value is Instruction { Block: null } instr) context.Builder.Emit(instr);
 
         TypeDesc type;
         if (node.Type is not NoTypeName)
@@ -24,6 +24,11 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
         else
         {
             type = value.ResultType;
+
+            if (value is LocalSlot s)
+            {
+             //   type = s.Type;
+            }
         }
 
         var slot = context.Method.Body!.CreateVar(type, node.Name);

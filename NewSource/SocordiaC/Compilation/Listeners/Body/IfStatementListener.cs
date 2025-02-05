@@ -2,6 +2,7 @@ using DistIL.IR;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Statements;
+using Socordia.Compilation;
 
 namespace SocordiaC.Compilation.Listeners.Body;
 
