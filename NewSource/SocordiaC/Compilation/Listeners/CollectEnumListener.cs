@@ -14,7 +14,14 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
         var type = context.Compilation.Module.CreateType(ns, node.Name,
             GetModifiers(node), context.Compilation.Module.Resolver.Import(typeof(Enum)));
 
-        type.CreateField("value__", new TypeSig(Utils.GetTypeFromNode(node.BaseType, type)),
+        var valueType = Utils.GetTypeFromNode(node.BaseType, type);
+        if (!valueType.IsInt())
+        {
+            node.BaseType.AddError("Enum base type must be an integer or char type");
+            return;
+        }
+
+        type.CreateField("value__", new TypeSig(valueType),
             FieldAttributes.Public | FieldAttributes.SpecialName | FieldAttributes.RTSpecialName);
 
         // .field public static literal valuetype Color R = int32(0)

@@ -1,4 +1,10 @@
 
+public enum Color : string {
+    Red = 0,
+    Green = 1,
+    Blue = 2
+}
+
 func main()
 {
      let mut x = 12;
