@@ -8,6 +8,7 @@ using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
 using SocordiaC.Compilation;
 using SocordiaC.Stages;
+using System.Runtime.Versioning;
 
 namespace SocordiaC;
 
@@ -31,6 +32,7 @@ public class Driver
         moduleResolver.AddTrustedSearchPaths();
 
         var module = moduleResolver.Create(settings.RootNamespace, Version.Parse(settings.Version));
+        SetAttributes(module, moduleResolver, settings);
 
         var compilation = new DistIL.Compilation(module, new ConsoleLogger(), new CompilationSettings());
         var optimizer = new Optimizer();
@@ -44,6 +46,14 @@ public class Driver
             KnownAttributes = new KnownAttributes(moduleResolver),
             KnownTypes = new KnownTypes(moduleResolver)
         };
+    }
+
+    private static void SetAttributes(ModuleDef module, ModuleResolver moduleResolver, DriverSettings settings)
+    {
+        var targetFramework = new CustomAttrib(moduleResolver.Import(typeof(TargetFrameworkAttribute))
+            .FindMethod(".ctor", new MethodSig(default, [PrimType.String])), [".NETCoreApp,Version=v9.0"]);
+
+        module.GetCustomAttribs(true).Add(targetFramework);
     }
 
     public string GetNamespaceOf(AstNode node)
