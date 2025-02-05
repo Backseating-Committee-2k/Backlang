@@ -6,6 +6,7 @@ using LanguageSdk.Templates.Core;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
+using Socordia.Compilation;
 using SocordiaC.Compilation;
 using SocordiaC.Stages;
 using System.Runtime.Versioning;

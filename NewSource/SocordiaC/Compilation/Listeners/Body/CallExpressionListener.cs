@@ -13,13 +13,13 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
 
     protected override void ListenToNode(BodyCompilation context, CallExpression node)
     {
-        var args = node.Arguments.Select(_ => Utils.CreateValue(_, context));
+        var args = node.Arguments.Select(arg => Utils.CreateValue(arg, context)).ToArray();
 
         if (CreateStaticExternalCall(context, node, args)) return;
         if (CreateStaticContainingTypeCalls(context, node, args)) return;
         if (CreatePrintCalls(context, node, args)) return;
 
-        node.AddError("Function not found");
+        node.AddError($"Function {node.Callee} not found");
     }
 
     protected override void AfterListenToNode(BodyCompilation context, CallExpression node)

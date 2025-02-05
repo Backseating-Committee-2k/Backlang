@@ -58,7 +58,7 @@ public partial class Utils
         };
     }
 
-    public static Value CreateValue(AstNode valueNode, BodyCompilation compilation)
+    public static Value CreateValue(AstNode valueNode, BodyCompilation compilation, bool shouldLoad = true)
     {
         return valueNode switch
         {
@@ -68,23 +68,25 @@ public partial class Utils
             TypeOfExpression typeOf => CreateTypeOf(typeOf, compilation),
             UnaryOperatorExpression unary => CreateUnary(unary, compilation),
             BinaryOperatorExpression binary => CreateBinary(binary, compilation),
-            Identifier id => ConvertIdentifier(id, compilation),
+            Identifier id => ConvertIdentifier(id, compilation, shouldLoad),
             _ => throw new NotImplementedException()
         };
     }
 
-    private static Value ConvertIdentifier(Identifier id, BodyCompilation compilation)
+    private static Value ConvertIdentifier(Identifier id, BodyCompilation compilation, bool shouldLoad)
     {
         if (compilation.Scope.TryGet<ScopeItem>(id.Name, out var item))
+        {
             switch (item)
             {
                 case VariableScopeItem var:
-                    return var.Slot;
+                    return shouldLoad ? compilation.Builder.CreateLoad(var.Slot) : var.Slot;
                 case ParameterScopeItem p:
                     return p.Arg;
             }
+        }
 
-        id.AddError("Not found");
+        id.AddError(id .Name + " not found");
         return new Undef(PrimType.Void);
     }
 

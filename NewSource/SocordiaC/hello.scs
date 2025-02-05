@@ -2,10 +2,10 @@
 func main()
 {
      let mut x = 12;
-     let mut y = 5;
+     let mut y = 4;
 
      x <-> y;
 
-     print(x);
-     print(y);
+     println(x);
+     println(y);
 }

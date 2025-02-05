@@ -60,7 +60,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
 
             if (!parameter.AssertNotNull) continue;
 
-            var cmp = builder.CreateCmp(CompareOp.Ne, builder.Method.Args[i], ConstNull.Create());
+            var cmp = builder.CreateNe(builder.Method.Args[i], ConstNull.Create());
             var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
 
             builder.ForkIf(cmp, (irBuilder, _) =>

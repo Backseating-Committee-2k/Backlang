@@ -9,17 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="feat: Add CompilerGeneratedAttribute to generated entities">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/CallExpressionListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/CallExpressionListener.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/Driver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Driver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/SocordiaC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/SocordiaC.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/CompileFunctionsStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/CompileFunctionsStage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/hello.scs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.scs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +60,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/145e55996cbd07d21617a64ee2aabd395ac6fcb2629ecf715fb627fd6ac421/Children.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14c98b5151c3f88b4663e9d3e5048997bf162f243eda52a5c205eb309018ef/SourceFilePosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/16b070496a72269239dbade1a3c9ac27f0cd215cfbd268f5a8ee377ed93fc/ForestAnalysis.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f946c1ce513716372766bab68d633f3aaf5993d7164b159825ccb6a1843618/MethodDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2141dcd6a142c9c1eeb8aa8ec988ea6ace78796992883a4e8c484724bcfcbb6/AnyAll.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28f3df19ba4f28b78e277089c04a678924543d31fa275e94333f2ef542cdf8/ConstInt.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/31b3f71089aefce6d11dcc30e69f6c46e23251c5a136a4cdd5a531f82f7/Listener.cs" root0="FORCE_HIGHLIGHTING" />
@@ -125,7 +121,16 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/CollectDUsListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Utils.Values.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Utils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Driver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -149,23 +154,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#191 on feature/new-backend-sdk&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.BacklangC.executor": "Run",
+    ".NET Project.SocordiaC.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "#191 on feature/new-backend-sdk",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -348,47 +353,7 @@
       <workItem from="1738613481669" duration="459000" />
       <workItem from="1738683769316" duration="876000" />
       <workItem from="1738685448516" duration="3725000" />
-      <workItem from="1738769770709" duration="2602000" />
-    </task>
-    <task id="LOCAL-00070" summary="feat: Add helper method to check if a type is an unit type">
-      <option name="closed" value="true" />
-      <created>1735391106362</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1735391106362</updated>
-    </task>
-    <task id="LOCAL-00071" summary="feat: Add Helper for operator overloading">
-      <option name="closed" value="true" />
-      <created>1735418727349</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1735418727351</updated>
-    </task>
-    <task id="LOCAL-00072" summary="refactor: Cleanup">
-      <option name="closed" value="true" />
-      <created>1735418736705</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1735418736705</updated>
-    </task>
-    <task id="LOCAL-00073" summary="feat: Make default operator overloadable">
-      <option name="closed" value="true" />
-      <created>1735418951259</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1735418951259</updated>
-    </task>
-    <task id="LOCAL-00074" summary="fix: expression body function">
-      <option name="closed" value="true" />
-      <created>1735464919180</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1735464919180</updated>
+      <workItem from="1738769770709" duration="6056000" />
     </task>
     <task id="LOCAL-00075" summary="feat: Add typeof expression">
       <option name="closed" value="true" />
@@ -742,7 +707,47 @@
       <option name="project" value="LOCAL" />
       <updated>1738613935109</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="feat: Add TargetFrameWorkAttribute to assembly">
+      <option name="closed" value="true" />
+      <created>1738773856964</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1738773856964</updated>
+    </task>
+    <task id="LOCAL-00120" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738773938270</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1738773938270</updated>
+    </task>
+    <task id="LOCAL-00121" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738773968342</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1738773968342</updated>
+    </task>
+    <task id="LOCAL-00122" summary="feat: Add Icon">
+      <option name="closed" value="true" />
+      <created>1738774069921</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1738774069921</updated>
+    </task>
+    <task id="LOCAL-00123" summary="feat: Add CompilerGeneratedAttribute to generated entities">
+      <option name="closed" value="true" />
+      <created>1738774724412</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1738774724412</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -763,9 +768,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Make default operator overloadable" />
-    <MESSAGE value="fix: expression body function" />
-    <MESSAGE value="feat: Add typeof expression" />
     <MESSAGE value="feat: Add unary and binary instructions" />
     <MESSAGE value="feat: Add Core for delegate declaration" />
     <MESSAGE value="feat: Add struct declaration" />
@@ -787,8 +789,11 @@
     <MESSAGE value="feat: Add variable assignment" />
     <MESSAGE value="chore: Change logo" />
     <MESSAGE value="feat: Add Swap Operator" />
+    <MESSAGE value="feat: Add TargetFrameWorkAttribute to assembly" />
     <MESSAGE value="refactor: Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
+    <MESSAGE value="feat: Add Icon" />
+    <MESSAGE value="feat: Add CompilerGeneratedAttribute to generated entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add CompilerGeneratedAttribute to generated entities" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -808,13 +813,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs</url>
-          <line>106</line>
+          <line>108</line>
           <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.Values.cs" containingFunctionPresentation="Method 'CreateBinary'">
             <startOffsets>
-              <option value="4127" />
+              <option value="4254" />
             </startOffsets>
             <endOffsets>
-              <option value="4164" />
+              <option value="4291" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
