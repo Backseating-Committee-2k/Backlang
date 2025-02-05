@@ -11,7 +11,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.sc" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.sc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Driver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Driver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/SocordiaC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/SocordiaC.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.scs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.scs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +80,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/54c7fa9daf3ab775e3ebabc3f3948a6e2a484886fa1196f813b98e17e36aa49/RuntimeHelpers.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5721e0b9418f5e596511045f45452fe565c584893345bc8af3363e961770/CompositeListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5852286feadc183060c3afd0b673277531abeabca13ab4e0703f9be354162/TextFilePosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/596ee42e672e27f69da96f833ab29c51d47ed32f684635f82b59c3fc2de83a/Children.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5ad3dee0127c64b78a3581f4784b2a263495293ab1e395b1a5c7a4f654d55a/Exceptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/61d8a75bc2b8d32e6a998ce0fa1656c98412476ee2598ab38d5e166a85c560b/Validator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69e0d37423d59312312786ab0dfe876f67d55fbc0fda977d259fa67aa8235b2/ILGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,6 +92,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/763b707d6f6764383a602b5545d6f235f01d9f4737ff2c88fcdbefba7e91a66/TypeDesc.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d496f629ef14c57507b8cc65b1a5e9729fc92ae9cd5199ad62a4bd63d3ce3/ModuleDef.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/822bdaf60a2b54cc6e15872e1c4c1c655577e58cce5dfee029758a43ab5169/MethodDef.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/89e87e479644947991c76fa12d72cde87f808322d4edee816fac92a2b8b2bc/MethodBody.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8df51e6da2f8c818a7ae6eb8239a3b7d58057bdc2b2971dc9afb727f0fb1c1e/StructLayoutAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92abf4a15121ac953f7921878cdeb63599cb1be8bed6d717747b905ea05439/PassManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9522315027f0146b6f515f58a252ced37134b6fbb1aac61955ba5dfdda962c/SourcePosition.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,6 +102,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b17de5f9342e4d4c093c5212e563d764efb4276735e914e9e55f3734ff26d70/Processor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b731dae4baea8beb49974ea227a191a163f3e5c53b9335d74213e4c8247c/CustomAttrib.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b958446f772ff37f42069124ad78fb57fa031de1c299c9d3cd9e3ea12aef5/MetadataBuilder.Tables.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bb214b724704f29297176d26ad06ab053daa98da1d98c629d7ed65bb46a39c/LocalSlot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bdd9c1c66cd8e7c8578c6e845264e8ba2b3b568bd7babddb25f8fdbe1a9e8e8a/ResolvingUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1d1ed6be2d5d4de542b4af5b36e82f6d1d1a389a35a4e4f9748d137d1c651/Parallel.ForEachAsync.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c351909d66e0e2d8fb1558b25e19e78566569f97d3c5b5f88c8cd39fca067/PrimType.cs" root0="FORCE_HIGHLIGHTING" />
@@ -112,8 +124,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Scoping/Scope.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Utils.Values.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -137,23 +149,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.BacklangC.executor": "Run",
-    ".NET Project.SocordiaC.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#191 on feature/new-backend-sdk",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.BacklangC.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.SocordiaC.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#191 on feature/new-backend-sdk&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.SocordiaC">
     <configuration name="Sample" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -175,7 +187,7 @@
     </configuration>
     <configuration name="SocordiaC" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/SocordiaC/bin/Debug/net9.0/SocordiaC.exe" />
-      <option name="PROGRAM_PARAMETERS" value="hello.sc --root-namespace test" />
+      <option name="PROGRAM_PARAMETERS" value="hello.scs --root-namespace test" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SocordiaC/bin/Debug/net9.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -333,22 +345,10 @@
       <workItem from="1738480680853" duration="174000" />
       <workItem from="1738523005970" duration="1728000" />
       <workItem from="1738597149254" duration="277000" />
-    </task>
-    <task id="LOCAL-00068" summary="feat: unit TypeNameParser">
-      <option name="closed" value="true" />
-      <created>1735388397410</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1735388397410</updated>
-    </task>
-    <task id="LOCAL-00069" summary="feat: Add core for unit conversion rules definition">
-      <option name="closed" value="true" />
-      <created>1735390393763</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1735390393763</updated>
+      <workItem from="1738613481669" duration="459000" />
+      <workItem from="1738683769316" duration="876000" />
+      <workItem from="1738685448516" duration="3725000" />
+      <workItem from="1738769770709" duration="2602000" />
     </task>
     <task id="LOCAL-00070" summary="feat: Add helper method to check if a type is an unit type">
       <option name="closed" value="true" />
@@ -726,7 +726,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738524742851</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="feat: Add Swap Operator">
+      <option name="closed" value="true" />
+      <created>1738613812810</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1738613812810</updated>
+    </task>
+    <task id="LOCAL-00118" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738613935109</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1738613935109</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -747,7 +763,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add Helper for operator overloading" />
     <MESSAGE value="feat: Make default operator overloadable" />
     <MESSAGE value="fix: expression body function" />
     <MESSAGE value="feat: Add typeof expression" />
@@ -770,9 +785,10 @@
     <MESSAGE value="feat: Add base type resolving" />
     <MESSAGE value="chore(deps): Update Packages" />
     <MESSAGE value="feat: Add variable assignment" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="chore: Change logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: Change logo" />
+    <MESSAGE value="feat: Add Swap Operator" />
+    <MESSAGE value="refactor: Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -795,23 +811,23 @@
           <line>106</line>
           <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.Values.cs" containingFunctionPresentation="Method 'CreateBinary'">
             <startOffsets>
-              <option value="4113" />
+              <option value="4127" />
             </startOffsets>
             <endOffsets>
-              <option value="4150" />
+              <option value="4164" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs</url>
-          <line>23</line>
+          <line>24</line>
           <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Listeners\Body\IfStatementListener.cs" containingFunctionPresentation="Method 'ListenToNode'">
             <startOffsets>
-              <option value="721" />
+              <option value="749" />
             </startOffsets>
             <endOffsets>
-              <option value="752" />
+              <option value="780" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />

@@ -63,23 +63,31 @@ public class CommonIR
         return Primes[Random.Shared.Next(0, Primes.Length)];
     }
 
-    public static void GenerateCtor(TypeDef type)
+    public static MethodDef GenerateCtor(TypeDef type)
     {
         var parameters = new List<ParamDef> { new(new TypeSig(type), "this") };
 
-        foreach (var field in type.Fields) parameters.Add(new ParamDef(new TypeSig(field.Type), field.Name));
+        foreach (var field in type.Fields)
+        {
+            parameters.Add(new ParamDef(new TypeSig(field.Type), field.Name));
+        }
 
         var ctor = type.CreateMethod(".ctor", new TypeSig(PrimType.Void), [.. parameters],
             MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName);
         ctor.Body = new MethodBody(ctor);
+
         var irBuilder = new IRBuilder(ctor.Body.CreateBlock());
 
         foreach (var arg in ctor.Body.Args.Skip(1))
+        {
             irBuilder.CreateFieldStore(type.FindField(arg.Name), ctor.Body.Args[0], arg);
+        }
 
         irBuilder.Emit(new ReturnInst());
 
         ctor.ILBody = ILGenerator.GenerateCode(ctor.Body);
+
+        return ctor;
     }
 
     public static void GenerateEmptyCtor(TypeDef type)

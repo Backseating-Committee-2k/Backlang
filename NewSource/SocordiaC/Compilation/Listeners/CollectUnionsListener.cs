@@ -2,6 +2,7 @@ using System.Reflection;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.Compilation;
 
 namespace SocordiaC.Compilation.Listeners;
 
@@ -14,6 +15,8 @@ public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
             GetModifiers(node) | TypeAttributes.ExplicitLayout | TypeAttributes.BeforeFieldInit,
             context.Compilation.Resolver.SysTypes.Object);
 
+        type.AddCompilerGeneratedAttribute(context.Compilation);
+
         Utils.EmitAnnotations(node, type);
     }
 
@@ -22,6 +25,7 @@ public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
         var attrs = TypeAttributes.Public;
 
         foreach (var modifier in node.Modifiers)
+        {
             attrs |= modifier switch
             {
                 Modifier.Static => TypeAttributes.Sealed | TypeAttributes.Abstract,
@@ -29,6 +33,7 @@ public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
                 Modifier.Public => TypeAttributes.Public,
                 _ => throw new NotImplementedException()
             };
+        }
 
         if (node.Modifiers.Contains(Modifier.Private) || node.Modifiers.Contains(Modifier.Internal))
             attrs &= ~TypeAttributes.Public;

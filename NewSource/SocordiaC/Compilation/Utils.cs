@@ -4,6 +4,7 @@ using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using System.Text;
 
 namespace SocordiaC.Compilation;
 

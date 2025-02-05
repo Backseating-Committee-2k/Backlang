@@ -4,6 +4,7 @@ using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Declarations.DU;
+using Socordia.Compilation;
 
 namespace SocordiaC.Compilation.Listeners;
 
@@ -15,17 +16,22 @@ public class CollectDUsListener : Listener<Driver, AstNode, DiscriminatedUnionDe
         var baseType =
             context.Compilation.Module.CreateType(ns, node.Name,
                 Utils.GetTypeModifiers(node) | TypeAttributes.Abstract);
+        baseType.AddCompilerGeneratedAttribute(context.Compilation);
 
         foreach (var child in node.Children.OfType<DiscriminatedType>())
         {
             var childType = baseType.CreateNestedType(child.Name,
                 Utils.GetTypeModifiers(node), baseType: baseType);
+            childType.AddCompilerGeneratedAttribute(context.Compilation);
 
             foreach (var parameter in child.Children.OfType<ParameterDeclaration>())
+            {
                 childType.CreateField(parameter.Name, new TypeSig(Utils.GetTypeFromNode(parameter.Type, baseType)),
                     Utils.GetFieldModifiers(parameter));
+            }
 
-            CommonIR.GenerateCtor(childType);
+            var ctor = CommonIR.GenerateCtor(childType);
+            ctor.AddCompilerGeneratedAttribute(context.Compilation);
         }
 
         Utils.EmitAnnotations(node, baseType);

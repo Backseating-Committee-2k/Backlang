@@ -7,6 +7,7 @@ using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
+using Socordia.Compilation;
 using Socordia.Core.CompilerService;
 using MethodBody = DistIL.IR.MethodBody;
 
@@ -32,13 +33,18 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
         var valueType = Utils.GetTypeFromNode(node.Type, type);
         valueField = type.CreateField("value__", new TypeSig(valueType));
 
-        CreateCtor(type, valueType);
-        CreateToString(type);
+        var ctor = CreateCtor(type, valueType);
+        var toString = CreateToString(type);
+
+        ctor.AddCompilerGeneratedAttribute(context.Compilation);
+        toString.AddCompilerGeneratedAttribute(context.Compilation);
+        nameField.AddCompilerGeneratedAttribute(context.Compilation);
+        valueField.AddCompilerGeneratedAttribute(context.Compilation);
 
         Utils.EmitAnnotations(node, type);
     }
 
-    private void CreateToString(TypeDef type)
+    private MethodDef CreateToString(TypeDef type)
     {
         var toString = type.CreateMethod("ToString", new TypeSig(PrimType.String),
             [new ParamDef(new TypeSig(type), "this")], MethodAttributes.Public | MethodAttributes.Virtual);
@@ -62,9 +68,11 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
         ir.Emit(new ReturnInst(result));
 
         toString.ILBody = ILGenerator.GenerateCode(toString.Body);
+
+        return toString;
     }
 
-    private void CreateCtor(TypeDef type, TypeDesc valueType)
+    private MethodDef CreateCtor(TypeDef type, TypeDesc valueType)
     {
         var ctor = type.CreateMethod(".ctor", new TypeSig(PrimType.Void),
             [new ParamDef(new TypeSig(type), "this"), new ParamDef(new TypeSig(valueType), "value")],
@@ -81,5 +89,7 @@ public class CollectUnitsListener : Listener<Driver, AstNode, UnitDeclaration>
         ir.Emit(new ReturnInst());
 
         ctor.ILBody = ILGenerator.GenerateCode(ctor.Body);
+
+        return ctor;
     }
 }
