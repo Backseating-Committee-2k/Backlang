@@ -33,11 +33,11 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
         // .field public static literal valuetype Color R = int32(0)
         for (int memberIndex = 0; memberIndex < node.Children.Count; memberIndex++)
         {
-            var member = (EnumMemberDeclaration)astNode;
+            var member = (EnumMemberDeclaration)node.Children[memberIndex];;
 
-             if (memberIndex.Value is EmptyNode)
+             if (member.Value is EmptyNode)
             {
-                member.Value.Replace(new LiteralNode(memberIndex));
+                member.Value.ReplaceWith(new LiteralNode(memberIndex));
             }
 
             type.CreateField(member.Name.Name, new TypeSig(type),
