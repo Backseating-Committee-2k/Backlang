@@ -5,13 +5,13 @@ namespace SocordiaC.Stages;
 
 public sealed class PrintErrorsStage : IHandler<Driver, Driver>
 {
-    public static List<string> Errors = [];
-
     public async Task<Driver> HandleAsync(Driver context, Func<Driver, Task<Driver>> next)
     {
-        foreach (var tree in context.Trees) Errors.AddRange(MessageFormatter.FormatErrors(tree.Declarations));
-
-        foreach (var error in Errors) Console.WriteLine(error);
+        var nodesWithError = context.Trees.SelectMany(_ => _.Declarations.ThisAndDescendentsWithErrors).ToArray();
+        foreach (var tree in nodesWithError)
+        {
+            Console.WriteLine(string.Join('\n', MessageFormatter.FormatErrors(tree)));
+        }
 
         return await next.Invoke(context);
     }
