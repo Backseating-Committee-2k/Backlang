@@ -65,8 +65,6 @@ public class Driver
 
     public async Task Compile()
     {
-        var hasError = () => PrintErrorsStage.Errors.Count >= 0;
-
         var pipeline = Pipeline.Build<Driver, Driver>(
             cfg =>
             {

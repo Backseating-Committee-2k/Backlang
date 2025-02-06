@@ -11,11 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/TypeNames/NoTypeName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/TypeNames/NoTypeName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/VariableStatementParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/Statements/VariableStatementParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/TypeNameParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/Parsing/ParsePoints/TypeNameParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/Declarations/Types/Enum/EnumDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/Declarations/Types/Enum/EnumDeclaration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Driver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Driver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/PrintErrorsStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/PrintErrorsStage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocordiaC/hello.scs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.scs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,17 +123,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/AssignmentsLowerer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/Lowering/SwapLowerer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/WhileStatementListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/CollectDUsListener.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Utils.Values.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Utils.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Driver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -359,23 +348,8 @@
       <workItem from="1738685448516" duration="3725000" />
       <workItem from="1738769770709" duration="7520000" />
       <workItem from="1738857057324" duration="566000" />
-      <workItem from="1738863679379" duration="343000" />
-    </task>
-    <task id="LOCAL-00077" summary="refactor: Cleanup">
-      <option name="closed" value="true" />
-      <created>1735466783888</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1735466783888</updated>
-    </task>
-    <task id="LOCAL-00078" summary="feat: Add unary and binary instructions">
-      <option name="closed" value="true" />
-      <created>1735467867642</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1735467867642</updated>
+      <workItem from="1738863679379" duration="1124000" />
+      <workItem from="1738873567484" duration="809000" />
     </task>
     <task id="LOCAL-00079" summary="refactor: Cleanup">
       <option name="closed" value="true" />
@@ -753,7 +727,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738778193081</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738864070933</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1738864070933</updated>
+    </task>
+    <task id="LOCAL-00127" summary="feat: Add error when initialize non mutable variable with null">
+      <option name="closed" value="true" />
+      <created>1738864200842</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1738864200842</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +764,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add struct declaration" />
     <MESSAGE value="feat: Add ptr dereference operator" />
     <MESSAGE value="feat: Add Lowerer" />
     <MESSAGE value="feat: Add core for DUs" />
@@ -794,12 +783,13 @@
     <MESSAGE value="chore: Change logo" />
     <MESSAGE value="feat: Add Swap Operator" />
     <MESSAGE value="feat: Add TargetFrameWorkAttribute to assembly" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="feat: Add Icon" />
     <MESSAGE value="feat: Add CompilerGeneratedAttribute to generated entities" />
     <MESSAGE value="fix: Variable should be loaded when accessed" />
     <MESSAGE value="feat: Error when using non integer type as enum value" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Error when using non integer type as enum value" />
+    <MESSAGE value="refactor: Cleanup" />
+    <MESSAGE value="feat: Add error when initialize non mutable variable with null" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add error when initialize non mutable variable with null" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -831,17 +821,17 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs</url>
-          <line>13</line>
-          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Listeners\CollectEnumListener.cs" containingFunctionPresentation="Method 'ListenToNode'">
+          <url>file://$PROJECT_DIR$/SocordiaC/Stages/PrintErrorsStage.cs</url>
+          <line>10</line>
+          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Stages\PrintErrorsStage.cs" containingFunctionPresentation="Method 'HandleAsync'">
             <startOffsets>
-              <option value="416" />
+              <option value="349" />
             </startOffsets>
             <endOffsets>
-              <option value="454" />
+              <option value="385" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="17" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

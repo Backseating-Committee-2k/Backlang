@@ -33,6 +33,11 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
         // .field public static literal valuetype Color R = int32(0)
         for (int memberIndex = 0; memberIndex < node.Children.Count; memberIndex++)
         {
+            if (node.Children[memberIndex] is not EnumMemberDeclaration)
+            {
+                continue;
+            }
+
             var member = (EnumMemberDeclaration)node.Children[memberIndex];
 
              if (member.Value is EmptyNode)
