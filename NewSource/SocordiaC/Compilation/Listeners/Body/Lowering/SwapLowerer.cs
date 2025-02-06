@@ -12,6 +12,12 @@ public class SwapLowerer : Replacer<AstNode, BinaryOperatorExpression>
     {
         if (node.Operator != "<->") return node;
 
+        if (node.Parent is not Block)
+        {
+            node.AddError("Swap operator can only be used as statement");
+            return node;
+        }
+
         var leftId = (Identifier)node.Left;
         var rightId = (Identifier)node.Right;
 
