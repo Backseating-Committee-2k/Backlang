@@ -13,5 +13,5 @@ public class ForStatement : AstNode
     public AstNode VarExpr => Children[0];
     public AstNode Type => Children[1];
     public AstNode Arr => Children[2];
-    public Block Body => (Block) Children[3];
+    public Block Body => (Block)Children[3];
 }

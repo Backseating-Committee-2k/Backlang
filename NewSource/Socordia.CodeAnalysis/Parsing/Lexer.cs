@@ -1,9 +1,8 @@
-using System.Reflection;
-using System.Text;
 using Loyc;
-using Loyc.Syntax;
 using Socordia.CodeAnalysis.Core;
 using Socordia.CodeAnalysis.Core.Attributes;
+using System.Reflection;
+using System.Text;
 
 namespace Socordia.CodeAnalysis.Parsing;
 

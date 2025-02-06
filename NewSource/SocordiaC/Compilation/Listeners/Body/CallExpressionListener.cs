@@ -15,22 +15,39 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
     {
         var args = node.Arguments.Select(arg => Utils.CreateValue(arg, context)).ToArray();
 
-        if (CreateStaticExternalCall(context, node, args)) return;
-        if (CreateStaticContainingTypeCalls(context, node, args)) return;
-        if (CreatePrintCalls(context, node, args)) return;
+        if (CreateStaticExternalCall(context, node, args))
+        {
+            return;
+        }
+
+        if (CreateStaticContainingTypeCalls(context, node, args))
+        {
+            return;
+        }
+
+        if (CreatePrintCalls(context, node, args))
+        {
+            return;
+        }
 
         node.AddError($"Function {node.Callee} not found");
     }
 
     protected override void AfterListenToNode(BodyCompilation context, CallExpression node)
     {
-        if (shouldEmit && CallInstruction.Block == null) context.Builder.Emit(CallInstruction);
+        if (shouldEmit && CallInstruction.Block == null)
+        {
+            context.Builder.Emit(CallInstruction);
+        }
     }
 
     private bool CreateStaticContainingTypeCalls(BodyCompilation context, CallExpression node, IEnumerable<Value> args)
     {
         var candidates = GetStaticMethodCandidates(node, args, context.Builder.Method.Definition.DeclaringType);
-        if (candidates.Length == 0) return false;
+        if (candidates.Length == 0)
+        {
+            return false;
+        }
 
         var method = candidates[0];
         CallInstruction = new CallInst(method, [.. args]);
@@ -71,7 +88,10 @@ public class CallExpressionListener(bool shouldEmit) : Listener<BodyCompilation,
 
             var candidates = GetStaticMethodCandidates(node, args, type);
 
-            if (candidates.Length == 0) node.AddError("No matching function found");
+            if (candidates.Length == 0)
+            {
+                node.AddError("No matching function found");
+            }
 
             var method = candidates[0];
             CallInstruction = new CallInst(method, [.. args]);

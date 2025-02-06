@@ -1,6 +1,4 @@
-﻿using Loyc;
-
-namespace Socordia.CodeAnalysis.AST.Expressions;
+﻿namespace Socordia.CodeAnalysis.AST.Expressions;
 
 public class BinaryOperatorExpression : AstNode
 {
@@ -10,7 +8,7 @@ public class BinaryOperatorExpression : AstNode
         Children.Add(left);
         Children.Add(right);
     }
-    
+
     public string Operator => Properties.GetOrThrow<string>(nameof(Operator));
     public AstNode Left => Children.First;
     public AstNode Right => Children.Last;

@@ -19,11 +19,9 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
         {
             var scope = new Scope(null!);
             foreach (var arg in def.Body!.Args)
-                scope.Add(new ParameterScopeItem
-                {
-                    Name = arg.Name,
-                    Arg = arg
-                });
+            {
+                scope.Add(new ParameterScopeItem { Name = arg.Name, Arg = arg });
+            }
 
             var builder = new IRBuilder(def.Body!.CreateBlock());
             EmitParameterNullChecks(builder, node, context);
@@ -43,7 +41,10 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
                     ret.ReplaceWith(ret.Value!);
                 }
 
-                if (def.ReturnType == PrimType.Void) builder.Emit(new ReturnInst());
+                if (def.ReturnType == PrimType.Void)
+                {
+                    builder.Emit(new ReturnInst());
+                }
             }
 
             def.ILBody = ILGenerator.GenerateCode(def.Body);
@@ -54,17 +55,20 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
 
     private void EmitParameterNullChecks(IRBuilder builder, FunctionDefinition node, Driver driver)
     {
-        for (int i = 0; i < node.Signature.Parameters.Count(); i++)
+        for (var i = 0; i < node.Signature.Parameters.Count(); i++)
         {
             var parameter = node.Signature.Parameters.Skip(i).First();
 
-            if (!parameter.AssertNotNull) continue;
+            if (!parameter.AssertNotNull)
+            {
+                continue;
+            }
 
             var cmp = builder.CreateNe(builder.Method.Args[i], ConstNull.Create());
-            var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
+            var ctor = driver.KnownTypes.ArgumentNullExceptionType!.FindMethod(".ctor",
+                new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
 
-            builder.ForkIf(cmp, (irBuilder, _) =>
-            {
+            builder.ForkIf(cmp, (irBuilder, _) => {
                 var exception = irBuilder.CreateNewObj(ctor, ConstString.Create($"{parameter.Name} cannot be null"));
                 irBuilder.Emit(new ThrowInst(exception));
             });

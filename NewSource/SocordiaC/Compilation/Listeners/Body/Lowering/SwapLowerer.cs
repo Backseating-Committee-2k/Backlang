@@ -10,7 +10,10 @@ public class SwapLowerer : Replacer<AstNode, BinaryOperatorExpression>
 {
     protected override AstNode? ReplaceNode(BinaryOperatorExpression node)
     {
-        if (node.Operator != "<->") return node;
+        if (node.Operator != "<->")
+        {
+            return node;
+        }
 
         if (node.Parent is not Block)
         {

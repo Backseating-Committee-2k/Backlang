@@ -14,7 +14,8 @@ public class ThrowStatementListener : Listener<BodyCompilation, AstNode, ThrowSt
 
         if (value.ResultType == PrimType.String)
         {
-            var ctor = context.Driver.KnownTypes.ExceptionType!.FindMethod(".ctor", new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
+            var ctor = context.Driver.KnownTypes.ExceptionType!.FindMethod(".ctor",
+                new MethodSig(PrimType.Void, [new TypeSig(PrimType.String)]));
 
             value = context.Builder.CreateNewObj(ctor, value);
         }

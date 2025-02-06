@@ -12,7 +12,8 @@ public sealed class WaitForDebuggerStage : IHandler<Driver, Driver>
         {
             Thread.Sleep(1);
         }
-        System.Console.WriteLine("Debugger attached");
+
+        Console.WriteLine("Debugger attached");
 
         return await next.Invoke(context);
     }

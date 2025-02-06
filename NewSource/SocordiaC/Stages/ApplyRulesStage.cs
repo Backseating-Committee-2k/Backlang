@@ -1,7 +1,6 @@
 using Flo;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
-using SocordiaC.Compilation;
 using SocordiaC.Compilation.Listeners;
 
 namespace SocordiaC.Stages;
@@ -16,7 +15,9 @@ public class ApplyRulesStage : IHandler<Driver, Driver>
 
         foreach (var tree in context.Trees)
         foreach (var decl in tree.Declarations.Children)
+        {
             pipeline.Listen(context, decl);
+        }
 
         return await next.Invoke(context);
     }

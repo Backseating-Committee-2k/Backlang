@@ -1,5 +1,4 @@
-﻿using Loyc.Syntax;
-using MrKWatkins.Ast.Position;
+﻿using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.Parsing;
 
 namespace Socordia.CodeAnalysis.AST;

@@ -1,5 +1,5 @@
 
-public enum Color : string {
+public enum Color {
     Red,
     Green,
     Blue

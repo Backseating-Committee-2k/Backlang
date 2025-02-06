@@ -1,16 +1,15 @@
-﻿using Loyc.Syntax;
-using MrKWatkins.Ast.Position;
+﻿using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.Parsing;
 
 namespace Socordia.CodeAnalysis.Core;
 
 public abstract class BaseLexer
 {
+    public readonly List<Message> Messages = [];
     protected int _column = 1;
     protected TextFile _document;
     protected int _line = 1;
     protected int _position;
-    public readonly List<Message> Messages = [];
 
     public List<Token> Tokenize(TextFile document)
     {
@@ -60,7 +59,7 @@ public abstract class BaseLexer
     {
         _column++;
 
-        var pos =_document.CreatePosition(_position, 1, _line, _column);
+        var pos = _document.CreatePosition(_position, 1, _line, _column);
         Messages.Add(Message.Error($"Unknown Character '{Current()}'", pos));
         Advance();
     }

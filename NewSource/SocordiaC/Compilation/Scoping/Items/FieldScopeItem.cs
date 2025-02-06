@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using DistIL.AsmIO;
+﻿using DistIL.AsmIO;
+using System.Reflection;
 
 namespace SocordiaC.Compilation.Scoping.Items;
 

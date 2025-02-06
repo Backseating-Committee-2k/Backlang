@@ -32,6 +32,9 @@ public sealed class AnnotationParser
 
         return annotations.Count > 0;
 
-        bool IsAnnotation() => parser.Iterator.IsMatch(TokenType.At) && parser.Iterator.Peek(1).Type == TokenType.Identifier;
+        bool IsAnnotation()
+        {
+            return parser.Iterator.IsMatch(TokenType.At) && parser.Iterator.Peek(1).Type == TokenType.Identifier;
+        }
     }
 }

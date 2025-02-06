@@ -25,6 +25,7 @@ public sealed class ClassDeclarationParser : IParsePoint
         var extendsParsed = false;
 
         while (iterator.IsMatch(TokenType.Implements) || iterator.IsMatch(TokenType.Extends))
+        {
             if (iterator.Current.Type == TokenType.Implements && !implementsParsed)
             {
                 iterator.NextToken();
@@ -38,6 +39,7 @@ public sealed class ClassDeclarationParser : IParsePoint
                 baseType = TypeNameParser.Parse(parser);
                 extendsParsed = true;
             }
+        }
 
         var members = ParsingHelpers.ParseDeclarationMembers<TypeMemberDeclaration>(parser);
         return new ClassDeclaration(nameToken.Text, baseType, inheritances, members);

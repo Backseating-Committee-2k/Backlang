@@ -9,7 +9,7 @@ public class FunctionDefinition : Declaration
         Properties.Set(nameof(IsExpressionBody), isExpressionBody);
     }
 
-    public bool IsExpressionBody => (bool)Properties.GetOrDefault<bool>(nameof(IsExpressionBody));
+    public bool IsExpressionBody => Properties.GetOrDefault<bool>(nameof(IsExpressionBody));
 
     public Signature Signature => (Signature)Children[0];
     public Block? Body => (Block?)Children[1];

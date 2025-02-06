@@ -1,10 +1,10 @@
-using System.Reflection;
 using DistIL.AsmIO;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Declarations.DU;
 using Socordia.Compilation;
+using System.Reflection;
 
 namespace SocordiaC.Compilation.Listeners;
 

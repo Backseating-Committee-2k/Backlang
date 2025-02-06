@@ -1,4 +1,3 @@
-using System.Reflection;
 using DistIL.AsmIO;
 using DistIL.CodeGen.Cil;
 using DistIL.IR;
@@ -9,6 +8,7 @@ using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
 using Socordia.Compilation;
 using Socordia.Core.CompilerService;
+using System.Reflection;
 using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation.Listeners;

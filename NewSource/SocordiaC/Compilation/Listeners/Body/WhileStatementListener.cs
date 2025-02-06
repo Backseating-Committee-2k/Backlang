@@ -1,5 +1,4 @@
 using DistIL.IR;
-using DistIL.IR.Utils;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Statements.Loops;

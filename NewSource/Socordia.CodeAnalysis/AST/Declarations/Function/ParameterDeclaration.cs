@@ -4,7 +4,8 @@ namespace Socordia.CodeAnalysis.AST.Declarations;
 
 public class ParameterDeclaration : Declaration
 {
-    public ParameterDeclaration(AstNode type, string name, AstNode? defaultValue, bool assertNotNull, List<Annotation> annotations)
+    public ParameterDeclaration(AstNode type, string name, AstNode? defaultValue, bool assertNotNull,
+        List<Annotation> annotations)
     {
         Properties.Set(nameof(Name), name);
         Properties.Set(nameof(DefaultValue), defaultValue);
@@ -18,5 +19,5 @@ public class ParameterDeclaration : Declaration
     public AstNode? DefaultValue => Properties.GetOrDefault<AstNode?>(nameof(DefaultValue));
     public bool AssertNotNull => Properties.GetOrDefault<bool>(nameof(AssertNotNull));
 
-    public TypeName Type =>(TypeName) Children[0];
+    public TypeName Type => (TypeName)Children[0];
 }

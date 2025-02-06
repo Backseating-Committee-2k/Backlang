@@ -1,7 +1,5 @@
 ﻿using Loyc.Syntax;
-using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.TypeNames;
-using Socordia.CodeAnalysis.Core;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints;
 
@@ -36,6 +34,7 @@ public sealed class TypeNameParser
                     var id = iterator.Match(TokenType.Identifier);
                     typeNode.Children.Add(new SimpleTypeName(id.Text));
                 }
+
                 typeNode = new QualifiedTypeName((SimpleTypeName)typeNode);
             }
 
@@ -50,7 +49,6 @@ public sealed class TypeNameParser
                 iterator.NextToken();
                 typeNode = new PointerTypeName(typeNode, PointerKind.Reference);
             }
-
             /*
             else if (iterator.IsMatch(TokenType.Questionmark))
             {
@@ -80,7 +78,7 @@ public sealed class TypeNameParser
         else
         {
             parser.AddError("Expected Identifier, TupleType or Function-Signature as TypeLiteral, but got " +
-                TokenIterator.GetTokenRepresentation(iterator.Current.Type));
+                            TokenIterator.GetTokenRepresentation(iterator.Current.Type));
 
             typeNode = new NoTypeName();
             iterator.NextToken();
@@ -102,6 +100,7 @@ public sealed class TypeNameParser
 
         return true;
     }
+
 /*
     private static LNode ParseFunctionOrTupleType(TokenIterator iterator, Parser parser, Token typeToken)
     {

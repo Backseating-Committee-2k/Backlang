@@ -1,6 +1,6 @@
-﻿using System.Collections.Immutable;
+﻿using DistIL.AsmIO;
+using System.Collections.Immutable;
 using System.Reflection;
-using DistIL.AsmIO;
 
 namespace SocordiaC.Compilation;
 
@@ -65,7 +65,10 @@ public static class OperatorOverloadingHelpers
                 var arg = args[i];
                 var param = method.ParamSig[i].Type;
 
-                if (arg != param) goto nextMethod;
+                if (arg != param)
+                {
+                    goto nextMethod;
+                }
             }
 
             opMethod = method;

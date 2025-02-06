@@ -6,6 +6,6 @@ public class UnitTypeName : TypeName
     {
         Children.Add(unit);
     }
-    
-    public SimpleTypeName Unit => (SimpleTypeName) Children[0];
+
+    public SimpleTypeName Unit => (SimpleTypeName)Children[0];
 }

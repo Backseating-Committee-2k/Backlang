@@ -20,7 +20,9 @@ public sealed class EnumDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.OpenCurly);
 
-        var members = ParsingHelpers.ParseSeperated<EnumMemberDeclarationParser, EnumMemberDeclaration>(parser, TokenType.CloseCurly);
+        var members =
+            ParsingHelpers.ParseSeperated<EnumMemberDeclarationParser, EnumMemberDeclaration>(parser,
+                TokenType.CloseCurly);
 
         return new EnumDeclaration(nameToken.Text, baseType, members);
     }

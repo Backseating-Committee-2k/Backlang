@@ -26,7 +26,10 @@ public class Scope
             return true;
         }
 
-        if (Contains(item.Name)) return false;
+        if (Contains(item.Name))
+        {
+            return false;
+        }
 
         _items.Add(item);
         return true;
@@ -47,7 +50,10 @@ public class Scope
         var scope = this;
         while (scope != null)
         {
-            foreach (var item in scope._items) yield return item.Name;
+            foreach (var item in scope._items)
+            {
+                yield return item.Name;
+            }
 
             scope = scope.Parent;
         }
@@ -59,8 +65,12 @@ public class Scope
         item = (T)_items.FirstOrDefault(i => i is T && i.Name == name);
 
         if (item == null && Parent != null)
+        {
             if (!Parent.TryGet(name, out item))
+            {
                 item = null;
+            }
+        }
 
         return item != null;
     }
@@ -69,10 +79,12 @@ public class Scope
     {
         if (node is Identifier id)
         {
-            if(TryGet<ScopeItem>(id.Name, out var item))
+            if (TryGet<ScopeItem>(id.Name, out var item))
+            {
                 return item!;
-            else
-                node.AddError(id.Name + " not found");
+            }
+
+            node.AddError(id.Name + " not found");
         }
 
         return null;

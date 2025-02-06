@@ -1,10 +1,8 @@
-﻿using System.Reflection;
-using Loyc;
-using Loyc.Syntax;
-using Socordia.CodeAnalysis.AST;
+﻿using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.Core;
 using Socordia.CodeAnalysis.Core.Attributes;
+using System.Reflection;
 
 namespace Socordia.CodeAnalysis.Parsing;
 
@@ -22,24 +20,24 @@ public static class Expression
         {
             var attributes = op.GetType().GetField(Enum.GetName(op)!).GetCustomAttributes<OperatorInfoAttribute>(true);
 
-                foreach (var attribute in attributes)
+            foreach (var attribute in attributes)
+            {
+                if (attribute.IsUnary)
                 {
-                    if (attribute.IsUnary)
+                    if (attribute.IsPostUnary)
                     {
-                        if (attribute.IsPostUnary)
-                        {
-                            PostUnaryOperators.Add(op, attribute.Precedence);
-                        }
-                        else
-                        {
-                            PreUnaryOperators.Add(op, attribute.Precedence);
-                        }
+                        PostUnaryOperators.Add(op, attribute.Precedence);
                     }
                     else
                     {
-                        BinaryOperators.Add(op, attribute.Precedence);
+                        PreUnaryOperators.Add(op, attribute.Precedence);
                     }
                 }
+                else
+                {
+                    BinaryOperators.Add(op, attribute.Precedence);
+                }
+            }
         }
     }
 
@@ -93,7 +91,7 @@ public static class Expression
             var operatorToken = parser.Iterator.NextToken();
             var right = Parse(parser, parsePoints, precedence);
 
-            left =  new BinaryOperatorExpression(operatorToken.Text, left, right);
+            left = new BinaryOperatorExpression(operatorToken.Text, left, right);
 
             // parsing postunary for: Hello::new()? = false;
             var postUnaryOperatorPrecedence = GetPostUnaryOperatorPrecedence(parser.Iterator.Current.Type);

@@ -1,7 +1,6 @@
 using DistIL.AsmIO;
 using DistIL.IR;
 using Socordia.CodeAnalysis.AST;
-using SocordiaC;
 using System.Runtime.CompilerServices;
 
 namespace Socordia.Compilation;
@@ -20,8 +19,8 @@ public static class Extensions
     {
         entity.GetCustomAttribs(false)
             .Add(new CustomAttrib(
-                compilation.Resolver.Import(typeof(CompilerGeneratedAttribute))
-                    .FindMethod(".ctor")
+                    compilation.Resolver.Import(typeof(CompilerGeneratedAttribute))
+                        .FindMethod(".ctor")
                 )
             );
     }

@@ -1,12 +1,9 @@
-using Loyc;
 using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
-using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.Statements;
 using Socordia.CodeAnalysis.AST.Statements.Loops;
-using Socordia.CodeAnalysis.AST.TypeNames;
 using Socordia.CodeAnalysis.Parsing.ParsePoints;
 using LiteralNode = Socordia.CodeAnalysis.AST.Literals.LiteralNode;
 
@@ -48,10 +45,10 @@ public static class SyntaxTree
         return Factory.Call(CodeSymbols.Array, LNode.List(typeNode, LNode.Literal(dimensions)));
     }
 
-  public static AstNode Throw(AstNode arg)
-{
-    return new ThrowStatement(arg);
-}
+    public static AstNode Throw(AstNode arg)
+    {
+        return new ThrowStatement(arg);
+    }
 
     public static AstNode ArrayInstantiation(List<AstNode> elements)
     {

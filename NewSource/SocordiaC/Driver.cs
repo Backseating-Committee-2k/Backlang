@@ -1,14 +1,13 @@
-﻿using System.Reflection;
-using DistIL;
+﻿using DistIL;
 using DistIL.AsmIO;
 using Flo;
 using LanguageSdk.Templates.Core;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.Parsing;
-using Socordia.Compilation;
 using SocordiaC.Compilation;
 using SocordiaC.Stages;
+using System.Reflection;
 using System.Runtime.Versioning;
 
 namespace SocordiaC;
@@ -66,8 +65,7 @@ public class Driver
     public async Task Compile()
     {
         var pipeline = Pipeline.Build<Driver, Driver>(
-            cfg =>
-            {
+            cfg => {
                 cfg.Add<ParsingStage>();
                 cfg.Add<LoweringStage>();
                 cfg.Add<ValidationStage>();
@@ -77,9 +75,8 @@ public class Driver
                 cfg.Add<ApplyRulesStage>();
                 cfg.Add<PrintErrorsStage>();
 
-                cfg.When(_ => Settings.ShouldOptimize, _ =>
-                {
-                   _.Add<OptimizeStage>();
+                cfg.When(_ => Settings.ShouldOptimize, _ => {
+                    _.Add<OptimizeStage>();
                 });
 
                 cfg.Add<SaveModuleStage>();
@@ -91,7 +88,10 @@ public class Driver
 
     public TypeDef GetFunctionType(string ns)
     {
-        if (_functionTypes.TryGetValue(ns, out var value)) return value;
+        if (_functionTypes.TryGetValue(ns, out var value))
+        {
+            return value;
+        }
 
         var type = Compilation.Module.CreateType(ns, "Functions",
             TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);

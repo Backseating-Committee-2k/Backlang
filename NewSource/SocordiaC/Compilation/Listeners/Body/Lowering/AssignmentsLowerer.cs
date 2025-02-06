@@ -16,7 +16,10 @@ public class AssignmentsLowerer : Replacer<AstNode, BinaryOperatorExpression>
 
     protected override AstNode? ReplaceNode(BinaryOperatorExpression node)
     {
-        if (!ShortAssignmentOperators.Contains(node.Operator)) return node;
+        if (!ShortAssignmentOperators.Contains(node.Operator))
+        {
+            return node;
+        }
 
         var left = node.Left;
         var right = node.Right;

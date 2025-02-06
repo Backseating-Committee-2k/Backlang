@@ -10,6 +10,7 @@ public class SocordiaBuildTask : LanguageSdk.Templates.Core.BuildTask<DriverSett
         var driver = Driver.Create(settings);
 
         foreach (var reference in ReferencePaths)
+        {
             try
             {
                 // Driver.moduleResolver.Load(reference.ItemSpec);
@@ -17,8 +18,9 @@ public class SocordiaBuildTask : LanguageSdk.Templates.Core.BuildTask<DriverSett
             catch
             {
             }
+        }
 
-        foreach(var er in EmbeddedResources)
+        foreach (var er in EmbeddedResources)
         {
             var name = Path.GetFileName(er.ItemSpec);
             driver.Compilation.Module.CreateEmbeddedResource(name, File.ReadAllBytes(er.ItemSpec));
@@ -32,12 +34,12 @@ public class SocordiaBuildTask : LanguageSdk.Templates.Core.BuildTask<DriverSett
             {
                 case MessageSeverity.Error:
                     Log.LogError(null, null, null,
-                        file: message.Document.Name, message.Range.StartLineNumber, message.Range.StartColumnNumber,
+                        message.Document.Name, message.Range.StartLineNumber, message.Range.StartColumnNumber,
                         message.Range.StartLineNumber, message.Range.StartColumnNumber, message.Text);
                     break;
                 case MessageSeverity.Warning:
                     Log.LogWarning(null, null, null,
-                        file: message.Document.Name, message.Range.StartLineNumber, message.Range.StartColumnNumber,
+                        message.Document.Name, message.Range.StartLineNumber, message.Range.StartColumnNumber,
                         message.Range.StartLineNumber, message.Range.StartColumnNumber, message.Text);
                     break;
             }

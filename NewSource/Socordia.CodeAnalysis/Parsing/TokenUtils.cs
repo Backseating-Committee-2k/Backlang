@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using Socordia.CodeAnalysis.Core.Attributes;
+﻿using Socordia.CodeAnalysis.Core.Attributes;
+using System.Reflection;
 
 namespace Socordia.CodeAnalysis.Parsing;
 

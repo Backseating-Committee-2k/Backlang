@@ -1,9 +1,9 @@
-using System.Collections.Immutable;
 using DistIL.AsmIO;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Expressions;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using System.Collections.Immutable;
 
 namespace SocordiaC.Compilation;
 
@@ -31,16 +31,32 @@ public static class TypeDeducer
     public static TypeDesc? Deduce(AstNode node, ModuleResolver resolver)
     {
         if (node is SimpleTypeName simpleTypeName)
+        {
             if (TypenameTable.TryGetValue(simpleTypeName.Name, out var deduce))
+            {
                 return deduce;
+            }
+        }
 
-        if (node is LiteralNode literal) return resolver.Import(literal.Value.GetType());
+        if (node is LiteralNode literal)
+        {
+            return resolver.Import(literal.Value.GetType());
+        }
 
-        if (node is UnaryOperatorExpression unary) return DeduceUnary(unary, resolver);
+        if (node is UnaryOperatorExpression unary)
+        {
+            return DeduceUnary(unary, resolver);
+        }
 
-        if (node is TypeOfExpression) return resolver.SysTypes.Type;
+        if (node is TypeOfExpression)
+        {
+            return resolver.SysTypes.Type;
+        }
 
-        if (node is DefaultLiteral defaultLiteral) return TypenameTable[defaultLiteral.Type!.ToString()];
+        if (node is DefaultLiteral defaultLiteral)
+        {
+            return TypenameTable[defaultLiteral.Type!.ToString()];
+        }
 
         node.AddError("Cannot deduce type");
         return null;
@@ -50,15 +66,30 @@ public static class TypeDeducer
     {
         var left = Deduce(unary.Operand, resolver);
 
-        if (left.TryGetOperator(unary.Operator, out var opMethod, left)) return opMethod.ReturnType;
+        if (left.TryGetOperator(unary.Operator, out var opMethod, left))
+        {
+            return opMethod.ReturnType;
+        }
 
-        if (unary.Operator == "&") return left.CreatePointer();
+        if (unary.Operator == "&")
+        {
+            return left.CreatePointer();
+        }
 
-        if (unary.Operator == "*") return left.ElemType;
+        if (unary.Operator == "*")
+        {
+            return left.ElemType;
+        }
 
-        if (unary.Operator == "!") return PrimType.Bool;
+        if (unary.Operator == "!")
+        {
+            return PrimType.Bool;
+        }
 
-        if (unary.Operator == "-") return left.ElemType;
+        if (unary.Operator == "-")
+        {
+            return left.ElemType;
+        }
 
         return null;
     }

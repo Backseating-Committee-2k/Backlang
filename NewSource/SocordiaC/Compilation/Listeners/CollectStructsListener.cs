@@ -1,7 +1,7 @@
-using System.Reflection;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using System.Reflection;
 
 namespace SocordiaC.Compilation.Listeners;
 

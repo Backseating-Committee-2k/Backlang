@@ -1,8 +1,8 @@
-using System.Reflection;
 using DistIL.AsmIO;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using System.Reflection;
 using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation.Listeners;
@@ -24,10 +24,15 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
         var method = type.CreateMethod(node.Signature.Name.Name,
             returnType, [..parameters], attrs);
 
-        if (!node.Modifiers.Contains(Modifier.Extern)) method.Body = new MethodBody(method);
+        if (!node.Modifiers.Contains(Modifier.Extern))
+        {
+            method.Body = new MethodBody(method);
+        }
 
         if (type.Name == "Functions" && method is { IsStatic: true, Name: "main" })
+        {
             context.Compilation.Module.EntryPoint = method;
+        }
 
         Mappings.Functions.Add(node, method);
 
@@ -56,7 +61,10 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
     {
         ParameterAttributes result = 0;
 
-        if (node.DefaultValue != null) result |= ParameterAttributes.HasDefault | ParameterAttributes.Optional;
+        if (node.DefaultValue != null)
+        {
+            result |= ParameterAttributes.HasDefault | ParameterAttributes.Optional;
+        }
 
         return result;
     }
@@ -65,9 +73,13 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
     {
         var attrs = (MethodAttributes)0;
 
-        if (node.Parent is RootBlock) attrs |= MethodAttributes.Static;
+        if (node.Parent is RootBlock)
+        {
+            attrs |= MethodAttributes.Static;
+        }
 
         foreach (var modifier in node.Modifiers)
+        {
             attrs |= modifier switch
             {
                 Modifier.Static => MethodAttributes.Static,
@@ -78,8 +90,12 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
                 Modifier.Operator => MethodAttributes.Public | MethodAttributes.Static,
                 _ => throw new NotImplementedException()
             };
+        }
 
-        if (attrs == MethodAttributes.Static) attrs |= MethodAttributes.Public;
+        if (attrs == MethodAttributes.Static)
+        {
+            attrs |= MethodAttributes.Public;
+        }
 
         return attrs;
     }

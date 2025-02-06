@@ -35,7 +35,10 @@ public partial class Utils
     {
         var type = GetTypeFromNode(def.Type, compilation.Driver.Compilation.Module)!;
 
-        if (type.TryGetOperator("default", out var method)) return compilation.Builder.CreateCall(method!);
+        if (type.TryGetOperator("default", out var method))
+        {
+            return compilation.Builder.CreateCall(method!);
+        }
 
         return compilation.Builder.CreateDefaultOf(type);
     }
@@ -86,7 +89,7 @@ public partial class Utils
             }
         }
 
-        id.AddError(id .Name + " not found");
+        id.AddError(id.Name + " not found");
         return new Undef(PrimType.Void);
     }
 
@@ -96,7 +99,9 @@ public partial class Utils
         var right = CreateValue(binary.Right, compilation);
 
         if (left.ResultType.TryGetOperator(binary.Operator, out var method, left.ResultType, right.ResultType))
+        {
             return compilation.Builder.CreateCall(method!);
+        }
 
         return binary.Operator switch
         {
@@ -114,7 +119,9 @@ public partial class Utils
     {
         var left = CreateValue(unary.Operand, compilation);
         if (left.ResultType.TryGetOperator(unary.Operator, out var method, left.ResultType))
+        {
             return compilation.Builder.CreateCall(method!);
+        }
 
         return unary.Operator switch
         {

@@ -212,94 +212,94 @@ public partial class BuiltInMacros
                         result = F.Call(LNode_Dot, node.Args.SmartSelect(arg => QuoteOne(arg, substitutions)));
                     else if (node.Calls(S.Of))
                         result = F.Call(LNode_Of, node.Args.SmartSelect(arg => QuoteOne(arg, substitutions)));*/
-                  /*  else
-                    {
-                        // General case: F.Call(<Target>, <Args>)
-                        if (node.Target.IsId)
-                        {
-                            creationArgs.Add(QuoteSymbol(node.Name));
-                        }
-                        else
-                        {
-                            creationArgs.Add(Quote(node.Target));
-                        }
+/*  else
+  {
+      // General case: F.Call(<Target>, <Args>)
+      if (node.Target.IsId)
+      {
+          creationArgs.Add(QuoteSymbol(node.Name));
+      }
+      else
+      {
+          creationArgs.Add(Quote(node.Target));
+      }
 
-                        var argList = MaybeQuoteList(node.Args);
-                        if (argList != null)
-                        {
-                            creationArgs.Add(argList);
-                        }
+      var argList = MaybeQuoteList(node.Args);
+      if (argList != null)
+      {
+          creationArgs.Add(argList);
+      }
 
-                        result = F.Call(LNode_Call, creationArgs);
-                    }
+      result = F.Call(LNode_Call, creationArgs);
+  }
 
-                    // Note: don't preserve prefix notation because if $op is +,
-                    // we want $op(x, y) to generate code for x + y (there is no
-                    // way to express this with infix notation.)
-                    if (preserveStyle && node.BaseStyle != NodeStyle.Default &&
-                        node.BaseStyle != NodeStyle.PrefixNotation)
-                    {
-                        result = F.Call(F.Dot(result, F.Id("SetStyle")),
-                            F.Dot(F.Id("NodeStyle"), F.Id(node.BaseStyle.ToString())));
-                    }
+  // Note: don't preserve prefix notation because if $op is +,
+  // we want $op(x, y) to generate code for x + y (there is no
+  // way to express this with infix notation.)
+  if (preserveStyle && node.BaseStyle != NodeStyle.Default &&
+      node.BaseStyle != NodeStyle.PrefixNotation)
+  {
+      result = F.Call(F.Dot(result, F.Id("SetStyle")),
+          F.Dot(F.Id("NodeStyle"), F.Id(node.BaseStyle.ToString())));
+  }
 
-                    break;
-            }
+  break;
+}
 
-            return result;
-        }
+return result;
+}
 
-        private static LNode VarArgExpr(LNode arg)
-        {
-            LNode subj;
-            if (arg.Calls(S.Substitute, 1) && ((subj = arg.Args[0]).Calls(S.DotDot, 1) || subj.Calls(S.DotDotDot, 1)))
-            {
-                return subj.Args[0];
-            }
+private static LNode VarArgExpr(LNode arg)
+{
+LNode subj;
+if (arg.Calls(S.Substitute, 1) && ((subj = arg.Args[0]).Calls(S.DotDot, 1) || subj.Calls(S.DotDotDot, 1)))
+{
+return subj.Args[0];
+}
 
-            return null;
-        }
+return null;
+}
 
-        private LNode MaybeQuoteList(LNodeList list, bool isAttributes = false)
-        {
-            if (isAttributes && _ignoreTrivia)
-            {
-                list = list.SmartWhere(n => !n.IsTrivia || n.IsIdNamed(S.TriviaInParens));
-            }
+private LNode MaybeQuoteList(LNodeList list, bool isAttributes = false)
+{
+if (isAttributes && _ignoreTrivia)
+{
+list = list.SmartWhere(n => !n.IsTrivia || n.IsIdNamed(S.TriviaInParens));
+}
 
-            if (list.IsEmpty)
-            {
-                return null;
-            }
+if (list.IsEmpty)
+{
+return null;
+}
 
-            if (_doSubstitutions && list.Any(a => VarArgExpr(a) != null))
-            {
-                if (list.Count == 1)
-                {
-                    return F.Call(LNode_List, VarArgExpr(list[0]));
-                }
+if (_doSubstitutions && list.Any(a => VarArgExpr(a) != null))
+{
+if (list.Count == 1)
+{
+  return F.Call(LNode_List, VarArgExpr(list[0]));
+}
 
-                // If you write something like quote(Foo($x, $(...y), $z)), a special
-                // output style is used to accommodate the variable argument list.
-                var argList = F.Call(LNode_List);
-                foreach (var arg in list)
-                {
-                    var vae = VarArgExpr(arg);
-                    if (vae != null)
-                    {
-                        argList = F.Call(F.Dot(argList, F.Id("AddRange")), vae);
-                    }
-                    else
-                    {
-                        argList = F.Call(F.Dot(argList, F.Id("Add")), Quote(arg));
-                    }
-                }
+// If you write something like quote(Foo($x, $(...y), $z)), a special
+// output style is used to accommodate the variable argument list.
+var argList = F.Call(LNode_List);
+foreach (var arg in list)
+{
+  var vae = VarArgExpr(arg);
+  if (vae != null)
+  {
+      argList = F.Call(F.Dot(argList, F.Id("AddRange")), vae);
+  }
+  else
+  {
+      argList = F.Call(F.Dot(argList, F.Id("Add")), Quote(arg));
+  }
+}
 
-                return argList;
-            }
+return argList;
+}
 
-            return F.Call(LNode_List, list.SmartSelect(item => Quote(item)));
-        }
-    }
+return F.Call(LNode_List, list.SmartSelect(item => Quote(item)));
+}
+}
 }
 */

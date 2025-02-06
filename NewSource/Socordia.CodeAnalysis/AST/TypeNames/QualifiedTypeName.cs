@@ -19,6 +19,11 @@ public class QualifiedTypeName : TypeName
         AddChildrenRecursively(op);
     }
 
+    public string Namespace => string.Join('.', Children[..^1].Take(Children.Count - 1));
+    public TypeName Type => (TypeName)Children.Last;
+
+    public string FullName => $"{Namespace}.{Type}";
+
     private void AddChildrenRecursively(BinaryOperatorExpression op)
     {
         foreach (var child in op.Children)
@@ -34,10 +39,8 @@ public class QualifiedTypeName : TypeName
         }
     }
 
-    public string Namespace => string.Join('.', Children[..^1].Take(Children.Count - 1));
-    public TypeName Type => (TypeName)Children.Last;
-
-    public string FullName => $"{Namespace}.{Type}";
-
-    public override string ToString() => FullName;
+    public override string ToString()
+    {
+        return FullName;
+    }
 }

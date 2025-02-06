@@ -1,5 +1,4 @@
 using System.Text;
-using Socordia.CodeAnalysis.Parsing;
 
 namespace Socordia.CodeAnalysis.AST.TypeNames;
 

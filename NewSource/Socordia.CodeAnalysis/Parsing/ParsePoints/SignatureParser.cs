@@ -1,6 +1,7 @@
 using Loyc.Syntax;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints;
 
@@ -16,7 +17,7 @@ public sealed class SignatureParser
         AstNode? returnType = new SimpleTypeName("none");
         iterator.Match(TokenType.OpenParen);
 
-        var parameters = Declarations.ParameterDeclarationParser.ParseList(parser);
+        var parameters = ParameterDeclarationParser.ParseList(parser);
 
         var generics = new List<AstNode>();
         while (iterator.IsMatch(TokenType.Where))

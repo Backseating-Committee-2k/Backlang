@@ -1,8 +1,8 @@
-using System.Reflection;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.Compilation;
+using System.Reflection;
 
 namespace SocordiaC.Compilation.Listeners;
 
@@ -36,7 +36,9 @@ public class CollectUnionsListener : Listener<Driver, AstNode, UnionDeclaration>
         }
 
         if (node.Modifiers.Contains(Modifier.Private) || node.Modifiers.Contains(Modifier.Internal))
+        {
             attrs &= ~TypeAttributes.Public;
+        }
 
         return attrs;
     }

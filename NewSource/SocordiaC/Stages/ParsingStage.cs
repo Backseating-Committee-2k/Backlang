@@ -16,12 +16,14 @@ public sealed class ParsingStage : IHandler<Driver, Driver>
     private static void ParseSourceFiles(Driver context)
     {
         foreach (var filename in context.Settings.Sources)
+        {
             if (File.Exists(filename))
             {
                 var tree = CompilationUnit.FromFile(filename);
 
                 ApplyTree(context, tree);
             }
+        }
         // context.Messages.Add(Message.Error($"File '{filename}' does not exists", (TextFilePosition)TextFilePosition.None));
     }
 

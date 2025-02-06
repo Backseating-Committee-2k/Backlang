@@ -34,5 +34,8 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
         }
     }
 
-    protected override bool ShouldListenToChildren(BodyCompilation context, BinaryOperatorExpression node) => false;
+    protected override bool ShouldListenToChildren(BodyCompilation context, BinaryOperatorExpression node)
+    {
+        return false;
+    }
 }

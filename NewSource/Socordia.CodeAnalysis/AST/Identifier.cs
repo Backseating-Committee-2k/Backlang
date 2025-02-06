@@ -8,5 +8,9 @@ public class Identifier : AstNode
     }
 
     public string Name => Properties.GetOrThrow<string>(nameof(Name));
-    public override string ToString() => Name;
+
+    public override string ToString()
+    {
+        return Name;
+    }
 }

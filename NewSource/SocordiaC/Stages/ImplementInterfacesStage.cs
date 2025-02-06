@@ -16,9 +16,13 @@ public class ImplementInterfacesStage : IHandler<Driver, Driver>
                 var t = Utils.GetTypeFromNode(impl, type);
 
                 if (t.IsInterface)
+                {
                     type.Interfaces.Add(t);
+                }
                 else
+                {
                     impl.AddError(impl + " is not an interface");
+                }
             }
 
             type.SetBaseType((TypeDefOrSpec)GetBaseType(node, context.Compilation));
@@ -31,7 +35,10 @@ public class ImplementInterfacesStage : IHandler<Driver, Driver>
 
     private static TypeDesc GetBaseType(ClassDeclaration node, DistIL.Compilation compilation)
     {
-        if (node.BaseType == null) return compilation.Module.Resolver.Import(typeof(object));
+        if (node.BaseType == null)
+        {
+            return compilation.Module.Resolver.Import(typeof(object));
+        }
 
         return Utils.GetTypeFromNode(node.BaseType, compilation.Module)!;
     }

@@ -14,12 +14,8 @@ public class IfStatementListener : Listener<BodyCompilation, AstNode, IfStatemen
         cond.EnsureType<bool>(node.Condition);
 
         cond = NegateCondition(cond);
-        context.Builder.ForkIf(cond, (builder, block) =>
-        {
-            BodyCompilation.Listener.Listen(context with
-            {
-                Builder = builder,
-            }, node.Body);
+        context.Builder.ForkIf(cond, (builder, block) => {
+            BodyCompilation.Listener.Listen(context with { Builder = builder }, node.Body);
         });
 
         if (node.ElseBlock.HasChildren)

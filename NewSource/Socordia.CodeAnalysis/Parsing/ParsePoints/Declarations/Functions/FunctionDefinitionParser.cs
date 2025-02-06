@@ -1,6 +1,7 @@
 ﻿using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Statements;
+using Socordia.CodeAnalysis.Parsing.ParsePoints.Statements;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints.Declarations;
 
@@ -12,10 +13,10 @@ public sealed class FunctionDefinitionParser : IParsePoint
         var signature = SignatureParser.Parse(parser);
 
         Block body = null;
-        bool isExpressionBody = false;
+        var isExpressionBody = false;
         if (iterator.IsMatch(TokenType.OpenCurly))
         {
-            body = Statements.Statement.ParseBlock(parser);
+            body = Statement.ParseBlock(parser);
         }
         else if (iterator.ConsumeIfMatch(TokenType.Arrow))
         {

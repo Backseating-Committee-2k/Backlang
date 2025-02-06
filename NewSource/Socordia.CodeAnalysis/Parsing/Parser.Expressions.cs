@@ -4,8 +4,6 @@ using Loyc.Syntax;
 using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Literals;
-using Socordia.CodeAnalysis.Core;
-using Socordia.CodeAnalysis.Parsing.ParsePoints;
 using LiteralNode = Socordia.CodeAnalysis.AST.Literals.LiteralNode;
 
 namespace Socordia.CodeAnalysis.Parsing;
@@ -34,8 +32,8 @@ public sealed partial class Parser
     public void AddError(string message)
     {
         Messages.Add(Message.Error(message,
-           Document.CreatePosition(Iterator.Position, Iterator.Current.Text.Length,
-               Iterator.Current.Line, Iterator.Current.Column)));
+            Document.CreatePosition(Iterator.Position, Iterator.Current.Text.Length,
+                Iterator.Current.Line, Iterator.Current.Column)));
     }
 
     public Identifier ParseIdentifier()
@@ -166,7 +164,7 @@ public sealed partial class Parser
             }
             else
             {
-                AddError("Unknown Literal "+ Iterator.Current.Text);
+                AddError("Unknown Literal " + Iterator.Current.Text);
 
                 result = null;
             }

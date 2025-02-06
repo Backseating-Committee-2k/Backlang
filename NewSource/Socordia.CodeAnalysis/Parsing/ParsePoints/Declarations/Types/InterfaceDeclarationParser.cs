@@ -16,7 +16,8 @@ public sealed class InterfaceDeclarationParser : IParsePoint
 
         if (iterator.ConsumeIfMatch(TokenType.Colon))
         {
-            inheritances = ParsingHelpers.ParseSeperated(parser, TokenType.OpenCurly, TypeNameParser.Parse, TokenType.Comma,false);
+            inheritances = ParsingHelpers.ParseSeperated(parser, TokenType.OpenCurly, TypeNameParser.Parse,
+                TokenType.Comma, false);
         }
 
         var members = ParsingHelpers.ParseDeclarationMembers<TypeMemberDeclaration>(parser);

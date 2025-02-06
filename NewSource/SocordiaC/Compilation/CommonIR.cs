@@ -1,8 +1,8 @@
-using System.Reflection;
 using DistIL.AsmIO;
 using DistIL.CodeGen.Cil;
 using DistIL.IR;
 using DistIL.IR.Utils;
+using System.Reflection;
 using MethodBody = DistIL.IR.MethodBody;
 
 namespace SocordiaC.Compilation;
@@ -28,7 +28,10 @@ public class CommonIR
 
         foreach (var field in type.Fields)
         {
-            if (field.IsStatic) continue;
+            if (field.IsStatic)
+            {
+                continue;
+            }
 
             var fieldValue = builder.CreateFieldLoad(field);
             var method = field.Type.Methods.FirstOrDefault(m => m.Name.ToString() == "GetHashCode");

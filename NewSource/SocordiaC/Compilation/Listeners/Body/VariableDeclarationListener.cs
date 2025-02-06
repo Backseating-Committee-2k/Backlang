@@ -13,13 +13,19 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
     protected override void ListenToNode(BodyCompilation context, VariableStatement node)
     {
         var value = Utils.CreateValue(node.Initializer, context);
-        if (value is Instruction { Block: null } instr) context.Builder.Emit(instr);
+        if (value is Instruction { Block: null } instr)
+        {
+            context.Builder.Emit(instr);
+        }
 
         TypeDesc type;
         if (node.Type is not NoTypeName)
         {
             type = Utils.GetTypeFromNode(node.Type, context.Driver.Compilation.Module)!;
-            if (type != value.ResultType) node.Type.AddError("Type mismatch");
+            if (type != value.ResultType)
+            {
+                node.Type.AddError("Type mismatch");
+            }
         }
         else
         {
@@ -27,7 +33,7 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
 
             if (value is LocalSlot s)
             {
-             //   type = s.Type;
+                //   type = s.Type;
             }
         }
 
@@ -38,12 +44,7 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
 
         var slot = context.Method.Body!.CreateVar(type, node.Name);
 
-        context.Scope.Add(new VariableScopeItem
-        {
-            Slot = slot,
-            Name = node.Name,
-            IsMutable = node.IsMutable
-        });
+        context.Scope.Add(new VariableScopeItem { Slot = slot, Name = node.Name, IsMutable = node.IsMutable });
 
         context.Builder.CreateStore(slot, value);
     }

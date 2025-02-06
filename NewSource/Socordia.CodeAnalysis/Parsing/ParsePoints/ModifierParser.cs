@@ -1,5 +1,5 @@
-﻿using System.Collections.Immutable;
-using Socordia.CodeAnalysis.AST;
+﻿using Socordia.CodeAnalysis.AST;
+using System.Collections.Immutable;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints;
 

@@ -19,16 +19,25 @@ public static class ImplicitTypeCastTable
 
     public static bool IsAssignableTo(this TypeDef type, TypeDef toCast)
     {
-        if (type == toCast) return true;
+        if (type == toCast)
+        {
+            return true;
+        }
 
         /* if (toCast.IsUnitType())
          {
              return IsAssignableTo(type, ut.BaseTypes[0]);
          }*/
 
-        if (HasImplicitCastOperator(type, toCast)) return true;
+        if (HasImplicitCastOperator(type, toCast))
+        {
+            return true;
+        }
 
-        if (CastMap.TryGetValue(toCast, out var value)) return value.Contains(type);
+        if (CastMap.TryGetValue(toCast, out var value))
+        {
+            return value.Contains(type);
+        }
 
         return toCast == PrimType.Object;
     }

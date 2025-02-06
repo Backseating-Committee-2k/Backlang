@@ -1,5 +1,5 @@
-using System.Xml;
 using Socordia.CodeAnalysis.AST;
+using System.Xml;
 
 namespace Socordia.CodeAnalysis.Parsing.ParsePoints;
 

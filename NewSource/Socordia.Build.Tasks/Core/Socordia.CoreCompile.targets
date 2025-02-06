@@ -36,22 +36,22 @@
 
     <Target Name="CoreCompile" Inputs="@(CoreCompileInput)" Outputs="@(CoreCompileOutput)" DependsOnTargets="GetCoreCompileInputsOutputs;$(CoreCompileDependsOn)">
         <SocordiaBuildTask
-            SourceFiles="@(Compile)" OutputPath="@(IntermediateAssembly)" 
-            ReferencePaths="@(ReferencePathWithRefAssemblies)" 
-            Configuration="$(Configuration)" 
-            RootNamespace="$(RootNamespace)" DebugSymbols="$(DebugSymbols)" 
-            Version="$(Version)"
-            OptimizeLevel="$(OptimizeLevel)"
-            EmbeddedResources="@(EmbeddedResource)"
+                SourceFiles="@(Compile)" OutputPath="@(IntermediateAssembly)"
+                ReferencePaths="@(ReferencePathWithRefAssemblies)"
+                Configuration="$(Configuration)"
+                RootNamespace="$(RootNamespace)" DebugSymbols="$(DebugSymbols)"
+                Version="$(Version)"
+                OptimizeLevel="$(OptimizeLevel)"
+                EmbeddedResources="@(EmbeddedResource)"
         />
 
         <ItemGroup>
             <OutputFiles Include="$(OutputPath)\**\*.dll"/>
         </ItemGroup>
 
-        <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(IntermediateOutputPath)\refint\%(RecursiveDir)" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(IntermediateOutputPath)\refint\%(RecursiveDir)" OverwriteReadOnlyFiles="true"/>
 
-        <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(IntermediateOutputPath)\$(RuntimeIdentifier)\refint\%(RecursiveDir)" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(IntermediateOutputPath)\$(RuntimeIdentifier)\refint\%(RecursiveDir)" OverwriteReadOnlyFiles="true"/>
 
         <ItemGroup>
             <_CoreCompileResourceInputs Remove="@(_CoreCompileResourceInputs)"/>

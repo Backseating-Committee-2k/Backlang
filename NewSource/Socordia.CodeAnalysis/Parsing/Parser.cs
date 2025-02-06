@@ -1,8 +1,5 @@
-using System.Net.Mime;
-using Loyc.Syntax;
 using MrKWatkins.Ast.Position;
 using Socordia.CodeAnalysis.AST;
-using Socordia.CodeAnalysis.Core;
 
 namespace Socordia.CodeAnalysis.Parsing;
 
@@ -29,7 +26,7 @@ public sealed partial class Parser
         {
             return new CompilationUnit
             {
-                Declarations = new([]),
+                Declarations = new RootBlock([]),
                 Messages = [Message.Error("The source file is empty")],
                 Document = src
             };

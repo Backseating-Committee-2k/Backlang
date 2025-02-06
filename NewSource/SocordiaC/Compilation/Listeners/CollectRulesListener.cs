@@ -22,8 +22,14 @@ public class CollectRulesListener : Listener<Driver, AstNode, RulesDeclaration>
         var ns = context.GetNamespaceOf(node);
         var targetType = context.Compilation.Module.FindType(ns, typename.Unit.Name);
 
-        if (targetType is null) typename.AddError("Unit not found");
+        if (targetType is null)
+        {
+            typename.AddError("Unit not found");
+        }
 
-        if (!targetType.IsUnitType()) typename.AddError("Type is not a unit type");
+        if (!targetType.IsUnitType())
+        {
+            typename.AddError("Type is not a unit type");
+        }
     }
 }

@@ -8,8 +8,7 @@ public static class NodeValidator
     public static readonly Pipeline<AstNode> Pipeline =
         Pipeline<AstNode>
             .Build(
-                builder =>
-                {
+                builder => {
                     builder.AddStage<OperatorDefinitionValidator>();
                     builder.AddStage<ClassTypenameValidator>();
                     builder.AddStage<InterfaceTypenameValidator>();

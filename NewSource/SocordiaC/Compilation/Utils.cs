@@ -1,9 +1,9 @@
-using System.Reflection;
 using DistIL.AsmIO;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using System.Reflection;
 using System.Text;
 
 namespace SocordiaC.Compilation;
@@ -29,7 +29,10 @@ public static partial class Utils
     {
         var resolvedType = GetTypeFromNodeImpl(node, containingType);
 
-        if (resolvedType == null) node.AddError($"Type '{node}' not found");
+        if (resolvedType == null)
+        {
+            node.AddError($"Type '{node}' not found");
+        }
 
         return resolvedType ?? PrimType.Void;
     }
@@ -50,19 +53,31 @@ public static partial class Utils
 
         if (node is SimpleTypeName id)
         {
-            if (Primities.TryGetValue(id.Name, out var prim)) return prim;
+            if (Primities.TryGetValue(id.Name, out var prim))
+            {
+                return prim;
+            }
 
             var type = containingType.Module.FindType(containingType.Namespace, id.Name);
-            if (type != null) return type;
+            if (type != null)
+            {
+                return type;
+            }
 
-            if (containingType.Name == id.Name) return containingType;
+            if (containingType.Name == id.Name)
+            {
+                return containingType;
+            }
         }
         else if (node is QualifiedTypeName qname)
         {
             if (qname.Type is SimpleTypeName simple)
             {
                 var type = containingType.Module.FindType(qname.Namespace, simple.Name);
-                if (type != null) return type;
+                if (type != null)
+                {
+                    return type;
+                }
 
                 return containingType.Module.Resolver.FindType(qname.ToString());
             }
@@ -71,12 +86,14 @@ public static partial class Utils
         {
             var type = GetTypeFromNodeImpl(ptr.Type, containingType);
             if (type != null)
+            {
                 return ptr.Kind switch
                 {
                     PointerKind.Transient => type.CreatePointer(),
                     PointerKind.Reference => type.CreateByref(),
                     _ => throw new InvalidOperationException("Invalid pointerkind")
                 };
+            }
         }
 
         return null;
@@ -84,22 +101,37 @@ public static partial class Utils
 
     public static TypeDesc? GetTypeFromNode(TypeName node, ModuleDef module)
     {
-        if (node is NoTypeName) return null;
+        if (node is NoTypeName)
+        {
+            return null;
+        }
 
         if (node is SimpleTypeName id)
+        {
             if (Primities.TryGetValue(id.Name, out var prim))
+            {
                 return prim;
+            }
+        }
 
-        if (node is UnitTypeName unitTypeName) return GetTypeFromNode(unitTypeName.Unit, module);
+        if (node is UnitTypeName unitTypeName)
+        {
+            return GetTypeFromNode(unitTypeName.Unit, module);
+        }
 
         if (node is QualifiedTypeName qname)
+        {
             if (qname.Type is SimpleTypeName simple)
             {
                 var type = module.FindType(qname.Namespace, simple.Name);
-                if (type != null) return type;
+                if (type != null)
+                {
+                    return type;
+                }
 
                 return (TypeDef)module.Resolver.FindType(qname.ToString());
             }
+        }
 
         throw new Exception($"cannot get type {node} from node");
     }
@@ -109,6 +141,7 @@ public static partial class Utils
         var attrs = TypeAttributes.Public | TypeAttributes.BeforeFieldInit;
 
         foreach (var modifier in node.Modifiers)
+        {
             attrs |= modifier switch
             {
                 Modifier.Static => TypeAttributes.Sealed | TypeAttributes.Abstract,
@@ -116,16 +149,22 @@ public static partial class Utils
                 Modifier.Public => TypeAttributes.Public,
                 _ => throw new NotImplementedException()
             };
+        }
 
         if (node.Modifiers.Contains(Modifier.Private) || node.Modifiers.Contains(Modifier.Internal))
+        {
             attrs &= ~TypeAttributes.Public;
+        }
 
         return attrs;
     }
 
     public static object? GetLiteralValue(AstNode? node)
     {
-        if (node is LiteralNode lit) return lit.Value;
+        if (node is LiteralNode lit)
+        {
+            return lit.Value;
+        }
 
         return null;
     }
@@ -156,13 +195,19 @@ public static partial class Utils
         void AppendAttributeToName()
         {
             var name = annotation.Name;
-            if (name.Children.Last is SimpleTypeName s && !s.Name.EndsWith("Attribute")) s.Name += "Attribute";
+            if (name.Children.Last is SimpleTypeName s && !s.Name.EndsWith("Attribute"))
+            {
+                s.Name += "Attribute";
+            }
         }
     }
 
     public static void EmitAnnotations(Declaration declaration, ModuleEntity entity)
     {
-        foreach (var annotation in declaration.Annotations) EmitAnnotation(annotation, entity);
+        foreach (var annotation in declaration.Annotations)
+        {
+            EmitAnnotation(annotation, entity);
+        }
     }
 
     public static string GenerateIdentifier()

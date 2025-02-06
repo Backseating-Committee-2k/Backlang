@@ -31,12 +31,12 @@ public sealed partial class Parser
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<RulesForDeclarationParser>(TokenType.Rules);
 
-      /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
-        AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
-        AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
-        AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
-        AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/
-       // AddDeclarationParsePoint<MacroBlockDeclaration>(TokenType.Identifier);
+        /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
+          AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);
+          AddDeclarationParsePoint<BitFieldDeclaration>(TokenType.Bitfield);
+          AddDeclarationParsePoint<MacroDeclaration>(TokenType.Macro);
+          AddDeclarationParsePoint<ImplementationDeclaration>(TokenType.Implement);*/
+        // AddDeclarationParsePoint<MacroBlockDeclaration>(TokenType.Identifier);
 
         AddExpressionParsePoint<IdentifierParser>(TokenType.Identifier);
         AddExpressionParsePoint<GroupOrTupleExpressionParser>(TokenType.OpenParen);
@@ -45,14 +45,14 @@ public sealed partial class Parser
         AddExpressionParsePoint<TypeOfExpressionParser>(TokenType.TypeOf);
         AddExpressionParsePoint<NoneExpressionParser>(TokenType.None);
         AddExpressionParsePoint<InitializerListExpression>(TokenType.OpenSquare);
-       // AddExpressionParsePoint<MatchExpression>(TokenType.Match);
+        // AddExpressionParsePoint<MatchExpression>(TokenType.Match);
 
         AddStatementParsePoint<ThrowStatementParser>(TokenType.Throw);
         AddStatementParsePoint<BreakStatementParser>(TokenType.Break);
         AddStatementParsePoint<ContinueStatementParser>(TokenType.Continue);
         AddStatementParsePoint<ReturnStatementParser>(TokenType.Return);
         AddStatementParsePoint<VariableStatementParser>(TokenType.Let);
-       // AddStatementParsePoint<SwitchStatement>(TokenType.Switch);
+        // AddStatementParsePoint<SwitchStatement>(TokenType.Switch);
         AddStatementParsePoint<IfStatementParser>(TokenType.If);
         AddStatementParsePoint<WhileStatementParser>(TokenType.While);
         AddStatementParsePoint<DoWhileStatementParser>(TokenType.Do);
@@ -79,7 +79,8 @@ public sealed partial class Parser
         StatementParsePoints.Add(type, T.Parse);
     }
 
-    public List<Declaration> InvokeDeclarationParsePoints(TokenType terminator = TokenType.EOF, ParsePointCollection parsePoints = null)
+    public List<Declaration> InvokeDeclarationParsePoints(TokenType terminator = TokenType.EOF,
+        ParsePointCollection parsePoints = null)
     {
         if (parsePoints == null)
         {
