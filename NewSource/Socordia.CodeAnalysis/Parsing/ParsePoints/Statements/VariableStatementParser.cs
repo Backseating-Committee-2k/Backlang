@@ -13,8 +13,6 @@ public class VariableStatementParser : IParsePoint
         var isMutable = false;
         TypeName? type = NoTypeName.Instance;
 
-        Token mutableToken = null;
-
         if (iterator.Current.Type == TokenType.Mutable)
         {
             isMutable = true;

@@ -29,7 +29,7 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
 
         if (lvalue is VariableScopeItem vsi)
         {
-            //Todo: add System.Runtime.CompilerServices.IsConst as modreq
+            //Todo: add System.Runtime.CompilerServices.IsConst as modreq if it's available in distil
             context.Builder.CreateStore(vsi.Slot, rvalue);
         }
     }
