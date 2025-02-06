@@ -3,6 +3,7 @@ using DistIL.AsmIO;
 using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
+using Socordia.CodeAnalysis.AST.Literals;
 
 namespace SocordiaC.Compilation.Listeners;
 
@@ -24,10 +25,20 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
         type.CreateField("value__", new TypeSig(valueType),
             FieldAttributes.Public | FieldAttributes.SpecialName | FieldAttributes.RTSpecialName);
 
+        if (!ValidateEnumMembers(node))
+        {
+            return;
+        }
+
         // .field public static literal valuetype Color R = int32(0)
-        foreach (var astNode in node.Children)
+        for (int memberIndex = 0; memberIndex < node.Children.Count; memberIndex++)
         {
             var member = (EnumMemberDeclaration)astNode;
+
+             if (memberIndex.Value is EmptyNode)
+            {
+                member.Value.Replace(new LiteralNode(memberIndex));
+            }
 
             type.CreateField(member.Name.Name, new TypeSig(type),
                 FieldAttributes.Public | FieldAttributes.Literal | FieldAttributes.Static | FieldAttributes.HasDefault,
@@ -36,6 +47,36 @@ public class CollectEnumListener : Listener<Driver, AstNode, EnumDeclaration>
 
         Utils.EmitAnnotations(node, type);
     }
+
+    private bool ValidateEnumMembers(EnumDeclaration node)
+    {
+        bool hasSpecifiedValues = false;
+        bool hasUnspecifiedValues = false;
+
+        foreach (var child in node.Children)
+        {
+            if (child is EnumMemberDeclaration member)
+            {
+                if (member.Value is EmptyNode)
+                {
+                    hasUnspecifiedValues = true;
+                }
+                else
+                {
+                    hasSpecifiedValues = true;
+                }
+            }
+
+            if (hasSpecifiedValues && hasUnspecifiedValues)
+            {
+                node.AddError("Cannot mix specified and unspecified enum values");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     private TypeAttributes GetModifiers(Declaration node)
     {

@@ -12,12 +12,18 @@ public class SwapLowerer : Replacer<AstNode, BinaryOperatorExpression>
     {
         if (node.Operator != "<->") return node;
 
+        if (node.Parent is not Block)
+        {
+            node.AddError("Swap operator can only be used as statement");
+            return node;
+        }
+
         var leftId = (Identifier)node.Left;
         var rightId = (Identifier)node.Right;
 
         //todo: implement a swap by introducting a new temp variable and test it
         var tmpName = Utils.GenerateIdentifier();
-        var tmp = new VariableStatement(tmpName, new NoTypeName(), new Identifier(leftId.Name), false);
+        var tmp = new VariableStatement(tmpName, NoTypeName.Instance, new Identifier(leftId.Name), false);
 
         var left = new BinaryOperatorExpression("=", new Identifier(leftId.Name), new Identifier(rightId.Name));
         var right = new BinaryOperatorExpression("=", new Identifier(rightId.Name), new Identifier(tmpName));

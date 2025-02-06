@@ -11,9 +11,7 @@ public class VariableStatementParser : IParsePoint
         var keywordToken = iterator.Prev;
 
         var isMutable = false;
-        TypeName? type = new NoTypeName();
-
-        Token mutableToken = null;
+        TypeName? type = NoTypeName.Instance;
 
         if (iterator.Current.Type == TokenType.Mutable)
         {
