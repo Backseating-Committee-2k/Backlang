@@ -31,6 +31,11 @@ public class VariableDeclarationListener : Listener<BodyCompilation, AstNode, Va
             }
         }
 
+        if (value is ConstNull && !node.IsMutable)
+        {
+            node.AddError("Cannot declare a non mutable variable with a null value");
+        }
+
         var slot = context.Method.Body!.CreateVar(type, node.Name);
 
         context.Scope.Add(new VariableScopeItem
