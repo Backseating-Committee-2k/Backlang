@@ -30,6 +30,7 @@ public sealed partial class Parser
 
         AddDeclarationParsePoint<FunctionDefinitionParser>(TokenType.Function);
         AddDeclarationParsePoint<RulesForDeclarationParser>(TokenType.Rules);
+        AddDeclarationParsePoint<VariableStatementParser>(TokenType.Let);
 
         /*  AddDeclarationParsePoint<ConstructorDeclarationParser>(TokenType.Constructor);
           AddDeclarationParsePoint<DestructorDeclaration>(TokenType.Destructor);

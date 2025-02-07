@@ -26,10 +26,14 @@ public class CollectTypesStage : IHandler<Driver, Driver>
         }
 
         var functionCollector = new CollectFunctionsListener();
+        var globalVarListener = new CollectGlobalVariablesListener();
         foreach (var tree in context.Trees)
-        foreach (var decl in tree.Declarations.Children)
         {
-            functionCollector.Listen(context, decl);
+            foreach (var decl in tree.Declarations.Children)
+            {
+                functionCollector.Listen(context, decl);
+                globalVarListener.Listen(context, decl);
+            }
         }
 
         return await next.Invoke(context);

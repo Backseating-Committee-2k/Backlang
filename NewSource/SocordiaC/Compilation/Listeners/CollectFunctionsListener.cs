@@ -22,7 +22,7 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
 
         var returnType = GetReturnType(node, type);
         var method = type.CreateMethod(node.Signature.Name.Name,
-            returnType, [..parameters], attrs);
+            returnType, [.. parameters], attrs);
 
         if (!node.Modifiers.Contains(Modifier.Extern))
         {

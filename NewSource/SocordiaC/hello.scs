@@ -5,6 +5,8 @@ public enum Color {
     Blue
 }
 
+let defaultColor: Color;
+
 func main()
 {
      let mut x = 12;
