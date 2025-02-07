@@ -3,6 +3,7 @@ using DistIL.CodeGen.Cil;
 using DistIL.IR;
 using DistIL.IR.Utils;
 using Flo;
+using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using SocordiaC.Compilation;
 using SocordiaC.Compilation.Listeners.Body;
@@ -17,7 +18,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
     {
         foreach (var (node, def) in Mappings.Functions)
         {
-            var scope = new Scope(null!);
+            var scope = ((RootBlock)def.Root).Scope.CreateSubScope();
             foreach (var arg in def.Body!.Args)
             {
                 scope.Add(new ParameterScopeItem { Name = arg.Name, Arg = arg, IsOut = def.IsOut });
@@ -25,6 +26,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
 
             var builder = new IRBuilder(def.Body!.CreateBlock());
             EmitParameterNullChecks(builder, node, context);
+            
             var bodyCompilation = new BodyCompilation(context, def, builder, scope);
 
             if (!node.Children[1].HasChildren)

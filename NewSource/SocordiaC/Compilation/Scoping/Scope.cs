@@ -12,10 +12,20 @@ public class Scope
     {
         Parent = parent;
         TypeAliases = new Dictionary<string, TypeDesc>();
+
+        if (parent == null)
+        {
+            Root = this;
+        }
+        else
+        {
+            Root = parent.Root;
+        }
     }
 
     public Dictionary<string, TypeDesc> TypeAliases { get; set; }
     public Scope Parent { get; set; }
+    public Scope Root { get; set; }
 
     public bool Add(ScopeItem item)
     {
@@ -88,5 +98,10 @@ public class Scope
         }
 
         return null;
+    }
+
+    public bool TryGetTypeAlias(string name, out TypeDesc? type)
+    {
+        return Root.TypeAliases.TryGetValue(name, out type);
     }
 }

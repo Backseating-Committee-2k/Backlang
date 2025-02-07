@@ -53,9 +53,14 @@ public static partial class Utils
 
         if (node is SimpleTypeName id)
         {
+            if ((((RootBlock)node.Root).Scope).TryGetTypeAlias(id.Name, out var alias))
+            {
+                return alias;
+            }
+
             if (Primities.TryGetValue(id.Name, out var prim))
             {
-                return prim;
+                    return prim;
             }
 
             var type = containingType.Module.FindType(containingType.Namespace, id.Name);

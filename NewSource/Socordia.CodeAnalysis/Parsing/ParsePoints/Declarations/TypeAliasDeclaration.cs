@@ -12,6 +12,6 @@ public sealed class TypeAliasDeclarationParser : IParsePoint
 
         iterator.Match(TokenType.Semicolon);
 
-        return new TypeAlias(expr);
+        return new TypeAliasDeclaration(expr);
     }
 }
