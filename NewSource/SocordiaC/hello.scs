@@ -5,6 +5,8 @@ public enum Color {
     Blue
 }
 
+using C as Color;
+
 let defaultColor: Color;
 
 func main()

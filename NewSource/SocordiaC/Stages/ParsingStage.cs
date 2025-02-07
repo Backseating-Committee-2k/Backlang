@@ -1,5 +1,6 @@
 using Flo;
 using Socordia.CodeAnalysis.AST;
+using SocordiaC.Compilation.Scoping;
 
 namespace SocordiaC.Stages;
 
@@ -20,6 +21,7 @@ public sealed class ParsingStage : IHandler<Driver, Driver>
             if (File.Exists(filename))
             {
                 var tree = CompilationUnit.FromFile(filename);
+                tree.Declarations.Tag = new Scope(null);
 
                 ApplyTree(context, tree);
             }

@@ -1,5 +1,5 @@
-﻿using DistIL.AsmIO;
-using Socordia.CodeAnalysis.AST;
+﻿using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.TypeNames;
 using SocordiaC.Compilation.Scoping.Items;
 
 namespace SocordiaC.Compilation.Scoping;
@@ -8,10 +8,10 @@ public class Scope
 {
     private readonly List<ScopeItem> _items = [];
 
-    public Scope(Scope parent)
+    public Scope(Scope? parent)
     {
         Parent = parent;
-        TypeAliases = new Dictionary<string, TypeDesc>();
+        TypeAliases = new Dictionary<string, TypeName>();
 
         if (parent == null)
         {
@@ -23,8 +23,8 @@ public class Scope
         }
     }
 
-    public Dictionary<string, TypeDesc> TypeAliases { get; set; }
-    public Scope Parent { get; set; }
+    public Dictionary<string, TypeName> TypeAliases { get; set; }
+    public Scope? Parent { get; set; }
     public Scope Root { get; set; }
 
     public bool Add(ScopeItem item)
@@ -100,7 +100,7 @@ public class Scope
         return null;
     }
 
-    public bool TryGetTypeAlias(string name, out TypeDesc? type)
+    public bool TryGetTypeAlias(string name, out TypeName? type)
     {
         return Root.TypeAliases.TryGetValue(name, out type);
     }

@@ -21,7 +21,7 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
         var lvalue = context.Scope.GetFromNode(node.Left);
         var rvalue = Utils.CreateValue(node.Right, context);
 
-        if (lvalue is ScopeItem { IsMutable: false } si)
+        if (lvalue is VariableScopeItem { IsMutable: false } si)
         {
             node.Left.AddError("Variable '" + si.Name + "' is not mutable");
             return;
@@ -31,6 +31,11 @@ public class BinaryOperatorListener : Listener<BodyCompilation, AstNode, BinaryO
         {
             //Todo: add System.Runtime.CompilerServices.IsConst as modreq if it's available in distil
             context.Builder.CreateStore(vsi.Slot, rvalue);
+        }
+
+        if (lvalue is ParameterScopeItem psi)
+        {
+            context.Builder.CreateStore(psi.Arg, rvalue);
         }
     }
 

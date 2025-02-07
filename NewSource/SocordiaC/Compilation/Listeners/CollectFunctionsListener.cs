@@ -46,7 +46,14 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
         foreach (var param in node.Signature.Parameters)
         {
             var attribs = GetParameterAttributes(param);
-            var paramDef = new ParamDef(new TypeSig(Utils.GetTypeFromNode(param.Type, type)), param.Name, attribs)
+            var paramType = Utils.GetTypeFromNode(param.Type, type);
+
+            if (param.IsOut)
+            {
+                paramType = paramType.CreateByref();
+            }
+
+            var paramDef = new ParamDef(new TypeSig(paramType), param.Name, attribs)
             {
                 DefaultValue = Utils.GetLiteralValue(param.DefaultValue)
             };
@@ -64,6 +71,11 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
         if (node.DefaultValue != null)
         {
             result |= ParameterAttributes.HasDefault | ParameterAttributes.Optional;
+        }
+
+        if (node.IsOut)
+        {
+            result |= ParameterAttributes.Out;
         }
 
         return result;

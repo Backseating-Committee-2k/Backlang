@@ -1,16 +1,18 @@
-using MrWatkins.Ast.Listening;
+using MrKWatkins.Ast.Listening;
 using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.TypeNames;
+using SocordiaC.Compilation.Scoping;
 
-namespace SocordiaC.Compilation;
+namespace SocordiaC.Compilation.Listeners;
 
 public class TypeAliasListener : Listener<Driver, AstNode, TypeAliasDeclaration>
 {
     protected override void ListenToNode(Driver context, TypeAliasDeclaration node)
     {
-        var root = (RootBlock)node.Root.Scope;
+        var root = (Scope)node.Root.Tag!;
 
-        root.Scope.TypeAliases.Add(node.Name, node.Type);
+        root.TypeAliases.Add(node.Name.Name, new SimpleTypeName((Identifier)node.Type));
     }
 
-    protected override bool ShouldListenToChildren(BodyCompilation context, TypeAliasDeclaration node) => false;
+    protected override bool ShouldListenToChildren(Driver context, TypeAliasDeclaration node) => false;
 }

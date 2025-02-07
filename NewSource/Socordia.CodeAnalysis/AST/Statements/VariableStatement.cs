@@ -2,7 +2,7 @@
 
 namespace Socordia.CodeAnalysis.AST.Statements;
 
-public class VariableStatement : AstNode
+public class VariableStatement : Declaration
 {
     public VariableStatement(string name, AstNode? type, AstNode initializer, bool isMutable)
     {

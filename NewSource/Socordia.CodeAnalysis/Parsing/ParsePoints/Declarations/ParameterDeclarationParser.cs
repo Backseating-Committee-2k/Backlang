@@ -10,7 +10,7 @@ public sealed class ParameterDeclarationParser : IParsePoint
     {
         _ = AnnotationParser.TryParse(parser, out var annotations);
 
-        bool isOut = parser.ConsumeIfMatch(TokenType.Out);
+        var isOut = iterator.ConsumeIfMatch(TokenType.Out);
 
         var name = iterator.Match(TokenType.Identifier);
 
@@ -29,7 +29,7 @@ public sealed class ParameterDeclarationParser : IParsePoint
             defaultValue = Expression.Parse(parser);
         }
 
-        return new ParameterDeclaration(type, name.Text, defaultValue, assertNotNull, annotations);
+        return new ParameterDeclaration(type, name.Text, defaultValue, assertNotNull, annotations, isOut);
     }
 
     public static List<ParameterDeclaration> ParseList(Parser parser)

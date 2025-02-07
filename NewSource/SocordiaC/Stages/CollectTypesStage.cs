@@ -11,7 +11,8 @@ public class CollectTypesStage : IHandler<Driver, Driver>
     public async Task<Driver> HandleAsync(Driver context, Func<Driver, Task<Driver>> next)
     {
         var prePhase = CompositeListener<Driver, AstNode>.Build()
-            .With(new TypeAliasListener());
+            .With(new TypeAliasListener())
+            .ToListener();
 
         var firstPhasePipeline = CompositeListener<Driver, AstNode>.Build()
             .With(new CollectClassesListener())

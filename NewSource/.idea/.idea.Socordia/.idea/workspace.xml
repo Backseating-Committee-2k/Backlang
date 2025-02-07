@@ -9,13 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="">
+    <list default="true" id="3423726c-5418-46c1-9b6d-ffb46513281e" name="Changes" comment="fix: global variables and type aliases">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Socordia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/Declarations/Types/Enum/EnumDeclaration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/Declarations/Types/Enum/EnumDeclaration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/CollectEnumListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Driver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Driver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/Stages/PrintErrorsStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Stages/PrintErrorsStage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocordiaC/hello.scs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/hello.scs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/TypeNames/SimpleTypeName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Socordia.CodeAnalysis/AST/TypeNames/SimpleTypeName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/BinaryOperatorListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/TypeAliasListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Listeners/TypeAliasListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Scoping/Scope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Scoping/Scope.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SocordiaC/Compilation/Utils.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c73b3c6c598640c592fd3c6fa226c286e90908/cf/ef8183f1/AsyncVoidMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ccfb9d40eac744648d82ac136a69a3f32800/89/26e0f09e/DriverSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ccfb9d40eac744648d82ac136a69a3f32800/92/49d39f04/BuildTask`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e3157c720a4245958cf8a1b12c4b4a27e90928/bf/742dc207/ParameterAttributes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f889ed3c76d94525a96a531d3b943f8d4200/c9/0701812f/Pipeline.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/13e68bded68ac9145322639b09c6af5bc34696f20cfd4db79105b4b290e0aa/Node.Structure.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/145e55996cbd07d21617a64ee2aabd395ac6fcb2629ecf715fb627fd6ac421/Children.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,6 +81,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/596ee42e672e27f69da96f833ab29c51d47ed32f684635f82b59c3fc2de83a/Children.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5ad3dee0127c64b78a3581f4784b2a263495293ab1e395b1a5c7a4f654d55a/Exceptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/61d8a75bc2b8d32e6a998ce0fa1656c98412476ee2598ab38d5e166a85c560b/Validator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69d92878c95a6c1af260d099452a324922ddbfe02adf838220c1776fdd95/MessageFormatter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/69e0d37423d59312312786ab0dfe876f67d55fbc0fda977d259fa67aa8235b2/ILGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70d8bd168cb93b58e8a033c54dc6ab32c125372201b3a82376fa98b2b243/CompositeListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70dec725939bb2449cfbcc2b22ba23dd6580ac8bf28768feb40a84a32366/Listener.cs" root0="FORCE_HIGHLIGHTING" />
@@ -123,7 +125,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd7be3ff8d148ae34cd9d3c0bffdb532b9a89dee6d4a7ce5beba95381d466db4/ModuleWriter.Signatures.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ff515512725d3e9d76e9fb60b54abf3a999d305249d7e88158b36ad2faee/Properties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../LanguageSdk.Templates/LanguageSdk.Templates.Core/Optimizer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Listeners/Body/VariableDeclarationListener.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/Socordia.CodeAnalysis/AST/TypeNames/QualifiedTypeName.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/chris/RiderProjects/Socordia-Org/Socordia/NewSource/SocordiaC/Compilation/Scoping/Scope.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/Names.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Contracts/NamespaceImports.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Source/Backlang.Driver/Compiling/IRGenerator.cs" root0="SKIP_HIGHLIGHTING" />
@@ -349,39 +352,9 @@
       <workItem from="1738769770709" duration="7520000" />
       <workItem from="1738857057324" duration="566000" />
       <workItem from="1738863679379" duration="1124000" />
-      <workItem from="1738873567484" duration="809000" />
-    </task>
-    <task id="LOCAL-00079" summary="refactor: Cleanup">
-      <option name="closed" value="true" />
-      <created>1735469343460</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1735469343460</updated>
-    </task>
-    <task id="LOCAL-00080" summary="feat: Add Core for delegate declaration">
-      <option name="closed" value="true" />
-      <created>1735477772121</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1735477772121</updated>
-    </task>
-    <task id="LOCAL-00081" summary="feat: Add struct declaration">
-      <option name="closed" value="true" />
-      <created>1735478721022</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1735478721023</updated>
-    </task>
-    <task id="LOCAL-00082" summary="feat: Add ptr dereference operator">
-      <option name="closed" value="true" />
-      <created>1735494495106</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1735494495107</updated>
+      <workItem from="1738873567484" duration="1214000" />
+      <workItem from="1738933950981" duration="1057000" />
+      <workItem from="1738958409905" duration="2635000" />
     </task>
     <task id="LOCAL-00083" summary="feat: Add Lowerer">
       <option name="closed" value="true" />
@@ -743,7 +716,39 @@
       <option name="project" value="LOCAL" />
       <updated>1738864200842</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="fix: Errors not been printed recursivly">
+      <option name="closed" value="true" />
+      <created>1738874582077</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1738874582077</updated>
+    </task>
+    <task id="LOCAL-00129" summary="refactor: Cleanup">
+      <option name="closed" value="true" />
+      <created>1738874598578</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1738874598578</updated>
+    </task>
+    <task id="LOCAL-00130" summary="refactor: Apply code style">
+      <option name="closed" value="true" />
+      <created>1738874766695</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1738874766695</updated>
+    </task>
+    <task id="LOCAL-00131" summary="fix: global variables and type aliases">
+      <option name="closed" value="true" />
+      <created>1738960509449</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1738960509450</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -764,9 +769,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat: Add ptr dereference operator" />
-    <MESSAGE value="feat: Add Lowerer" />
-    <MESSAGE value="feat: Add core for DUs" />
     <MESSAGE value="fix: KnownAttributes" />
     <MESSAGE value="feat: Add core for type deducing" />
     <MESSAGE value="feat: Add GenerateHashCode Helper Method" />
@@ -787,54 +789,12 @@
     <MESSAGE value="feat: Add CompilerGeneratedAttribute to generated entities" />
     <MESSAGE value="fix: Variable should be loaded when accessed" />
     <MESSAGE value="feat: Error when using non integer type as enum value" />
-    <MESSAGE value="refactor: Cleanup" />
     <MESSAGE value="feat: Add error when initialize non mutable variable with null" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add error when initialize non mutable variable with null" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Utils.Values.cs</url>
-          <line>108</line>
-          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Utils.Values.cs" containingFunctionPresentation="Method 'CreateBinary'">
-            <startOffsets>
-              <option value="4254" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4291" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SocordiaC/Compilation/Listeners/Body/IfStatementListener.cs</url>
-          <line>24</line>
-          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Compilation\Listeners\Body\IfStatementListener.cs" containingFunctionPresentation="Method 'ListenToNode'">
-            <startOffsets>
-              <option value="749" />
-            </startOffsets>
-            <endOffsets>
-              <option value="780" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SocordiaC/Stages/PrintErrorsStage.cs</url>
-          <line>10</line>
-          <properties documentPath="C:\Users\chris\RiderProjects\Socordia-Org\Socordia\NewSource\SocordiaC\Stages\PrintErrorsStage.cs" containingFunctionPresentation="Method 'HandleAsync'">
-            <startOffsets>
-              <option value="349" />
-            </startOffsets>
-            <endOffsets>
-              <option value="385" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="fix: Errors not been printed recursivly" />
+    <MESSAGE value="refactor: Cleanup" />
+    <MESSAGE value="refactor: Apply code style" />
+    <MESSAGE value="fix: global variables and type aliases" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: global variables and type aliases" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

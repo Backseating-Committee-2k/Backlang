@@ -9,6 +9,7 @@ using SocordiaC.Compilation;
 using SocordiaC.Compilation.Listeners.Body;
 using SocordiaC.Compilation.Scoping;
 using SocordiaC.Compilation.Scoping.Items;
+using System.Reflection;
 
 namespace SocordiaC.Stages;
 
@@ -18,10 +19,13 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
     {
         foreach (var (node, def) in Mappings.Functions)
         {
-            var scope = ((RootBlock)def.Root).Scope.CreateSubScope();
-            foreach (var arg in def.Body!.Args)
+            var scope = ((Scope)node.Root.Tag!).CreateChildScope();
+            for (var i = 0; i < def.Body!.Args.Length; i++)
             {
-                scope.Add(new ParameterScopeItem { Name = arg.Name, Arg = arg, IsOut = def.IsOut });
+                var arg = def.Body!.Args[i];
+                var param = def.Params[i];
+
+                scope.Add(new ParameterScopeItem { Name = arg.Name, Arg = arg, Parameter = param });
             }
 
             var builder = new IRBuilder(def.Body!.CreateBlock());

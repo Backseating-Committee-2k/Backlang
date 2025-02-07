@@ -3,6 +3,7 @@ using Socordia.CodeAnalysis.AST;
 using Socordia.CodeAnalysis.AST.Declarations;
 using Socordia.CodeAnalysis.AST.Literals;
 using Socordia.CodeAnalysis.AST.TypeNames;
+using SocordiaC.Compilation.Scoping;
 using System.Reflection;
 using System.Text;
 
@@ -53,9 +54,9 @@ public static partial class Utils
 
         if (node is SimpleTypeName id)
         {
-            if ((((RootBlock)node.Root).Scope).TryGetTypeAlias(id.Name, out var alias))
+            if (((Scope)node.Root.Tag!).TryGetTypeAlias(id.Name, out var alias))
             {
-                return alias;
+                return GetTypeFromNodeImpl(alias!, containingType);
             }
 
             if (Primities.TryGetValue(id.Name, out var prim))

@@ -1,6 +1,11 @@
+using MrKWatkins.Ast.Listening;
+using Socordia.CodeAnalysis.AST;
+using Socordia.CodeAnalysis.AST.Statements;
+using System.Reflection;
+
 namespace SocordiaC.Compilation.Listeners;
 
-public class CollectGlobalVariablesListener : Listeners<Driver, AstNode, VariableStatement>
+public class CollectGlobalVariablesListener : Listener<Driver, AstNode, VariableStatement>
 {
     protected override void ListenToNode(Driver context, VariableStatement node)
     {
@@ -8,7 +13,7 @@ public class CollectGlobalVariablesListener : Listeners<Driver, AstNode, Variabl
         var varType = Utils.GetTypeFromNode(node.Type, type);
         var field = type.CreateField(node.Name, varType, FieldAttributes.Public | FieldAttributes.Static);
 
-        Mappings.Variables.Add(node, field);
+        //Mappings.Variables.Add(node, field);
     }
 
     protected override bool ShouldListenToChildren(Driver context, VariableStatement node)
