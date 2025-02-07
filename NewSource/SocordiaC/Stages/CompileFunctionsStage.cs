@@ -20,7 +20,7 @@ public class CompileFunctionsStage : IHandler<Driver, Driver>
             var scope = new Scope(null!);
             foreach (var arg in def.Body!.Args)
             {
-                scope.Add(new ParameterScopeItem { Name = arg.Name, Arg = arg });
+                scope.Add(new ParameterScopeItem { Name = arg.Name, Arg = arg, IsOut = def.IsOut });
             }
 
             var builder = new IRBuilder(def.Body!.CreateBlock());

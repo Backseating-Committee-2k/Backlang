@@ -17,3 +17,8 @@ func main()
      println(x);
      println(y);
 }
+
+func outTest(out k: i32) 
+{
+    k = 5;
+}

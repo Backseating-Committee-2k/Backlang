@@ -10,7 +10,8 @@ public sealed class ParameterDeclarationParser : IParsePoint
     {
         _ = AnnotationParser.TryParse(parser, out var annotations);
 
-        var keywordToken = iterator.Current;
+        bool isOut = parser.ConsumeIfMatch(TokenType.Out);
+
         var name = iterator.Match(TokenType.Identifier);
 
         var assertNotNull = iterator.ConsumeIfMatch(TokenType.Exclamation);

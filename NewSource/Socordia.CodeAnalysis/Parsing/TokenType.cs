@@ -223,6 +223,7 @@ public enum TokenType
     [Keyword("do")] Do,
 
     [Keyword("in")] In,
+    [Keyword("out")] Out,
 
     [Keyword("for")] For,
 
