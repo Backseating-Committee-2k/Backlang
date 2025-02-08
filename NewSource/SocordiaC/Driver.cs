@@ -86,14 +86,14 @@ public class Driver
         await pipeline.Invoke(this);
     }
 
-    public TypeDef GetFunctionType(string ns)
+    public TypeDef GetGlobalsType(string ns)
     {
         if (_functionTypes.TryGetValue(ns, out var value))
         {
             return value;
         }
 
-        var type = Compilation.Module.CreateType(ns, "Functions",
+        var type = Compilation.Module.CreateType(ns, "Globals",
             TypeAttributes.Public | TypeAttributes.Abstract | TypeAttributes.Sealed);
 
         _functionTypes[ns] = type;

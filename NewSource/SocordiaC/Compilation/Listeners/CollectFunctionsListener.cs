@@ -17,7 +17,7 @@ public class CollectFunctionsListener : Listener<Driver, AstNode, FunctionDefini
     protected override void ListenToNode(Driver context, FunctionDefinition node)
     {
         var attrs = GetModifiers(node);
-        var type = context.GetFunctionType(context.GetNamespaceOf(node));
+        var type = context.GetGlobalsType(context.GetNamespaceOf(node));
         var parameters = GetParameters(node, type, context);
 
         var returnType = GetReturnType(node, type);

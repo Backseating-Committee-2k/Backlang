@@ -7,7 +7,8 @@ public enum Color {
 
 using C as Color;
 
-let defaultColor: Color;
+let defaultColor: C;
+let myFlag: bool = true;
 
 func main()
 {

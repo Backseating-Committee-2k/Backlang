@@ -43,7 +43,7 @@ public partial class Utils
         return compilation.Builder.CreateDefaultOf(type);
     }
 
-    private static Value CreateLiteral(object literalValue)
+    public static Value CreateLiteral(object literalValue)
     {
         return literalValue switch
         {
