@@ -24,7 +24,6 @@ public class CollectGlobalVariablesListener : Listener<Driver, AstNode, Variable
             SetValue(valueConst, field);
         }
         //Todo: add field value when its valetype then defaultvalue, otherwise use static ctor
-
     }
 
     private static void SetValue(Value valueConst, FieldDef field)
